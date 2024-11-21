@@ -11,3 +11,5 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     MiscMetabar
+URL: https://github.com/adrientaudiere/comparpq
+BugReports: https://github.com/adrientaudiere/comparpq/issues
