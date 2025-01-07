@@ -1,0 +1,87 @@
+---
+title: "essai"
+author: "Adrien Taudière"
+format: html
+---
+
+## Try OJS
+
+
+```{r}
+library(MiscMetabar)
+data("Glom_otu")
+```
+
+```{r}
+bubbles_pq <- function(physeq,
+                           rank_label = "Taxa",
+                           rank_color = "Family",
+                       categorical_scheme = "d3.schemeCategory10",
+                           label_color = "grey20",
+                           label_size = 8,
+                           log1ptransform = FALSE,
+                           min_nb_seq = 0,
+                           randomize = FALSE,
+                           seed = 32,
+                           width = 600,
+                           include = c("key", "chart"),
+                           notebook = "https://observablehq.com/d/d755af3197af2320",
+                       return_dataframe = FALSE) {
+  if (rank_label == "Taxa") {
+    label <- taxa_names(physeq)
+  } else {
+    label <- as.vector(physeq@tax_table[, rank_label])
+  }
+  
+  df <- data.frame(
+    "value" = taxa_sums(physeq),
+    "label" = label,
+    "color" = fac2col(physeq@tax_table[, rank_color]),
+    "rank_value_color" = as.vector(physeq@tax_table[, rank_color]),
+    "textColor" = label_color
+  )
+    
+  df$id <- paste0(df$label, ".", df$rank_value_color, ".", df$label)
+  
+  if (min_nb_seq > 0) {
+    df <- df |>
+      dplyr::filter(value > min_nb_seq)
+    }
+  
+  if (log1ptransform) {
+    df$value <- log1p(df$value)
+  }
+
+  if (randomize) {
+    set.seed(seed)
+    df <- df[sample(nrow(df)), ]
+  }
+  
+  if (return_dataframe) {
+    return(df)
+  }
+  robservable::robservable(
+    notebook = notebook,
+    include = include,
+    input = list(data = df, categorical_scheme = categorical_scheme),
+    width = width
+  )
+}
+```
+
+
+```{r}
+bubbles_pq(physeq=data_fungi, rank_color ="Class", randomize = TRUE)
+```
+
+```{r}
+bubbles_pq(physeq=data_fungi, min_nb_seq = 10000, categorical_scheme = "d3.schemePastel1")
+```
+
+```{r}
+bubbles_pq(physeq=data_fungi, rank_color = "Order", include=c("chart"), log1ptransform = TRUE)
+```
+
+```{r}
+bubbles_pq(physeq=data_fungi, rank_label = "Genus",  rank_color = "Class", include=c("chart"), randomize = TRUE, seed=3)
+```

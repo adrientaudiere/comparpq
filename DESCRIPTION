@@ -1,15 +1,25 @@
 Package: comparpq
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Title: An extension to {MiscMetabar} and {Phyloseq} package to compare
+  phyloseq object
+Version: 0.0.1
+Authors@R: person("Adrien", "Taudière", email = "adrien.taudiere@zaclys.net",
+  role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0003-1088-1182"))
+Description: Compare phyloseq object
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
     MiscMetabar
-URL: https://github.com/adrientaudiere/comparpq
+URL: https://github.com/adrientaudiere/comparpq, https://adrientaudiere.github.io/comparpq/
 BugReports: https://github.com/adrientaudiere/comparpq/issues
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Config/testthat/edition: 3
+Config/testthat/parallel: true
+VignetteBuilder: knitr
+Language: en-US
