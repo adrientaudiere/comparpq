@@ -1,522 +1,230 @@
 ################################################################################
-################################################################################
-#' Barchart of ratio to compare 2 taxonomic ranks
-#'
-#'
-#' Useful to compare taxonomy from two different source/db/algo side-by-side
-#'
-#' @inheritParams tc_points_matrix
-#' @param color_rank Define the taxonomic rank for color
-#'   as the number or the name of the column in tax_table slot
-#' @param point_size
-#' @param point_alpha
-#'
-#' @return A ggplot2 object
-#' @export
-#' @author Adrien Taudière
-#' @examples
-#'
-#' tc_bar(Glom_otu,
-#'             rank_1 = 5,
-#'             rank_2 = 13,
-#'             color_rank = 3)
-
-tc_bar <- function(physeq,
-                         rank_1,
-                         rank_2,
-                         color_rank,
-                         point_size = 0.3,
-                         point_alpha = 0.3,
-                         merge_sample_by = NULL) {
-  verify_pq(physeq)
-
-  if (!is.null(merge_sample_by)) {
-    physeq <- clean_pq(merge_samples2(physeq, merge_sample_by))
-  }
-
-  psm <- psmelt(physeq)
-
-  ranks1 <- colnames(physeq@tax_table[, c(rank_1, color_rank)])
-  ranks2 <- colnames(physeq@tax_table[, c(rank_2, color_rank)])
-
-  psm2 <- psm |>
-    group_by(across(all_of(c(
-      "Sample", ranks1, ranks2
-    )))) |>
-    summarise(Abundance = sum(Abundance), n = n()) |>
-    dplyr::filter(Abundance > 0)
-
-  p <- ggplot(psm2, aes(
-    x = .data[[ranks2[1]]],
-    y = log10(Abundance),
-    fill = .data[[ranks2[[2]]]],
-    label = .data[[ranks2[1]]]
-  )) +
-    stat_summary(fun.y = mean,
-                 position = "dodge",
-                 geom = "bar") +
-    stat_summary(
-      fun.data = mean_se,
-      geom = "errorbar",
-      width = .2,
-      position = position_dodge(.9)
-    ) +
-    geom_jitter(size = point_size, alpha = point_alpha) +
-    stat_summary(
-      aes(
-        x = .data[[ranks1[1]]],
-        y = -log10(Abundance),
-        fill = .data[[ranks1[[2]]]]
-      ),
-      fun.y = mean,
-      position = "dodge",
-      geom = "bar"
-    ) +
-    stat_summary(
-      aes(x = .data[[ranks1[1]]], y = -log10(Abundance)),
-      fun.data = mean_se,
-      geom = "errorbar",
-      width = .2,
-      position = position_dodge(.9)
-    ) +
-    theme(axis.text.x = element_text(
-      angle = 90,
-      vjust = 0.5,
-      hjust = 1
-    )) +
-    geom_hline(aes(yintercept = 0)) +
-    geom_jitter(aes(x = .data[[ranks1[1]]], y = -log10(Abundance)), size =
-                  point_size, alpha = point_alpha)
-
-  return(p)
-}
-################################################################################
-################################################################################
-
-
-################################################################################
-################################################################################
-#' Matrix of point to compare two taxonomic ranks
+#' Compute accuracy metrics of multiple taxonomic assignations method using
+#'  mock for multi-rank and multi assignation methods
 #'
 #' @description
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
-#' @param physeq (required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
-#'   using the `phyloseq` package.
-#' @param rank_1 Define the first taxonomic rank as the number or the name
-#'    of the column in tax_table slot
-#' @param rank_2 Define the second taxonomic rank as the number or the name
-#'    of the column in tax_table slot
-#' @param color_1 Color for rank_1 values
-#' @param color_2 Color for rank_1 values
-#' @param stat_across_sample Either "mean" or "sum". How the abundance is
-#'   computed across samples.
-#' @param merge_sample_by a vector to determine
-#'   which samples to merge using [merge_samples2()] function.
-#'   Need to be in \code{physeq@sam_data}
+#' Compute numerous metrics comparing the computed taxonomic assignation to a
+#' true assignation.
 #'
-#' @return A ggplot2 object
+#' Note that to compute all metrics, one need to insert fake
+#' taxa (by shuffling sequences and/or by adding external sequences). The user
+#' must fake taxa using functions [add_external_seq_pq()],
+#' [add_shuffle_seq_pq()]) before taxonomic assignation.
+#'
+#' @inheritParams tc_points_matrix
+#' @param ranks_df (required). A dataframe with at least one column (one database or one
+#'   method) and a number of row equal to the column in true_values_df
+#' @param true_values_df  (required). A dataframe with the true taxonomic assignation.
+#'   Note that the column names (names of taxonomic ranks) of the true_values_df defined
+#'   the names present in the `tax_level` column of the resulting dataframe.
+#' @param fake_taxa (logical, default TRUE). If TRUE, the fake_pattern vector
+#'   is used to identify fake taxa, i.e. taxa who are not in the reference
+#'   database (see [add_external_seq_pq()]) or taxa with fake sequences
+#'   (see [add_shuffle_seq_pq()]).
+#' @param fake_pattern (vector of pattern): A vector used to identify the fake
+#'   taxa using a regex search in their name.
+#'
+#' @returns A long-format dataframe with 4 columns: (i) the name of the `method_db`
+#' (ii) the name of the `tax_level` (taxonomic rank), (iii) the `metrics` (see
+#' [tc_metrics_mock_vec()] for more details) and (iv) the `values`.
 #' @export
+#' @seealso [tc_metrics_mock_vec()]
 #' @author Adrien Taudière
-#' @examples
-#' tc_points_matrix(Glom_otu, 6, 14)
-#' tc_points_matrix(Glom_otu, 4, 12)
-#' tc_points_matrix(Glom_otu, 4, 12, stat_across_sample = "mean")
-#'
-#' Glom_otu@sam_data$unique_value <- rep("samp", nsamples(Glom_otu))
-#' tc_points_matrix(as_binary_otu_table(Glom_otu), 5, 13,
-#'                        stat_across_sample = "sum", merge_sample_by="unique_value")
-#' tc_points_matrix(as_binary_otu_table(Glom_otu), 5, 13,
-#'                        stat_across_sample = "mean")
-#' tc_points_matrix(Glom_otu, 5, 13,
-#'                        stat_across_sample = "mean")
-
-tc_points_matrix <- function(physeq,
-                                   rank_1,
-                                   rank_2,
-                                   color_1 = "#dc863b",
-                                   color_2 = "#2e7891",
-                                   stat_across_sample = "sum",
-                                   merge_sample_by = NULL) {
-  verify_pq(physeq)
-
-  if (!is.null(merge_sample_by)) {
-    physeq <- clean_pq(merge_samples2(physeq, merge_sample_by))
+tc_metrics_mock <- function(physeq,
+                            ranks_df,
+                            true_values_df,
+                            fake_taxa = TRUE,
+                            fake_pattern = c("^fake_", "^external_")) {
+  if (nrow(ranks_df) != ncol(true_values_df)) {
+    stop("The number of rows of ranks_df must be equal to the number of column in true_values_df")
   }
 
-  psm <- psmelt(physeq)
+  res_df <- data.frame(matrix(NA, nrow = 0, ncol = 4))
+  colnames(res_df) <- c("method_db", "tax_level", "metrics", "values")
 
-  ranks1 <- colnames(physeq@tax_table[, c(rank_1)])
-  ranks2 <- colnames(physeq@tax_table[, c(rank_2)])
 
-  psm2 <- psm |>
-    group_by(across(all_of(c(
-      "Sample", ranks1, ranks2
-    )))) |>
-    summarise(Abundance = sum(Abundance), n = n()) |>
-    dplyr::filter(Abundance > 0)
-
-  psm2_summary_taxo1 <- psm2 %>%
-    group_by(.data[[ranks1[[1]]]]) %>%
-    summarise(mean_ab = mean(Abundance),
-              sum_ab = sum(Abundance)) |>
-    mutate(Rank = .data[[ranks1[[1]]]])
-
-  psm2_summary_taxo2 <- psm2 %>%
-    group_by(.data[[ranks2[[1]]]]) %>%
-    summarise(mean_ab = mean(Abundance),
-              sum_ab = sum(Abundance)) |>
-    mutate(Rank = .data[[ranks2[[1]]]])
-
-  psm2_summary <- full_join(psm2_summary_taxo1,
-                            psm2_summary_taxo2,
-                            by = join_by(Rank == Rank))
-
-  if (stat_across_sample == "mean") {
-    p <- ggplot(psm2_summary, aes(x = .data[[ranks1[[1]]]],
-                                  y = .data[[ranks2[[1]]]],
-                                  size =  mean_ab.x)) +
-      geom_point(shape = 21,
-                 color = color_1,
-                 fill = alpha(color_1, 0.2)) +
-      geom_point(
-        aes(size = mean_ab.y),
-        color = color_2,
-        shape = 21,
-        ,
-        fill = alpha(color_2, 0.2)
+  for (nc in 1:ncol(ranks_df)) {
+    for (i in 1:nrow(ranks_df)) {
+      res_list <- tc_metrics_mock_vec(
+        physeq,
+        taxonomic_rank = ranks_df[i, nc],
+        true_values = true_values_df[, i],
+        fake_taxa = fake_taxa,
+        fake_pattern = fake_pattern
       )
 
-  } else if (stat_across_sample == "sum") {
-    p <- ggplot(psm2_summary, aes(x = .data[[ranks1[[1]]]],
-                                  y = .data[[ranks2[[1]]]],
-                                  size =  sum_ab.x)) +
-      geom_point(shape = 21,
-                 color = color_1,
-                 fill = alpha(color_1, 0.2)) +
-      geom_point(
-        aes(size = sum_ab.y),
-        color = color_2,
-        shape = 21,
-        ,
-        fill = alpha(color_2, 0.2)
+      res_df <- rbind(
+        res_df,
+        data.frame(
+          "method_db" = rep(colnames(ranks_df)[nc], length(res_list)),
+          "tax_level" = rep(colnames(true_values_df)[i], length(res_list)),
+          "metrics" = names(res_list),
+          "values" = as.vector(unlist(res_list))
+        )
       )
+      # print(paste0(colnames(ranks_df)[nc], " - ", colnames(true_values_df)[i]))
+    }
+  }
+  return(res_df)
+}
+################################################################################
 
+################################################################################
+#' Compute accuracy metrics of taxonomic assignation using a mock (known)
+#'  community for one rank
+#'
+#' @description
+#'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' Compute numerous metrics comparing the computed taxonomic assignation to a
+#' true assignation.
+#'
+#'
+#' Note that to compute all metrics, one need to insert fake
+#' taxa (by shuffling sequences and/or by adding external sequences). The user
+#' must fake taxa using functions [add_external_seq_pq()],
+#' [add_shuffle_seq_pq()]) before taxonomic assignation.
+#'
+#'
+#' @inheritParams tc_points_matrix
+#' @param taxonomic_rank (required) Name (or number) of a taxonomic rank
+#'   to count.
+#' @param true_values (required) A vector with the true taxonomic assignation
+#' @param fake_taxa (logical, default TRUE). If TRUE, the fake_pattern vector
+#'   is used to identify fake taxa, i.e. taxa who are not in the reference
+#'   database (see [add_external_seq_pq()]) or taxa with fake sequences
+#'   (see [add_shuffle_seq_pq()]).
+#' @param fake_pattern (vector of pattern): A vector used to identify the fake
+#'   taxa using a regex search in their name.
+#'
+#' @returns A list of metrics (see the confusion matrix
+#'   [article](https://en.wikipedia.org/wiki/Confusion_matrix) on wikipedia):
+#'
+#'  - TP (number of *true positive*)
+#'
+#'  - FP (number of *false positive*)
+#'
+#'  - FN (number of *false negative*)
+#'
+#'  - FDR (*false discovery rate*) = FP / (FP + TP)
+#'
+#'  - TPR (*true positive rate*, also named *recall* or *sensitivity*)
+#'
+#'  - PPV (*positive predictive value*, also named *precision*) = TP / (TP + FP)
+#'
+#'  - F1_score (*F1 score*) = 2 * TP / (2 * TP + FP + FN)
+#'
+#'  If fake taxa are present and `fake_taxa` is true, other metrics are computed:
+#'
+#'  - TN (number of *true negative*)
+#'
+#'  - ACC (*Accuracy*) = (TP + TN) / (TP + TN + FP + FN)
+#'
+#'  - MCC (*Matthews correlation coefficient*) = (TP * TN - FP * FN) /
+#'      sqrt((TP + FP) * (TP + FN) * (FP + TN) * (TN + FN))
+#'
+#' @export
+#' @seealso [tc_metrics_mock()], [add_external_seq_pq()], [add_shuffle_seq_pq()])
+#'
+#' @author Adrien Taudière
+tc_metrics_mock_vec <- function(physeq,
+                                taxonomic_rank,
+                                true_values,
+                                fake_taxa = TRUE,
+                                fake_pattern = c("^fake_", "^external_"),
+                                verbose = TRUE) {
+  if (fake_taxa) {
+    fake_pattern <- paste(fake_pattern, collapse = "|")
+
+    fake_taxa_names <- taxa_names(physeq)[grepl(fake_pattern, taxa_names(physeq))]
+
+    fake_taxa_cond <- taxa_names(physeq) %in% fake_taxa_names
+    names(fake_taxa_cond) <- taxa_names(physeq)
+
+    if (verbose) {
+      message(
+        length(fake_taxa_names),
+        "fake taxa were found using pattern",
+        fake_pattern,
+        "."
+      )
+    }
+
+    # Hleap et al.  2021 [https://doi.org/10.1111/1755-0998.13407]
+    rank_pq <- physeq@tax_table[!fake_taxa_cond, taxonomic_rank]
+
+    TP <- sum(rank_pq %in% true_values)
+    if (sum(is.na(rank_pq)) == length(rank_pq)) {
+      FP <- 0
+    } else {
+      FP <- sum(!(rank_pq[!is.na(rank_pq)] %in% true_values))
+    }
+
+    FN <- sum(!(true_values %in% rank_pq))
+
+    TN <- sum(is.na(
+      subset_taxa_pq(physeq, fake_taxa_cond, clean_pq = FALSE)@tax_table[, taxonomic_rank]
+    ))
+
+    FDR <- FP / (FP + TP)
+    TPR <- TP / (TP + FN)
+    TNR <- TN / (TN + FN)
+    PPV <- TP / (TP + FP)
+    # PPV+FDR == 1
+
+    # F1_score <- 2 * (TPR * PPV) / TPR + PPV
+    F1_score <- 2 * TP / (2 * TP + FP + FN)
+
+    MCC <- (TP * TN - FP * FN) /
+      sqrt((TP + FP) * (TP + FN) * (FP + TN) * (TN + FN))
+
+    ACC <- (TP + TN) / (TP + TN + FP + FN)
+
+    res <- list(
+      "TP" = TP,
+      "FP" = FP,
+      "FN" = FN,
+      "FDR" = FDR,
+      "TPR" = TPR,
+      "TNR" = TNR,
+      "PPV" = PPV,
+      "F1_score" = F1_score,
+      "TN" = TN,
+      "MCC" = MCC,
+      "ACC" = ACC
+    )
   } else {
-    stop("Param stat_across_sample must be set to mean or sum !")
+    # Hleap et al.  2021 [https://doi.org/10.1111/1755-0998.13407]
+    rank_pq <- physeq@tax_table[, taxonomic_rank]
+
+    TP <- sum(rank_pq %in% true_values)
+    FP <- sum(!(rank_pq[!is.na(rank_pq)] %in% true_values))
+    FN <- sum(!(true_values %in% rank_pq))
+
+    FDR <- FP / (FP + TP)
+    TPR <- TP / (TP + FN)
+    PPV <- TP / (TP + FP)
+    # PPV+FDR == 1
+
+    # F1_score <- 2 * (TPR * PPV) / TPR + PPV
+    F1_score <- 2 * TP / (2 * TP + FP + FN)
+
+    res <- list(
+      "TP" = TP,
+      "FP" = FP,
+      "FN" = FN,
+      "FDR" = FDR,
+      "TPR" = TPR,
+      "PPV" = PPV,
+      "F1_score" = F1_score
+    )
   }
-  p <- p+theme(axis.text.x = element_text(
-    angle = 90,
-    vjust = 0.5,
-    hjust = 1
-  ))
-
-  return(p)
+  return(res)
 }
 ################################################################################
-################################################################################
-
-################################################################################
-################################################################################
-#' Rainplot of the nb taxa assigned (not NA)
-#'
-#' @description
-#'
-#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-#'
-#' @inheritParams tc_points_matrix
-#' @param ranks The ranks to include in the rainplot.
-#' @param min_nb_seq Minimum number of sequences to filter out taxa with low
-#'   abundance
-#' @param merge_sample_by a vector to determine
-#'   which samples to merge using [merge_samples2()] function.
-#'   Need to be in \code{physeq@sam_data}
-#' @param sample_colored (logical, default FALSE) Do points are colored by
-#'   samples?
-#' @param sample_linked (logical, default FALSE) Do points are linked by
-#'   samples?
-#' @param ...
-#'
-#' @return A ggplot2 object
-#' @export
-#' @author Adrien Taudière
-#' @examples
-#' Glom_otu@sam_data$tmt_type <- paste0(Glom_otu@sam_data$Tmt, "_", Glom_otu@sam_data$Type)
-#' rainplot_taxo_na(Glom_otu)
-#' rainplot_taxo_na(
-#'   Glom_otu,
-#'   merge_sample_by = "tmt_type",
-#'   sample_colored = TRUE,
-#'   sample_linked = TRUE
-#' )
-#' rainplot_taxo_na(Glom_otu, ranks = c(4, 12), rain.side = 'f1x1')
-#' rainplot_taxo_na(
-#'   Glom_otu,
-#'   ranks = c(6, 14),
-#'   rain.side = 'f1x1',
-#'   sample_linked = TRUE
-#' ) +
-#'   theme(legend.position = "none")
-
-rainplot_taxo_na <- function(physeq,
-                             ranks = c(1:7),
-                             min_nb_seq = 0,
-                             merge_sample_by = NULL,
-                             sample_colored = FALSE,
-                             sample_linked = FALSE,
-                             ...) {
-  verify_pq(physeq)
-
-  if (!is.null(merge_sample_by)) {
-    physeq <- clean_pq(merge_samples2(physeq, merge_sample_by))
-  }
-
-
-  rank_names <- colnames(physeq@tax_table)[ranks]
-
-  psm <- psmelt(physeq)
-
-  sum_not_na <- function(x) {
-    sum(!is.na(x))
-  }
-
-  prop_not_na <- function(x) {
-    sum(!is.na(x)) / length(x)
-  }
-
-  psm2 <- psm |>
-    dplyr::filter(Abundance > min_nb_seq) |>
-    group_by(Sample) |>
-    summarise(across(all_of(rank_names), prop_not_na)) |>
-    tidyr::pivot_longer(!Sample)
-
-  psm2$name <- factor(psm2$name, levels = rank_names)
-
-  p <- ggplot(psm2, aes(x = name, y = value, fill = name)) +
-    coord_flip()
-
-  if (sample_colored && sample_linked) {
-    p <- p + ggrain::geom_rain(cov = "Sample", id.long.var = "Sample", ...)
-  } else if (sample_colored && !sample_linked) {
-    p <- p + ggrain::geom_rain(cov = "Sample", ...)
-  } else if (!sample_colored && sample_linked) {
-    p <- p + ggrain::geom_rain(id.long.var = "Sample", ...)
-  } else if (!sample_colored && !sample_linked) {
-    p <- p + ggrain::geom_rain(...)
-  }
-
-  return(p)
-}
-
-################################################################################
-################################################################################
-
-
-################################################################################
-#' Circle of correspondance between two taxonomic levels
-#'
-#' @description
-#'
-#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-#' @inheritParams tc_points_matrix
-#' @param suffix_1 A suffix to add to rank_1 values (default "_1")
-#' @param suffix_2 A suffix to add to rank_2 values (default "_2")
-#'
-#' @return A ggplot2 object
-#' @export
-#' @author Adrien Taudière
-#' @examples
-#' tc_circle(
-#' Glom_otu,
-#' "Genus__eukaryome_Glomero",
-#' "Genus",
-#' suffix_1 = "_Euk",
-#' suffix_2 = "_Marjaam"
-#' )
-#'
-#' tc_circle(
-#'   Glom_otu,
-#'   "Family__eukaryome_Glomero",
-#'   "Family",
-#'   suffix_1 = "_Euk",
-#'   suffix_2 = "_Marjaam"
-#' )
-
-tc_circle <- function(physeq,
-                            rank_1 = NULL,
-                            rank_2 = NULL,
-                            suffix_1 = "_1",
-                            suffix_2 = "_2") {
-  tab <- table(physeq@tax_table[, rank_1], physeq@tax_table[, rank_2])
-  df_circle <- data.frame(
-    from = rep(paste0(rownames(tab), suffix_1), times = ncol(tab)),
-    to = rep(paste0(colnames(tab), suffix_2), each = nrow(tab)),
-    value = as.vector(tab),
-    stringsAsFactors = FALSE
-  )
-
-  suffix_name <- c(paste0(rownames(tab), suffix_1), paste0(colnames(tab), suffix_2))
-
-  uniq_names <- unique(c(rownames(tab), colnames(tab)))
-
-  grid.col <- circlize::rand_color(length(uniq_names))
-
-  circlize::circos.par(gap.degree = 1)
-
-  circlize::chordDiagram(df_circle)
-  circlize::circos.clear()
-}
-################################################################################
-
-
-
-
-
-
-
-
-
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## IN PROGRESS #todo
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-
-
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## Sankey for comparing two ranks
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-tc_sankey(Glom_otu, "Family__eukaryome_Glomero", "Family")
-tc_sankey <- function(physeq,
-                            rank_1 = NULL,
-                            rank_2 = NULL) {
-  require(ggalluvial)
-  df_sank <- as.data.frame(unclass(physeq@tax_table)) |>
-    dplyr::select(rank_1, rank_2) |>
-    dplyr::count(.data[[rank_1]], .data[[rank_2]])
-
-  ggplot(df_sank, aes(
-    axis1 = .data[[rank_1]],
-    axis2 = .data[[rank_2]],
-    y = n
-  )) +
-    geom_alluvium() +
-    geom_stratum(width = 1 / 12, color = "grey")  +
-    geom_label(stat = "stratum", aes(label = after_stat(stratum))) +
-    scale_x_discrete(limits = c("Gender", "Dept"),
-                     expand = c(.05, .05)) +
-    theme_void()
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-## Taxonomy tree with linked correspondance
-## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ##
-# todo : add a width of branch in fonction of the number of ASV/sequences
-
-physeq
-
-ranks_1 = c(1:6)
-ranks_2 = c(9:14)
-collapse_taxa = TRUE
-
-data("Glom_otu")
-
-physeq_interm <- subset_samples(Glom_otu, sample_sums(Glom_otu) > 50000)
-physeq_interm <- subset_taxa_pq(physeq_interm, taxa_sums(physeq_interm) >
-                                  10000)
-physeq_interm <- clean_pq(subset_taxa_pq(physeq_interm, taxa_sums(as_binary_otu_table(physeq_interm)) >
-                                           30))
-physeq = physeq_interm
-
-
-
-
-require(ggtree)
-
-formula_taxo_1 <- formula(paste0("~", paste0(colnames(physeq@tax_table)[ranks_1], collapse =
-                                               "/")))
-
-data_taxo_1 <- as.data.frame(physeq@tax_table[, ranks_1]) |>
-  dplyr::mutate_if(is.character, as.factor)
-
-if (collapse_taxa) {
-  data_taxo_1 <- data_taxo_1 |>
-    group_by(across(everything())) |>
-    summarise(n = n())
-}
-
-phy_tree_1 <- ape::as.phylo.formula(formula_taxo_1, data = data_taxo_1, collapse =
-                                      T)
-p1 <- ggtree(phy_tree_1, layout = 'roundrect')
-
-
-formula_taxo_2 <- formula(paste0("~", paste0(colnames(physeq@tax_table)[ranks_2], collapse =
-                                               "/")))
-
-data_taxo_2 <- as.data.frame(physeq@tax_table[, ranks_2]) |>
-  dplyr::mutate_if(is.character, as.factor)
-
-if (collapse_taxa) {
-  data_taxo_2 <- data_taxo_2 |>
-    group_by(across(everything())) |>
-    summarise(n = n())
-}
-
-phy_tree_2 <- ape::as.phylo.formula(formula_taxo_2, data = data_taxo_2, collapse =
-                                      T)
-p2 <- ggtree(phy_tree_2, layout = 'roundrect')
-
-# https://yulab-smu.top/treedata-book/chapter2.html#ggtree-fortify
-d1 <- p1$data
-d1$label <- gsub("NA", "", d1$label)
-
-d2 <- p2$data
-d2$label <- gsub("NA", "", d2$label)
-
-## reverse x-axis and
-## set offset to make the tree on the right-hand side of the first tree
-d2$x <- max(d2$x) - d2$x + max(d1$x) + 1
-
-pp <- p1 + geom_tree(data = d2, layout = 'ellipse') +
-  ggnewscale::new_scale_fill()
-
-dd <- bind_rows(d1, d2) %>%
-  dplyr::filter(label %in% names(table(label))[table(label) > 1]) %>%
-  dplyr::filter(!is.na(label)) %>%
-  dplyr::filter(label != "")
-
-pp +
-  ggrepel::geom_label_repel(aes(label = label), size = 1, data = d2) +
-  ggrepel::geom_label_repel(aes(label = label), size = 1, data = d1) +
-  geom_line(aes(x, y, group = label, colour = label),
-            alpha = 0.5,
-            data = dd)
-
-
-
-
-
-

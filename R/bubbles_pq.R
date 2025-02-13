@@ -35,14 +35,12 @@
 #' @author Adrien Taudière
 #'
 #' @examples
-#' bubbles_pq(physeq=data_fungi, rank_color ="Class", randomize = TRUE)
-#' bubbles_pq(physeq=data_fungi, min_nb_seq = 10000, categorical_scheme = "d3.schemePastel1")
-#' bubbles_pq(physeq=data_fungi, min_nb_seq = 1000, categorical_scheme = "d3.schemeTableau10", label_color="purple", value_color="white")
-#' bubbles_pq(physeq=data_fungi, rank_color = "Order", include=c("chart"), log1ptransform = TRUE)
-#' bubbles_pq(physeq=data_fungi, rank_label = "Genus",  rank_color = "Class", include=c("chart"), randomize = TRUE, seed=3)
-#' bubbles_pq(physeq=as_binary_otu_table(data_fungi), min_nb_seq=20, title = "Nb of samples per OTU. <br> Only OTU present in more than 20 samples are shown", title_size = "12px")
-
-
+#' bubbles_pq(physeq = data_fungi, rank_color = "Class", randomize = TRUE)
+#' bubbles_pq(physeq = data_fungi, min_nb_seq = 10000, categorical_scheme = "d3.schemePastel1")
+#' bubbles_pq(physeq = data_fungi, min_nb_seq = 1000, categorical_scheme = "d3.schemeTableau10", label_color = "purple", value_color = "white")
+#' bubbles_pq(physeq = data_fungi, rank_color = "Order", include = c("chart"), log1ptransform = TRUE)
+#' bubbles_pq(physeq = data_fungi, rank_label = "Genus", rank_color = "Class", include = c("chart"), randomize = TRUE, seed = 3)
+#' bubbles_pq(physeq = as_binary_otu_table(data_fungi), min_nb_seq = 20, title = "Nb of samples per OTU. <br> Only OTU present in more than 20 samples are shown", title_size = "12px")
 bubbles_pq <- function(physeq,
                        rank_label = "Taxa",
                        rank_color = "Family",
@@ -95,12 +93,14 @@ bubbles_pq <- function(physeq,
   robservable::robservable(
     notebook = notebook,
     include = include,
-    input = list(data = df,
-                 categoricalScheme = categorical_scheme,
-                 colorLabel =label_color,
-                 colorValue = value_color,
-                 title = title,
-                 titleSize = title_size),
+    input = list(
+      data = df,
+      categoricalScheme = categorical_scheme,
+      colorLabel = label_color,
+      colorValue = value_color,
+      title = title,
+      titleSize = title_size
+    ),
     width = width
   )
 }
