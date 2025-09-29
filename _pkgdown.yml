@@ -2,3 +2,53 @@ url: https://adrientaudiere.github.io/comparpq/
 template:
   bootstrap: 5
 
+navbar:
+  structure:
+    left: [intro, reference, articles, tutorials, news]
+    right: [search, github]
+  components:
+    articles:
+      text: Articles
+      menu:
+      - text: Getting Started
+        href: articles/getting-started.html
+      - text: OJS Visualization
+        href: articles/OJS_visualization.html
+
+reference:
+- title: "Taxonomic Comparison and Metrics"
+  desc: "Functions for computing accuracy metrics and comparing taxonomic assignments"
+  contents:
+  - tc_metrics_mock
+  - tc_metrics_mock_vec
+  - tc_points_matrix
+
+- title: "Visualization Functions"
+  desc: "Interactive and static plotting functions for phyloseq objects"
+  contents:
+  - bubbles_pq
+  - tc_bar
+  - tc_circle
+  - rainplot_taxo_na
+
+- title: "Data Manipulation"
+  desc: "Functions for preprocessing and modifying phyloseq objects"
+  contents:
+  - add_external_seq_pq
+  - add_shuffle_seq_pq
+  - rename_ranks_pq
+  - select_ranks_pq
+  - resolve_taxo_conflict
+  - taxtab_replace_pattern_by_NA
+
+articles:
+- title: "Getting Started"
+  desc: "Learn the basics of using comparpq"
+  contents:
+  - getting-started
+
+- title: "Advanced Tutorials"
+  desc: "In-depth examples and advanced usage"
+  contents:
+  - OJS_visualization
+
