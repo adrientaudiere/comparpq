@@ -10,12 +10,17 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Imports: 
-    MiscMetabar
+    MiscMetabar,
+    dplyr,
+    tibble
 URL: https://github.com/adrientaudiere/comparpq, https://adrientaudiere.github.io/comparpq/
 BugReports: https://github.com/adrientaudiere/comparpq/issues
 Suggests: 
     testthat (>= 3.0.0),
-    ggrain
+    ggrain,
+    robservable,
+    knitr,
+    rmarkdown
 Depends: 
     R (>= 2.10)
 LazyData: true
