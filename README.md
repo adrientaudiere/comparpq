@@ -1,18 +1,3 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-
 # comparpq
 
 <!-- badges: start -->
@@ -50,7 +35,7 @@ devtools::install_github("adrientaudiere/comparpq")
 
 ## Quick Start
 
-```{r example, eval=FALSE}
+```r
 library(comparpq)
 
 # Load example data
@@ -103,3 +88,4 @@ Please report bugs and feature requests at https://github.com/adrientaudiere/com
 **Adrien Taudière** (aut, cre, cph)  
 ORCID: [0000-0003-1088-1182](https://orcid.org/0000-0003-1088-1182)  
 Email: adrien.taudiere@zaclys.net
+
