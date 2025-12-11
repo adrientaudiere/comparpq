@@ -26,7 +26,7 @@ or by its full names (exacly matching the colnames of the \code{tax_table} slot)
 abundance}
 
 \item{merge_sample_by}{a vector to determine
-which samples to merge using \code{\link[=merge_samples2]{merge_samples2()}} function.
+which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
 Need to be in \code{physeq@sam_data}}
 
 \item{sample_colored}{(logical, default FALSE) Do points are colored by

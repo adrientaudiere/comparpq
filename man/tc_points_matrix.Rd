@@ -32,7 +32,7 @@ of the column in tax_table slot}
 computed across samples.}
 
 \item{merge_sample_by}{a vector to determine
-which samples to merge using \code{\link[=merge_samples2]{merge_samples2()}} function.
+which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
 Need to be in \code{physeq@sam_data}}
 }
 \value{
