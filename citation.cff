@@ -1,0 +1,8 @@
+cff-version: "1.2.0"
+authors:
+- family-names: Taudière
+  given-names: Adrien
+  orcid: "https://orcid.org/0000-0003-1088-1182"
+message: If you use this software, please cite it using the metadata from this file.
+title: "comparpq: An extension to {MiscMetabar} and {Phyloseq} package to compare phyloseq objects"
+version: 0.0.1

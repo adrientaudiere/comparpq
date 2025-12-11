@@ -1,10 +1,13 @@
 Package: comparpq
-Title: An extension to {MiscMetabar} and {Phyloseq} package to compare
+Type: Package
+Title: An extension to {MiscMetabar} and {phyloseq} package to compare
   phyloseq object
 Version: 0.0.1
 Authors@R: person("Adrien", "Taudière", email = "adrien.taudiere@zaclys.net",
   role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0003-1088-1182"))
-Description: Compare phyloseq object
+Description: Compare phyloseq object from the R phyloseq package. 
+  This package provides tools and functions to facilitate comparison 
+  and analysis of multiple phyloseq objects.
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
