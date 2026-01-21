@@ -13,18 +13,18 @@ tc_circle(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{rank_1}{Define the first taxonomic rank as the number or the name
-of the column in tax_table slot}
+\item{rank_1}{(character or integer) Define the first taxonomic rank as the
+number or the name of the column in tax_table slot.}
 
-\item{rank_2}{Define the second taxonomic rank as the number or the name
-of the column in tax_table slot}
+\item{rank_2}{(character or integer) Define the second taxonomic rank as the
+number or the name of the column in tax_table slot.}
 
-\item{suffix_1}{A suffix to add to rank_1 values (default "_1")}
+\item{suffix_1}{(character, default "_1") A suffix to add to rank_1 values.}
 
-\item{suffix_2}{A suffix to add to rank_2 values (default "_2")}
+\item{suffix_2}{(character, default "_2") A suffix to add to rank_2 values.}
 }
 \value{
 A ggplot2 object

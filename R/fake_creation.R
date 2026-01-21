@@ -12,9 +12,11 @@
 #'   that the corresponding otu_table is full of 0.
 #'
 #' @inheritParams tc_points_matrix
-#' @param n_fake A number of fake taxa added.
-#' @param prop_fake A proportion of fake taxa added.
-#' @param prefix A prefix add to the taxa name
+#' @param n_fake (integer, default NULL) A number of fake taxa to add.
+#'   Must specify either `n_fake` or `prop_fake`, not both.
+#' @param prop_fake (numeric, default NULL) A proportion of fake taxa to add.
+#'   Must specify either `n_fake` or `prop_fake`, not both.
+#' @param prefix (character, default "fake_") A prefix to add to the taxa name.
 #' @returns A phyloseq object
 #'
 #' @export
@@ -78,8 +80,9 @@ add_shuffle_seq_pq <- function(physeq,
 #'   that the corresponding otu_table is full of 0.
 #'
 #' @inheritParams tc_points_matrix
-#' @param ext_seqs A DNAStringSet object
-#' @param prefix A prefix add to the taxa name
+#' @param ext_seqs (DNAStringSet, required) A DNAStringSet object containing
+#'   external sequences to add.
+#' @param prefix (character, default "external_") A prefix to add to the taxa name.
 #' @returns A phyloseq object
 #'
 #' @export

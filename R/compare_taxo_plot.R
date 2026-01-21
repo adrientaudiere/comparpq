@@ -8,12 +8,12 @@
 #' Useful to compare taxonomy from two different source/db/algo side-by-side
 #'
 #' @inheritParams tc_points_matrix
-#' @param color_rank Define the taxonomic rank for color
-#'   as the number or the name of the column in tax_table slot
-#' @param point_size Size of points
-#' @param point_alpha Transparency of points
-#' @param log10trans (Logical, default TRUE) Do the abundancy is log10
-#'   transformed?
+#' @param color_rank (character or integer) Define the taxonomic rank for color
+#'   as the number or the name of the column in tax_table slot.
+#' @param point_size (numeric, default 0.3) Size of points.
+#' @param point_alpha (numeric, default 0.3) Transparency of points.
+#' @param log10trans (logical, default TRUE) If TRUE, the abundance is log10
+#'   transformed.
 #'
 #' @return A ggplot2 object
 #' @export
@@ -123,19 +123,19 @@ tc_bar <- function(physeq,
 #'
 #'  Useful to compare taxonomy from two different source/db/algo side-by-side
 #'
-#' @param physeq (required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+#' @param physeq (required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 #'   using the `phyloseq` package.
-#' @param rank_1 Define the first taxonomic rank as the number or the name
-#'    of the column in tax_table slot
-#' @param rank_2 Define the second taxonomic rank as the number or the name
-#'    of the column in tax_table slot
-#' @param color_1 Color for rank_1 values
-#' @param color_2 Color for rank_1 values
-#' @param stat_across_sample Either "mean" or "sum". Set how the abundance is
-#'   computed across samples.
-#' @param merge_sample_by a vector to determine
+#' @param rank_1 (character or integer) Define the first taxonomic rank as the
+#'   number or the name of the column in tax_table slot.
+#' @param rank_2 (character or integer) Define the second taxonomic rank as the
+#'   number or the name of the column in tax_table slot.
+#' @param color_1 (character, default "#dc863b") Color for rank_1 values.
+#' @param color_2 (character, default "#2e7891") Color for rank_2 values.
+#' @param stat_across_sample (character, default "sum") Either "mean" or "sum".
+#'   Set how the abundance is computed across samples.
+#' @param merge_sample_by (character, default NULL) A vector to determine
 #'   which samples to merge using [merge_samples2()] function.
-#'   Need to be in \code{physeq@sam_data}
+#'   Need to be in \code{physeq@sam_data}.
 #'
 #' @return A ggplot2 object
 #' @export
@@ -266,19 +266,17 @@ tc_points_matrix <- function(physeq,
 #' Useful to compare taxonomy from two different source/db/algo
 #'
 #' @inheritParams tc_points_matrix
-#' @param ranks The ranks to include in the rainplot. If left to NULL, all
-#'   ranks are used. Each rank can be defined either by integer for the index
-#'   or by its full names (exacly matching the colnames of the `tax_table` slot).
-#' @param min_nb_seq Minimum number of sequences to filter out taxa with low
-#'   abundance
-#' @param merge_sample_by a vector to determine
-#'   which samples to merge using [merge_samples2()] function.
-#'   Need to be in \code{physeq@sam_data}
-#' @param sample_colored (logical, default FALSE) Do points are colored by
-#'   samples?
-#' @param sample_linked (logical, default FALSE) Do points are linked by
-#'   samples?
-#' @param ...
+#' @param ranks (character or integer vector, default NULL) The ranks to include
+#'   in the rainplot. If left to NULL, all ranks are used. Each rank can be
+#'   defined either by integer for the index or by its full names (exactly
+#'   matching the colnames of the `tax_table` slot).
+#' @param min_nb_seq (integer, default 0) Minimum number of sequences to filter
+#'   out taxa with low abundance.
+#' @param sample_colored (logical, default FALSE) If TRUE, points are colored by
+#'   samples.
+#' @param sample_linked (logical, default FALSE) If TRUE, points are linked by
+#'   samples.
+#' @param ... Additional arguments passed to [ggrain::geom_rain()].
 #'
 #' @return A ggplot2 object
 #' @export
@@ -374,8 +372,8 @@ rainplot_taxo_na <- function(physeq,
 #' Useful to compare taxonomy from two different source/db/algo side-by-side
 #'
 #' @inheritParams tc_points_matrix
-#' @param suffix_1 A suffix to add to rank_1 values (default "_1")
-#' @param suffix_2 A suffix to add to rank_2 values (default "_2")
+#' @param suffix_1 (character, default "_1") A suffix to add to rank_1 values.
+#' @param suffix_2 (character, default "_2") A suffix to add to rank_2 values.
 #'
 #' @return A ggplot2 object
 #' @export

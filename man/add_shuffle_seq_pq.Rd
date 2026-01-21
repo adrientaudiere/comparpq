@@ -7,14 +7,16 @@
 add_shuffle_seq_pq(physeq, n_fake = NULL, prop_fake = NULL, prefix = "fake_")
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{n_fake}{A number of fake taxa added.}
+\item{n_fake}{(integer, default NULL) A number of fake taxa to add.
+Must specify either \code{n_fake} or \code{prop_fake}, not both.}
 
-\item{prop_fake}{A proportion of fake taxa added.}
+\item{prop_fake}{(numeric, default NULL) A proportion of fake taxa to add.
+Must specify either \code{n_fake} or \code{prop_fake}, not both.}
 
-\item{prefix}{A prefix add to the taxa name}
+\item{prefix}{(character, default "fake_") A prefix to add to the taxa name.}
 }
 \value{
 A phyloseq object

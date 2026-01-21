@@ -15,25 +15,25 @@ tc_points_matrix(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{rank_1}{Define the first taxonomic rank as the number or the name
-of the column in tax_table slot}
+\item{rank_1}{(character or integer) Define the first taxonomic rank as the
+number or the name of the column in tax_table slot.}
 
-\item{rank_2}{Define the second taxonomic rank as the number or the name
-of the column in tax_table slot}
+\item{rank_2}{(character or integer) Define the second taxonomic rank as the
+number or the name of the column in tax_table slot.}
 
-\item{color_1}{Color for rank_1 values}
+\item{color_1}{(character, default "#dc863b") Color for rank_1 values.}
 
-\item{color_2}{Color for rank_1 values}
+\item{color_2}{(character, default "#2e7891") Color for rank_2 values.}
 
-\item{stat_across_sample}{Either "mean" or "sum". Set how the abundance is
-computed across samples.}
+\item{stat_across_sample}{(character, default "sum") Either "mean" or "sum".
+Set how the abundance is computed across samples.}
 
-\item{merge_sample_by}{a vector to determine
+\item{merge_sample_by}{(character, default NULL) A vector to determine
 which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
-Need to be in \code{physeq@sam_data}}
+Need to be in \code{physeq@sam_data}.}
 }
 \value{
 A ggplot2 object

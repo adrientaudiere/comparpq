@@ -13,18 +13,20 @@ taxtab_replace_pattern_by_NA(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{patterns}{A vector of patterns to select taxonomic value to convert to NA}
+\item{patterns}{(character vector, default c(".\emph{_incertae_sedis", "unclassified.}"))
+A vector of patterns to select taxonomic values to convert to NA.}
 
-\item{taxonomic_ranks}{A list of taxonomic ranks where we want the
-substitution occur. If left to NULL, all taxonomic ranks are modified.}
+\item{taxonomic_ranks}{(character vector, default NULL) A vector of taxonomic
+ranks where the substitution should occur. If left to NULL, all taxonomic
+ranks are modified.}
 
-\item{progress_bar}{(logical, default FALSE) Do we print progress during
-the calculation?}
+\item{progress_bar}{(logical, default FALSE) If TRUE, print progress during
+the calculation.}
 
-\item{...}{Other arguments to be passed on to \code{\link[base:grep]{base::gsub()}}}
+\item{...}{Additional arguments passed to \code{\link[base:grep]{base::gsub()}}.}
 }
 \value{
 A phyloseq object

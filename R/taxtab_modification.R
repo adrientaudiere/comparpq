@@ -1,29 +1,31 @@
 ################################################################################
 #' Resolve taxonomic conflict in the tax_table of a phyloseq object
 #'
-#' @param physeq A phyloseq object
-#' @param pattern_tax_ranks A vector of pattern to aggregate taxonomic ranks.
-#'   For example "^Genus" stand for all taxonomic ranks (columns in tax_table
-#'   slot) starting by Genus
-#' @param method One of "consensus", "rel_majority", "abs_majority",
-#'   "preference" or "unanimity". See details in the documentation of the
-#'   function [MiscMetabar::resolve_vector_ranks()].
-#' @param keep_tax_ranks (logical, default TRUE) Do we keep the old taxonomic
-#'   ranks?
-#' @param new_names A vector of new names for the taxonomic columns
-#' @param strict (logical, default FALSE). If TRUE, NA are considered as
-#'   informative in resolving conflict (i.e. NA are taking into account in vote).
-#'   See details for more informations.
-#' @param second_method One of "consensus", "rel_majority", "abs_majority",
-#'   or "unanimity". Only used if method = "preference". See details.
-#' @param nb_agree_threshold (Int, default 1) The minimum number of times a
-#'   value must arise to be selected using vote. If 2, we only kept
-#'   taxonomic value present at least 2 times in the vector.
-#' @param preference_pattern A pattern to match the only column used as prefered
-#'   one if method = "preference".
-#' @param collapse_string (default '/'). The character to collapse taxonomic names
-#'   when multiple assignment is done.
-#' @param replace_collapsed_rank_by_NA (logical, default FALSE). If set to TRUE,
+#' @param physeq (required) A phyloseq object.
+#' @param pattern_tax_ranks (character vector, default NULL) A vector of patterns
+#'   to aggregate taxonomic ranks. For example "^Genus" stands for all taxonomic
+#'   ranks (columns in tax_table slot) starting with Genus.
+#' @param method (character, default "consensus") One of "consensus", "rel_majority",
+#'   "abs_majority", "preference" or "unanimity". See details in the documentation
+#'   of the function [MiscMetabar::resolve_vector_ranks()].
+#' @param keep_tax_ranks (logical, default TRUE) If TRUE, keep the old taxonomic
+#'   ranks in the result.
+#' @param new_names (character vector, default NULL) A vector of new names for
+#'   the taxonomic columns.
+#' @param strict (logical, default FALSE) If TRUE, NA are considered as
+#'   informative in resolving conflict (i.e. NA are taken into account in vote).
+#'   See details for more information.
+#' @param second_method (character, default "consensus") One of "consensus",
+#'   "rel_majority", "abs_majority", or "unanimity". Only used if
+#'   method = "preference". See details.
+#' @param nb_agree_threshold (integer, default 1) The minimum number of times a
+#'   value must arise to be selected using vote. If 2, only taxonomic values
+#'   present at least 2 times in the vector are kept.
+#' @param preference_pattern (character, default NULL) A pattern to match the
+#'   only column used as preferred one if method = "preference".
+#' @param collapse_string (character, default "/") The character to collapse
+#'   taxonomic names when multiple assignment is done.
+#' @param replace_collapsed_rank_by_NA (logical, default FALSE) If TRUE,
 #'   all multiple assignments (all taxonomic rank including the 'collapse_string'
 #'   parameter) are replaced by NA.
 #'
@@ -143,8 +145,11 @@ resolve_taxo_conflict <- function(physeq,
 #'
 #' Useful in tidyverse-like pipeline.
 #'
-#' @param physeq A phyloseq object
-#' @param ... <tidy-select> One or more unquoted expressions separated by commas. Variable names can be used as if they were positions in the data frame, so expressions like x:y can be used to select a range of variables. See ?dplyr::select
+#' @param physeq (required) A phyloseq object.
+#' @param ... <tidy-select> One or more unquoted expressions separated by commas.
+#'   Variable names can be used as if they were positions in the data frame,
+#'   so expressions like x:y can be used to select a range of variables.
+#'   See ?dplyr::select.
 #' @returns A phyloseq object
 #' @export
 #' @author Adrien Taudière
@@ -182,14 +187,15 @@ select_ranks_pq <- function(physeq, ...) {
 #' The users can use the function using a couple of vector `old_names`/`new_names`
 #' or using a `pattern` to replace by `replacement`
 #'
-#' @param physeq A phyloseq object
-#' @param old_names Names of the names to replace
-#' @param new_names Names of the new names
-#' @param pattern Pattern to replace by the args replacement
-#' @param replacement Pattern of replacement
-#' @param fixed see ?grep
-#' @param perl see ?grep
-#' @param useBytes see ?grep
+#' @param physeq (required) A phyloseq object.
+#' @param old_names (character vector, default NULL) Names of the columns to replace.
+#' @param new_names (character vector, default NULL) New names for the columns.
+#' @param pattern (character, default NULL) Pattern to replace by the `replacement`
+#'   argument.
+#' @param replacement (character, default NULL) Replacement string for the pattern.
+#' @param fixed (logical, default FALSE) See ?grep.
+#' @param perl (logical, default FALSE) See ?grep.
+#' @param useBytes (logical, default FALSE) See ?grep.
 #'
 #' @returns An object of class phyloseq
 #' @export
@@ -272,12 +278,14 @@ rename_ranks_pq <- function(physeq,
 #'
 #'
 #' @inheritParams tc_points_matrix
-#' @param patterns A vector of patterns to select taxonomic value to convert to NA
-#' @param taxonomic_ranks A list of taxonomic ranks where we want the
-#'   substitution occur. If left to NULL, all taxonomic ranks are modified.
-#' @param progress_bar (logical, default FALSE) Do we print progress during
-#'   the calculation?
-#' @param ... Other arguments to be passed on to [base::gsub()]
+#' @param patterns (character vector, default c(".*_incertae_sedis", "unclassified.*"))
+#'   A vector of patterns to select taxonomic values to convert to NA.
+#' @param taxonomic_ranks (character vector, default NULL) A vector of taxonomic
+#'   ranks where the substitution should occur. If left to NULL, all taxonomic
+#'   ranks are modified.
+#' @param progress_bar (logical, default FALSE) If TRUE, print progress during
+#'   the calculation.
+#' @param ... Additional arguments passed to [base::gsub()].
 #' @return A phyloseq object
 #' @export
 #'

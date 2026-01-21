@@ -15,7 +15,7 @@ tc_metrics_mock_vec(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
 \item{taxonomic_rank}{(required) Name (or number) of a taxonomic rank
@@ -23,13 +23,16 @@ to count.}
 
 \item{true_values}{(required) A vector with the true taxonomic assignation}
 
-\item{fake_taxa}{(logical, default TRUE). If TRUE, the fake_pattern vector
+\item{fake_taxa}{(logical, default TRUE) If TRUE, the fake_pattern vector
 is used to identify fake taxa, i.e. taxa who are not in the reference
 database (see \code{\link[=add_external_seq_pq]{add_external_seq_pq()}}) or taxa with fake sequences
 (see \code{\link[=add_shuffle_seq_pq]{add_shuffle_seq_pq()}}).}
 
-\item{fake_pattern}{(vector of pattern): A vector used to identify the fake
-taxa using a regex search in their name.}
+\item{fake_pattern}{(character vector, default c("^fake_", "^external_"))
+A vector of patterns used to identify the fake taxa using a regex search
+in their name.}
+
+\item{verbose}{(logical, default TRUE) If TRUE, print informative messages.}
 }
 \value{
 A list of metrics (see the confusion matrix

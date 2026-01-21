@@ -7,9 +7,12 @@
 select_ranks_pq(physeq, ...)
 }
 \arguments{
-\item{physeq}{A phyloseq object}
+\item{physeq}{(required) A phyloseq object.}
 
-\item{...}{\if{html}{\out{<tidy-select>}} One or more unquoted expressions separated by commas. Variable names can be used as if they were positions in the data frame, so expressions like x:y can be used to select a range of variables. See ?dplyr::select}
+\item{...}{\if{html}{\out{<tidy-select>}} One or more unquoted expressions separated by commas.
+Variable names can be used as if they were positions in the data frame,
+so expressions like x:y can be used to select a range of variables.
+See ?dplyr::select.}
 }
 \value{
 A phyloseq object

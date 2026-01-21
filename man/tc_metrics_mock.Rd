@@ -14,7 +14,7 @@ tc_metrics_mock(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
 \item{ranks_df}{(required). A dataframe with at least one column (one database or one
@@ -24,13 +24,14 @@ method) and a number of row equal to the column in true_values_df}
 Note that the column names (names of taxonomic ranks) of the true_values_df defined
 the names present in the \code{tax_level} column of the resulting dataframe.}
 
-\item{fake_taxa}{(logical, default TRUE). If TRUE, the fake_pattern vector
+\item{fake_taxa}{(logical, default TRUE) If TRUE, the fake_pattern vector
 is used to identify fake taxa, i.e. taxa who are not in the reference
 database (see \code{\link[=add_external_seq_pq]{add_external_seq_pq()}}) or taxa with fake sequences
 (see \code{\link[=add_shuffle_seq_pq]{add_shuffle_seq_pq()}}).}
 
-\item{fake_pattern}{(vector of pattern): A vector used to identify the fake
-taxa using a regex search in their name.}
+\item{fake_pattern}{(character vector, default c("^fake_", "^external_"))
+A vector of patterns used to identify the fake taxa using a regex search
+in their name.}
 }
 \value{
 A long-format dataframe with 4 columns: (i) the name of the \code{method_db}

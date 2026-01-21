@@ -2,7 +2,9 @@
 % Please edit documentation in R/bubbles_pq.R
 \name{bubbles_pq}
 \alias{bubbles_pq}
-\title{Bubble plot of phyloseq object with observablehq}
+\title{Bubble plot of phyloseq object with observablehq
+\if{html}{\out{<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">}}
+\if{html}{\out{<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental">}}\if{html}{\out{</a>}}}
 \usage{
 bubbles_pq(
   physeq,
@@ -25,56 +27,58 @@ bubbles_pq(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{rank_label}{The name of the column in the @tax_table slot to label the
-points. If set to "Taxa" (default) the taxa name is used}
+\item{rank_label}{(character, default "Taxa") The name of the column in the
+@tax_table slot to label the points. If set to "Taxa", the taxa name is used.}
 
-\item{rank_color}{The name of the column in the @tax_table slot to color the
-points.}
+\item{rank_color}{(character, default "Family") The name of the column in the
+@tax_table slot to color the points.}
 
-\item{categorical_scheme}{A color scheme from \href{https://d3js.org/d3-scale-chromatic/categorical}{d3js}}
+\item{categorical_scheme}{(character, default "d3.schemeCategory10") A color
+scheme from \href{https://d3js.org/d3-scale-chromatic/categorical}{d3js}.}
 
-\item{label_color}{Color for the label text.}
+\item{label_color}{(character, default "grey10") Color for the label text.}
 
-\item{value_color}{Color for the value text.}
+\item{value_color}{(character, default "grey20") Color for the value text.}
 
-\item{label_size}{Font size for the label.}
+\item{label_size}{(integer, default 8) Font size for the label.}
 
-\item{log1ptransform}{(logical, default TRUE) If TRUE,
-the number of sequences is log1p transformed.}
+\item{log1ptransform}{(logical, default FALSE) If TRUE, the number of
+sequences is log1p transformed.}
 
-\item{min_nb_seq}{Minimum number of sequences to filter out taxa with low
-abundance}
+\item{min_nb_seq}{(integer, default 0) Minimum number of sequences to filter
+out taxa with low abundance.}
 
-\item{randomize}{If TRUE, shuffles the order of the taxa. Default FALSE.}
+\item{randomize}{(logical, default FALSE) If TRUE, shuffles the order of the
+taxa.}
 
-\item{seed}{(int) Set seed for the randomization.}
+\item{seed}{(integer, default 32) Seed for the randomization.}
 
-\item{width}{The notebook width for visualization in pixels. Default 600.}
+\item{width}{(integer, default 600) The notebook width for visualization in
+pixels.}
 
-\item{include}{You can modify include to remove the title and/or the legend
-for ex. using \code{include = c("chart")}}
+\item{include}{(character vector, default c("TitleCell", "key", "chart"))
+You can modify include to remove the title and/or the legend, for example
+using \code{include = c("chart")}.}
 
-\item{notebook}{You can change the notebook url if you know what you are
-doing.}
+\item{notebook}{(character, default "https://observablehq.com/d/d755af3197af2320")
+You can change the notebook url if you know what you are doing.}
 
-\item{return_dataframe}{(logical, default FALSE) If TRUE, the plot is
-not returned, but the resulting dataframe to plot is returned.}
+\item{return_dataframe}{(logical, default FALSE) If TRUE, the plot is not
+returned, but the resulting dataframe to plot is returned.}
 
-\item{title}{Title of the plot}
+\item{title}{(character, default "") Title of the plot.}
 
-\item{title_size}{Font size for the title}
+\item{title_size}{(character, default "22px") Font size for the title.}
 }
 \value{
 A htmlwidget
 }
 \description{
-\if{html}{\out{
-<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-}}
+Creates an interactive bubble plot visualization of taxa abundances from a
+phyloseq object using an Observable notebook.
 }
 \examples{
 bubbles_pq(physeq = data_fungi, rank_color = "Class", randomize = TRUE)

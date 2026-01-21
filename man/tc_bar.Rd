@@ -16,28 +16,28 @@ tc_bar(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{rank_1}{Define the first taxonomic rank as the number or the name
-of the column in tax_table slot}
+\item{rank_1}{(character or integer) Define the first taxonomic rank as the
+number or the name of the column in tax_table slot.}
 
-\item{rank_2}{Define the second taxonomic rank as the number or the name
-of the column in tax_table slot}
+\item{rank_2}{(character or integer) Define the second taxonomic rank as the
+number or the name of the column in tax_table slot.}
 
-\item{color_rank}{Define the taxonomic rank for color
-as the number or the name of the column in tax_table slot}
+\item{color_rank}{(character or integer) Define the taxonomic rank for color
+as the number or the name of the column in tax_table slot.}
 
-\item{point_size}{Size of points}
+\item{point_size}{(numeric, default 0.3) Size of points.}
 
-\item{point_alpha}{Transparency of points}
+\item{point_alpha}{(numeric, default 0.3) Transparency of points.}
 
-\item{merge_sample_by}{a vector to determine
+\item{merge_sample_by}{(character, default NULL) A vector to determine
 which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
-Need to be in \code{physeq@sam_data}}
+Need to be in \code{physeq@sam_data}.}
 
-\item{log10trans}{(Logical, default TRUE) Do the abundancy is log10
-transformed?}
+\item{log10trans}{(logical, default TRUE) If TRUE, the abundance is log10
+transformed.}
 }
 \value{
 A ggplot2 object

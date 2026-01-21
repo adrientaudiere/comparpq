@@ -7,12 +7,13 @@
 add_external_seq_pq(physeq, ext_seqs, prefix = "external_")
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{ext_seqs}{A DNAStringSet object}
+\item{ext_seqs}{(DNAStringSet, required) A DNAStringSet object containing
+external sequences to add.}
 
-\item{prefix}{A prefix add to the taxa name}
+\item{prefix}{(character, default "external_") A prefix to add to the taxa name.}
 }
 \value{
 A phyloseq object

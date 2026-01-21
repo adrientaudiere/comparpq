@@ -12,34 +12,76 @@ navbar:
       menu:
       - text: Getting Started
         href: articles/getting-started.html
+      - text: The list_phyloseq Class
+        href: articles/list-phyloseq.html
       - text: OJS Visualization
         href: articles/OJS_visualization.html
 
 reference:
-- title: "Taxonomic Comparison and Metrics"
-  desc: "Functions for computing accuracy metrics and comparing taxonomic assignments"
+- title: "list_phyloseq Class"
+  desc: "S7 class for storing and comparing multiple phyloseq objects"
+  contents:
+  - list_phyloseq
+
+- title: "list_phyloseq Utilities"
+  desc: "Functions for manipulating list_phyloseq objects"
+  contents:
+  - add_phyloseq
+  - remove_phyloseq
+  - update_list_phyloseq
+  - filter_common_lpq
+  - shared_mod_lpq
+
+- title: "list_phyloseq Visualization"
+  desc: "Visualization functions for list_phyloseq objects"
+  contents:
+  - formattable_lpq
+  - formattable_lpq_full
+  - upset_lpq
+
+- title: "list_phyloseq Analysis"
+  desc: "Statistical analysis functions for list_phyloseq objects"
+  contents:
+  - adonis_lpq
+
+- title: "Taxonomic Comparison Metrics"
+  desc: "Functions for computing accuracy metrics comparing taxonomic assignments"
   contents:
   - tc_metrics_mock
   - tc_metrics_mock_vec
-  - tc_points_matrix
 
-- title: "Visualization Functions"
-  desc: "Interactive and static plotting functions for phyloseq objects"
+- title: "Taxonomic Comparison Plots"
+  desc: "Visualization functions for comparing taxonomic assignments"
   contents:
-  - bubbles_pq
+  - tc_df_pq
   - tc_bar
   - tc_circle
+  - tc_points_matrix
   - rainplot_taxo_na
 
-- title: "Data Manipulation"
-  desc: "Functions for preprocessing and modifying phyloseq objects"
+- title: "Phyloseq Visualization"
+  desc: "Interactive plotting functions for phyloseq objects"
+  contents:
+  - bubbles_pq
+
+- title: "Fake Taxa Creation"
+  desc: "Functions for adding fake taxa to test taxonomic assignment accuracy"
   contents:
   - add_external_seq_pq
   - add_shuffle_seq_pq
-  - rename_ranks_pq
-  - select_ranks_pq
+
+- title: "Tax Table Manipulation"
+  desc: "Functions for modifying the tax_table slot of phyloseq objects"
+  contents:
   - resolve_taxo_conflict
+  - select_ranks_pq
+  - rename_ranks_pq
   - taxtab_replace_pattern_by_NA
+
+- title: "Formatting Utilities"
+  desc: "Helper functions for formatting tables"
+  contents:
+  - factor_formatter
 
 articles:
 - title: "Getting Started"
@@ -47,8 +89,12 @@ articles:
   contents:
   - getting-started
 
+- title: "list_phyloseq Class"
+  desc: "Understanding and using the list_phyloseq S7 class for comparing phyloseq objects"
+  contents:
+  - list-phyloseq
+
 - title: "Advanced Tutorials"
   desc: "In-depth examples and advanced usage"
   contents:
   - OJS_visualization
-

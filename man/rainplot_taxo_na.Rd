@@ -15,27 +15,28 @@ rainplot_taxo_na(
 )
 }
 \arguments{
-\item{physeq}{(required): a \code{\link[phyloseq]{phyloseq-class}} object obtained
+\item{physeq}{(required) A \code{\link[phyloseq]{phyloseq-class}} object obtained
 using the \code{phyloseq} package.}
 
-\item{ranks}{The ranks to include in the rainplot. If left to NULL, all
-ranks are used. Each rank can be defined either by integer for the index
-or by its full names (exacly matching the colnames of the \code{tax_table} slot).}
+\item{ranks}{(character or integer vector, default NULL) The ranks to include
+in the rainplot. If left to NULL, all ranks are used. Each rank can be
+defined either by integer for the index or by its full names (exactly
+matching the colnames of the \code{tax_table} slot).}
 
-\item{min_nb_seq}{Minimum number of sequences to filter out taxa with low
-abundance}
+\item{min_nb_seq}{(integer, default 0) Minimum number of sequences to filter
+out taxa with low abundance.}
 
-\item{merge_sample_by}{a vector to determine
+\item{merge_sample_by}{(character, default NULL) A vector to determine
 which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
-Need to be in \code{physeq@sam_data}}
+Need to be in \code{physeq@sam_data}.}
 
-\item{sample_colored}{(logical, default FALSE) Do points are colored by
-samples?}
+\item{sample_colored}{(logical, default FALSE) If TRUE, points are colored by
+samples.}
 
-\item{sample_linked}{(logical, default FALSE) Do points are linked by
-samples?}
+\item{sample_linked}{(logical, default FALSE) If TRUE, points are linked by
+samples.}
 
-\item{...}{}
+\item{...}{Additional arguments passed to \code{\link[ggrain:geom_rain]{ggrain::geom_rain()}}.}
 }
 \value{
 A ggplot2 object

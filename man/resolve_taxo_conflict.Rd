@@ -20,39 +20,41 @@ resolve_taxo_conflict(
 )
 }
 \arguments{
-\item{physeq}{A phyloseq object}
+\item{physeq}{(required) A phyloseq object.}
 
-\item{pattern_tax_ranks}{A vector of pattern to aggregate taxonomic ranks.
-For example "^Genus" stand for all taxonomic ranks (columns in tax_table
-slot) starting by Genus}
+\item{pattern_tax_ranks}{(character vector, default NULL) A vector of patterns
+to aggregate taxonomic ranks. For example "^Genus" stands for all taxonomic
+ranks (columns in tax_table slot) starting with Genus.}
 
-\item{method}{One of "consensus", "rel_majority", "abs_majority",
-"preference" or "unanimity". See details in the documentation of the
-function \code{\link[MiscMetabar:resolve_vector_ranks]{MiscMetabar::resolve_vector_ranks()}}.}
+\item{method}{(character, default "consensus") One of "consensus", "rel_majority",
+"abs_majority", "preference" or "unanimity". See details in the documentation
+of the function \code{\link[MiscMetabar:resolve_vector_ranks]{MiscMetabar::resolve_vector_ranks()}}.}
 
-\item{strict}{(logical, default FALSE). If TRUE, NA are considered as
-informative in resolving conflict (i.e. NA are taking into account in vote).
-See details for more informations.}
+\item{strict}{(logical, default FALSE) If TRUE, NA are considered as
+informative in resolving conflict (i.e. NA are taken into account in vote).
+See details for more information.}
 
-\item{second_method}{One of "consensus", "rel_majority", "abs_majority",
-or "unanimity". Only used if method = "preference". See details.}
+\item{second_method}{(character, default "consensus") One of "consensus",
+"rel_majority", "abs_majority", or "unanimity". Only used if
+method = "preference". See details.}
 
-\item{nb_agree_threshold}{(Int, default 1) The minimum number of times a
-value must arise to be selected using vote. If 2, we only kept
-taxonomic value present at least 2 times in the vector.}
+\item{nb_agree_threshold}{(integer, default 1) The minimum number of times a
+value must arise to be selected using vote. If 2, only taxonomic values
+present at least 2 times in the vector are kept.}
 
-\item{keep_tax_ranks}{(logical, default TRUE) Do we keep the old taxonomic
-ranks?}
+\item{keep_tax_ranks}{(logical, default TRUE) If TRUE, keep the old taxonomic
+ranks in the result.}
 
-\item{new_names}{A vector of new names for the taxonomic columns}
+\item{new_names}{(character vector, default NULL) A vector of new names for
+the taxonomic columns.}
 
-\item{preference_pattern}{A pattern to match the only column used as prefered
-one if method = "preference".}
+\item{preference_pattern}{(character, default NULL) A pattern to match the
+only column used as preferred one if method = "preference".}
 
-\item{collapse_string}{(default '/'). The character to collapse taxonomic names
-when multiple assignment is done.}
+\item{collapse_string}{(character, default "/") The character to collapse
+taxonomic names when multiple assignment is done.}
 
-\item{replace_collapsed_rank_by_NA}{(logical, default FALSE). If set to TRUE,
+\item{replace_collapsed_rank_by_NA}{(logical, default FALSE) If TRUE,
 all multiple assignments (all taxonomic rank including the 'collapse_string'
 parameter) are replaced by NA.}
 }

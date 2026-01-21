@@ -16,21 +16,22 @@ rename_ranks_pq(
 )
 }
 \arguments{
-\item{physeq}{A phyloseq object}
+\item{physeq}{(required) A phyloseq object.}
 
-\item{old_names}{Names of the names to replace}
+\item{old_names}{(character vector, default NULL) Names of the columns to replace.}
 
-\item{new_names}{Names of the new names}
+\item{new_names}{(character vector, default NULL) New names for the columns.}
 
-\item{pattern}{Pattern to replace by the args replacement}
+\item{pattern}{(character, default NULL) Pattern to replace by the \code{replacement}
+argument.}
 
-\item{replacement}{Pattern of replacement}
+\item{replacement}{(character, default NULL) Replacement string for the pattern.}
 
-\item{fixed}{see ?grep}
+\item{fixed}{(logical, default FALSE) See ?grep.}
 
-\item{perl}{see ?grep}
+\item{perl}{(logical, default FALSE) See ?grep.}
 
-\item{useBytes}{see ?grep}
+\item{useBytes}{(logical, default FALSE) See ?grep.}
 }
 \value{
 An object of class phyloseq

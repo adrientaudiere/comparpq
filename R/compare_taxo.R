@@ -21,12 +21,13 @@
 #' @param true_values_df  (required). A dataframe with the true taxonomic assignation.
 #'   Note that the column names (names of taxonomic ranks) of the true_values_df defined
 #'   the names present in the `tax_level` column of the resulting dataframe.
-#' @param fake_taxa (logical, default TRUE). If TRUE, the fake_pattern vector
+#' @param fake_taxa (logical, default TRUE) If TRUE, the fake_pattern vector
 #'   is used to identify fake taxa, i.e. taxa who are not in the reference
 #'   database (see [add_external_seq_pq()]) or taxa with fake sequences
 #'   (see [add_shuffle_seq_pq()]).
-#' @param fake_pattern (vector of pattern): A vector used to identify the fake
-#'   taxa using a regex search in their name.
+#' @param fake_pattern (character vector, default c("^fake_", "^external_"))
+#'   A vector of patterns used to identify the fake taxa using a regex search
+#'   in their name.
 #'
 #' @returns A long-format dataframe with 4 columns: (i) the name of the `method_db`
 #' (ii) the name of the `tax_level` (taxonomic rank), (iii) the `metrics` (see
@@ -96,12 +97,14 @@ tc_metrics_mock <- function(physeq,
 #' @param taxonomic_rank (required) Name (or number) of a taxonomic rank
 #'   to count.
 #' @param true_values (required) A vector with the true taxonomic assignation
-#' @param fake_taxa (logical, default TRUE). If TRUE, the fake_pattern vector
+#' @param fake_taxa (logical, default TRUE) If TRUE, the fake_pattern vector
 #'   is used to identify fake taxa, i.e. taxa who are not in the reference
 #'   database (see [add_external_seq_pq()]) or taxa with fake sequences
 #'   (see [add_shuffle_seq_pq()]).
-#' @param fake_pattern (vector of pattern): A vector used to identify the fake
-#'   taxa using a regex search in their name.
+#' @param fake_pattern (character vector, default c("^fake_", "^external_"))
+#'   A vector of patterns used to identify the fake taxa using a regex search
+#'   in their name.
+#' @param verbose (logical, default TRUE) If TRUE, print informative messages.
 #'
 #' @returns A list of metrics (see the confusion matrix
 #'   [article](https://en.wikipedia.org/wiki/Confusion_matrix) on wikipedia):
