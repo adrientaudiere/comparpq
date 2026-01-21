@@ -35,9 +35,9 @@ test_that("select_ranks_pq preserves other slots", {
 })
 
 test_that("select_ranks_pq works with range selection", {
-  result <- select_ranks_pq(data_fungi, Kingdom:Order)
+  result <- select_ranks_pq(data_fungi, Order:Genus)
 
-  expect_true("Kingdom" %in% colnames(result@tax_table))
+  expect_true("Genus" %in% colnames(result@tax_table))
   expect_true("Order" %in% colnames(result@tax_table))
 })
 

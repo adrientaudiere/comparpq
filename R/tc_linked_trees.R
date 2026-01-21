@@ -12,8 +12,9 @@
 #'
 #' @param physeq_1 (required) A \code{\link[phyloseq]{phyloseq-class}} object
 #'   for the left tree.
-#' @param physeq_2 (required) A \code{\link[phyloseq]{phyloseq-class}} object
-#'   for the right tree.
+#' @param physeq_2 (phyloseq, default NULL) A \code{\link[phyloseq]{phyloseq-class}}
+#'   object for the right tree. If NULL, uses physeq_1 (useful for comparing
+#'   different rank columns from the same object).
 #' @param ranks_1 (character vector, required) Taxonomic rank names to use for
 #'   the first tree. Must match column names in physeq_1's tax_table.
 #' @param ranks_2 (character vector, required) Taxonomic rank names to use for
@@ -21,6 +22,11 @@
 #' @param tree_distance (numeric, default 1) Distance between the two trees.
 #' @param show_tip_links (logical, default TRUE) Whether to draw lines between
 #'   matching leaf taxa (tips). Internal nodes are never linked.
+#' @param link_by_taxa (logical, default FALSE) If TRUE, links are drawn based
+#'   on taxa (ASV/OTU) correspondence: for each taxon in physeq_1, a link is
+#'   drawn to its corresponding tip in tree_2 based on its taxonomy. Line width
+#'   is proportional to the number of taxa sharing each link. Requires that
+#'   physeq_1 and physeq_2 have the same taxa names (rownames).
 #' @param link_alpha (numeric, default 0.5) Transparency of the correspondence
 #'   lines.
 #' @param link_color (character, default "grey50") Color of the correspondence
@@ -43,11 +49,9 @@
 #'
 #' @examples
 #' # Compare two taxonomic assignments from the same phyloseq object
-#' # using different rank columns
-#' Glom_otu_ab <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 10000)
-#'
+#' # using different rank columns (physeq_2 defaults to physeq_1)
 #' tc_linked_trees(
-#'   Glom_otu, Glom_otu_ab,
+#'   Glom_otu,
 #'   ranks_1 = c("Kingdom", "Class", "Order", "Family"),
 #'   ranks_2 = c(
 #'     "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
@@ -56,9 +60,20 @@
 #' )
 #'
 #' \dontrun{
+#' # Link by taxa with line width proportional to ASV count
+#' tc_linked_trees(
+#'   Glom_otu,
+#'   ranks_1 = c("Kingdom", "Class", "Order", "Family"),
+#'   ranks_2 = c(
+#'     "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
+#'     "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+#'   ),
+#'   link_by_taxa = TRUE
+#' )
+#'
 #' # Without tip links
 #' tc_linked_trees(
-#'   Glom_otu, Glom_otu_ab,
+#'   Glom_otu,
 #'   ranks_1 = c("Kingdom", "Class", "Order", "Family"),
 #'   ranks_2 = c(
 #'     "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
@@ -69,7 +84,7 @@
 #'
 #' # Color links by label
 #' tc_linked_trees(
-#'   Glom_otu, Glom_otu_ab,
+#'   Glom_otu,
 #'   ranks_1 = c("Kingdom", "Class", "Order", "Family"),
 #'   ranks_2 = c(
 #'     "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
@@ -78,23 +93,44 @@
 #'   link_color = NULL
 #' ) +
 #'   theme(legend.position = "none")
+#'
+#' # Using one phyloseq object for both trees
+#' # and different rank levels with link_by_taxa
+#' tc_linked_trees(
+#' Glom_otu,
+#' ranks_1 = c("Kingdom", "Class", "Order", "Family"),
+#' ranks_2 = c(
+#'   "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
+#'   "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+#' ), link_color = NULL,
+#' link_by_taxa = TRUE,
+#') +
+#' theme(legend.position = "none")
 #' }
-tc_linked_trees <- function(physeq_1,
-                            physeq_2,
-                            ranks_1,
-                            ranks_2,
-                            tree_distance = 1,
-                            show_tip_links = TRUE,
-                            link_alpha = 0.5,
-                            link_color = "grey50",
-                            show_labels = TRUE,
-                            label_size = 2,
-                            internal_node_singletons = FALSE,
-                            use_taxa_names = FALSE) {
+tc_linked_trees <- function(
+  physeq_1,
+  physeq_2 = NULL,
+  ranks_1,
+  ranks_2,
+  tree_distance = 1,
+  show_tip_links = TRUE,
+  link_by_taxa = FALSE,
+  link_alpha = 0.5,
+  link_color = "grey50",
+  show_labels = TRUE,
+  label_size = 2,
+  internal_node_singletons = FALSE,
+  use_taxa_names = FALSE
+) {
   rlang::check_installed("ggtree", reason = "to plot taxonomy trees")
 
   verify_pq(physeq_1)
-  verify_pq(physeq_2)
+
+  if (is.null(physeq_2)) {
+    physeq_2 <- physeq_1
+  } else {
+    verify_pq(physeq_2)
+  }
 
   tree_1 <- taxo2tree(
     physeq_1,
@@ -139,7 +175,9 @@ tc_linked_trees <- function(physeq_1,
 
   scale_y <- function(data, max_tips) {
     tips <- data[data$isTip, ]
-    if (nrow(tips) == 0) return(data)
+    if (nrow(tips) == 0) {
+      return(data)
+    }
 
     tip_y_order <- order(tips$y)
     new_tip_y <- seq_len(nrow(tips))
@@ -178,33 +216,118 @@ tc_linked_trees <- function(physeq_1,
     ggtree::geom_tree(data = d1, aes(x = x, y = y), layout = "rectangular") +
     ggtree::geom_tree(data = d2, aes(x = x, y = y), layout = "rectangular")
 
-  if (show_tip_links && length(common_labels) > 0) {
-    tips_d1 <- d1[d1$isTip & d1$label %in% common_labels, c("label", "x", "y")]
-    tips_d2 <- d2[d2$isTip & d2$label %in% common_labels, c("label", "x", "y")]
+  if (show_tip_links) {
+    if (link_by_taxa) {
+      common_taxa <- intersect(taxa_names(physeq_1), taxa_names(physeq_2))
+      if (length(common_taxa) == 0) {
+        warning("No common taxa names between physeq_1 and physeq_2")
+      } else {
+        get_tip_label <- function(tax_row, ranks) {
+          vals <- tax_row[ranks]
+          vals <- vals[!is.na(vals) & vals != "" & vals != "NA_NA"]
+          if (length(vals) > 0) vals[length(vals)] else "Unknown"
+        }
 
-    if (nrow(tips_d1) > 0 && nrow(tips_d2) > 0) {
-      link_data <- merge(tips_d1, tips_d2, by = "label", suffixes = c("_1", "_2"))
+        tax_1 <- as.data.frame(physeq_1@tax_table[common_taxa, , drop = FALSE])
+        tax_2 <- as.data.frame(physeq_2@tax_table[common_taxa, , drop = FALSE])
 
-      if (nrow(link_data) > 0) {
-        if (is.null(link_color)) {
-          p <- p +
-            geom_segment(
-              data = link_data,
-              aes(
-                x = x_1, y = y_1,
-                xend = x_2, yend = y_2,
-                colour = label
-              ),
-              alpha = link_alpha
-            )
-        } else {
-          p <- p +
-            geom_segment(
-              data = link_data,
-              aes(x = x_1, y = y_1, xend = x_2, yend = y_2),
-              alpha = link_alpha,
-              colour = link_color
-            )
+        taxa_links <- data.frame(
+          taxon = common_taxa,
+          tip_1 = apply(tax_1, 1, get_tip_label, ranks = ranks_1),
+          tip_2 = apply(tax_2, 1, get_tip_label, ranks = ranks_2),
+          stringsAsFactors = FALSE
+        )
+
+        link_counts <- taxa_links |>
+          dplyr::count(tip_1, tip_2, name = "n_taxa")
+
+        tips_d1 <- d1[d1$isTip, c("label", "x", "y")]
+        tips_d2 <- d2[d2$isTip, c("label", "x", "y")]
+
+        link_data <- link_counts |>
+          dplyr::inner_join(tips_d1, by = c("tip_1" = "label")) |>
+          dplyr::rename(x_1 = x, y_1 = y) |>
+          dplyr::inner_join(tips_d2, by = c("tip_2" = "label")) |>
+          dplyr::rename(x_2 = x, y_2 = y)
+
+        if (nrow(link_data) > 0) {
+          max_n <- max(link_data$n_taxa)
+          link_data$line_width <- 0.5 + (link_data$n_taxa / max_n) * 3
+
+          if (is.null(link_color)) {
+            p <- p +
+              geom_segment(
+                data = link_data,
+                aes(
+                  x = x_1,
+                  y = y_1,
+                  xend = x_2,
+                  yend = y_2,
+                  linewidth = line_width,
+                  colour = tip_1
+                ),
+                alpha = link_alpha
+              ) +
+              scale_linewidth_identity()
+          } else {
+            p <- p +
+              geom_segment(
+                data = link_data,
+                aes(
+                  x = x_1,
+                  y = y_1,
+                  xend = x_2,
+                  yend = y_2,
+                  linewidth = line_width
+                ),
+                alpha = link_alpha,
+                colour = link_color
+              ) +
+              scale_linewidth_identity()
+          }
+        }
+      }
+    } else if (length(common_labels) > 0) {
+      tips_d1 <- d1[
+        d1$isTip & d1$label %in% common_labels,
+        c("label", "x", "y")
+      ]
+      tips_d2 <- d2[
+        d2$isTip & d2$label %in% common_labels,
+        c("label", "x", "y")
+      ]
+
+      if (nrow(tips_d1) > 0 && nrow(tips_d2) > 0) {
+        link_data <- merge(
+          tips_d1,
+          tips_d2,
+          by = "label",
+          suffixes = c("_1", "_2")
+        )
+
+        if (nrow(link_data) > 0) {
+          if (is.null(link_color)) {
+            p <- p +
+              geom_segment(
+                data = link_data,
+                aes(
+                  x = x_1,
+                  y = y_1,
+                  xend = x_2,
+                  yend = y_2,
+                  colour = label
+                ),
+                alpha = link_alpha
+              )
+          } else {
+            p <- p +
+              geom_segment(
+                data = link_data,
+                aes(x = x_1, y = y_1, xend = x_2, yend = y_2),
+                alpha = link_alpha,
+                colour = link_color
+              )
+          }
         }
       }
     }
@@ -215,7 +338,9 @@ tc_linked_trees <- function(physeq_1,
       max_x <- max(data$x, na.rm = TRUE)
       min_x <- min(data$x, na.rm = TRUE)
       x_range <- max_x - min_x
-      if (x_range == 0) x_range <- 1
+      if (x_range == 0) {
+        x_range <- 1
+      }
       data$depth <- (data$x - min_x) / x_range
       data
     }
@@ -229,8 +354,10 @@ tc_linked_trees <- function(physeq_1,
 
     min_size <- label_size * 0.6
     max_size <- label_size * 1.5
-    d1_labels$text_size <- min_size + (1 - d1_labels$depth) * (max_size - min_size)
-    d2_labels$text_size <- min_size + (1 - d2_labels$depth) * (max_size - min_size)
+    d1_labels$text_size <- min_size +
+      (1 - d1_labels$depth) * (max_size - min_size)
+    d2_labels$text_size <- min_size +
+      (1 - d2_labels$depth) * (max_size - min_size)
 
     d1_tips <- d1_labels[d1_labels$isTip, ]
     d1_nodes <- d1_labels[!d1_labels$isTip, ]
@@ -281,7 +408,22 @@ tc_linked_trees <- function(physeq_1,
         )
     }
 
-    p <- p + scale_size_identity()
+    p <- p + scale_size_identity() 
+
+    # add a title with the name of the ranks and phyloseq objects
+    if( !is.null(physeq_2) &&
+        !identical(physeq_1, physeq_2)) {
+      name_1 <- deparse(substitute(physeq_1))
+      name_2 <- deparse(substitute(physeq_2))
+    } else {
+      name_1 <- deparse(substitute(physeq_1))
+      name_2 <- deparse(substitute(physeq_1))
+    }
+    p <- p + labs(title = 
+            paste0(name_1, " (left) vs ", name_2, " (right)"),
+      subtitle =      
+      paste0(paste(ranks_1, collapse = " > "), "\n",
+       paste(ranks_2, collapse = " > ")))
   }
 
   p + theme_void()

@@ -120,9 +120,11 @@ resolve_taxo_conflict <- function(physeq,
     taxtab <- tibble::add_column(taxtab, !!new_names[[i]] := new_tax_r)
   }
 
+  # remove pattern_tax_ranks but not new_names
   if (!keep_tax_ranks) {
-    taxtab <- taxtab |>
-      dplyr::select(!matches(pattern_tax_ranks))
+    taxtab <- taxtab |>      
+      dplyr::select(-dplyr::matches(paste(pattern_tax_ranks, collapse = "|")) | 
+        all_of(new_names))
   }
 
   new_physeq@tax_table <- tax_table(as.matrix(taxtab))

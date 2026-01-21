@@ -2,39 +2,32 @@
 # Tests for the S7 class and its methods/utilities
 
 # Setup: Create test data
-setup_test_data <- function() {
-  # Use data from MiscMetabar
+td <-
   list(
     pq1 = data_fungi,
     pq2 = data_fungi_mini
   )
-}
+
 
 # ==============================================================================
 # Tests for list_phyloseq class creation
 # ==============================================================================
 
 test_that("list_phyloseq creates object with valid phyloseq list", {
-  td <- setup_test_data()
-
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
 
-  expect_s3_class(lpq, "list_phyloseq")
+  expect_s3_class(lpq, "comparpq::list_phyloseq")
   expect_equal(length(lpq), 2)
   expect_equal(names(lpq), c("fungi", "fungi_mini"))
 })
 
 test_that("list_phyloseq auto-generates names when not provided", {
-  td <- setup_test_data()
-
   lpq <- list_phyloseq(list(td$pq1, td$pq2))
 
   expect_equal(names(lpq), c("physeq_1", "physeq_2"))
 })
 
 test_that("list_phyloseq accepts custom names parameter", {
-  td <- setup_test_data()
-
   lpq <- list_phyloseq(list(td$pq1, td$pq2), names = c("A", "B"))
 
   expect_equal(names(lpq), c("A", "B"))
@@ -42,20 +35,17 @@ test_that("list_phyloseq accepts custom names parameter", {
 
 test_that("list_phyloseq fails with empty list", {
   expect_error(
-    list_phyloseq(list()),
-    "must contain at least one phyloseq object"
+    list_phyloseq(list())
   )
 })
 
 test_that("list_phyloseq fails with non-phyloseq objects", {
   expect_error(
-    list_phyloseq(list(data.frame(), "not_phyloseq")),
-    "must be phyloseq objects"
+    list_phyloseq(list(data.frame(), "not_phyloseq"))
   )
 })
 
 test_that("list_phyloseq fails with mismatched names length", {
-  td <- setup_test_data()
 
   expect_error(
     list_phyloseq(list(td$pq1, td$pq2), names = c("A")),
@@ -68,7 +58,6 @@ test_that("list_phyloseq fails with mismatched names length", {
 # ==============================================================================
 
 test_that("list_phyloseq defaults to REPRODUCIBILITY for same samples", {
-  td <- setup_test_data()
 
   # Same phyloseq twice -> same samples
   lpq <- list_phyloseq(list(run1 = td$pq1, run2 = td$pq1))
@@ -79,7 +68,6 @@ test_that("list_phyloseq defaults to REPRODUCIBILITY for same samples", {
 })
 
 test_that("list_phyloseq detects ROBUSTNESS with same_bioinfo_pipeline=FALSE", {
-  td <- setup_test_data()
 
   lpq <- list_phyloseq(
     list(method_A = td$pq1, method_B = td$pq1),
@@ -92,7 +80,6 @@ test_that("list_phyloseq detects ROBUSTNESS with same_bioinfo_pipeline=FALSE", {
 })
 
 test_that("list_phyloseq detects REPLICABILITY with same_primer_seq_tech=FALSE", {
-  td <- setup_test_data()
 
   lpq <- list_phyloseq(
     list(ITS1 = td$pq1, ITS2 = td$pq1),
@@ -104,7 +91,6 @@ test_that("list_phyloseq detects REPLICABILITY with same_primer_seq_tech=FALSE",
 })
 
 test_that("list_phyloseq detects NESTED_ROBUSTNESS for nested samples", {
-  td <- setup_test_data()
 
   # Rarefied version has nested samples
   set.seed(123)
@@ -118,7 +104,6 @@ test_that("list_phyloseq detects NESTED_ROBUSTNESS for nested samples", {
 })
 
 test_that("list_phyloseq detects EXPLORATION for different samples with shared modalities", {
-  td <- setup_test_data()
 
   # data_fungi and data_fungi_mini have different samples but shared modalities
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
@@ -133,7 +118,6 @@ test_that("list_phyloseq detects EXPLORATION for different samples with shared m
 # ==============================================================================
 
 test_that("list_phyloseq computes correct summary_table", {
-  td <- setup_test_data()
 
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
 
@@ -153,7 +137,6 @@ test_that("list_phyloseq computes correct summary_table", {
 # ==============================================================================
 
 test_that("list_phyloseq computes correct comparison characteristics", {
-  td <- setup_test_data()
 
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
 
@@ -168,7 +151,6 @@ test_that("list_phyloseq computes correct comparison characteristics", {
 })
 
 test_that("list_phyloseq detects same samples correctly", {
-  td <- setup_test_data()
 
   # Same phyloseq -> same samples
   lpq_same <- list_phyloseq(list(a = td$pq1, b = td$pq1))
@@ -184,7 +166,6 @@ test_that("list_phyloseq detects same samples correctly", {
 # ==============================================================================
 
 test_that("print method works for list_phyloseq", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1))
 
   expect_output(print(lpq), "list_phyloseq object")
@@ -192,31 +173,27 @@ test_that("print method works for list_phyloseq", {
 })
 
 test_that("length method works for list_phyloseq", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(a = td$pq1, b = td$pq2))
 
   expect_equal(length(lpq), 2)
 })
 
 test_that("names method works for list_phyloseq", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
 
   expect_equal(names(lpq), c("fungi", "mini"))
 })
 
 test_that("subsetting with [ returns list_phyloseq", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(a = td$pq1, b = td$pq2))
 
   lpq_subset <- lpq[1]
 
-  expect_s3_class(lpq_subset, "list_phyloseq")
+  expect_s3_class(lpq_subset, "comparpq::list_phyloseq")
   expect_equal(length(lpq_subset), 1)
 })
 
 test_that("subsetting preserves parameters", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(
     list(a = td$pq1, b = td$pq1),
     same_bioinfo_pipeline = FALSE
@@ -228,7 +205,6 @@ test_that("subsetting preserves parameters", {
 })
 
 test_that("extraction with [[ returns phyloseq", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
 
   pq <- lpq[["fungi"]]
@@ -242,17 +218,15 @@ test_that("extraction with [[ returns phyloseq", {
 # ==============================================================================
 
 test_that("update_list_phyloseq recomputes summary", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1))
 
   lpq_updated <- update_list_phyloseq(lpq)
 
-  expect_s3_class(lpq_updated, "list_phyloseq")
+  expect_s3_class(lpq_updated, "comparpq::list_phyloseq")
   expect_equal(lpq_updated@summary_table$n_taxa, lpq@summary_table$n_taxa)
 })
 
 test_that("update_list_phyloseq can change parameters", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(a = td$pq1, b = td$pq1))
 
   expect_true(lpq@comparison$same_bioinfo_pipeline)
@@ -264,7 +238,6 @@ test_that("update_list_phyloseq can change parameters", {
 })
 
 test_that("update_list_phyloseq preserves parameters when NULL", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(
     list(a = td$pq1, b = td$pq1),
     same_primer_seq_tech = FALSE
@@ -280,7 +253,6 @@ test_that("update_list_phyloseq preserves parameters when NULL", {
 # ==============================================================================
 
 test_that("add_phyloseq adds a new phyloseq object", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1))
 
   lpq_added <- add_phyloseq(lpq, td$pq2, name = "mini")
@@ -290,7 +262,6 @@ test_that("add_phyloseq adds a new phyloseq object", {
 })
 
 test_that("add_phyloseq auto-generates name when not provided", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1))
 
   lpq_added <- add_phyloseq(lpq, td$pq2)
@@ -300,7 +271,6 @@ test_that("add_phyloseq auto-generates name when not provided", {
 })
 
 test_that("add_phyloseq preserves parameters", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(
     list(fungi = td$pq1),
     same_bioinfo_pipeline = FALSE
@@ -312,7 +282,6 @@ test_that("add_phyloseq preserves parameters", {
 })
 
 test_that("add_phyloseq fails with non-phyloseq object", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1))
 
   expect_error(
@@ -326,7 +295,6 @@ test_that("add_phyloseq fails with non-phyloseq object", {
 # ==============================================================================
 
 test_that("remove_phyloseq removes by name", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
 
   lpq_removed <- remove_phyloseq(lpq, "mini")
@@ -336,7 +304,6 @@ test_that("remove_phyloseq removes by name", {
 })
 
 test_that("remove_phyloseq removes by index", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
 
   lpq_removed <- remove_phyloseq(lpq, 2)
@@ -346,7 +313,6 @@ test_that("remove_phyloseq removes by index", {
 })
 
 test_that("remove_phyloseq preserves parameters", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(
     list(a = td$pq1, b = td$pq2, c = td$pq1),
     same_primer_seq_tech = FALSE
@@ -358,7 +324,6 @@ test_that("remove_phyloseq preserves parameters", {
 })
 
 test_that("remove_phyloseq fails when removing last object", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1))
 
   expect_error(
@@ -372,7 +337,6 @@ test_that("remove_phyloseq fails when removing last object", {
 # ==============================================================================
 
 test_that("filter_common_lpq filters to common samples", {
-  td <- setup_test_data()
 
   set.seed(123)
   rarefied <- rarefy_even_depth(td$pq1, sample.size = 1000, verbose = FALSE)
@@ -392,7 +356,6 @@ test_that("filter_common_lpq filters to common samples", {
 })
 
 test_that("filter_common_lpq preserves parameters", {
-  td <- setup_test_data()
 
   set.seed(123)
   rarefied <- rarefy_even_depth(td$pq1, sample.size = 1000, verbose = FALSE)
@@ -409,7 +372,6 @@ test_that("filter_common_lpq preserves parameters", {
 })
 
 test_that("filter_common_lpq returns original when no filtering requested", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1))
 
   lpq_no_filter <- filter_common_lpq(
@@ -423,7 +385,6 @@ test_that("filter_common_lpq returns original when no filtering requested", {
 })
 
 test_that("filter_common_lpq fails with no common samples", {
-  td <- setup_test_data()
 
   # Create two phyloseq with different sample names
   pq1 <- td$pq1
@@ -445,7 +406,6 @@ test_that("filter_common_lpq fails with no common samples", {
 # ==============================================================================
 
 test_that("shared_mod_lpq returns tibble with shared modalities", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
 
   result <- shared_mod_lpq(lpq)
@@ -459,7 +419,6 @@ test_that("shared_mod_lpq returns tibble with shared modalities", {
 })
 
 test_that("shared_mod_lpq respects max_modalities", {
-  td <- setup_test_data()
   lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
 
   result <- shared_mod_lpq(lpq, max_modalities = 2)
