@@ -995,3 +995,114 @@ n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
 
   result
 }
+
+
+#' Apply a function to all phyloseq objects in a list_phyloseq
+#'
+#' @description
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' Applies a function to each phyloseq object in a list_phyloseq and returns
+#' a new list_phyloseq with the transformed objects. This is useful for
+#' applying cleaning, filtering, or transformation functions uniformly across
+#' all phyloseq objects.
+#'
+#' @param x (required) A list_phyloseq object.
+#' @param .f (function, required) A function to apply to each phyloseq object.
+#'   The function must take a phyloseq object as its first argument and return
+#'   a phyloseq object.
+#' @param ... Additional arguments passed to `.f`.
+#' @param verbose (logical, default TRUE) If TRUE, print information about the
+#'   transformation applied to each phyloseq object.
+#'
+#' @return A new list_phyloseq object with the transformed phyloseq objects.
+#'   The comparison parameters (`same_primer_seq_tech`, `same_bioinfo_pipeline`)
+#'   are preserved from the original object.
+#'
+#' @details
+#' Common functions to apply include:
+#' - `MiscMetabar::clean_pq()`: Remove empty samples and taxa
+#' - `phyloseq::taxa_as_rows()`: Ensure taxa are rows in otu_table
+#' - `phyloseq::rarefy_even_depth()`: Rarefy to even depth
+#' - `phyloseq::transform_sample_counts()`: Transform counts (e.g., relative abundance)
+#' - `phyloseq::subset_taxa()`: Filter taxa based on criteria
+#' - `phyloseq::subset_samples()`: Filter samples based on criteria
+#'
+#' @export
+#' @author Adrien Taudière
+#'
+#' @seealso [filter_common_lpq()], [update_list_phyloseq()]
+#'
+#' @examples
+#' lpq <- list_phyloseq(list(fungi = data_fungi, fungi_mini = data_fungi_mini))
+#'
+#' # Apply clean_pq to all phyloseq objects
+#' lpq_clean <- apply_to_lpq(lpq, MiscMetabar::clean_pq)
+#'
+#' # Apply taxa_as_rows
+#' lpq_rows <- apply_to_lpq(lpq, MiscMetabar::taxa_as_rows)
+#' 
+#' # Apply rarefy_even_depth with a specific rngseed
+#'  lpq_rar <- apply_to_lpq(lpq, rarefy_even_depth, rngseed=21)
+#' 
+#'  lpq_rar
+#' 
+#' # Transform to relative abundance
+#' lpq_rel <- apply_to_lpq(
+#'   lpq,
+#'   phyloseq::transform_sample_counts,
+#'   function(x) x / sum(x)
+#' )
+#'
+#' # Chain multiple transformations
+#' lpq_processed <- lpq |>
+#'   apply_to_lpq(MiscMetabar::clean_pq) |>
+#'   apply_to_lpq(MiscMetabar::taxa_as_rows)
+apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
+  stopifnot(inherits(x, "comparpq::list_phyloseq"))
+
+  if (!is.function(.f)) {
+    stop("`.f` must be a function")
+  }
+
+  func_name <- deparse(substitute(.f))
+
+  transformed_list <- purrr::imap(x@phyloseq_list, function(pq, name) {
+    if (verbose) {
+      original_nsamples <- phyloseq::nsamples(pq)
+      original_ntaxa <- phyloseq::ntaxa(pq)
+    }
+
+    result <- .f(pq, ...)
+
+    if (!inherits(result, "phyloseq")) {
+      stop(
+        "Function `", func_name, "` did not return a phyloseq object for '",
+        name, "'. Got class: ", paste(class(result), collapse = ", ")
+      )
+    }
+
+    if (verbose) {
+      new_nsamples <- phyloseq::nsamples(result)
+      new_ntaxa <- phyloseq::ntaxa(result)
+      message(
+        "  ", name, ": ",
+        original_nsamples, " -> ", new_nsamples, " samples, ",
+        original_ntaxa, " -> ", new_ntaxa, " taxa"
+      )
+    }
+
+    result
+  })
+
+  if (verbose) {
+    message("Applied `", func_name, "` to ", length(transformed_list), " phyloseq objects.")
+  }
+
+  list_phyloseq(
+    transformed_list,
+    same_primer_seq_tech = x@comparison$same_primer_seq_tech,
+    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline
+  )
+}

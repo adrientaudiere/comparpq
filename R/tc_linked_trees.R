@@ -418,8 +418,8 @@ tc_linked_trees <- function(
   )
 
   clean_label <- function(x) {
-    x <- gsub("^NA$", "", x)
-    x <- gsub("NA_NA", "", x)
+    x <- gsub("^NA$", "", x, fixed = TRUE)
+    x <- gsub("NA_NA", "", x, fixed = TRUE)
     x[is.na(x)] <- ""
     x
   }

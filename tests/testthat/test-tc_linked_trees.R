@@ -17,7 +17,7 @@ test_that("tc_congruence_metrics returns correct structure", {
 
   expect_type(result, "list")
   expect_true("summary" %in% names(result))
-  expect_true("congruent" %in% names(result))
+  expect_true("total_congruent" %in% names(result))
   expect_true("partial_1_deeper" %in% names(result))
   expect_true("partial_2_deeper" %in% names(result))
   expect_true("incongruent_leaves" %in% names(result))
@@ -138,24 +138,6 @@ test_that("tc_congruence_metrics warns with no common taxa", {
   physeq_subset <- phyloseq::prune_taxa(taxa_names(Glom_otu)[1:5], Glom_otu)
   taxa_names(physeq_subset) <- paste0("new_", taxa_names(physeq_subset))
 
-  expect_type(
-    result <- tc_congruence_metrics(
-      Glom_otu,
-      physeq_2 = physeq_subset,
-      ranks_1 = c("Kingdom", "Class"),
-      ranks_2 = c("Kingdom", "Class")
-    ),
-    "list"
-  )
-
-  expect_equal(result$summary |> filter(category=="congruent") |> pull(count), 3)
-})
-
-test_that("tc_congruence_metrics works with some common taxa", {
-  # Create a subset with different taxa names
-  physeq_subset <- phyloseq::prune_taxa(taxa_names(Glom_otu)[1:5], Glom_otu)
- taxa_names(physeq_subset)[1:2] <- paste0("new_", taxa_names(physeq_subset)[1:2])
-
   expect_warning(
     tc_congruence_metrics(
       Glom_otu,
@@ -165,7 +147,26 @@ test_that("tc_congruence_metrics works with some common taxa", {
     ),
     "No common taxa names"
   )
+
 })
+
+test_that("tc_congruence_metrics works with some common taxa", {
+  # Create a subset with different taxa names
+  physeq_subset <- phyloseq::prune_taxa(taxa_names(Glom_otu)[1:5], Glom_otu)
+ taxa_names(physeq_subset)[1:2] <- paste0("new_", taxa_names(physeq_subset)[1:2])
+  
+  result <- tc_congruence_metrics(
+      Glom_otu,
+      physeq_2 = physeq_subset,
+      ranks_1 = c("Kingdom", "Class"),
+      ranks_2 = c("Kingdom", "Class")
+    )
+  expect_type(result, "list")
+
+    expect_equal(result$summary |> filter(category=="total_congruent") |> pull(count), 3)
+
+})
+
 
 # ==============================================================================
 # Tests for tc_linked_trees

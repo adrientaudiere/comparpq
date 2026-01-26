@@ -1,5 +1,6 @@
 # comparpq 0.1.0 (development version)
 
+* Add function `apply_to_lpq()` to apply a function to each phyloseq object in a list_phyloseq
 
 # Initial comparpq (0.01)
 

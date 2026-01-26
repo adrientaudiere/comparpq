@@ -27,6 +27,7 @@ reference:
   desc: "Functions for manipulating list_phyloseq objects"
   contents:
   - add_phyloseq
+  - apply_to_lpq
   - filter_common_lpq
   - n_levels_lpq
   - remove_phyloseq

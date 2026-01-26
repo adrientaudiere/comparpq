@@ -417,3 +417,143 @@ test_that("shared_mod_lpq respects max_modalities", {
     expect_true(any(grepl("\\.\\.\\.", result$Shared_modalities)))
   }
 })
+
+# ==============================================================================
+# Tests for n_levels_lpq
+# ==============================================================================
+
+test_that("n_levels_lpq counts unique taxonomic levels", {
+  lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
+
+  result <- n_levels_lpq(lpq, c("Phylum", "Class", "Order"))
+
+  expect_true(is.data.frame(result))
+  expect_equal(nrow(result), 2)
+  expect_equal(colnames(result), c("Phylum", "Class", "Order"))
+  expect_true(all(result >= 0))
+})
+
+test_that("n_levels_lpq fails with missing taxonomic ranks", {
+  lpq <- list_phyloseq(list(fungi = td$pq1))
+
+  expect_error(
+    n_levels_lpq(lpq, c("Phylum", "NonExistentRank")),
+    "missing"
+  )
+})
+
+# ==============================================================================
+# Tests for apply_to_lpq
+# ==============================================================================
+
+test_that("apply_to_lpq applies function to all phyloseq objects", {
+  lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
+
+  lpq_transformed <- apply_to_lpq(lpq, MiscMetabar::clean_pq, verbose = FALSE)
+
+  expect_s3_class(lpq_transformed, "comparpq::list_phyloseq")
+  expect_equal(length(lpq_transformed), 2)
+  expect_equal(names(lpq_transformed), c("fungi", "mini"))
+})
+
+test_that("apply_to_lpq preserves comparison parameters", {
+  lpq <- list_phyloseq(
+    list(fungi = td$pq1, mini = td$pq2),
+    same_primer_seq_tech = FALSE,
+    same_bioinfo_pipeline = FALSE
+  )
+
+  lpq_transformed <- apply_to_lpq(lpq, MiscMetabar::clean_pq, verbose = FALSE)
+
+  expect_false(lpq_transformed@comparison$same_primer_seq_tech)
+  expect_false(lpq_transformed@comparison$same_bioinfo_pipeline)
+})
+
+test_that("apply_to_lpq passes additional arguments to function", {
+  lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
+
+  # Use transform_sample_counts with a custom function
+ lpq_rel <- apply_to_lpq(
+    lpq,
+    phyloseq::transform_sample_counts,
+    \(x) x / sum(x),
+    verbose = FALSE
+  )
+
+  expect_s3_class(lpq_rel, "comparpq::list_phyloseq")
+
+  # Check that counts are now proportions (sum to 1 per sample)
+  sums <- phyloseq::sample_sums(lpq_rel[["fungi"]])
+  expect_true(all(abs(sums - 1) < 1e-10))
+})
+
+test_that("apply_to_lpq works with taxa_as_rows", {
+  lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
+
+  lpq_rows <- apply_to_lpq(lpq, MiscMetabar::taxa_as_rows, verbose = FALSE)
+
+  expect_s3_class(lpq_rows, "comparpq::list_phyloseq")
+  expect_true(phyloseq::taxa_are_rows(lpq_rows[["fungi"]]))
+  expect_true(phyloseq::taxa_are_rows(lpq_rows[["mini"]]))
+})
+
+test_that("apply_to_lpq fails when function is not provided", {
+  lpq <- list_phyloseq(list(fungi = td$pq1))
+
+  expect_error(
+    apply_to_lpq(lpq, "not_a_function"),
+    "must be a function"
+  )
+})
+
+test_that("apply_to_lpq fails when function does not return phyloseq", {
+  lpq <- list_phyloseq(list(fungi = td$pq1))
+
+  # Function that returns a data frame instead of phyloseq
+  bad_func <- function(pq) {
+    as.data.frame(phyloseq::otu_table(pq))
+  }
+
+  expect_error(
+    apply_to_lpq(lpq, bad_func, verbose = FALSE),
+    "did not return a phyloseq"
+  )
+})
+
+test_that("apply_to_lpq works with rarefy_even_depth", {
+  lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
+
+  lpq_rarefied <- apply_to_lpq(
+    lpq,
+    phyloseq::rarefy_even_depth,
+    sample.size = 500,
+    rngseed = 42,
+    verbose = FALSE
+  )
+
+  expect_s3_class(lpq_rarefied, "comparpq::list_phyloseq")
+
+  # Check rarefaction worked (all samples have same depth)
+  sums_fungi <- phyloseq::sample_sums(lpq_rarefied[["fungi"]])
+  expect_true(all(sums_fungi == 500))
+})
+
+test_that("apply_to_lpq can be chained with pipes", {
+  lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
+
+  lpq_processed <- lpq |>
+    apply_to_lpq(MiscMetabar::clean_pq, verbose = FALSE) |>
+    apply_to_lpq(MiscMetabar::taxa_as_rows, verbose = FALSE)
+
+  expect_s3_class(lpq_processed, "comparpq::list_phyloseq")
+  expect_true(phyloseq::taxa_are_rows(lpq_processed[["fungi"]]))
+})
+
+test_that("apply_to_lpq verbose mode prints messages", {
+  lpq <- list_phyloseq(list(fungi = td$pq1))
+
+  expect_message(
+    apply_to_lpq(lpq, MiscMetabar::clean_pq, verbose = TRUE),
+    "Applied"
+  )
+})
