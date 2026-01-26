@@ -8,6 +8,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Common Commands
 
+You may propose to use the following commands when working with the package. Please do not run them automatically; only suggest them when appropriate.
+
 ```bash
 # Run code with loaded package
 Rscript -e "devtools::load_all(); code"
@@ -29,9 +31,6 @@ Rscript -e "devtools::document()"
 
 # Check pkgdown documentation
 Rscript -e "pkgdown::check_pkgdown()"
-
-# Format code
-air format .
 
 # Full package check
 Rscript -e "devtools::check()"

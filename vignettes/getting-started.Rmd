@@ -55,11 +55,7 @@ library(comparpq)
 
 The package includes the `Glom_otu` dataset, which contains glomalean (arbuscular mycorrhizal fungi) OTU data:
 
-```{r load_data}
-# Load the example dataset
-data("Glom_otu")
-
-# Examine the phyloseq object structure
+```{r}
 Glom_otu
 ```
 
@@ -83,18 +79,20 @@ bubbles_pq(Glom_otu)
 
 ```{r bubble_colored, eval=FALSE}
 # Bubble plot colored by Family
-bubbles_pq(Glom_otu, 
-          rank_color = "Family",
-          min_nb_seq = 1000)
+bubbles_pq(Glom_otu,
+  rank_color = "Family",
+  min_nb_seq = 1000
+)
 ```
 
 ```{r bubble_custom, eval=FALSE}
 # Customized bubble plot with different color scheme
-bubbles_pq(Glom_otu, 
-          rank_color = "Class",
-          categorical_scheme = "d3.schemePastel1",
-          min_nb_seq = 500,
-          log1ptransform = TRUE)
+bubbles_pq(Glom_otu,
+  rank_color = "Class",
+  categorical_scheme = "d3.schemePastel1",
+  min_nb_seq = 500,
+  log1ptransform = TRUE
+)
 ```
 
 ### Traditional Plots
@@ -118,16 +116,19 @@ matrix_data <- tc_points_matrix(Glom_otu)
 
 ```{r taxo_manipulation}
 # Select specific taxonomic ranks
-selected_ranks <- select_ranks_pq(Glom_otu, ranks_names = c("Kingdom", "Phylum", "Class"))
+Glom_otu_subset <- select_ranks_pq(Glom_otu, Kingdom, Genus)
 cat("Original ranks:", paste(phyloseq::rank_names(Glom_otu), collapse = ", "), "\n")
-cat("Selected ranks:", paste(phyloseq::rank_names(selected_ranks), collapse = ", "), "\n")
+cat("Selected ranks:", paste(phyloseq::rank_names(Glom_otu_subset), collapse = ", "), "\n")
 ```
 
 ```{r rename_ranks}
 # Rename taxonomic ranks
-renamed_physeq <- rename_ranks_pq(Glom_otu, 
-                                 new_names = c("Domain", "Division", "Class_level", 
-                                             "Order_level", "Family_level", "Genus_level"))
+renamed_physeq <- rename_ranks_pq(Glom_otu,
+  new_names = c(
+    "Domain", "Division", "Class_level",
+    "Order_level", "Family_level", "Genus_level"
+  )
+)
 cat("Renamed ranks:", paste(phyloseq::rank_names(renamed_physeq), collapse = ", "), "\n")
 ```
 
@@ -136,15 +137,18 @@ cat("Renamed ranks:", paste(phyloseq::rank_names(renamed_physeq), collapse = ", 
 ```{r pattern_replace}
 # Replace unwanted patterns with NA
 # This is useful for cleaning taxonomic assignments
-cleaned_physeq <- taxtab_replace_pattern_by_NA(Glom_otu, 
-                                              pattern = "^uncultured", 
-                                              ranks_names = "Genus")
+cleaned_physeq <- taxtab_replace_pattern_by_NA(Glom_otu,
+  pattern = "^uncultured",
+  taxonomic_ranks = "Genus"
+)
 
 # Check how many taxa were affected
 original_genus <- phyloseq::tax_table(Glom_otu)[, "Genus"]
 cleaned_genus <- phyloseq::tax_table(cleaned_physeq)[, "Genus"]
-cat("Uncultured genera replaced with NA:", 
-    sum(is.na(cleaned_genus)) - sum(is.na(original_genus)), "\n")
+cat(
+  "Uncultured genera replaced with NA:",
+  sum(is.na(cleaned_genus)) - sum(is.na(original_genus)), "\n"
+)
 ```
 
 ## Mock Community Analysis
@@ -155,13 +159,16 @@ To evaluate taxonomic assignment accuracy, you can add fake taxa to your dataset
 
 ```{r fake_taxa}
 # Add shuffled sequences (creates fake taxa from existing sequences)
-physeq_with_shuffled <- add_shuffle_seq_pq(Glom_otu, nb_seq_fake = 10)
+physeq_with_shuffled <- add_shuffle_seq_pq(Glom_otu, n_fake = 10)
 cat("Original taxa count:", phyloseq::ntaxa(Glom_otu), "\n")
 cat("With fake taxa:", phyloseq::ntaxa(physeq_with_shuffled), "\n")
 
 # Add external sequences (simulates contamination or database gaps)
-physeq_with_external <- add_external_seq_pq(Glom_otu, nb_external_seq = 5)
-cat("With external sequences:", phyloseq::ntaxa(physeq_with_external), "\n")
+external_seq <- Biostrings::readDNAStringSet(
+  system.file("extdata/ex_little.fasta", package = "MiscMetabar")
+)
+physeq_with_external <- add_external_seq_pq(Glom_otu, ext_seqs = external_seq)
+cat("With external sequences added:", phyloseq::ntaxa(physeq_with_external), "\n")
 ```
 
 ### Accuracy Metrics Computation
@@ -179,14 +186,14 @@ cat("With external sequences:", phyloseq::ntaxa(physeq_with_external), "\n")
 #   method1 = c("Fungi", "Ascomycota", "Sordariomycetes"),
 #   method2 = c("Fungi", "Basidiomycota", "Agaricomycetes")
 # )
-# 
+#
 # true_values_df <- data.frame(
 #   Kingdom = c("Fungi", "Fungi"),
 #   Phylum = c("Glomeromycota", "Glomeromycota")
 # )
 
 # Step 2: Compute metrics
-# accuracy_results <- tc_metrics_mock(physeq_with_shuffled, 
+# accuracy_results <- tc_metrics_mock(physeq_with_shuffled,
 #                                   ranks_df = ranks_df,
 #                                   true_values_df = true_values_df,
 #                                   fake_taxa = TRUE)
@@ -208,9 +215,10 @@ When working with multiple taxonomic databases, conflicts may arise:
 ```{r resolve_conflicts, eval=FALSE}
 # Resolve taxonomic conflicts between different assignment methods
 # This function helps when you have conflicting taxonomic assignments
-resolved_physeq <- resolve_taxo_conflict(Glom_otu, 
-                                        conflict_rank = "Genus",
-                                        resolve_method = "majority")
+resolved_physeq <- resolve_taxo_conflict(Glom_otu,
+  conflict_rank = "Genus",
+  resolve_method = "majority"
+)
 ```
 
 ## Advanced Usage Tips
@@ -230,17 +238,21 @@ resolved_physeq <- resolve_taxo_conflict(Glom_otu,
 qc_physeq <- Glom_otu
 
 # 1. Clean up problematic annotations
-qc_physeq <- taxtab_replace_pattern_by_NA(qc_physeq, 
-                                         pattern = "unknown|unidentified|uncultured", 
-                                         ranks_names = c("Family", "Genus"))
+qc_physeq <- taxtab_replace_pattern_by_NA(qc_physeq,
+  pattern = "unknown|unidentified|uncultured",
+  taxonomic_ranks = c("Family", "Genus")
+)
 
 # 2. Select relevant taxonomic ranks
-qc_physeq <- select_ranks_pq(qc_physeq, 
-                            ranks_names = c("Kingdom", "Phylum", "Class", "Order", "Family"))
+qc_physeq <- select_ranks_pq(qc_physeq,
+  taxonomic_ranks = c("Kingdom", "Phyla", "Class", "Order", "Family")
+)
 
 # 3. Standardize rank names
-qc_physeq <- rename_ranks_pq(qc_physeq, 
-                            new_names = c("Kingdom", "Phylum", "Class", "Order", "Family"))
+qc_physeq <- rename_ranks_pq(qc_physeq,
+  old_names = c("Kingdom", "Phyla", "Class", "Order", "Family"),
+  new_names = c("Kingdom__", "Phyla__", "Class__", "Order__", "Family__")
+)
 
 cat("Quality control completed. Final dataset has", phyloseq::ntaxa(qc_physeq), "taxa\n")
 ```

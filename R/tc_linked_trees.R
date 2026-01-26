@@ -1,4 +1,276 @@
 ################################################################################
+#' Compute congruence metrics between two taxonomic assignments
+#'
+#' @description
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' Computes metrics quantifying the congruence between two taxonomic assignments
+#' for the same set of taxa (ASVs/OTUs). This is useful for comparing different
+#' taxonomic databases, assignment methods, or reference versions.
+#'
+#' @param physeq_1 (required) A \code{\link[phyloseq]{phyloseq-class}} object
+#'   with the first taxonomic assignment.
+#' @param physeq_2 (phyloseq, default NULL) A \code{\link[phyloseq]{phyloseq-class}}
+#'   object with the second taxonomic assignment. If NULL, uses physeq_1
+#'   (useful for comparing different rank columns from the same object).
+#' @param ranks_1 (character vector, required) Taxonomic rank names to use for
+#'   the first assignment. Must match column names in physeq_1's tax_table.
+#' @param ranks_2 (character vector, default NULL) Taxonomic rank names to use for
+#'   the second assignment. Must match column names in physeq_2's tax_table. If
+#'   NULL, uses the same ranks as ranks_1 vector.
+#'
+#' @return A list with the following components:
+#' \describe{
+#'   \item{summary}{A data frame with counts and percentages for each category,
+#'     including `leaf_match_congruence` which counts taxa where the deepest
+#'     classification matches regardless of the path}
+#'   \item{only_in_1}{Character vector of taxa names present only in physeq_1}
+#'   \item{only_in_2}{Character vector of taxa names present only in physeq_2}
+#'   \item{classified_only_1}{Character vector of common taxa classified only
+#'     in physeq_1 (all NA in physeq_2 for the specified ranks)}
+#'   \item{classified_only_2}{Character vector of common taxa classified only
+#'     in physeq_2 (all NA in physeq_1 for the specified ranks)}
+#'   \item{unclassified_both}{Character vector of common taxa with all NA in
+#'     both physeq objects}
+#'   \item{total_congruent}{Character vector of taxa with identical taxonomic paths
+#'     (same values at all ranks, same NA positions)}
+#'   \item{partial_1_deeper}{Character vector of taxa where physeq_1 classifies
+#'     to a deeper rank but agrees on shared ranks}
+#'   \item{partial_2_deeper}{Character vector of taxa where physeq_2 classifies
+#'     to a deeper rank but agrees on shared ranks}
+#'   \item{incongruent_leaves}{Character vector of taxa with disagreement at
+#'     the deepest (leaf) level where both have assignments}
+#'   \item{incongruent_nodes}{Character vector of taxa with disagreement at
+#'     higher (internal node) levels, even if leaves match}
+#'   \item{details}{A data frame with per-taxon details including: taxon name,
+#'     depth_1, depth_2, leaf_1, leaf_2, leaf_match (TRUE if leaves are equal),
+#'     and category}
+#' }
+#'
+#' @export
+#' @author Adrien Taudière
+#'
+#' @examples
+#' # Compare two taxonomic assignments from the same phyloseq object
+#' metrics <- tc_congruence_metrics(
+#'   subset_taxa(Glom_otu, Phyla == "Fungi" | Phylum__eukaryome_Glomero == "Fungi"),
+#'   ranks_1 = c("Phyla", "Class", "Order", "Family"),
+#'   ranks_2 = c(
+#'     "Phylum__eukaryome_Glomero", "Class__eukaryome_Glomero",
+#'     "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+#'   )
+#' )
+#'
+#' # View summary
+#' metrics$summary
+#'
+#' # Get taxa with leaf-level incongruence
+#' metrics$incongruent_leaves
+tc_congruence_metrics <- function(
+  physeq_1,
+  physeq_2 = NULL,
+  ranks_1,
+  ranks_2 = NULL
+) {
+  verify_pq(physeq_1)
+
+  if (is.null(physeq_2)) {
+    physeq_2 <- physeq_1
+  } else {
+    verify_pq(physeq_2)
+  }
+
+  if (is.null(ranks_2)) {
+    ranks_2 <- ranks_1
+  }
+
+  if(is.null(ranks_2) && is.null(physeq_2)) {
+    stop("Your are comparing two equivalent object. 
+    Either ranks_2 or physeq_2 must be provided.")
+  }
+
+  common_taxa <- intersect(taxa_names(physeq_1), taxa_names(physeq_2))
+  only_in_1_taxa <- setdiff(taxa_names(physeq_1), taxa_names(physeq_2))
+  only_in_2_taxa <- setdiff(taxa_names(physeq_2), taxa_names(physeq_1))
+
+  if (length(common_taxa) == 0) {
+    warning("No common taxa names between physeq_1 and physeq_2")
+    return(list(
+      summary = data.frame(
+        category = c("only_in_1", "only_in_2", "common"),
+        count = c(length(only_in_1_taxa), length(only_in_2_taxa), 0),
+        stringsAsFactors = FALSE
+      ),
+      only_in_1 = only_in_1_taxa,
+      only_in_2 = only_in_2_taxa,
+      total_congruent = character(0),
+      partial_1_deeper = character(0),
+      partial_2_deeper = character(0),
+      incongruent_leaves = character(0),
+      incongruent_nodes = character(0),
+      details = data.frame()
+    ))
+  }
+
+  tax_1 <- as.data.frame(physeq_1@tax_table[common_taxa, ranks_1, drop = FALSE])
+  tax_2 <- as.data.frame(physeq_2@tax_table[common_taxa, ranks_2, drop = FALSE])
+
+  clean_na <- function(x) {
+    x[x == "" | x == "NA_NA" | x == "NA"] <- NA
+    x
+  }
+  tax_1 <- as.data.frame(lapply(tax_1, clean_na), stringsAsFactors = FALSE)
+  tax_2 <- as.data.frame(lapply(tax_2, clean_na), stringsAsFactors = FALSE)
+  rownames(tax_1) <- common_taxa
+  rownames(tax_2) <- common_taxa
+
+  total_congruent <- character(0)
+  partial_1_deeper <- character(0)
+  partial_2_deeper <- character(0)
+  incongruent_leaves <- character(0)
+  incongruent_nodes <- character(0)
+  unclassified_both <- character(0)
+  classified_only_1 <- character(0)
+  classified_only_2 <- character(0)
+
+  details_list <- vector("list", length(common_taxa))
+
+  for (i in seq_along(common_taxa)) {
+    taxon <- common_taxa[i]
+    path_1 <- as.character(tax_1[taxon, ])
+    path_2 <- as.character(tax_2[taxon, ])
+
+    depth_1 <- sum(!is.na(path_1))
+    depth_2 <- sum(!is.na(path_2))
+
+    leaf_pos_1 <- if (depth_1 > 0) {max(which(!is.na(path_1)))} else {NA}
+    leaf_pos_2 <- if (depth_2 > 0) {max(which(!is.na(path_2)))} else  {NA}
+    last_valid_1 <- if (depth_1 > 0) {path_1[leaf_pos_1]} else  {NA}
+    last_valid_2 <- if (depth_2 > 0) {path_2[leaf_pos_2]} else  {NA}
+
+    leaf_match <- !is.na(last_valid_1) && !is.na(last_valid_2) &&
+      last_valid_1 == last_valid_2
+
+    details_list[[i]] <- data.frame(
+      taxon = taxon,
+      depth_1 = depth_1,
+      depth_2 = depth_2,
+      leaf_1 = last_valid_1,
+      leaf_2 = last_valid_2,
+      leaf_match = leaf_match,
+      stringsAsFactors = FALSE
+    )
+
+    if (depth_1 == 0 && depth_2 == 0) {
+      unclassified_both <- c(unclassified_both, taxon)
+      details_list[[i]]$category <- "unclassified_both"
+      next
+    }
+
+    if (depth_1 == 0) {
+      classified_only_2 <- c(classified_only_2, taxon)
+      details_list[[i]]$category <- "classified_only_2"
+      next
+    }
+
+    if (depth_2 == 0) {
+      classified_only_1 <- c(classified_only_1, taxon)
+      details_list[[i]]$category <- "classified_only_1"
+      next
+    }
+
+    max_leaf_pos <- max(leaf_pos_1, leaf_pos_2)
+    min_leaf_pos <- min(leaf_pos_1, leaf_pos_2)
+
+    paths_identical <- all(path_1 == path_2, na.rm = TRUE) &&
+      all(is.na(path_1) == is.na(path_2))
+
+    if (paths_identical) {
+      total_congruent <- c(total_congruent, taxon)
+      details_list[[i]]$category <- "congruent"
+    } else if (leaf_pos_1 != leaf_pos_2) {
+      shared_range <- seq_len(min_leaf_pos)
+      shared_values_match <- all(
+        path_1[shared_range] == path_2[shared_range],
+        na.rm = TRUE
+      )
+      shared_na_match <- all(is.na(path_1[shared_range]) == is.na(path_2[shared_range]))
+
+      if (shared_values_match && shared_na_match) {
+        if (leaf_pos_1 > leaf_pos_2) {
+          partial_1_deeper <- c(partial_1_deeper, taxon)
+          details_list[[i]]$category <- "partial_1_deeper"
+        } else {
+          partial_2_deeper <- c(partial_2_deeper, taxon)
+          details_list[[i]]$category <- "partial_2_deeper"
+        }
+      } else {
+        first_diff <- which(
+          path_1[shared_range] != path_2[shared_range] |
+            xor(is.na(path_1[shared_range]), is.na(path_2[shared_range]))
+        )[1]
+        if (!is.na(first_diff) && first_diff == min_leaf_pos) {
+          incongruent_leaves <- c(incongruent_leaves, taxon)
+          details_list[[i]]$category <- "incongruent_leaves"
+        } else {
+          incongruent_nodes <- c(incongruent_nodes, taxon)
+          details_list[[i]]$category <- "incongruent_nodes"
+        }
+      }
+    } else {
+      first_diff <- which(
+        path_1 != path_2 | xor(is.na(path_1), is.na(path_2))
+      )[1]
+      if (!is.na(first_diff) && first_diff == leaf_pos_1) {
+        incongruent_leaves <- c(incongruent_leaves, taxon)
+        details_list[[i]]$category <- "incongruent_leaves"
+      } else {
+        incongruent_nodes <- c(incongruent_nodes, taxon)
+        details_list[[i]]$category <- "incongruent_nodes"
+      }
+    }
+  }
+
+  details <- do.call(rbind, details_list)
+
+  n_leaf_match <- sum(details$leaf_match, na.rm = TRUE)
+  n_total <- length(taxa_names(physeq_1)) + length(only_in_2_taxa)
+  summary_df <- data.frame(
+    category = c(
+      "only_in_1", "only_in_2", "classified_only_1", "classified_only_2",
+      "unclassified_both", "total_congruent", "leaf_match_congruence", 
+      "partial_1_deeper", "partial_2_deeper",
+      "incongruent_leaves", "incongruent_nodes"
+    ),
+    count = c(
+      length(only_in_1_taxa), length(only_in_2_taxa), length(classified_only_1),
+      length(classified_only_2), length(unclassified_both), length(total_congruent),
+      n_leaf_match, length(partial_1_deeper), length(partial_2_deeper),
+      length(incongruent_leaves), length(incongruent_nodes)
+    ),
+    stringsAsFactors = FALSE
+  )
+  summary_df$percentage <- round(100 * summary_df$count / n_total, 2)
+
+  list(
+    summary = summary_df,
+    only_in_1 = only_in_1_taxa,
+    only_in_2 = only_in_2_taxa,
+    classified_only_1 = classified_only_1,
+    classified_only_2 = classified_only_2,
+    unclassified_both = unclassified_both,
+    total_congruent = total_congruent,
+    partial_1_deeper = partial_1_deeper,
+    partial_2_deeper = partial_2_deeper,
+    incongruent_leaves = incongruent_leaves,
+    incongruent_nodes = incongruent_nodes,
+    details = details
+  )
+}
+
+
+################################################################################
 #' Plot two taxonomy trees with linked correspondences
 #'
 #' @description
@@ -97,15 +369,15 @@
 #' # Using one phyloseq object for both trees
 #' # and different rank levels with link_by_taxa
 #' tc_linked_trees(
-#' Glom_otu,
-#' ranks_1 = c("Kingdom", "Class", "Order", "Family"),
-#' ranks_2 = c(
-#'   "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-#'   "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
-#' ), link_color = NULL,
-#' link_by_taxa = TRUE,
-#') +
-#' theme(legend.position = "none")
+#'   Glom_otu,
+#'   ranks_1 = c("Kingdom", "Class", "Order", "Family"),
+#'   ranks_2 = c(
+#'     "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
+#'     "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+#'   ), link_color = NULL,
+#'   link_by_taxa = TRUE,
+#' ) +
+#'   theme(legend.position = "none")
 #' }
 tc_linked_trees <- function(
   physeq_1,
@@ -408,22 +680,26 @@ tc_linked_trees <- function(
         )
     }
 
-    p <- p + scale_size_identity() 
+    p <- p + scale_size_identity()
 
     # add a title with the name of the ranks and phyloseq objects
-    if( !is.null(physeq_2) &&
-        !identical(physeq_1, physeq_2)) {
+    if (!is.null(physeq_2) &&
+      !identical(physeq_1, physeq_2)) {
       name_1 <- deparse(substitute(physeq_1))
       name_2 <- deparse(substitute(physeq_2))
     } else {
       name_1 <- deparse(substitute(physeq_1))
       name_2 <- deparse(substitute(physeq_1))
     }
-    p <- p + labs(title = 
-            paste0(name_1, " (left) vs ", name_2, " (right)"),
-      subtitle =      
-      paste0(paste(ranks_1, collapse = " > "), "\n",
-       paste(ranks_2, collapse = " > ")))
+    p <- p + labs(
+      title =
+        paste0(name_1, " (left) vs ", name_2, " (right)"),
+      subtitle =
+        paste0(
+          paste(ranks_1, collapse = " > "), "\n",
+          paste(ranks_2, collapse = " > ")
+        )
+    )
   }
 
   p + theme_void()

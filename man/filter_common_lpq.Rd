@@ -55,7 +55,7 @@ same samples or taxa
 \examples{
 lpq <- list_phyloseq(list(
   original = data_fungi,
-  mini = data_fungi_mini,  
+  mini = data_fungi_mini,
   rarefied = rarefy_even_depth(data_fungi)
 ))
 

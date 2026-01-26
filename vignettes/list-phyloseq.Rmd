@@ -38,7 +38,7 @@ This vignette demonstrates:
 
 ```{r setup}
 devtools::load_all()
-#library(comparpq)
+# library(comparpq)
 library(phyloseq)
 ```
 
@@ -103,7 +103,7 @@ cat("Same bioinfo pipeline:", lpq_repro@comparison$same_bioinfo_pipeline, "\n")
 
 This can also be useful to test for effect of stochasticity in some function.
 
-```{r reproducibility_example}
+```{r reproducibility_example_rarefy}
 # REPRODUCIBILITY: Same samples, same pipeline (default parameters)
 # Example: Running the same analysis twice to test reproducibility
 lpq_repro <- list_phyloseq(list(
@@ -132,7 +132,7 @@ lpq_robust <- list_phyloseq(
     fungi_swarm = postcluster_pq(data_fungi, method = "swarm"),
     fungi_mumu = mumu_pq(data_fungi)$new_physeq
   ),
-  same_bioinfo_pipeline = FALSE  # Different bioinformatics pipelines
+  same_bioinfo_pipeline = FALSE # Different bioinformatics pipelines
 )
 
 cat("Type:", lpq_robust@comparison$type_of_comparison, "\n")
@@ -150,9 +150,9 @@ When all phyloseq objects have the **same samples** but **different primers or t
 lpq_replic <- list_phyloseq(
   list(
     ITS1 = data_fungi,
-    ITS2 = data_fungi  # In real use, this would be data from a different primer
+    ITS2 = data_fungi # In real use, this would be data from a different primer
   ),
-  same_primer_seq_tech = FALSE  # Different primers/technologies
+  same_primer_seq_tech = FALSE # Different primers/technologies
 )
 
 cat("Type:", lpq_replic@comparison$type_of_comparison, "\n")
@@ -192,8 +192,8 @@ sample_names_fungi <- sample_names(data_fungi)
 n_samples <- length(sample_names_fungi)
 
 # Split samples into two groups (simulating different sample sets with shared modalities)
-group1_samples <- sample_names_fungi[1:floor(n_samples/2)]
-group2_samples <- sample_names_fungi[(floor(n_samples/2)+1):n_samples]
+group1_samples <- sample_names_fungi[1:floor(n_samples / 2)]
+group2_samples <- sample_names_fungi[(floor(n_samples / 2) + 1):n_samples]
 
 data_group1 <- prune_samples(group1_samples, data_fungi)
 data_group2 <- prune_samples(group2_samples, data_fungi)
@@ -250,7 +250,7 @@ cat("After removing:", length(lpq_removed), "\n")
 If you modify the phyloseq objects inside the list_phyloseq, use `update_list_phyloseq()` to recompute the summary table and comparison characteristics. You can also use this function to change the `same_primer_seq_tech` or `same_bioinfo_pipeline` parameters:
 
 ```{r update_lpq, eval=FALSE}
-lpq@phyloseq_list[[1]] <- rarefy_even_depth(lpq@phyloseq_list[[1]]) 
+lpq@phyloseq_list[[1]] <- rarefy_even_depth(lpq@phyloseq_list[[1]])
 lpq_updated <- update_list_phyloseq(lpq)
 
 # Change the comparison type by modifying parameters
@@ -281,9 +281,10 @@ cat("  Common samples:", lpq_to_filter@comparison$n_common_samples, "\n")
 
 # Filter to keep only common samples
 lpq_filtered <- filter_common_lpq(lpq_to_filter,
-                                   filter_samples = TRUE,
-                                   filter_taxa = FALSE,
-                                   verbose = TRUE)
+  filter_samples = TRUE,
+  filter_taxa = FALSE,
+  verbose = TRUE
+)
 
 # After filtering - both have the same samples
 cat("\nAfter filtering:\n")
@@ -297,8 +298,9 @@ You can also filter to common taxa:
 ```{r filter_taxa, eval=FALSE}
 # Filter both samples and taxa
 lpq_filtered_both <- filter_common_lpq(lpq_to_filter,
-                                        filter_samples = TRUE,
-                                        filter_taxa = TRUE)
+  filter_samples = TRUE,
+  filter_taxa = TRUE
+)
 ```
 
 ### Viewing Shared Modalities
@@ -384,7 +386,7 @@ pq1 <- lpq[["fungi"]]
 cat("Extracted phyloseq has", ntaxa(pq1), "taxa\n")
 
 # Subset to create a new list_phyloseq with fewer objects
-lpq_subset <- lpq[1]  # Returns a new list_phyloseq with only the first object
+lpq_subset <- lpq[1] # Returns a new list_phyloseq with only the first object
 ```
 
 ## Workflow Example: Comparing Rarefaction Effect
@@ -408,8 +410,9 @@ print(lpq_rarefaction)
 
 # Step 4: Filter to common samples for fair comparison
 lpq_common <- filter_common_lpq(lpq_rarefaction,
-                                 filter_samples = TRUE,
-                                 verbose = TRUE)
+  filter_samples = TRUE,
+  verbose = TRUE
+)
 
 # Step 5: Visualize shared taxa at different ranks
 upset_lpq(lpq_common, tax_rank = "Family")

@@ -57,9 +57,10 @@ library(comparpq)
 data("Glom_otu")
 
 # Create an interactive bubble plot
-bubbles_pq(Glom_otu, 
-          rank_color = "Family", 
-          min_nb_seq = 1000)
+bubbles_pq(Glom_otu,
+  rank_color = "Family",
+  min_nb_seq = 1000
+)
 
 # For taxonomic comparison analysis with mock communities:
 # 1. First prepare your data with fake taxa

@@ -3,9 +3,9 @@
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
 #' @description
-#' 
+#'
 #' Creates an interactive bubble plot visualization of taxa abundances from a
-#' phyloseq object using an Observable notebook.  
+#' phyloseq object using an Observable notebook.
 #'
 #' @inheritParams tc_points_matrix
 #' @param rank_label (character, default "Taxa") The name of the column in the

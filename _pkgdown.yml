@@ -27,10 +27,11 @@ reference:
   desc: "Functions for manipulating list_phyloseq objects"
   contents:
   - add_phyloseq
-  - remove_phyloseq
-  - update_list_phyloseq
   - filter_common_lpq
+  - n_levels_lpq
+  - remove_phyloseq
   - shared_mod_lpq
+  - update_list_phyloseq
 
 - title: "list_phyloseq Visualization"
   desc: "Visualization functions for list_phyloseq objects"
@@ -43,10 +44,18 @@ reference:
   desc: "Statistical analysis functions for list_phyloseq objects"
   contents:
   - adonis_lpq
+  - glmulti_lpq
+
+
+- title: "Taxonomic Utilities"
+  desc: "Functions for utilities on taxonomic data"
+  contents:
+  - taxo2tree
 
 - title: "Taxonomic Comparison Metrics"
   desc: "Functions for computing accuracy metrics comparing taxonomic assignments"
   contents:
+  - tc_congruence_metrics
   - tc_metrics_mock
   - tc_metrics_mock_vec
 
@@ -58,6 +67,8 @@ reference:
   - tc_circle
   - tc_points_matrix
   - rainplot_taxo_na
+  - tc_linked_trees
+  - tc_sankey
 
 - title: "Phyloseq Visualization"
   desc: "Interactive plotting functions for phyloseq objects"

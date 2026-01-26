@@ -46,7 +46,6 @@ test_that("list_phyloseq fails with non-phyloseq objects", {
 })
 
 test_that("list_phyloseq fails with mismatched names length", {
-
   expect_error(
     list_phyloseq(list(td$pq1, td$pq2), names = c("A")),
     "must match length"
@@ -58,7 +57,6 @@ test_that("list_phyloseq fails with mismatched names length", {
 # ==============================================================================
 
 test_that("list_phyloseq defaults to REPRODUCIBILITY for same samples", {
-
   # Same phyloseq twice -> same samples
   lpq <- list_phyloseq(list(run1 = td$pq1, run2 = td$pq1))
 
@@ -68,7 +66,6 @@ test_that("list_phyloseq defaults to REPRODUCIBILITY for same samples", {
 })
 
 test_that("list_phyloseq detects ROBUSTNESS with same_bioinfo_pipeline=FALSE", {
-
   lpq <- list_phyloseq(
     list(method_A = td$pq1, method_B = td$pq1),
     same_bioinfo_pipeline = FALSE
@@ -80,7 +77,6 @@ test_that("list_phyloseq detects ROBUSTNESS with same_bioinfo_pipeline=FALSE", {
 })
 
 test_that("list_phyloseq detects REPLICABILITY with same_primer_seq_tech=FALSE", {
-
   lpq <- list_phyloseq(
     list(ITS1 = td$pq1, ITS2 = td$pq1),
     same_primer_seq_tech = FALSE
@@ -91,7 +87,6 @@ test_that("list_phyloseq detects REPLICABILITY with same_primer_seq_tech=FALSE",
 })
 
 test_that("list_phyloseq detects NESTED_ROBUSTNESS for nested samples", {
-
   # Rarefied version has nested samples
   set.seed(123)
   rarefied <- rarefy_even_depth(td$pq1, sample.size = 1000, verbose = FALSE)
@@ -104,13 +99,12 @@ test_that("list_phyloseq detects NESTED_ROBUSTNESS for nested samples", {
 })
 
 test_that("list_phyloseq detects EXPLORATION for different samples with shared modalities", {
-
   # data_fungi and data_fungi_mini have different samples but shared modalities
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
 
   # Should be EXPLORATION or related type (depends on shared modalities)
   expect_true(lpq@comparison$type_of_comparison %in%
-                c("EXPLORATION", "SEPARATE_ANALYSIS", "NESTED_ROBUSTNESS"))
+    c("EXPLORATION", "SEPARATE_ANALYSIS", "NESTED_ROBUSTNESS"))
 })
 
 # ==============================================================================
@@ -118,7 +112,6 @@ test_that("list_phyloseq detects EXPLORATION for different samples with shared m
 # ==============================================================================
 
 test_that("list_phyloseq computes correct summary_table", {
-
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
 
   expect_true(tibble::is_tibble(lpq@summary_table))
@@ -137,7 +130,6 @@ test_that("list_phyloseq computes correct summary_table", {
 # ==============================================================================
 
 test_that("list_phyloseq computes correct comparison characteristics", {
-
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
 
   comp <- lpq@comparison
@@ -151,7 +143,6 @@ test_that("list_phyloseq computes correct comparison characteristics", {
 })
 
 test_that("list_phyloseq detects same samples correctly", {
-
   # Same phyloseq -> same samples
   lpq_same <- list_phyloseq(list(a = td$pq1, b = td$pq1))
   expect_true(lpq_same@comparison$same_samples)
@@ -337,7 +328,6 @@ test_that("remove_phyloseq fails when removing last object", {
 # ==============================================================================
 
 test_that("filter_common_lpq filters to common samples", {
-
   set.seed(123)
   rarefied <- rarefy_even_depth(td$pq1, sample.size = 1000, verbose = FALSE)
 
@@ -356,7 +346,6 @@ test_that("filter_common_lpq filters to common samples", {
 })
 
 test_that("filter_common_lpq preserves parameters", {
-
   set.seed(123)
   rarefied <- rarefy_even_depth(td$pq1, sample.size = 1000, verbose = FALSE)
 
@@ -385,7 +374,6 @@ test_that("filter_common_lpq returns original when no filtering requested", {
 })
 
 test_that("filter_common_lpq fails with no common samples", {
-
   # Create two phyloseq with different sample names
   pq1 <- td$pq1
   pq2 <- td$pq1

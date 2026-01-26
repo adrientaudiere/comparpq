@@ -1,11 +1,11 @@
 #' @title Formattable visualization for list_phyloseq summary
 #'
 #' @description
-#' 
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
-#' 
+#'
 #' Create a visualization table to display the summary_table from a list_phyloseq
 #' object using the formattable package with colored bars.
 #'
@@ -155,7 +155,8 @@ logical_formatter <- function(
 #'
 #' # Custom columns
 #' formattable_lpq(lpq,
-#'   columns = c("name", "n_samples", "n_taxa", "n_sequences"))
+#'   columns = c("name", "n_samples", "n_taxa", "n_sequences")
+#' )
 #'
 #' # Custom colors
 #' formattable_lpq(lpq, bar_colors = list(
@@ -419,11 +420,10 @@ formattable_lpq_full <- function(
 #' @export
 #' @examples
 #' lpq <- list_phyloseq(list(data1 = data_fungi, data2 = data_fungi_mini))
-#' 
+#'
 #' shared_mod_lpq(lpq)
 #' shared_mod_lpq(lpq, 10)
 shared_mod_lpq <- function(x, max_modalities = NULL) {
- 
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   shared_mod <- x@comparison$shared_sam_data_modalities
@@ -461,8 +461,8 @@ shared_mod_lpq <- function(x, max_modalities = NULL) {
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
 #' @description
-#' Create an UpSet plot (or Venn diagram) showing the shared 
-#' taxonomic values at a specified rank across all phyloseq objects 
+#' Create an UpSet plot (or Venn diagram) showing the shared
+#' taxonomic values at a specified rank across all phyloseq objects
 #' in a list_phyloseq.
 #'
 #' @param x (required) A list_phyloseq object.
@@ -478,7 +478,7 @@ shared_mod_lpq <- function(x, max_modalities = NULL) {
 #'   [ggVennDiagram::ggVennDiagram()].
 #'
 #' @return A ggplot2 object (both UpSet and Venn diagrams)
-#'
+#' @seealso [upset_lpq()]
 #' @details
 #' This function extracts the unique values for the specified taxonomic rank
 #' from each phyloseq object and creates a visualization showing the
@@ -488,22 +488,27 @@ shared_mod_lpq <- function(x, max_modalities = NULL) {
 #'
 #' @examples
 #' data("enterotype", package = "phyloseq")
-#' lpq <- list_phyloseq(list(fung = data_fungi, 
-#'   fung_mini= data_fungi_mini, 
+#' lpq <- list_phyloseq(list(
+#'   fung = data_fungi,
+#'   fung_mini = data_fungi_mini,
 #'   fung_rarefy = rarefy_even_depth(data_fungi),
-#'   enterotype = enterotype))
+#'   enterotype = enterotype
+#' ))
 #' upset_lpq(lpq, plot_type = "upset")
-#' lpq2 <- list_phyloseq(list(fung = data_fungi,
-#'  fung_mini= data_fungi_mini)) 
+#' lpq2 <- list_phyloseq(list(
+#'   fung = data_fungi,
+#'   fung_mini = data_fungi_mini
+#' ))
 #' upset_lpq(lpq2, tax_rank = "Family")
 #'
 #' @export
 upset_lpq <- function(
-    x,
-    tax_rank= "Genus",
-    plot_type = "auto",
-    remove_na = TRUE,
-    ...) {
+  x,
+  tax_rank = "Genus",
+  plot_type = "auto",
+  remove_na = TRUE,
+  ...
+) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   plot_type <- match.arg(plot_type, c("auto", "upset", "venn"))

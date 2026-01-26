@@ -25,14 +25,14 @@
 #' @examples
 #' tc_sankey(
 #'   Glom_otu,
-#'   "Class__eukaryome_Glomero", 
-#' "Class"
+#'   "Class__eukaryome_Glomero",
+#'   "Class"
 #' )
 #'
 #' # Fill by rank_2 instead
 #' tc_sankey(
 #'   Glom_otu,
-#'   "Class__eukaryome_Glomero", 
+#'   "Class__eukaryome_Glomero",
 #'   "Class",
 #'   fill_by = "rank_2"
 #' )

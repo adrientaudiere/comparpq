@@ -70,7 +70,7 @@ test_that("tc_metrics_mock_vec returns list with basic metrics when fake_taxa=FA
 
   # TN, MCC, ACC should NOT be present without fake taxa
 
-expect_false("TN" %in% names(result))
+  expect_false("TN" %in% names(result))
   expect_false("MCC" %in% names(result))
   expect_false("ACC" %in% names(result))
 })

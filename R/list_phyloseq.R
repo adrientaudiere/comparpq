@@ -1,7 +1,7 @@
 #' @title S7 class for comparing phyloseq objects
 #'
 #' @description
-#' 
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
@@ -107,12 +107,12 @@ compute_phyloseq_summary <- function(
   )
 
   if (compute_kmer_dist) {
-    if(verbose){
+    if (verbose) {
       cli::cli_alert_info(
         "Computing mean {kmer_dist}-mer distance for phyloseq object '{name}'"
       )
     }
-    tib$mean_kmer_dist = if (
+    tib$mean_kmer_dist <- if (
       !is.null(phyloseq::refseq(physeq, errorIfNULL = FALSE))
     ) {
       seqs <- ape::as.DNAbin(phyloseq::refseq(physeq))
@@ -194,7 +194,7 @@ check_nested_samples <- function(physeq_list) {
     return(list(is_nested = FALSE, nesting_structure = NULL))
   }
 
- # Check all pairwise combinations for subset relationships
+  # Check all pairwise combinations for subset relationships
   nested_pairs <- list()
 
   for (i in seq_len(n)) {
@@ -351,11 +351,12 @@ get_common_taxa <- function(physeq_list) {
 #' @return A list with `type` (character) and `description` (character)
 #' @noRd
 determine_comparison_type <- function(
-    same_samples,
-    nested_info,
-    has_shared_modalities,
-    same_primer_seq_tech = TRUE,
-    same_bioinfo_pipeline = TRUE) {
+  same_samples,
+  nested_info,
+  has_shared_modalities,
+  same_primer_seq_tech = TRUE,
+  same_bioinfo_pipeline = TRUE
+) {
   if (same_samples) {
     # Same samples: differentiate based on pipeline and primer/technology
     if (!same_primer_seq_tech) {
@@ -432,9 +433,10 @@ determine_comparison_type <- function(
 #' @return A list of comparison characteristics
 #' @noRd
 build_comparison_characteristics <- function(
-    physeq_list,
-    same_primer_seq_tech = TRUE,
-    same_bioinfo_pipeline = TRUE) {
+  physeq_list,
+  same_primer_seq_tech = TRUE,
+  same_bioinfo_pipeline = TRUE
+) {
   common_samples <- get_common_samples(physeq_list)
   common_taxa <- get_common_taxa(physeq_list)
   same_samples <- check_same_samples(physeq_list)
@@ -487,7 +489,7 @@ build_comparison_characteristics <- function(
 
 # S7 Class Definition ----------------------------------------------------------
 
-#' @title list_phyloseq S7 class
+#' list_phyloseq S7 class
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
@@ -569,11 +571,10 @@ list_phyloseq <- S7::new_class(
       class = S7::class_list
     )
   ),
-  constructor = function(
-      physeq_list,
-      names = NULL,
-      same_primer_seq_tech = TRUE,
-      same_bioinfo_pipeline = TRUE) {
+  constructor = function(physeq_list,
+                         names = NULL,
+                         same_primer_seq_tech = TRUE,
+                         same_bioinfo_pipeline = TRUE) {
     if (!is.null(names)) {
       if (length(names) != length(physeq_list)) {
         stop("Length of 'names' must match length of 'physeq_list'")
@@ -601,11 +602,7 @@ list_phyloseq <- S7::new_class(
 
 # Methods ----------------------------------------------------------------------
 
-#' Print method for list_phyloseq
-#' @name print.list_phyloseq
-#' @param x A list_phyloseq object
-#' @param ... Additional arguments (ignored)
-#' @export
+# Print method for list_phyloseq
 S7::method(print, list_phyloseq) <- function(x, ...) {
   cat(
     "list_phyloseq object with",
@@ -629,27 +626,17 @@ S7::method(print, list_phyloseq) <- function(x, ...) {
   invisible(x)
 }
 
-#' Length method for list_phyloseq
-#' @name length.list_phyloseq
-#' @param x A list_phyloseq object
-#' @export
+# Length method for list_phyloseq
 S7::method(length, list_phyloseq) <- function(x) {
   length(x@phyloseq_list)
 }
 
-#' Names method for list_phyloseq
-#' @name names.list_phyloseq
-#' @param x A list_phyloseq object
-#' @export
+# Names method for list_phyloseq
 S7::method(names, list_phyloseq) <- function(x) {
   names(x@phyloseq_list)
 }
 
-#' Subset method for list_phyloseq
-#' @name sub-.list_phyloseq
-#' @param x A list_phyloseq object
-#' @param i Index or name(s) to subset
-#' @export
+# Subset method for list_phyloseq
 S7::method(`[`, list_phyloseq) <- function(x, i) {
   list_phyloseq(
     x@phyloseq_list[i],
@@ -658,11 +645,7 @@ S7::method(`[`, list_phyloseq) <- function(x, i) {
   )
 }
 
-#' Extract method for list_phyloseq (single element)
-#' @name sub-sub-.list_phyloseq
-#' @param x A list_phyloseq object
-#' @param i Index or name to extract
-#' @export
+# Extract method for list_phyloseq (single element)
 S7::method(`[[`, list_phyloseq) <- function(x, i) {
   x@phyloseq_list[[i]]
 }
@@ -687,13 +670,14 @@ S7::method(`[[`, list_phyloseq) <- function(x, i) {
 #' @return An updated list_phyloseq object
 #' @export
 update_list_phyloseq <- function(
-    x,
-    same_primer_seq_tech = NULL,
-    same_bioinfo_pipeline = NULL) {
+  x,
+  same_primer_seq_tech = NULL,
+  same_bioinfo_pipeline = NULL
+) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   # Preserve original values if not specified
- if (is.null(same_primer_seq_tech)) {
+  if (is.null(same_primer_seq_tech)) {
     same_primer_seq_tech <- x@comparison$same_primer_seq_tech
   }
   if (is.null(same_bioinfo_pipeline)) {
@@ -795,7 +779,7 @@ remove_phyloseq <- function(x, name) {
 #' @examples
 #' lpq <- list_phyloseq(list(
 #'   original = data_fungi,
-#'   mini = data_fungi_mini,  
+#'   mini = data_fungi_mini,
 #'   rarefied = rarefy_even_depth(data_fungi)
 #' ))
 #'
@@ -810,11 +794,12 @@ remove_phyloseq <- function(x, name) {
 #'
 #' @export
 filter_common_lpq <- function(
-    x,
-    filter_samples = TRUE,
-    filter_taxa = FALSE,
-    clean = TRUE,
-    verbose = TRUE) {
+  x,
+  filter_samples = TRUE,
+  filter_taxa = FALSE,
+  clean = TRUE,
+  verbose = TRUE
+) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   if (!filter_samples && !filter_taxa) {
@@ -878,7 +863,6 @@ filter_common_lpq <- function(
 }
 
 
-
 #' Display shared sample_data modalities
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
@@ -897,11 +881,10 @@ filter_common_lpq <- function(
 #' @export
 #' @examples
 #' lpq <- list_phyloseq(list(data1 = data_fungi, data2 = data_fungi_mini))
-#' 
+#'
 #' shared_mod_lpq(lpq)
 #' shared_mod_lpq(lpq, 10)
 shared_mod_lpq <- function(x, max_modalities = NULL) {
- 
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   shared_mod <- x@comparison$shared_sam_data_modalities
@@ -931,4 +914,84 @@ shared_mod_lpq <- function(x, max_modalities = NULL) {
 
   df <- dplyr::bind_rows(df_list)
   return(df)
+}
+
+
+#' Count unique taxonomic levels across phyloseq objects
+#'
+#' @description
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' Creates a summary table showing the number of unique taxonomic values
+#' (levels) for each taxonomic rank across all phyloseq objects in a
+#' list_phyloseq. This is useful for comparing taxonomic resolution and
+#' diversity across different datasets or classification methods.
+#'
+#' @param x (required) A list_phyloseq object.
+#' @param taxonomic_ranks (character vector, required) Names of taxonomic ranks
+#'   to count. Must be present in the tax_table of ALL phyloseq objects in the
+#'   list.
+#' @param na.rm (logical, default TRUE) If TRUE, NA values are excluded when
+#'   counting unique levels.
+#'
+#' @return A data frame with:
+#' \describe{
+#'   \item{Rows}{One row per phyloseq object (named by the phyloseq name)}
+#'   \item{Columns}{One column per taxonomic rank, containing the count of
+#'     unique values for that rank in that phyloseq object}
+#' }
+#'
+#' @export
+#' @author Adrien Taudière
+#'
+#' @seealso [upset_lpq()]
+#' @examples
+#' lpq <- list_phyloseq(list(fungi = data_fungi, fungi_mini = data_fungi_mini))
+#'
+#' n_levels_lpq(lpq, c("Phylum", "Class", "Order", "Family", "Genus"))
+n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
+  stopifnot(inherits(x, "comparpq::list_phyloseq"))
+
+  pq_names <- names(x@phyloseq_list)
+
+  missing_ranks_per_pq <- purrr::imap(x@phyloseq_list, function(pq, name) {
+    available_ranks <- colnames(pq@tax_table)
+    missing <- setdiff(taxonomic_ranks, available_ranks)
+    if (length(missing) > 0) {
+      return(list(name = name, missing = missing))
+    }
+    NULL
+  })
+
+  missing_ranks_per_pq <- purrr::compact(missing_ranks_per_pq)
+
+  if (length(missing_ranks_per_pq) > 0) {
+    msg <- purrr::map_chr(missing_ranks_per_pq, function(m) {
+      paste0("  - ", m$name, ": missing ", paste(m$missing, collapse = ", "))
+    })
+    stop(
+      "Some taxonomic_ranks are missing in the following phyloseq objects:\n",
+      paste(msg, collapse = "\n")
+    )
+  }
+
+  count_levels <- function(pq, ranks, na.rm) {
+    tax_df <- as.data.frame(pq@tax_table[, ranks, drop = FALSE])
+    purrr::map_int(tax_df, function(col) {
+      if (na.rm) {
+        length(unique(col[!is.na(col) & col != "" & col != "NA_NA"]))
+      } else {
+        length(unique(col))
+      }
+    })
+  }
+
+  counts_list <- purrr::map(x@phyloseq_list, count_levels, ranks = taxonomic_ranks, na.rm = na.rm)
+
+  result <- do.call(rbind, counts_list)
+  result <- as.data.frame(result)
+  rownames(result) <- pq_names
+
+  result
 }

@@ -2,10 +2,7 @@
 % Please edit documentation in R/list_phyloseq.R
 \name{list_phyloseq}
 \alias{list_phyloseq}
-\title{S7 class for comparing phyloseq objects\if{html}{\out{
-<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-}}}
+\title{S7 class for comparing phyloseq objects}
 \usage{
 list_phyloseq(
   physeq_list,
@@ -31,6 +28,12 @@ when comparing different clustering methods, taxonomic databases, or
 analysis parameters.}
 }
 \description{
+\if{html}{\out{
+<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+}}
+
+
 A class to store and compare multiple phyloseq objects. It contains:
 \itemize{
 \item A list of phyloseq objects
@@ -41,6 +44,12 @@ A class to store and compare multiple phyloseq objects. It contains:
 An S7 class to store and compare multiple phyloseq objects.
 }
 \details{
+\if{html}{\out{
+<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+}}
+
+
 The combination of \code{same_primer_seq_tech} and \code{same_bioinfo_pipeline} along
 with detected sample overlap determines the comparison type:\tabular{llll}{
    same_samples \tab same_primer_seq_tech \tab same_bioinfo_pipeline \tab Type \cr

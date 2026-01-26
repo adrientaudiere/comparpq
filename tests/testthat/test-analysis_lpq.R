@@ -212,3 +212,70 @@ test_that("adonis_lpq handles errors in individual phyloseq gracefully", {
 
   expect_s3_class(result, "adonis_lpq_result")
 })
+
+# ==============================================================================
+# Tests for glmulti_lpq
+# ==============================================================================
+
+test_that("glmulti_lpq runs model selection on each phyloseq", {
+  lpq <- create_test_lpq_for_adonis()
+
+  result <- glmulti_lpq(lpq, formula = "Hill_0 ~ Height", verbose = FALSE)
+
+  expect_s3_class(result, "glmulti_lpq_result")
+  expect_true(tibble::is_tibble(result))
+  expect_true("name" %in% colnames(result))
+  expect_true("variable" %in% colnames(result))
+  expect_true("importance" %in% colnames(result))
+})
+
+test_that("glmulti_lpq returns results for all phyloseq objects", {
+  lpq <- create_test_lpq_for_adonis()
+
+  result <- glmulti_lpq(lpq, formula = "Hill_0 ~ Height", verbose = FALSE)
+
+  # Should have entries for both phyloseq objects
+  expect_true(all(c("original", "copy") %in% result$name))
+})
+
+test_that("glmulti_lpq respects hill_scales parameter", {
+  lpq <- create_test_lpq_for_adonis()
+
+  result <- glmulti_lpq(
+    lpq,
+    formula = "Hill_1 ~ Height",
+    hill_scales = c(1),
+    verbose = FALSE
+  )
+
+  expect_s3_class(result, "glmulti_lpq_result")
+})
+
+test_that("glmulti_lpq fails with SEPARATE_ANALYSIS type", {
+  data("enterotype", package = "phyloseq")
+
+  lpq <- list_phyloseq(list(
+    fungi = data_fungi_mini,
+    enterotype = enterotype
+  ))
+
+  expect_error(
+    glmulti_lpq(lpq, formula = "Hill_0 ~ Height", verbose = FALSE)
+  )
+})
+
+test_that("glmulti_lpq fails with invalid formula variables", {
+  lpq <- create_test_lpq_for_adonis()
+
+  expect_error(
+    glmulti_lpq(lpq, formula = "Hill_0 ~ NonexistentVariable", verbose = FALSE),
+    "not found"
+  )
+})
+
+test_that("glmulti_lpq fails with non-list_phyloseq input", {
+  expect_error(
+    glmulti_lpq(data_fungi, formula = "Hill_0 ~ Height"),
+    "list_phyloseq"
+  )
+})

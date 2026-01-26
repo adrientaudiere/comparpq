@@ -46,13 +46,20 @@ for 2-4 sets.
 }
 \examples{
 data("enterotype", package = "phyloseq")
-lpq <- list_phyloseq(list(fung = data_fungi, 
-  fung_mini= data_fungi_mini, 
+lpq <- list_phyloseq(list(
+  fung = data_fungi,
+  fung_mini = data_fungi_mini,
   fung_rarefy = rarefy_even_depth(data_fungi),
-  enterotype = enterotype))
+  enterotype = enterotype
+))
 upset_lpq(lpq, plot_type = "upset")
-lpq2 <- list_phyloseq(list(fung = data_fungi,
- fung_mini= data_fungi_mini)) 
+lpq2 <- list_phyloseq(list(
+  fung = data_fungi,
+  fung_mini = data_fungi_mini
+))
 upset_lpq(lpq2, tax_rank = "Family")
 
+}
+\seealso{
+\code{\link[=upset_lpq]{upset_lpq()}}
 }

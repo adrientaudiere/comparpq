@@ -2,10 +2,7 @@
 % Please edit documentation in R/formattable_lpq.R
 \name{formattable_lpq}
 \alias{formattable_lpq}
-\title{Formattable visualization for list_phyloseq summary\if{html}{\out{
-<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-}}}
+\title{Formattable visualization for list_phyloseq summary}
 \usage{
 formattable_lpq(
   x,
@@ -44,6 +41,12 @@ transformation to numeric columns with a range greater than 1000.}
 A formattable object
 }
 \description{
+\if{html}{\out{
+<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+}}
+
+
 Create a visualization table to display the summary_table from a list_phyloseq
 object using the formattable package with colored bars.
 
@@ -70,7 +73,8 @@ formattable_lpq(lpq)
 
 # Custom columns
 formattable_lpq(lpq,
-  columns = c("name", "n_samples", "n_taxa", "n_sequences"))
+  columns = c("name", "n_samples", "n_taxa", "n_sequences")
+)
 
 # Custom colors
 formattable_lpq(lpq, bar_colors = list(

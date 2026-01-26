@@ -122,8 +122,8 @@ resolve_taxo_conflict <- function(physeq,
 
   # remove pattern_tax_ranks but not new_names
   if (!keep_tax_ranks) {
-    taxtab <- taxtab |>      
-      dplyr::select(-dplyr::matches(paste(pattern_tax_ranks, collapse = "|")) | 
+    taxtab <- taxtab |>
+      dplyr::select(-dplyr::matches(paste(pattern_tax_ranks, collapse = "|")) |
         all_of(new_names))
   }
 
@@ -133,9 +133,6 @@ resolve_taxo_conflict <- function(physeq,
   return(new_physeq)
 }
 ################################################################################
-
-
-
 
 
 ################################################################################
@@ -265,8 +262,6 @@ rename_ranks_pq <- function(physeq,
   return(new_physeq)
 }
 ################################################################################
-
-
 
 
 ################################################################################

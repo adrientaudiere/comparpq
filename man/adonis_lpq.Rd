@@ -77,11 +77,10 @@ wraps \code{\link[vegan:adonis]{vegan::adonis2()}}.
 }
 \examples{
 \dontrun{
-# Create a list_phyloseq with ROBUSTNESS comparison
 lpq <- list_phyloseq(
   list(
-    fungi = data_fungi_woNA4height,
-    fungi_clust = postcluster_pq(data_fungi_woNA4height)
+    fungi = data_fungi,
+    fungi_clust = postcluster_pq(data_fungi)
   ),
   same_bioinfo_pipeline = FALSE
 )
