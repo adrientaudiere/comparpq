@@ -1,0 +1,998 @@
+---
+title: "Benchmarking Differential Abundance Methods"
+author: "Adrien Taudière"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Benchmarking Differential Abundance Methods}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+ collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 10,
+  fig.height = 7
+)
+```
+
+## Introduction
+
+This vignette provides a comprehensive benchmark of differential abundance (DA)
+methods for microbiome data, inspired by the
+[benchdamic](https://bioconductor.org/packages/benchdamic/) package approach.
+We compare seven methods:
+
+| Method | Package | Approach |
+|--------|---------|----------|
+| **ALDEx2** | ALDEx2 | CLR transformation + Monte Carlo sampling from Dirichlet |
+| **ANCOM-BC2** | ANCOMBC | Linear regression with bias correction |
+| **MaAsLin3** | maaslin3 | Generalized linear models (abundance + prevalence) |
+| **DESeq2** | DESeq2 | Negative binomial GLM with size factor normalization |
+| **edgeR** | edgeR | Negative binomial GLM with TMM normalization |
+| **limma-voom** | limma | Linear models on voom-transformed counts |
+| **radEmu** | radEmu | Robust estimation for relative abundance data |
+
+The benchmark evaluates:
+
+1. **Method concordance**: Agreement between methods on significant taxa
+2. **Effect size correlation**: Consistency of effect size estimates
+3. **Sensitivity/Specificity trade-off**: Using simulated spike-in data
+4. **Computational considerations**: Runtime and ease of use
+
+## Setup
+
+```{r load_packages}
+library(comparpq)
+library(phyloseq)
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(tibble)
+library(patchwork)
+
+# For DA methods
+library(DESeq2)
+library(edgeR)
+library(limma)
+library(radEmu)
+library(ALDEx2)
+library(BiocParallel)
+
+```
+
+## Helper Functions
+
+We define wrapper functions to standardize output across methods.
+
+```{r helper_functions}
+#' Run DESeq2 on phyloseq object
+#' @param physeq A phyloseq object
+#' @param formula Formula for the design (e.g., "~ condition")
+#' @param contrast Character vector for contrast (e.g., c("condition", "B", "A"))
+#' @param nclusters Number of cores for parallel processing (default 1)
+#' @return Data frame with taxon, effect (log2FC), pvalue, qvalue
+run_deseq2 <- function(physeq, formula, contrast, nclusters = 1) {
+  # Convert to DESeq2
+  dds <- phyloseq_to_deseq2(physeq, as.formula(formula))
+
+  # Set up parallel processing
+  if (nclusters > 1) {
+    BPPARAM <- BiocParallel::MulticoreParam(workers = nclusters)
+  } else {
+    BPPARAM <- BiocParallel::SerialParam()
+  }
+
+  # Run DESeq2 with geometric mean estimation that handles zeros
+  dds <- DESeq2::estimateSizeFactors(dds, type = "poscounts")
+  dds <- DESeq2::estimateDispersions(dds, fitType = "local")
+  dds <- DESeq2::nbinomWaldTest(dds)
+
+  # Get results
+  res <- DESeq2::results(dds, contrast = contrast, parallel = nclusters > 1, BPPARAM = BPPARAM)
+
+  data.frame(
+    taxon = rownames(res),
+    effect = res$log2FoldChange,
+    pvalue = res$pvalue,
+    qvalue = res$padj,
+    method = "DESeq2",
+    stringsAsFactors = FALSE
+  ) |>
+    filter(!is.na(effect))
+}
+
+#' Run edgeR on phyloseq object
+#' @param physeq A phyloseq object
+#' @param group_var Name of grouping variable in sample_data
+#' @param contrast_levels Two-element vector: c(treatment, reference)
+#' @return Data frame with taxon, effect (logFC), pvalue, qvalue
+run_edgeR <- function(physeq, group_var, contrast_levels) {
+  # Extract data
+  counts <- as(otu_table(physeq), "matrix")
+  if (!taxa_are_rows(physeq)) counts <- t(counts)
+
+  group <- factor(sample_data(physeq)[[group_var]])
+  group <- relevel(group, ref = contrast_levels[2])
+
+  # Create DGEList
+  dge <- edgeR::DGEList(counts = counts, group = group)
+
+  # Filter low counts
+  keep <- edgeR::filterByExpr(dge)
+  dge <- dge[keep, , keep.lib.sizes = FALSE]
+
+  # Normalize
+  dge <- edgeR::calcNormFactors(dge, method = "TMM")
+
+  # Design matrix
+  design <- model.matrix(~ group)
+
+ # Estimate dispersion
+  dge <- edgeR::estimateDisp(dge, design)
+
+  # Fit model
+  fit <- edgeR::glmQLFit(dge, design)
+  qlf <- edgeR::glmQLFTest(fit, coef = 2)
+
+  # Get results
+  res <- edgeR::topTags(qlf, n = Inf)$table
+
+  data.frame(
+    taxon = rownames(res),
+    effect = res$logFC,
+    pvalue = res$PValue,
+    qvalue = res$FDR,
+    method = "edgeR",
+    stringsAsFactors = FALSE
+  )
+}
+
+#' Run limma-voom on phyloseq object
+#' @param physeq A phyloseq object
+#' @param group_var Name of grouping variable in sample_data
+#' @param contrast_levels Two-element vector: c(treatment, reference)
+#' @return Data frame with taxon, effect (logFC), pvalue, qvalue
+run_limma_voom <- function(physeq, group_var, contrast_levels) {
+  # Extract data
+  counts <- as(otu_table(physeq), "matrix")
+  if (!taxa_are_rows(physeq)) counts <- t(counts)
+
+  group <- factor(sample_data(physeq)[[group_var]])
+  group <- relevel(group, ref = contrast_levels[2])
+
+  # Create DGEList for normalization
+  dge <- edgeR::DGEList(counts = counts, group = group)
+
+  # Filter low counts
+  keep <- edgeR::filterByExpr(dge)
+  dge <- dge[keep, , keep.lib.sizes = FALSE]
+
+  # Normalize
+  dge <- edgeR::calcNormFactors(dge, method = "TMM")
+
+  # Design matrix
+  design <- model.matrix(~ group)
+
+  # Voom transformation
+  v <- limma::voom(dge, design, plot = FALSE)
+
+  # Fit linear model
+  fit <- limma::lmFit(v, design)
+  fit <- limma::eBayes(fit)
+
+  # Get results
+  res <- limma::topTable(fit, coef = 2, number = Inf, sort.by = "none")
+
+  data.frame(
+    taxon = rownames(res),
+    effect = res$logFC,
+    pvalue = res$P.Value,
+    qvalue = res$adj.P.Val,
+    method = "limma-voom",
+    stringsAsFactors = FALSE
+  )
+}
+
+#' Run ALDEx2 on phyloseq object
+#' @param physeq A phyloseq object
+#' @param group_var Name of grouping variable in sample_data
+#' @param contrast_levels Two-element vector: c(treatment, reference)
+#' @param nclusters Number of cores for parallel processing (default 1)
+#' @return Data frame with taxon, effect, pvalue, qvalue
+run_aldex2 <- function(physeq, group_var, contrast_levels, nclusters = 1) {
+
+  # Convert factor to character to avoid ALDEx2 error
+  sample_data(physeq)[[group_var]] <- as.character(sample_data(physeq)[[group_var]])
+
+  # Extract counts and conditions for direct ALDEx2 call
+  counts <- as(otu_table(physeq), "matrix")
+  if (!taxa_are_rows(physeq)) counts <- t(counts)
+
+  conds <- sample_data(physeq)[[group_var]]
+
+  # Run ALDEx2 with parallel support
+  clr <- ALDEx2::aldex.clr(
+    counts,
+    conds,
+    mc.samples = 128,
+    useMC = nclusters > 1
+  )
+  tt <- ALDEx2::aldex.ttest(clr)
+  effect <- ALDEx2::aldex.effect(clr, useMC = nclusters > 1)
+  res <- cbind(tt, effect)
+
+  data.frame(
+    taxon = rownames(res),
+    effect = res$effect,
+    pvalue = res$wi.ep,
+    qvalue = res$wi.eBH,
+    method = "ALDEx2",
+    stringsAsFactors = FALSE
+  )
+}
+
+#' Run ANCOM-BC2 on phyloseq object
+#' @param physeq A phyloseq object
+#' @param group_var Name of grouping variable in sample_data
+#' @param contrast_levels Two-element vector: c(treatment, reference)
+#' @param nclusters Number of cores for parallel processing (default 1)
+#' @return Data frame with taxon, effect (lfc), pvalue, qvalue
+run_ancombc <- function(physeq, group_var, contrast_levels, nclusters = 1) {
+  res <- MiscMetabar::ancombc_pq(
+    physeq,
+    fact = group_var,
+    levels_fact = contrast_levels,
+    tax_level = NULL,
+    n_cl = nclusters
+  )
+
+  # Find the correct column names (depends on factor levels)
+  lfc_col <- grep("^lfc_", colnames(res$res), value = TRUE)[1]
+  p_col <- grep("^p_", colnames(res$res), value = TRUE)[1]
+  q_col <- grep("^q_", colnames(res$res), value = TRUE)[1]
+
+  data.frame(
+    taxon = res$res$taxon,
+    effect = res$res[[lfc_col]],
+    pvalue = res$res[[p_col]],
+    qvalue = res$res[[q_col]],
+    method = "ANCOM-BC2",
+    stringsAsFactors = FALSE
+  ) |>
+    filter(!is.na(effect))
+}
+
+#' Run MaAsLin3 on phyloseq object
+#' @param physeq A phyloseq object
+#' @param group_var Name of grouping variable in sample_data
+#' @param contrast_levels Two-element vector: c(treatment, reference)
+#' @param nclusters Number of cores for parallel processing (default 1)
+#' @return Data frame with taxon, effect (coef), pvalue, qvalue
+run_maaslin3 <- function(physeq, group_var, contrast_levels, nclusters = 1) {
+  res <- maaslin3_pq(
+    physeq,
+    formula = paste0("~ ", group_var),
+    reference = setNames(list(contrast_levels[2]), group_var),
+    output = tempfile(),
+    correction_for_sample_size = TRUE,
+    plot_summary_plot = FALSE,
+    plot_associations = FALSE,
+    cores = nclusters
+  )
+
+  df <- res$fit_data_abundance$results |>
+    filter(grepl(group_var, metadata))
+
+  data.frame(
+    taxon = df$feature,
+    effect = df$coef,
+    pvalue = df$pval_individual,
+    qvalue = df$qval_individual,
+    method = "MaAsLin3",
+    stringsAsFactors = FALSE
+  ) |>
+    filter(!is.na(effect))
+}
+
+#' Run radEmu on phyloseq object
+#' @param physeq A phyloseq object
+#' @param group_var Name of grouping variable in sample_data
+#' @param contrast_levels Two-element vector: c(treatment, reference)
+#' @param return_wald_p If TRUE (default), use fast Wald p-values. If FALSE,
+#'   use slower but more robust score tests with two-step filtering.
+#' @param effect_threshold Minimum absolute effect to test with score tests
+#'   (only used when return_wald_p = FALSE, default 0.5)
+#' @param max_taxa_to_test Maximum number of taxa to test with score tests
+#'   (only used when return_wald_p = FALSE, default NULL = all)
+#' @param nclusters Number of cores for parallel processing (default 1)
+#' @param ... Additional arguments passed to `radEmu::emuFit()`
+#' @return Data frame with taxon, effect (estimate), pvalue, qvalue
+run_emuFit <- function(physeq, 
+group_var, 
+contrast_levels,
+                       return_wald_p = TRUE,
+                       effect_threshold = 0.5,
+                        max_taxa_to_test = NULL,
+                       nclusters = 1, ...) {
+  # Remove samples with zero total counts (radEmu requirement)
+  sample_totals <- sample_sums(physeq)
+  physeq <- prune_samples(sample_totals > 0, physeq)
+
+  # Relevel factor so reference is first
+  sample_data(physeq)[[group_var]] <- factor(
+    sample_data(physeq)[[group_var]],
+    levels = c(contrast_levels[2], contrast_levels[1])
+  )
+
+  if (return_wald_p) {
+    # Fast approach: single fit with Wald p-values
+    fit <- radEmu::emuFit(
+      formula = as.formula(paste0("~ ", group_var)),
+      Y = physeq,
+      run_score_tests = FALSE,
+      return_wald_p=return_wald_p,
+      ...
+    )
+
+    # Extract results (Wald p-values are in pval column)
+    coef_df <- fit$coef |>
+      filter(covariate != "(Intercept)")
+
+    # Adjust p-values for multiple testing
+    coef_df$wald_q <- p.adjust(coef_df$wald_p, method = "BH")
+
+    return(data.frame(
+      taxon = coef_df$category,
+      effect = coef_df$estimate,
+      pvalue = coef_df$wald_p,
+      qvalue = coef_df$wald_q,
+      method = "radEmu_wald",
+      stringsAsFactors = FALSE
+    ) |>
+      filter(!is.na(effect)))
+  }
+
+ # Two-step approach with score tests (slower but more robust)
+
+  # Step 1: Run emuFit WITHOUT testing (fast) to get effect estimates
+  fit_effects <- radEmu::emuFit(
+    formula = as.formula(paste0("~ ", group_var)),
+    Y = physeq,
+    run_score_tests = FALSE,
+    ...
+  )
+
+  # Extract effect estimates
+  coef_df <- fit_effects$coef
+  coef_df$abs_effect <- abs(coef_df$estimate)
+
+  # Step 2: Select taxa with high effects to test
+  # Filter by threshold and optionally limit to max_taxa_to_test
+  taxa_to_test <- coef_df |>
+    filter(covariate != "(Intercept)", abs_effect >= effect_threshold) |>
+    arrange(desc(abs_effect))
+
+  if (!is.null(max_taxa_to_test) && max_taxa_to_test > 0) {
+    taxa_to_test <- head(taxa_to_test, max_taxa_to_test)
+  }
+
+  if (nrow(taxa_to_test) == 0) {
+    # No taxa meet threshold - return all with NA p-values
+    return(data.frame(
+      taxon = coef_df$category[coef_df$covariate != "(Intercept)"],
+      effect = coef_df$estimate[coef_df$covariate != "(Intercept)"],
+      pvalue = NA_real_,
+      qvalue = NA_real_,
+      method = "radEmu",
+      stringsAsFactors = FALSE
+    ))
+  }
+
+  # Get indices of taxa to test (j values)
+  taxa_names_vec <- taxa_names(physeq)
+  j_to_test <- match(taxa_to_test$category, taxa_names_vec)
+
+  # Step 3: Run emuFit WITH score testing only for selected taxa
+  fit_tested <- radEmu::emuFit(
+    formula = as.formula(paste0("~ ", group_var)),
+    Y = physeq,
+    test_kj = data.frame(k = 2, j = j_to_test),
+    parallel = nclusters > 1,
+    ncores = nclusters
+  )
+
+  # Extract tested results
+  tested_res <- fit_tested$coef |>
+    filter(covariate != "(Intercept)")
+
+  # Merge with all effects
+  all_effects <- coef_df |>
+    filter(covariate != "(Intercept)") |>
+    dplyr::select(category, estimate)
+
+  res <- all_effects |>
+    left_join(
+      tested_res |> dplyr::select(category, pval),
+      by = "category"
+    )
+
+  # Adjust p-values for multiple testing (only for tested taxa)
+  res$qvalue <- p.adjust(res$pval, method = "BH")
+
+  data.frame(
+    taxon = res$category,
+    effect = res$estimate,
+    pvalue = res$pval,
+    qvalue = res$qvalue,
+    method = "radEmu_score",
+    stringsAsFactors = FALSE
+  ) |>
+    filter(!is.na(effect))
+}
+
+#' Run all DA methods on a phyloseq object
+#' @param physeq A phyloseq object
+#' @param group_var Name of grouping variable
+#' @param contrast_levels Two-element vector: c(treatment, reference)
+#' @param methods Character vector of methods to run
+#' @param effect_threshold Minimum effect for radEmu testing (default 2)
+#' @param nclusters Number of cores for parallel processing (default 2)
+#' @param verbose If TRUE, print method name and elapsed time (default FALSE)
+#' @param max_taxa_to_test Maximum number of taxa to test for radEmu (default NULL)
+#'   see `run_emuFit()`
+#' @return Combined data frame of results
+run_all_methods <- function(physeq, group_var, contrast_levels,
+                            methods = c("DESeq2", "edgeR", "limma-voom",
+                                       "ALDEx2", "ANCOM-BC2", "MaAsLin3", "radEmu"),
+                            effect_threshold = 2,
+                            nclusters = 2,
+                            verbose = TRUE, 
+                            max_taxa_to_test=0,
+                            return_wald_p = TRUE) {
+  results <- list()
+  timings <- list()
+
+  for (method in methods) {
+    if (verbose) {
+       cli::cli_alert(cli::col_red("Running", method, "..."))
+    }
+
+    start_time <- Sys.time()
+
+    res <- tryCatch({
+      switch(method,
+        "DESeq2" = run_deseq2(physeq,
+                             paste0("~ ", group_var),
+                             c(group_var, contrast_levels[1], contrast_levels[2]),
+                             nclusters = nclusters),
+        "edgeR" = run_edgeR(physeq, group_var, contrast_levels),
+        "limma-voom" = run_limma_voom(physeq, group_var, contrast_levels),
+        "ALDEx2" = run_aldex2(physeq, group_var, contrast_levels,
+                             nclusters = nclusters),
+        "ANCOM-BC2" = run_ancombc(physeq, group_var, contrast_levels,
+                                  nclusters = nclusters),
+        "MaAsLin3" = run_maaslin3(physeq, group_var, contrast_levels,
+                                  nclusters = nclusters),
+        "radEmu" = run_emuFit(physeq, group_var, contrast_levels,
+                              return_wald_p = return_wald_p,
+                              effect_threshold = effect_threshold,
+                              nclusters = nclusters,
+                              max_taxa_to_test=max_taxa_to_test                              )
+      )
+    }, error = function(e) {
+      warning("Error in ", method, ": ", e$message)
+      NULL
+    })
+
+    elapsed <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+    timings[[method]] <- elapsed
+
+    if (verbose) {
+      cli::cli_alert(cli::col_red(" done (", round(elapsed, 1), "s)\n", sep = ""))
+    }
+
+    if (!is.null(res)) {
+      results[[method]] <- res
+    }
+  }
+
+  if (verbose) {
+    cat("\nTotal time:", round(sum(unlist(timings)), 1), "s\n")
+  }
+
+  bind_rows(results)
+}
+```
+
+## Dataset: Simulated Spike-in Data
+
+To properly evaluate FDR control and sensitivity, we create datasets with
+known differentially abundant taxa. There are three approaches available in
+comparpq, each with different characteristics:
+
+| Approach | Function | Key Feature |
+|----------|----------|-------------|
+| **Multiply with compensation** | `multiply_counts_pq()` | Multiplies counts then scales down non-selected taxa to preserve library size |
+| **Permutation-based** | `permute_da_pq()` | Strictly preserves library sizes by redistributing counts |
+| **MIDASim simulation** | `midasim_pq()` | Generates realistic simulated data preserving taxon correlations |
+
+### Approach A: `multiply_counts_pq` with compensation
+
+The `multiply_counts_pq()` function with `compensate = TRUE` creates a
+compositional shift that DA methods can detect. Without compensation, the
+multiplied samples would have larger library sizes, and DA methods would
+normalize this away, washing out the signal.
+
+```{r create_spike_data_mult}
+data("data_fungi", package = "MiscMetabar")
+
+# Subset to binary comparison
+data_fungi_hl <- subset_samples(data_fungi, Height %in% c("Low", "High"))
+data_fungi_hl <- prune_taxa(taxa_sums(data_fungi_hl) > 10, data_fungi_hl)
+
+# Create spike-in with compensation to preserve library size
+data_spike_mult <- multiply_counts_pq(
+  data_fungi_hl,
+  fact = "Height",
+  conditions = "High",
+  multipliers = 4,
+  prop_taxa = 0.2,
+  seed = 42,
+  compensate = TRUE,
+  min_prevalence = 0.1,
+  verbose = TRUE
+)
+
+# Retrieve the actual modified taxa from the function output
+spike_taxa_mult <- attr(data_spike_mult, "taxa_modified")
+
+cat("Approach A - multiply_counts_pq with compensation:\n")
+cat("- Total taxa:", ntaxa(data_spike_mult), "\n")
+cat("- Spiked taxa:", length(spike_taxa_mult), "\n")
+cat("- Samples:", nsamples(data_spike_mult), "\n")
+cat("- Library size preserved:",
+    all.equal(sample_sums(data_fungi_hl), sample_sums(data_spike_mult)), "\n")
+```
+
+### Approach B: `permute_da_pq` (strict library size preservation)
+
+The `permute_da_pq()` function guarantees exact library size preservation
+(except for rounding) by redistributing counts within each sample.
+
+```{r create_spike_data_perm}
+data_spike_perm <- permute_da_pq(
+  data_fungi_hl,
+  fact = "Height",
+  conditions = "High",
+  effect_size = 4,
+  prop_taxa = 0.1,
+  seed = 42,
+  min_prevalence = 0.1
+)
+
+spike_taxa_perm <- attr(data_spike_perm, "da_taxa")
+
+cat("\nApproach B - permute_da_pq:\n")
+cat("- Spiked taxa:", length(spike_taxa_perm), "\n")
+cat("- Library size preserved:",
+    all.equal(sample_sums(data_fungi_hl), sample_sums(data_spike_perm)), "\n")
+```
+
+### Approach C: `midasim_pq` (realistic simulation)
+```{r create_spike_data_mida, eval=requireNamespace("MIDASim", quietly = TRUE)}
+data_spike_mida <- midasim_pq(
+  data_fungi_hl,
+  fact = "Height",
+  condition = "High",
+  effect_size = log(4),
+  n_da_taxa = round(ntaxa(data_fungi_hl) * 0.1),
+  seed = 42,
+  min_prevalence = 0.1
+)
+
+spike_taxa_mida <- attr(data_spike_mida, "da_taxa_names")
+
+cat("\nApproach C - midasim_pq:\n")
+cat("- Spiked taxa:", length(spike_taxa_mida), "\n")
+```
+
+### Use Approach A for benchmark
+
+For the main benchmark, we use the `multiply_counts_pq` approach with
+compensation, as it modifies actual data while preserving library sizes.
+
+```{r set_spike_data}
+# Use the compensated multiply approach
+data_spike <- clean_pq(data_spike_mult)
+spike_taxa <- spike_taxa_mult
+
+cat("\nDataset used for benchmark:\n")
+cat("- Total taxa:", ntaxa(data_spike), "\n")
+cat("- Spiked taxa:", length(spike_taxa), "\n")
+cat("- Samples:", nsamples(data_spike), "\n")
+cat("- Groups:", table(sample_data(data_spike)$Height), "\n")
+```
+
+## Run All Methods
+
+```{r run_all_methods, results='hide'}
+results_spike <- run_all_methods(
+  subset_taxa_pq(data_spike, taxa_sums(data_spike) > 100),
+  group_var = "Height",
+  contrast_levels = c("High", "Low"),
+  verbose=TRUE,
+  ncluster=4
+)
+```
+
+```{r show_results}
+# Summary of results
+results_spike |>
+  group_by(method) |>
+  summarise(
+    n_taxa = n(),
+    n_significant = sum(qvalue < 0.05, na.rm = TRUE),
+    prop_significant = mean(qvalue < 0.05, na.rm = TRUE)
+  ) |>
+  knitr::kable(caption = "Summary of DA results by method", digits = 3)
+```
+
+## Concordance Analysis
+
+### Number of Significant Taxa
+
+```{r concordance_barplot, fig.height=5}
+sig_summary <- results_spike |>
+  mutate(significant = qvalue < 0.05) |>
+  group_by(method) |>
+  summarise(
+    n_significant = sum(significant, na.rm = TRUE),
+    n_tested = n()
+  )
+
+ggplot(sig_summary, aes(x = reorder(method, n_significant), y = n_significant)) +
+  geom_col(fill = "steelblue") +
+  geom_text(aes(label = n_significant), hjust = -0.2) +
+  coord_flip() +
+  labs(
+    title = "Number of Significant Taxa by Method",
+    subtitle = "q-value < 0.05",
+    x = NULL,
+    y = "Number of significant taxa"
+  ) +
+  theme_bw() +
+  expand_limits(y = max(sig_summary$n_significant) * 1.1)
+```
+
+### Overlap Between Methods (UpSet Plot)
+
+```{r upset_plot, fig.height=6, fig.width=10}
+# Create presence/absence matrix for significant taxa
+sig_taxa_list <- results_spike |>
+  filter(qvalue < 0.05) |>
+  group_by(method) |>
+  summarise(taxa = list(taxon)) |>
+  tibble::deframe()
+
+# Convert to binary matrix
+all_taxa <- unique(unlist(sig_taxa_list))
+sig_matrix <- sapply(sig_taxa_list, function(x) all_taxa %in% x)
+rownames(sig_matrix) <- all_taxa
+
+if (nrow(sig_matrix) > 0) {
+  # UpSet-style visualization
+  overlap_df <- as.data.frame(sig_matrix) |>
+    rownames_to_column("taxon") |>
+    pivot_longer(-taxon, names_to = "method", values_to = "significant") |>
+    filter(significant) |>
+    group_by(taxon) |>
+    summarise(
+      n_methods = n(),
+      methods = paste(sort(method), collapse = " + ")
+    )
+
+  ggplot(overlap_df, aes(x = reorder(methods, n_methods), fill = factor(n_methods))) +
+    geom_bar() +
+    coord_flip() +
+    scale_fill_viridis_d(name = "# Methods") +
+    labs(
+      title = "Taxa Overlap Across Methods",
+      x = "Method combination",
+      y = "Number of taxa"
+    ) +
+    theme_bw() +
+    theme(legend.position = "right")
+}
+```
+
+### Pairwise Method Agreement
+
+```{r pairwise_agreement, fig.height=7, fig.width=8}
+# Calculate Jaccard similarity between methods
+methods <- unique(results_spike$method)
+jaccard_matrix <- matrix(NA, length(methods), length(methods),
+                        dimnames = list(methods, methods))
+
+for (i in seq_along(methods)) {
+  for (j in seq_along(methods)) {
+    taxa_i <- results_spike$taxon[results_spike$method == methods[i] &
+                                   results_spike$qvalue < 0.05]
+    taxa_j <- results_spike$taxon[results_spike$method == methods[j] &
+                                   results_spike$qvalue < 0.05]
+
+    intersection <- length(intersect(taxa_i, taxa_j))
+    union <- length(union(taxa_i, taxa_j))
+
+    jaccard_matrix[i, j] <- if (union > 0) intersection / union else 0
+  }
+}
+
+# Plot heatmap
+jaccard_df <- as.data.frame(as.table(jaccard_matrix))
+names(jaccard_df) <- c("Method1", "Method2", "Jaccard")
+
+ggplot(jaccard_df, aes(x = Method1, y = Method2, fill = Jaccard)) +
+  geom_tile() +
+  geom_text(aes(label = round(Jaccard, 2)), color = "white", size = 4) +
+  scale_fill_viridis_c(limits = c(0, 1)) +
+  labs(
+    title = "Pairwise Method Agreement (Jaccard Similarity)",
+    subtitle = "Based on significant taxa (q < 0.05)",
+    x = NULL, y = NULL
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Effect Size Comparison
+
+### Effect Size Correlation
+
+```{r effect_correlation, fig.height=8, fig.width=10}
+# Wide format for effect sizes
+effects_wide <- results_spike |>
+  dplyr::select(taxon, method, effect) |>
+  pivot_wider(names_from = method, values_from = effect)
+
+# Pairwise scatter plots
+if (ncol(effects_wide) > 2) {
+  # Calculate correlations
+  cor_matrix <- cor(effects_wide[, -1], use = "pairwise.complete.obs")
+
+  # Plot correlation matrix
+  cor_df <- as.data.frame(as.table(cor_matrix))
+  names(cor_df) <- c("Method1", "Method2", "Correlation")
+
+  p_cor <- ggplot(cor_df, aes(x = Method1, y = Method2, fill = Correlation)) +
+    geom_tile() +
+    geom_text(aes(label = round(Correlation, 2)), color = "black", size = 3) +
+    scale_fill_gradient2(low = "blue", mid = "white", high = "red",
+                        midpoint = 0, limits = c(-1, 1)) +
+    labs(
+      title = "Effect Size Correlation Between Methods",
+      x = NULL, y = NULL
+    ) +
+    theme_bw() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+  print(p_cor)
+}
+```
+
+### Effect Size Distribution
+
+```{r effect_distribution, fig.height=6}
+ggplot(results_spike, aes(x = effect, fill = method)) +
+  geom_density(alpha = 0.5) +
+  facet_wrap(~method, scales = "free_y") +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  labs(
+    title = "Distribution of Effect Sizes by Method",
+    x = "Effect Size (log2 fold change)",
+    y = "Density"
+  ) +
+  theme_bw() +
+  theme(legend.position = "none")
+```
+
+## FDR Control Assessment
+
+Using our spike-in data, we can evaluate how well each method controls FDR.
+
+```{r fdr_assessment}
+# Get the actual spiked taxa (those with multiplied counts)
+# We need to identify them from the multiply_counts_pq function
+# For this, we'll use the taxa that were selected (stored during creation)
+
+# Mark true positives
+results_spike <- results_spike |>
+  mutate(
+    true_da = taxon %in% spike_taxa,
+    called_da = qvalue < 0.05
+  )
+
+# Calculate performance metrics
+performance <- results_spike |>
+  group_by(method) |>
+  summarise(
+    TP = sum(true_da & called_da, na.rm = TRUE),
+    FP = sum(!true_da & called_da, na.rm = TRUE),
+    TN = sum(!true_da & !called_da, na.rm = TRUE),
+    FN = sum(true_da & !called_da, na.rm = TRUE),
+    .groups = "drop"
+  ) |>
+  mutate(
+    Sensitivity = TP / (TP + FN),
+    Specificity = TN / (TN + FP),
+    FDR = FP / (TP + FP),
+    Precision = TP / (TP + FP),
+    F1 = 2 * (Precision * Sensitivity) / (Precision + Sensitivity)
+  )
+
+knitr::kable(
+  performance |> 
+    dplyr::select(method, TP, FP, FN, Sensitivity, FDR, F1),
+  caption = "Performance metrics based on spike-in ground truth",
+  digits = 3
+)
+```
+
+```{r performance_plot, fig.height=5, fig.width=9}
+performance_long <- performance |>
+  dplyr::select(method, Sensitivity, Specificity, FDR, F1) |>
+  pivot_longer(-method, names_to = "Metric", values_to = "Value")
+
+ggplot(performance_long, aes(x = method, y = Value, fill = Metric)) +
+  geom_col(position = "dodge") +
+  geom_hline(data = data.frame(Metric = "FDR", y = 0.05),
+             aes(yintercept = y), linetype = "dashed", color = "red") +
+  facet_wrap(~Metric, scales = "free_y") +
+  labs(
+    title = "Performance Metrics by Method",
+    subtitle = "Red dashed line = nominal FDR (0.05)",
+    x = NULL, y = "Value"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none")
+```
+
+## Volcano Plots Comparison
+
+```{r volcano_comparison, fig.height=10, fig.width=12}
+results_spike <- results_spike |>
+  mutate(
+    neg_log10_q = -log10(qvalue),
+    significant = qvalue < 0.05,
+    category = case_when(
+      true_da & significant ~ "True Positive",
+      !true_da & significant ~ "False Positive",
+      true_da & !significant ~ "False Negative",
+      TRUE ~ "True Negative"
+    )
+  )
+
+ggplot(results_spike, aes(x = effect, y = neg_log10_q, color = category)) +
+  geom_point(alpha = 0.6, size = 1.5) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "grey40") +
+  geom_vline(xintercept = 0, color = "grey40") +
+  scale_color_manual(values = c(
+    "True Positive" = "forestgreen",
+    "False Positive" = "red",
+    "False Negative" = "orange",
+    "True Negative" = "grey70"
+  )) +
+  facet_wrap(~method, scales = "free") +
+  labs(
+    title = "Volcano Plots by Method",
+    subtitle = "Colors based on spike-in ground truth",
+    x = "Effect Size",
+    y = "-log10(q-value)",
+    color = "Classification"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+## Real Data: HMP2 Antibiotics
+
+Now we apply the methods to real data without known ground truth.
+
+```{r hmp2_data}
+# Load HMP2 data
+taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
+taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
+
+metadata_name <- system.file("extdata", "HMP2_metadata.tsv", package = "maaslin3")
+metadata <- read.csv(metadata_name, sep = "\t", row.names = 1)
+
+metadata$antibiotics <- factor(metadata$antibiotics, levels = c("No", "Yes"))
+
+# Create phyloseq
+otu <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)
+sam <- sample_data(metadata)
+species_names <- colnames(taxa_table)
+tax_df <- data.frame(
+  Species = species_names,
+  Genus = sapply(strsplit(species_names, "_"), \(x) x[1]),
+  row.names = species_names
+)
+tax <- tax_table(as.matrix(tax_df))
+physeq_hmp2 <- phyloseq(otu, sam, tax)
+
+# Convert to integer counts for count-based methods
+# HMP2 data appears to be relative abundances, multiply by 1e6
+otu_table(physeq_hmp2) <- otu_table(
+  round(as.matrix(otu_table(physeq_hmp2)) * 1e6),
+  taxa_are_rows = FALSE
+)
+
+cat("HMP2 Dataset:\n")
+cat("- Taxa:", ntaxa(physeq_hmp2), "\n")
+cat("- Samples:", nsamples(physeq_hmp2), "\n")
+```
+
+```{r run_hmp2, results='hide'}
+results_hmp2 <- run_all_methods(
+  physeq_hmp2,
+  methods = c("ALDEx2", "ANCOM-BC2", "MaAsLin3", "radEmu"),
+  group_var = "antibiotics",
+  contrast_levels = c("Yes", "No"),
+  verbose=TRUE,
+  nclusters = 4
+)
+```
+
+```{r hmp2_summary, fig.height=8, fig.width=10}
+# Concordance plot
+sig_hmp2 <- results_hmp2 |>
+  filter(qvalue < 0.05) |>
+  group_by(method) |>
+  summarise(taxa = list(taxon)) |>
+  tibble::deframe()
+
+# Calculate consensus
+consensus_hmp2 <- results_hmp2 |>
+  filter(qvalue < 0.05) |>
+  group_by(taxon) |>
+  summarise(
+    n_methods = n_distinct(method),
+    methods = paste(sort(unique(method)), collapse = ", "),
+    mean_effect = mean(effect, na.rm = TRUE)
+  ) |>
+  arrange(desc(n_methods), desc(abs(mean_effect)))
+
+cat("\nTop consensus taxa (found by 4+ methods):\n")
+consensus_hmp2 |>
+  filter(n_methods >= 2) |>
+  head(15) |>
+  knitr::kable(digits = 2)
+```
+
+```{r hmp2_volcano, fig.height=8}
+results_hmp2 |>
+  mutate(significant = qvalue < 0.05) |>
+  ggplot(aes(x = effect, y = -log10(qvalue), color = significant)) +
+  geom_point(alpha = 0.5) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed") +
+  scale_color_manual(values = c("FALSE" = "grey60", "TRUE" = "firebrick")) +
+  facet_wrap(~method, scales = "free") +
+  labs(
+    title = "HMP2: Antibiotics Effect",
+    x = "Effect Size",
+    y = "-log10(q-value)"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom")
+```
+
+## Session Info
+
+```{r session_info}
+sessionInfo()
+```

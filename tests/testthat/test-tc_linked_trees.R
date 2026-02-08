@@ -147,24 +147,22 @@ test_that("tc_congruence_metrics warns with no common taxa", {
     ),
     "No common taxa names"
   )
-
 })
 
 test_that("tc_congruence_metrics works with some common taxa", {
   # Create a subset with different taxa names
   physeq_subset <- phyloseq::prune_taxa(taxa_names(Glom_otu)[1:5], Glom_otu)
- taxa_names(physeq_subset)[1:2] <- paste0("new_", taxa_names(physeq_subset)[1:2])
-  
+  taxa_names(physeq_subset)[1:2] <- paste0("new_", taxa_names(physeq_subset)[1:2])
+
   result <- tc_congruence_metrics(
-      Glom_otu,
-      physeq_2 = physeq_subset,
-      ranks_1 = c("Kingdom", "Class"),
-      ranks_2 = c("Kingdom", "Class")
-    )
+    Glom_otu,
+    physeq_2 = physeq_subset,
+    ranks_1 = c("Kingdom", "Class"),
+    ranks_2 = c("Kingdom", "Class")
+  )
   expect_type(result, "list")
 
-    expect_equal(result$summary |> filter(category=="total_congruent") |> pull(count), 3)
-
+  expect_equal(result$summary |> filter(category == "total_congruent") |> pull(count), 3)
 })
 
 

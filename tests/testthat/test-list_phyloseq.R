@@ -473,7 +473,7 @@ test_that("apply_to_lpq passes additional arguments to function", {
   lpq <- list_phyloseq(list(fungi = td$pq1, mini = td$pq2))
 
   # Use transform_sample_counts with a custom function
- lpq_rel <- apply_to_lpq(
+  lpq_rel <- apply_to_lpq(
     lpq,
     phyloseq::transform_sample_counts,
     \(x) x / sum(x),

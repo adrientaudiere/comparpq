@@ -14,6 +14,10 @@ navbar:
         href: articles/getting-started.html
       - text: The list_phyloseq Class
         href: articles/list-phyloseq.html
+      - text: Comparing DA Methods
+        href: articles/compare-da-methods.html
+      - text: Benchmarking DA Methods
+        href: articles/benchmark-da-methods.html
       - text: OJS Visualization
         href: articles/OJS_visualization.html
 
@@ -45,7 +49,13 @@ reference:
   desc: "Statistical analysis functions for list_phyloseq objects"
   contents:
   - adonis_lpq
+  - aldex_lpq
+  - ancombc_lpq
+  - gg_aldex_plot
+  - gg_maaslin3_plot
   - glmulti_lpq
+  - maaslin3_pq
+  - multipatt_lpq
 
 
 - title: "Taxonomic Utilities"
@@ -81,6 +91,9 @@ reference:
   contents:
   - add_external_seq_pq
   - add_shuffle_seq_pq
+  - midasim_pq
+  - multiply_counts_pq
+  - permute_da_pq
 
 - title: "Tax Table Manipulation"
   desc: "Functions for modifying the tax_table slot of phyloseq objects"
@@ -105,6 +118,12 @@ articles:
   desc: "Understanding and using the list_phyloseq S7 class for comparing phyloseq objects"
   contents:
   - list-phyloseq
+
+- title: "Differential Abundance"
+  desc: "Comparing differential abundance methods"
+  contents:
+  - compare-da-methods
+  - benchmark-da-methods
 
 - title: "Advanced Tutorials"
   desc: "In-depth examples and advanced usage"

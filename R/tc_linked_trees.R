@@ -85,8 +85,8 @@ tc_congruence_metrics <- function(
     ranks_2 <- ranks_1
   }
 
-  if(is.null(ranks_2) && is.null(physeq_2)) {
-    stop("Your are comparing two equivalent object. 
+  if (is.null(ranks_2) && is.null(physeq_2)) {
+    stop("Your are comparing two equivalent object.
     Either ranks_2 or physeq_2 must be provided.")
   }
 
@@ -144,10 +144,26 @@ tc_congruence_metrics <- function(
     depth_1 <- sum(!is.na(path_1))
     depth_2 <- sum(!is.na(path_2))
 
-    leaf_pos_1 <- if (depth_1 > 0) {max(which(!is.na(path_1)))} else {NA}
-    leaf_pos_2 <- if (depth_2 > 0) {max(which(!is.na(path_2)))} else  {NA}
-    last_valid_1 <- if (depth_1 > 0) {path_1[leaf_pos_1]} else  {NA}
-    last_valid_2 <- if (depth_2 > 0) {path_2[leaf_pos_2]} else  {NA}
+    leaf_pos_1 <- if (depth_1 > 0) {
+      max(which(!is.na(path_1)))
+    } else {
+      NA
+    }
+    leaf_pos_2 <- if (depth_2 > 0) {
+      max(which(!is.na(path_2)))
+    } else {
+      NA
+    }
+    last_valid_1 <- if (depth_1 > 0) {
+      path_1[leaf_pos_1]
+    } else {
+      NA
+    }
+    last_valid_2 <- if (depth_2 > 0) {
+      path_2[leaf_pos_2]
+    } else {
+      NA
+    }
 
     leaf_match <- !is.na(last_valid_1) && !is.na(last_valid_2) &&
       last_valid_1 == last_valid_2
@@ -239,7 +255,7 @@ tc_congruence_metrics <- function(
   summary_df <- data.frame(
     category = c(
       "only_in_1", "only_in_2", "classified_only_1", "classified_only_2",
-      "unclassified_both", "total_congruent", "leaf_match_congruence", 
+      "unclassified_both", "total_congruent", "leaf_match_congruence",
       "partial_1_deeper", "partial_2_deeper",
       "incongruent_leaves", "incongruent_nodes"
     ),

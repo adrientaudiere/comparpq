@@ -1,0 +1,696 @@
+---
+title: "Comparing Differential Abundance Methods"
+author: "Adrien Taudière"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Comparing Differential Abundance Methods}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 9,
+  fig.height = 6
+)
+```
+
+## Introduction
+
+This vignette compares three popular differential abundance (DA) methods for
+microbiome data:
+
+- **ANCOM-BC2** (Analysis of Compositions of Microbiomes with Bias Correction):
+  Uses a linear regression framework with bias correction for compositionality
+- **ALDEx2** (ANOVA-Like Differential Expression): Uses centered log-ratio
+  transformation and Monte Carlo sampling from Dirichlet distribution
+- **MaAsLin3** (Microbiome Multivariable Associations with Linear Models):
+  Fits generalized linear models with options for both abundance and prevalence
+
+We compare these methods on three different datasets to illustrate their
+behavior across different experimental designs and data characteristics.
+
+## Setup
+
+```{r setup}
+library(comparpq)
+library(phyloseq)
+library(ggplot2)
+library(dplyr)
+library(patchwork)
+```
+
+## Dataset 1: Fungi and Tree Height
+
+The `data_fungi` dataset from MiscMetabar contains fungal communities sampled
+at different heights on trees. We compare Low vs High height positions.
+
+### Data Preparation
+
+```{r data_fungi_prep}
+data("data_fungi", package = "MiscMetabar")
+
+# Subset to Low and High only for a clear binary comparison
+data_fungi_hl <- subset_samples(data_fungi, Height %in% c("Low", "High"))
+data_fungi_hl <- prune_taxa(taxa_sums(data_fungi_hl) > 0, data_fungi_hl)
+
+cat("Dataset: data_fungi (Low vs High)\n")
+cat("Samples:", nsamples(data_fungi_hl), "\n")
+cat("Taxa:", ntaxa(data_fungi_hl), "\n")
+cat("Groups:", table(sample_data(data_fungi_hl)$Height), "\n")
+```
+
+### Run ANCOM-BC
+
+```{r fungi_ancombc, results='hide'}
+res_ancombc_fungi <- MiscMetabar::ancombc_pq(
+  data_fungi_hl,
+  fact = "Height",
+  levels_fact = c("Low", "High"),
+  tax_level = NULL
+)
+```
+
+```{r fungi_ancombc_show}
+# Extract results
+ancombc_df_fungi <- res_ancombc_fungi$res |>
+  filter(!is.na(lfc_HeightHigh)) |>
+  mutate(
+    method = "ANCOM-BC2",
+    effect = lfc_HeightHigh,
+    qvalue = q_HeightHigh,
+    significant = diff_HeightHigh
+  ) |>
+  select(taxon, method, effect, qvalue, significant)
+
+cat("ANCOM-BC significant taxa:", sum(ancombc_df_fungi$significant), "\n")
+```
+
+### Run ALDEx2
+
+```{r fungi_aldex, results='hide'}
+res_aldex_fungi <- MiscMetabar::aldex_pq(
+  data_fungi_hl,
+  bifactor = "Height",
+  modalities = c("Low", "High")
+)
+```
+
+```{r fungi_aldex_show}
+aldex_df_fungi <- res_aldex_fungi |>
+  tibble::rownames_to_column("taxon") |>
+  mutate(
+    method = "ALDEx2",
+    effect = effect,
+    qvalue = wi.eBH,
+    significant = wi.eBH < 0.05
+  ) |>
+  select(taxon, method, effect, qvalue, significant)
+
+cat("ALDEx2 significant taxa:", sum(aldex_df_fungi$significant), "\n")
+```
+
+### Run MaAsLin3
+
+```{r fungi_maaslin3, results='hide'}
+res_maaslin3_fungi <- maaslin3_pq(
+  data_fungi_hl,
+  formula = "~ Height",
+  reference = list(Height = "Low"),
+  output = tempfile(),
+  correction_for_sample_size = FALSE,
+  plot_summary_plot = FALSE,
+  plot_associations = FALSE
+)
+```
+
+```{r fungi_maaslin3_show}
+maaslin3_df_fungi <- res_maaslin3_fungi$fit_data_abundance$results |>
+  filter(metadata == "Height") |>
+  mutate(
+    taxon = feature,
+    method = "MaAsLin3",
+    effect = coef,
+    qvalue = qval_individual,
+    significant = qval_individual < 0.05
+  ) |>
+  select(taxon, method, effect, qvalue, significant)
+
+cat("MaAsLin3 significant taxa:", sum(maaslin3_df_fungi$significant, na.rm = TRUE), "\n")
+```
+
+### Compare Results
+
+```{r fungi_compare, fig.height=8}
+# Combine results
+combined_fungi <- bind_rows(ancombc_df_fungi, aldex_df_fungi, maaslin3_df_fungi)
+
+# Volcano plots
+p_volcano_fungi <- ggplot(
+  combined_fungi,
+  aes(x = effect, y = -log10(qvalue), color = significant)
+) +
+  geom_point(alpha = 0.6) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "grey40") +
+  geom_vline(xintercept = 0, color = "grey40") +
+  scale_color_manual(values = c("FALSE" = "grey60", "TRUE" = "firebrick3")) +
+  facet_wrap(~method, scales = "free") +
+  labs(
+    title = "Data Fungi: Low vs High Height",
+    x = "Effect Size",
+    y = "-log10(q-value)"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_label(
+    data = combined_fungi %>% filter(significant),
+    aes(label=taxon)
+  )
+
+print(p_volcano_fungi)
+```
+
+```{r fungi_venn}
+# Find overlapping significant taxa
+sig_ancombc <- ancombc_df_fungi$taxon[ancombc_df_fungi$significant]
+sig_aldex <- aldex_df_fungi$taxon[aldex_df_fungi$significant]
+sig_maaslin3 <- na.omit(maaslin3_df_fungi$taxon[maaslin3_df_fungi$significant])
+
+# Overlap summary
+cat("\nSignificant taxa overlap:\n")
+cat("ANCOM-BC only:", length(setdiff(sig_ancombc, union(sig_aldex, sig_maaslin3))), "\n")
+cat("ALDEx2 only:", length(setdiff(sig_aldex, union(sig_ancombc, sig_maaslin3))), "\n")
+cat("MaAsLin3 only:", length(setdiff(sig_maaslin3, union(sig_ancombc, sig_aldex))), "\n")
+cat("All three:", length(Reduce(intersect, list(sig_ancombc, sig_aldex, sig_maaslin3))), "\n")
+```
+
+## Dataset 2: HMP2 and Antibiotics
+
+The HMP2 dataset from the maaslin3 package contains gut microbiome data from
+the Human Microbiome Project 2. We compare samples with and without antibiotic
+usage.
+
+### Data Preparation
+
+```{r hmp2_prep}
+# Read the HMP2 default dataset from maaslin3 package
+taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
+taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
+
+metadata_name <- system.file("extdata", "HMP2_metadata.tsv", package = "maaslin3")
+metadata <- read.csv(metadata_name, sep = "\t", row.names = 1)
+
+# Set factor levels
+metadata$antibiotics <- factor(metadata$antibiotics, levels = c("No", "Yes"))
+
+# Create phyloseq object
+otu <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)
+sam <- sample_data(metadata)
+species_names <- colnames(taxa_table)
+tax_df <- data.frame(
+  Species = species_names,
+  Genus = sapply(strsplit(species_names, "_"), \(x) x[1]),
+  row.names = species_names
+)
+tax <- tax_table(as.matrix(tax_df))
+physeq_hmp2 <- phyloseq(otu, sam, tax)
+
+cat("Dataset: HMP2 (Antibiotics No vs Yes)\n")
+cat("Samples:", nsamples(physeq_hmp2), "\n")
+cat("Taxa:", ntaxa(physeq_hmp2), "\n")
+cat("Groups:", table(sample_data(physeq_hmp2)$antibiotics), "\n")
+```
+
+### Run ANCOM-BC
+
+```{r hmp2_ancombc, results='hide'}
+res_ancombc_hmp2 <- MiscMetabar::ancombc_pq(
+  physeq_hmp2,
+  fact = "antibiotics",
+  levels_fact = c("No", "Yes"),
+  tax_level = NULL
+)
+```
+
+```{r hmp2_ancombc_show}
+ancombc_df_hmp2 <- res_ancombc_hmp2$res |>
+  filter(!is.na(lfc_antibioticsYes)) |>
+  mutate(
+    method = "ANCOM-BC",
+    effect = lfc_antibioticsYes,
+    qvalue = q_antibioticsYes,
+    significant = diff_antibioticsYes
+  ) |>
+  select(taxon, method, effect, qvalue, significant)
+
+cat("ANCOM-BC significant taxa:", sum(ancombc_df_hmp2$significant), "\n")
+```
+
+### Run ALDEx2
+
+```{r hmp2_aldex, results='hide'}
+physeq_hmp2@sam_data$antibiotics <- as.character(physeq_hmp2@sam_data$antibiotics)
+physeq_hmp2@otu_table <- otu_table(
+  round(as.matrix(physeq_hmp2@otu_table))*1000,
+  taxa_are_rows = taxa_are_rows(physeq_hmp2)
+)
+
+res_aldex_hmp2 <- MiscMetabar::aldex_pq(
+  physeq_hmp2,
+  test="t",
+  bifactor = "antibiotics",
+  modalities = c("No", "Yes")
+)
+```
+
+```{r hmp2_aldex_show}
+aldex_df_hmp2 <- res_aldex_hmp2 |>
+  tibble::rownames_to_column("taxon") |>
+  mutate(
+    method = "ALDEx2",
+    effect = effect,
+    qvalue = wi.eBH,
+    significant = wi.eBH < 0.05
+  ) |>
+  dplyr::select(taxon, method, effect, qvalue, significant)
+
+cat("ALDEx2 significant taxa:", sum(aldex_df_hmp2$significant), "\n")
+```
+
+### Run MaAsLin3
+
+```{r hmp2_maaslin3, results='hide'}
+otu_maaslin <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)
+sam_maaslin <- sample_data(metadata)
+physeq_hmp2_maaslin <- phyloseq(otu_maaslin, sam_maaslin, tax)
+
+res_maaslin3_hmp2 <- maaslin3_pq(
+  physeq_hmp2_maaslin,
+  formula = "~ antibiotics",
+  reference = list(antibiotics = "No"),
+  output = tempfile()
+)
+```
+
+```{r hmp2_maaslin3_show}
+maaslin3_df_hmp2 <- res_maaslin3_hmp2$fit_data_abundance$results |>
+  filter(metadata == "antibiotics") |>
+  mutate(
+    taxon = feature,
+    method = "MaAsLin3",
+    effect = coef,
+    qvalue = qval_individual,
+    significant = qval_individual < 0.05
+  ) |>
+  select(taxon, method, effect, qvalue, significant)
+
+cat("MaAsLin3 significant taxa:", sum(maaslin3_df_hmp2$significant, na.rm = TRUE), "\n")
+```
+
+### Compare Results
+
+```{r hmp2_compare, fig.height=8}
+combined_hmp2 <- bind_rows(ancombc_df_hmp2, aldex_df_hmp2, maaslin3_df_hmp2)
+
+p_volcano_hmp2 <- ggplot(
+  combined_hmp2,
+  aes(x = effect, y = -log10(qvalue), color = significant)
+) +
+  geom_point(alpha = 0.6) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "grey40") +
+  geom_vline(xintercept = 0, color = "grey40") +
+  scale_color_manual(values = c("FALSE" = "grey60", "TRUE" = "firebrick3")) +
+  facet_wrap(~method, scales = "free") +
+  labs(
+    title = "HMP2: Antibiotics No vs Yes",
+    x = "Effect Size",
+    y = "-log10(q-value)"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_label(
+    data = combined_hmp2 %>% filter(significant),
+    aes(label=taxon)
+  )
+
+print(p_volcano_hmp2)
+```
+
+### MaAsLin3 Summary Plot
+
+```{r hmp2_summary, fig.width=10, fig.height=8}
+# Use the default summary plot from gg_maaslin3_plot
+p_summary <- gg_maaslin3_plot(res_maaslin3_hmp2, type = "summary", top_n = 20)
+print(p_summary)
+```
+
+## Dataset 3: HMP Gingival Microbiome
+
+The HMP_2012_16S_gingival_V13 dataset from MicrobiomeBenchmarkData contains
+oral microbiome data comparing subgingival and supragingival plaque.
+
+### Data Preparation
+
+```{r gingival_prep}
+# Get the dataset
+gingival_data <- MicrobiomeBenchmarkData::getBenchmarkData(
+  "HMP_2012_16S_gingival_V13",
+  dryrun = FALSE
+)[[1]]
+
+# Convert to phyloseq
+gingival_pq <- mia::convertToPhyloseq(gingival_data)
+gingival_pq@tax_table <- tax_table(data.frame(
+  Genus = paste0("Genus", 1:ntaxa(gingival_pq)),
+  row.names = taxa_names(gingival_pq)
+))
+
+taxa_names(gingival_pq) <- names(gingival_data)
+
+# Subset gingival_pq to only 1000 taxa for efficiency
+set.seed(123)
+selected_taxa <- sample(taxa_names(gingival_pq), 1000)
+gingival_pq <- prune_taxa(selected_taxa, gingival_pq)
+
+cat("Dataset: HMP Gingival (subgingival vs supragingival plaque)\n")
+cat("Samples:", nsamples(gingival_pq), "\n")
+cat("Taxa:", ntaxa(gingival_pq), "\n")
+cat("Groups:", table(sample_data(gingival_pq)$body_subsite), "\n")
+```
+
+### Run ANCOM-BC
+
+```{r gingival_ancombc, results='hide'}
+res_ancombc_ging <- MiscMetabar::ancombc_pq(
+  gingival_pq,
+  fact = "body_subsite",
+  levels_fact = c("subgingival_plaque", "supragingival_plaque"),
+  tax_level = NULL
+)
+```
+
+```{r gingival_ancombc_show}
+# Column name varies based on factor level
+lfc_col <- grep("^lfc_", colnames(res_ancombc_ging$res), value = TRUE)[1]
+q_col <- grep("^q_", colnames(res_ancombc_ging$res), value = TRUE)[1]
+diff_col <- grep("^diff_", colnames(res_ancombc_ging$res), value = TRUE)[1]
+
+ancombc_df_ging <- res_ancombc_ging$res |>
+  filter(!is.na(.data[[lfc_col]])) |>
+  mutate(
+    method = "ANCOM-BC",
+    effect = .data[[lfc_col]],
+    qvalue = .data[[q_col]],
+    significant = .data[[diff_col]]
+  ) |>
+  dplyr::select(taxon, method, effect, qvalue, significant)
+
+cat("ANCOM-BC significant taxa:", sum(ancombc_df_ging$significant), "\n")
+```
+
+### Run ALDEx2
+
+```{r gingival_aldex, results='hide'}
+res_aldex_ging <- MiscMetabar::aldex_pq(
+  gingival_pq,
+  bifactor = "body_subsite",
+  modalities = c("subgingival_plaque", "supragingival_plaque")
+)
+```
+
+```{r gingival_aldex_show}
+aldex_df_ging <- res_aldex_ging |>
+  tibble::rownames_to_column("taxon") |>
+  mutate(
+    method = "ALDEx2",
+    effect = effect,
+    qvalue = wi.eBH,
+    significant = wi.eBH < 0.05
+  ) |>
+  dplyr::select(taxon, method, effect, qvalue, significant)
+
+cat("ALDEx2 significant taxa:", sum(aldex_df_ging$significant), "\n")
+```
+
+### Run MaAsLin3
+
+```{r gingival_maaslin3, results='hide'}
+res_maaslin3_ging <- maaslin3_pq(
+  gingival_pq,
+  formula = "~ body_subsite",
+  reference = list(body_subsite = "subgingival_plaque"),
+  output = tempfile(),
+  correction_for_sample_size = FALSE,
+  plot_summary_plot = FALSE,
+  plot_associations = FALSE
+)
+```
+
+```{r gingival_maaslin3_show}
+maaslin3_df_ging <- res_maaslin3_ging$fit_data_abundance$results |>
+  filter(grepl("body_subsite", metadata)) |>
+  mutate(
+    taxon = feature,
+    method = "MaAsLin3",
+    effect = coef,
+    qvalue = qval_individual,
+    significant = qval_individual < 0.05
+  ) |>
+  dplyr::select(taxon, method, effect, qvalue, significant)
+
+cat("MaAsLin3 significant taxa:", sum(maaslin3_df_ging$significant, na.rm = TRUE), "\n")
+```
+
+### Compare Results
+
+```{r gingival_compare, fig.height=8}
+combined_ging <- bind_rows(ancombc_df_ging, aldex_df_ging, maaslin3_df_ging)
+
+p_volcano_ging <- ggplot(
+  combined_ging,
+  aes(x = effect, y = -log10(qvalue), color = significant)
+) +
+  geom_point(alpha = 0.6) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "grey40") +
+  geom_vline(xintercept = 0, color = "grey40") +
+  scale_color_manual(values = c("FALSE" = "grey60", "TRUE" = "firebrick3")) +
+  facet_wrap(~method, scales = "free") +
+  labs(
+    title = "HMP Gingival: Subgingival vs Supragingival Plaque",
+    x = "Effect Size",
+    y = "-log10(q-value)"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_label(
+    data = combined_ging %>% filter(qvalue < 0.0001),
+    aes(label=taxon)
+  )
+
+print(p_volcano_ging)
+```
+
+
+
+## Dataset 4: selex
+
+```{r selex_prep}
+library(ALDEx2)
+data(selex)
+selex <- selex[1201:1300,] # subset for efficiency
+conds <- c(rep("NS", 7), rep("S", 7))
+
+physeq_selex <- phyloseq(otu_table(selex, taxa_are_rows = TRUE), 
+          sample_data(data.frame(condition = conds, row.names = colnames(selex))))
+
+physeq_selex@tax_table <-  tax_table(data.frame(Genus = paste0("Genus", 1:100), row.names = rownames(selex)))
+
+taxa_names(physeq_selex) <- rownames(selex)
+```
+
+### Run ANCOM-BC
+
+```{r selex_ancombc, results='hide'}
+res_ancombc_selex <- MiscMetabar::ancombc_pq(
+  physeq_selex,
+  fact = "condition",
+  levels_fact = c("S", "NS"),
+  tax_level = NULL
+)
+```
+
+```{r selex_ancombc_show}
+ancombc_df_selex <- res_ancombc_selex$res |>
+  filter(!is.na(lfc_conditionNS)) |>
+  mutate(
+    method = "ANCOM-BC",
+    effect = lfc_conditionNS,
+    qvalue = q_conditionNS,
+    significant = diff_conditionNS
+  ) |>
+  dplyr::select(taxon, method, effect, qvalue, significant)
+
+cat("ANCOM-BC significant taxa:", sum(ancombc_df_selex$significant), "\n")
+```
+
+### Run ALDEx2
+
+```{r selex_aldex, results='hide'}
+res_aldex_selex <- MiscMetabar::aldex_pq(
+  physeq_selex,
+  test="t",
+  bifactor = "condition",
+  modalities = c("S", "NS")
+)
+```
+
+```{r selex_aldex_show}
+aldex_df_selex <- res_aldex_selex |>
+  tibble::rownames_to_column("taxon") |>
+  mutate(
+    method = "ALDEx2",
+    effect = effect,
+    qvalue = wi.eBH,
+    significant = wi.eBH < 0.05
+  ) |>
+  dplyr::select(taxon, method, effect, qvalue, significant)
+
+cat("ALDEx2 significant taxa:", sum(aldex_df_selex$significant), "\n")
+```
+
+### Run MaAsLin3
+
+```{r selex_maaslin3, results='hide'}
+res_maaslin3_selex <- maaslin3_pq(
+  physeq_selex,
+  formula = "~ condition",
+  reference = list(S = "S"),
+  output = tempfile()
+)
+```
+
+```{r selex_maaslin3_show}
+maaslin3_df_selex <- res_maaslin3_selex$fit_data_abundance$results |>
+  filter(metadata == "condition") |>
+  mutate(
+    taxon = feature,
+    method = "MaAsLin3",
+    effect = coef,
+    qvalue = qval_individual,
+    significant = qval_individual < 0.05
+  ) |>
+  dplyr::select(taxon, method, effect, qvalue, significant)
+
+cat("MaAsLin3 significant taxa:", sum(maaslin3_df_selex$significant, na.rm = TRUE), "\n")
+```
+
+### Compare Results
+
+```{r selex_compare, fig.height=8}
+combined_selex <- bind_rows(ancombc_df_selex, aldex_df_selex, maaslin3_df_selex)
+
+p_volcano_selex <- ggplot(
+  combined_selex,
+  aes(x = effect, y = -log10(qvalue), color = significant)
+) +
+  geom_point(alpha = 0.6) +
+  geom_hline(yintercept = -log10(0.05), linetype = "dashed", color = "grey40") +
+  geom_vline(xintercept = 0, color = "grey40") +
+  scale_color_manual(values = c("FALSE" = "grey60", "TRUE" = "firebrick3")) +
+  facet_wrap(~method, scales = "free") +
+  labs(
+    title = "selex: condition S vs NS",
+    x = "Effect Size",
+    y = "-log10(q-value)"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom") +
+  geom_label(
+    data = combined_selex %>% filter(significant),
+    aes(label=taxon)
+  )
+
+print(p_volcano_selex)
+```
+
+```{r}
+combined_selex |>
+  filter(significant) |>
+  group_by(taxon) |> 
+  summarise(method_signif=n(), method=paste(method, collapse="; ")) |>
+  arrange(method_signif)
+```
+
+
+
+
+
+## Summary Across Datasets
+
+```{r summary_table}
+# Create summary table
+summary_df <- tibble::tribble(
+  ~Dataset, ~Method, ~`Total Taxa`, ~`Significant Taxa`,
+  "Fungi (Height)", "ANCOM-BC", nrow(ancombc_df_fungi), sum(ancombc_df_fungi$significant),
+  "Fungi (Height)", "ALDEx2", nrow(aldex_df_fungi), sum(aldex_df_fungi$significant),
+  "Fungi (Height)", "MaAsLin3", nrow(maaslin3_df_fungi), sum(maaslin3_df_fungi$significant, na.rm = TRUE),
+  "HMP2 (Antibiotics)", "ANCOM-BC", nrow(ancombc_df_hmp2), sum(ancombc_df_hmp2$significant),
+  "HMP2 (Antibiotics)", "ALDEx2", nrow(aldex_df_hmp2), sum(aldex_df_hmp2$significant),
+  "HMP2 (Antibiotics)", "MaAsLin3", nrow(maaslin3_df_hmp2), sum(maaslin3_df_hmp2$significant, na.rm = TRUE),
+  "Gingival (Body Site)", "ANCOM-BC", nrow(ancombc_df_ging), sum(ancombc_df_ging$significant),
+  "Gingival (Body Site)", "ALDEx2", nrow(aldex_df_ging), sum(aldex_df_ging$significant),
+  "Gingival (Body Site)", "MaAsLin3", nrow(maaslin3_df_ging), sum(maaslin3_df_ging$significant, na.rm = TRUE)
+)
+
+knitr::kable(summary_df, caption = "Summary of Differential Abundance Results")
+```
+
+```{r summary_plot, fig.height=5, fig.width=8}
+summary_df |>
+  mutate(Proportion = `Significant Taxa` / `Total Taxa`) |>
+  ggplot(aes(x = Method, y = `Significant Taxa`, fill = Dataset)) +
+  geom_col(position = "dodge") +
+  labs(
+    title = "Number of Significant Taxa by Method and Dataset",
+    y = "Number of Significant Taxa"
+  ) +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+## Discussion
+
+The three methods show different sensitivities across datasets:
+
+1. **ANCOM-BC** tends to detect more significant taxa, especially in datasets
+   with clear biological differences. It accounts for sampling fraction bias
+   and provides log fold change estimates.
+
+2. **ALDEx2** is generally more conservative, using Monte Carlo sampling from
+   the Dirichlet distribution to account for uncertainty. It tends to have
+   fewer false positives but may miss some true effects.
+
+3. **MaAsLin3** provides a flexible framework with both abundance and
+   prevalence models. Its sensitivity depends on the transformation and
+   normalization settings used.
+
+Key considerations when choosing a method:
+
+- **Sample size**: ALDEx2 may be less powerful with small sample sizes
+- **Compositionality**: All three methods address this, but differently
+- **Effect size interpretation**: ANCOM-BC and MaAsLin3 provide log fold changes
+- **Computational time**: ALDEx2 can be slower due to Monte Carlo sampling
+
+For robust results, consider using multiple methods and focusing on taxa
+identified by at least two methods.
+
+## Session Info
+
+```{r session}
+sessionInfo()
+```

@@ -6,7 +6,6 @@
 # ==============================================================================
 
 create_test_phyloseq <- function(n_taxa, tax_levels) {
-
   # Create OTU table
   otu_mat <- matrix(
     sample(1:100, n_taxa * 5, replace = TRUE),
@@ -42,7 +41,6 @@ create_test_phyloseq <- function(n_taxa, tax_levels) {
 # Create test phyloseq with known levels
 # physeq_A: 3 Phyla, 5 Classes, 8 Genera
 test_levels_A <- list(
-
   Phylum = c("Phylum_A", "Phylum_B", "Phylum_C"),
   Class = c("Class_1", "Class_2", "Class_3", "Class_4", "Class_5"),
   Genus = c("Genus_1", "Genus_2", "Genus_3", "Genus_4", "Genus_5", "Genus_6", "Genus_7", "Genus_8")
@@ -77,7 +75,7 @@ test_that("n_levels_lpq returns correct counts for known data", {
 
   # Check exact counts for physeq_A
 
-expect_equal(result["A", "Phylum"], 3)
+  expect_equal(result["A", "Phylum"], 3)
   expect_equal(result["A", "Class"], 5)
   expect_equal(result["A", "Genus"], 8)
 

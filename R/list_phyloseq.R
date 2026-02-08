@@ -1042,12 +1042,12 @@ n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
 #'
 #' # Apply taxa_as_rows
 #' lpq_rows <- apply_to_lpq(lpq, MiscMetabar::taxa_as_rows)
-#' 
+#'
 #' # Apply rarefy_even_depth with a specific rngseed
-#'  lpq_rar <- apply_to_lpq(lpq, rarefy_even_depth, rngseed=21)
-#' 
-#'  lpq_rar
-#' 
+#' lpq_rar <- apply_to_lpq(lpq, rarefy_even_depth, rngseed = 21)
+#'
+#' lpq_rar
+#'
 #' # Transform to relative abundance
 #' lpq_rel <- apply_to_lpq(
 #'   lpq,
