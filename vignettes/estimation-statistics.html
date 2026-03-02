@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Adrien Taudière">
+<meta name="dcterms.date" content="2026-02-11">
+
+<title>Estimation Statistics for Microbiome Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="estimation-statistics_files/libs/clipboard/clipboard.min.js"></script>
+<script src="estimation-statistics_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="estimation-statistics_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="estimation-statistics_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="estimation-statistics_files/libs/quarto-html/popper.min.js"></script>
+<script src="estimation-statistics_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="estimation-statistics_files/libs/quarto-html/anchor.min.js"></script>
+<link href="estimation-statistics_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="estimation-statistics_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="estimation-statistics_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="estimation-statistics_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="estimation-statistics_files/libs/bootstrap/bootstrap-432b85ca5467e8659017d61370f128c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Estimation Statistics for Microbiome Data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adrien Taudière </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 11, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="why-estimation-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="why-estimation-statistics">Why estimation statistics?</h2>
+<p>Null hypothesis significance testing (NHST) has been the dominant paradigm in biological research for decades, yet its limitations have been discussed for over 77 years. The core issue is that a p-value answers a narrow question — “Is the effect non-zero?” — while telling us nothing about <strong>how large</strong> the effect is or <strong>how precise</strong> our estimate is. As <a href="https://www.nature.com/articles/s41592-019-0470-3">Ho et al.&nbsp;(2019)</a> put it:</p>
+<blockquote class="blockquote">
+<p>Although NHST limits the analyst to the ill-conceived question of “Does it?”, estimation instead draws the analyst’s attention to the question of “How much?” — the very topic that defines quantitative research.</p>
+</blockquote>
+<p><strong>Estimation statistics</strong> replaces dichotomous significant/non-significant thinking with a focus on:</p>
+<ul>
+<li><strong>Effect sizes</strong>: How large is the difference? (mean difference, Cohen’s d, Cliff’s delta, correlation coefficient, regression slope…)</li>
+<li><strong>Bootstrap confidence intervals</strong>: How precise is our estimate? What is the range of plausible values?</li>
+</ul>
+<p>This framework, championed by <a href="https://doi.org/10.1136/bmj.292.6522.746">Gardner &amp; Altman (1986)</a> and formalized in the DABEST software (<a href="https://www.nature.com/articles/s41592-019-0470-3">Ho et al.&nbsp;2019</a>; <a href="https://www.estimationstats.com/#/background">estimationstats.com</a>), produces <strong>estimation plots</strong> that show all individual data points alongside the effect size and its uncertainty. This gives a much richer picture than a single p-value:</p>
+<ol type="1">
+<li><strong>All data is visible</strong>: Every observation is plotted, exposing the distribution shape, outliers, and sample size at a glance.</li>
+<li><strong>Effect size is front and center</strong>: The magnitude of the difference is displayed directly, not hidden behind a test statistic.</li>
+<li><strong>Uncertainty is explicit</strong>: Bootstrap confidence intervals convey precision, enabling readers to judge whether the effect is meaningful in practice.</li>
+<li><strong>Reproducibility</strong>: Effect sizes and CIs travel well across studies and facilitate meta-analysis, unlike p-values which depend on sample size.</li>
+</ol>
+<section id="a-note-on-p-values" class="level3">
+<h3 class="anchored" data-anchor-id="a-note-on-p-values">A note on p-values</h3>
+<p>The functions in comparpq do report p-values (permutation test, Welch’s t-test, Mann-Whitney U, or <code>cor.test</code>) alongside the estimation statistics. These are provided <strong>for legacy purposes only</strong>, to satisfy journals that still require them. Following the recommendations of <a href="https://www.nature.com/articles/s41592-019-0470-3">Ho et al.&nbsp;(2019)</a>, we encourage users to:</p>
+<ul>
+<li><strong>Never</strong> use p-values as the primary basis for interpretation.</li>
+<li><strong>Focus</strong> on the effect size and its confidence interval.</li>
+<li>State in Methods: <em>“No null-hypothesis significance testing was performed; p-values are provided for legacy purposes only.”</em></li>
+</ul>
+<p>For a thorough introduction to estimation statistics, see <a href="https://www.estimationstats.com/#/background">estimationstats.com/background</a>.</p>
+</section>
+<section id="two-types-of-estimation-plots" class="level3">
+<h3 class="anchored" data-anchor-id="two-types-of-estimation-plots">Two types of estimation plots</h3>
+<ul>
+<li><strong>Gardner-Altman plot</strong> (2 groups): The raw data and the effect size with its bootstrap CI are displayed side by side on a shared axis, making the comparison immediately visual.</li>
+<li><strong>Cumming plot</strong> (3+ groups): All groups are shown on top, and effect sizes with CIs are shown below in a separate panel. This layout scales to multiple comparisons.</li>
+</ul>
+<p>comparpq provides four functions for estimation statistics on phyloseq objects:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Level</th>
+<th>Variable type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>estim_diff_pq()</code></td>
+<td>Single phyloseq</td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>estim_cor_pq()</code></td>
+<td>Single phyloseq</td>
+<td>Numeric</td>
+</tr>
+<tr class="odd">
+<td><code>estim_diff_lpq()</code></td>
+<td>list_phyloseq</td>
+<td>Categorical</td>
+</tr>
+<tr class="even">
+<td><code>estim_cor_lpq()</code></td>
+<td>list_phyloseq</td>
+<td>Numeric</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="setup" class="level2">
+<h2 class="anchored" data-anchor-id="setup">Setup</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(comparpq)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(phyloseq)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"data_fungi"</span>, <span class="at">package =</span> <span class="st">"MiscMetabar"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean data: remove samples with NA in Height</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pq <span class="ot">&lt;-</span> <span class="fu">subset_samples</span>(data_fungi, <span class="sc">!</span><span class="fu">is.na</span>(Height))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>pq <span class="ot">&lt;-</span> <span class="fu">clean_pq</span>(pq)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="categorical-comparisons-with-estim_diff_pq" class="level2">
+<h2 class="anchored" data-anchor-id="categorical-comparisons-with-estim_diff_pq">Categorical comparisons with <code>estim_diff_pq()</code></h2>
+<section id="two-group-comparison-gardner-altman-plot" class="level3">
+<h3 class="anchored" data-anchor-id="two-group-comparison-gardner-altman-plot">Two-group comparison (Gardner-Altman plot)</h3>
+<p>For two groups, <code>estim_diff_pq()</code> produces Gardner-Altman plots where the raw data and the effect size are displayed side by side:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">estim_diff_pq</span>(pq, <span class="at">fact =</span> <span class="st">"Height"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># View summary table</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>summary</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># View the Gardner-Altman plot for Hill_0 (richness)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>res<span class="sc">$</span>plots<span class="sc">$</span>Hill_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="different-effect-types" class="level3">
+<h3 class="anchored" data-anchor-id="different-effect-types">Different effect types</h3>
+<p>You can choose among several effect size measures:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cohen's d (standardized mean difference)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>res_d <span class="ot">&lt;-</span> <span class="fu">estim_diff_pq</span>(pq, <span class="at">fact =</span> <span class="st">"Height"</span>, <span class="at">effect_type =</span> <span class="st">"cohens_d"</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>res_d<span class="sc">$</span>summary</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Hedges' g (bias-corrected Cohen's d for small samples)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>res_g <span class="ot">&lt;-</span> <span class="fu">estim_diff_pq</span>(pq, <span class="at">fact =</span> <span class="st">"Height"</span>, <span class="at">effect_type =</span> <span class="st">"hedges_g"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>res_g<span class="sc">$</span>summary</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Cliff's delta (non-parametric effect size)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>res_cliff <span class="ot">&lt;-</span> <span class="fu">estim_diff_pq</span>(pq, <span class="at">fact =</span> <span class="st">"Height"</span>, <span class="at">effect_type =</span> <span class="st">"cliffs_delta"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>res_cliff<span class="sc">$</span>summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="three-or-more-groups-cumming-plot" class="level3">
+<h3 class="anchored" data-anchor-id="three-or-more-groups-cumming-plot">Three or more groups (Cumming plot)</h3>
+<p>When the factor has 3+ levels, a Cumming estimation plot is produced automatically:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># If your factor has 3+ levels</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>pq_time <span class="ot">&lt;-</span> <span class="fu">subset_samples</span>(data_fungi, <span class="sc">!</span><span class="fu">is.na</span>(Time))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>pq_time <span class="ot">&lt;-</span> <span class="fu">clean_pq</span>(pq_time)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>res_time <span class="ot">&lt;-</span> <span class="fu">estim_diff_pq</span>(pq_time, <span class="at">fact =</span> <span class="st">"Time"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>res_time<span class="sc">$</span>plots<span class="sc">$</span>Hill_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="numeric-variable-analysis-with-estim_cor_pq" class="level2">
+<h2 class="anchored" data-anchor-id="numeric-variable-analysis-with-estim_cor_pq">Numeric variable analysis with <code>estim_cor_pq()</code></h2>
+<p>For continuous variables, <code>estim_cor_pq()</code> computes bootstrap confidence intervals for both correlation coefficients and regression slopes:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add library size as a numeric variable</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sam <span class="ot">&lt;-</span> <span class="fu">sample_data</span>(pq)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>sam<span class="sc">$</span>lib_size <span class="ot">&lt;-</span> <span class="fu">sample_sums</span>(pq)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sample_data</span>(pq) <span class="ot">&lt;-</span> sam</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>res_cor <span class="ot">&lt;-</span> <span class="fu">estim_cor_pq</span>(pq, <span class="at">variable =</span> <span class="st">"lib_size"</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation estimates with bootstrap CIs</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>res_cor<span class="sc">$</span>correlations</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression slopes with bootstrap CIs</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>res_cor<span class="sc">$</span>regressions</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot with regression line and CI ribbon</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>res_cor<span class="sc">$</span>plots<span class="sc">$</span>Hill_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="spearman-correlation" class="level3">
+<h3 class="anchored" data-anchor-id="spearman-correlation">Spearman correlation</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>res_spearman <span class="ot">&lt;-</span> <span class="fu">estim_cor_pq</span>(pq, <span class="at">variable =</span> <span class="st">"lib_size"</span>, <span class="at">method =</span> <span class="st">"spearman"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>res_spearman<span class="sc">$</span>correlations</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="comparing-across-pipelines-with-list_phyloseq" class="level2">
+<h2 class="anchored" data-anchor-id="comparing-across-pipelines-with-list_phyloseq">Comparing across pipelines with list_phyloseq</h2>
+<section id="categorical-estim_diff_lpq" class="level3">
+<h3 class="anchored" data-anchor-id="categorical-estim_diff_lpq">Categorical: <code>estim_diff_lpq()</code></h3>
+<p>Apply estimation statistics across multiple phyloseq objects in a <code>list_phyloseq</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>lpq <span class="ot">&lt;-</span> <span class="fu">list_phyloseq</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">fungi =</span> pq,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">fungi_copy =</span> pq</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">same_bioinfo_pipeline =</span> <span class="cn">FALSE</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>res_lpq <span class="ot">&lt;-</span> <span class="fu">estim_diff_lpq</span>(lpq, <span class="at">fact =</span> <span class="st">"Height"</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Combined summary across all pipelines</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>res_lpq<span class="sc">$</span>summary</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Access individual results</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>res_lpq<span class="sc">$</span>results<span class="sc">$</span>fungi<span class="sc">$</span>plots<span class="sc">$</span>Hill_0</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="numeric-estim_cor_lpq" class="level3">
+<h3 class="anchored" data-anchor-id="numeric-estim_cor_lpq">Numeric: <code>estim_cor_lpq()</code></h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming lib_size is in sample_data of all phyloseq objects</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>res_cor_lpq <span class="ot">&lt;-</span> <span class="fu">estim_cor_lpq</span>(lpq, <span class="at">variable =</span> <span class="st">"lib_size"</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare correlations across pipelines</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>res_cor_lpq<span class="sc">$</span>correlations</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare regression slopes</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>res_cor_lpq<span class="sc">$</span>regressions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="custom-diversity-functions" class="level2">
+<h2 class="anchored" data-anchor-id="custom-diversity-functions">Custom diversity functions</h2>
+<p>You can supply any custom diversity function instead of Hill numbers. The function must take a phyloseq object and return either:</p>
+<ul>
+<li>A named numeric vector (names = sample names)</li>
+<li>A data.frame with one row per sample</li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: use Pielou's evenness</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>my_evenness <span class="ot">&lt;-</span> <span class="cf">function</span>(physeq) {</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  otu <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(<span class="fu">otu_table</span>(physeq))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">taxa_are_rows</span>(physeq)) otu <span class="ot">&lt;-</span> <span class="fu">t</span>(otu)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  otu <span class="ot">&lt;-</span> <span class="fu">t</span>(otu)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  H <span class="ot">&lt;-</span> vegan<span class="sc">::</span><span class="fu">diversity</span>(otu, <span class="at">index =</span> <span class="st">"shannon"</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> vegan<span class="sc">::</span><span class="fu">specnumber</span>(otu)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  J <span class="ot">&lt;-</span> H <span class="sc">/</span> <span class="fu">log</span>(S)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  stats<span class="sc">::</span><span class="fu">setNames</span>(J, <span class="fu">sample_names</span>(physeq))</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>res_even <span class="ot">&lt;-</span> <span class="fu">estim_diff_pq</span>(pq, <span class="at">fact =</span> <span class="st">"Height"</span>, <span class="at">custom_fn =</span> my_evenness)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>res_even<span class="sc">$</span>summary</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<ul>
+<li>Gardner, M. J., &amp; Altman, D. G. (1986). Confidence intervals rather than P values: estimation rather than hypothesis testing. <em>BMJ</em>, 292(6522), 746-750. <a href="https://doi.org/10.1136/bmj.292.6522.746" class="uri">https://doi.org/10.1136/bmj.292.6522.746</a></li>
+<li>Ho, J., Tumkaya, T., Aryal, S., Choi, H., &amp; Claridge-Chang, A. (2019). Moving beyond P values: data analysis with estimation graphics. <em>Nature Methods</em>, 16(7), 565-566. <a href="https://www.nature.com/articles/s41592-019-0470-3" class="uri">https://www.nature.com/articles/s41592-019-0470-3</a></li>
+<li>Claridge-Chang, A., &amp; Assam, P. N. (2016). Estimation statistics should replace significance testing. <em>Nature Methods</em>, 13(2), 108-109.</li>
+</ul>
+<section id="online-resources" class="level3">
+<h3 class="anchored" data-anchor-id="online-resources">Online resources</h3>
+<ul>
+<li><a href="https://www.estimationstats.com/#/background">estimationstats.com</a> — Interactive web application for estimation statistics with background tutorial, free dataset upload, and automated estimation plots.</li>
+<li><a href="https://cran.r-project.org/package=dabestr">dabestr R package</a> — The R implementation of DABEST used internally by comparpq.</li>
+</ul>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -1,6 +1,10 @@
 # comparpq 0.1.0 (development version)
 
 * Add function `apply_to_lpq()` to apply a function to each phyloseq object in a list_phyloseq
+* `estim_cor_lpq()` new function to compute bootstrap correlation/regression across a list_phyloseq
+* `estim_cor_pq()` new function to compute bootstrap correlation and regression CIs for diversity vs numeric variables
+* `estim_diff_lpq()` new function to run estimation statistics (effect sizes + CIs) across a list_phyloseq
+* `estim_diff_pq()` new function for estimation statistics (Gardner-Altman/Cumming plots) comparing diversity across groups via dabestr
 
 # Initial comparpq (0.01)
 

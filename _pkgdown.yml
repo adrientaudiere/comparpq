@@ -18,6 +18,8 @@ navbar:
         href: articles/compare-da-methods.html
       - text: Benchmarking DA Methods
         href: articles/benchmark-da-methods.html
+      - text: Estimation Statistics
+        href: articles/estimation-statistics.html
       - text: OJS Visualization
         href: articles/OJS_visualization.html
 
@@ -51,6 +53,10 @@ reference:
   - adonis_lpq
   - aldex_lpq
   - ancombc_lpq
+  - estim_cor_lpq
+  - estim_cor_pq
+  - estim_diff_lpq
+  - estim_diff_pq
   - gg_aldex_plot
   - gg_maaslin3_plot
   - glmulti_lpq
@@ -124,6 +130,11 @@ articles:
   contents:
   - compare-da-methods
   - benchmark-da-methods
+
+- title: "Estimation Statistics"
+  desc: "Effect sizes and bootstrap confidence intervals"
+  contents:
+  - estimation-statistics
 
 - title: "Advanced Tutorials"
   desc: "In-depth examples and advanced usage"

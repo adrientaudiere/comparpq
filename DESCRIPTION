@@ -27,6 +27,7 @@ Suggests:
     ALDEx2,
     ANCOMBC,
     ComplexUpset,
+    dabestr,
     testthat (>= 3.0.0),
     ggrain,
     indicspecies,

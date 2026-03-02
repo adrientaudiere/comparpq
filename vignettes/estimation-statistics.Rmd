@@ -1,0 +1,274 @@
+---
+title: "Estimation Statistics for Microbiome Data"
+author: "Adrien Taudière"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Estimation Statistics for Microbiome Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 9,
+  fig.height = 6
+)
+```
+
+## Why estimation statistics?
+
+Null hypothesis significance testing (NHST) has been the dominant paradigm in
+biological research for decades, yet its limitations have been discussed for
+over 77 years. The core issue is that a p-value answers a narrow question ---
+"Is the effect non-zero?" --- while telling us nothing about **how large**
+the effect is or **how precise** our estimate is. As
+[Ho et al. (2019)](https://www.nature.com/articles/s41592-019-0470-3) put it:
+
+> Although NHST limits the analyst to the ill-conceived question of "Does it?",
+> estimation instead draws the analyst's attention to the question of "How
+> much?" --- the very topic that defines quantitative research.
+
+**Estimation statistics** replaces dichotomous significant/non-significant
+thinking with a focus on:
+
+- **Effect sizes**: How large is the difference? (mean difference, Cohen's d,
+  Cliff's delta, correlation coefficient, regression slope...)
+- **Bootstrap confidence intervals**: How precise is our estimate? What is the
+  range of plausible values?
+
+This framework, championed by
+[Gardner & Altman (1986)](https://doi.org/10.1136/bmj.292.6522.746) and
+formalized in the DABEST software
+([Ho et al. 2019](https://www.nature.com/articles/s41592-019-0470-3);
+[estimationstats.com](https://www.estimationstats.com/#/background)),
+produces **estimation plots** that show all individual data points alongside
+the effect size and its uncertainty. This gives a much richer picture than a
+single p-value:
+
+1. **All data is visible**: Every observation is plotted, exposing the
+   distribution shape, outliers, and sample size at a glance.
+2. **Effect size is front and center**: The magnitude of the difference is
+   displayed directly, not hidden behind a test statistic.
+3. **Uncertainty is explicit**: Bootstrap confidence intervals convey
+   precision, enabling readers to judge whether the effect is meaningful in
+   practice.
+4. **Reproducibility**: Effect sizes and CIs travel well across studies and
+   facilitate meta-analysis, unlike p-values which depend on sample size.
+
+### A note on p-values
+
+The functions in comparpq do report p-values (permutation test, Welch's
+t-test, Mann-Whitney U, or `cor.test`) alongside the estimation statistics.
+These are provided **for legacy purposes only**, to satisfy journals that
+still require them. Following the recommendations of
+[Ho et al. (2019)](https://www.nature.com/articles/s41592-019-0470-3), we
+encourage users to:
+
+- **Never** use p-values as the primary basis for interpretation.
+- **Focus** on the effect size and its confidence interval.
+- State in Methods: *"No null-hypothesis significance testing was performed;
+  p-values are provided for legacy purposes only."*
+
+For a thorough introduction to estimation statistics, see
+[estimationstats.com/background](https://www.estimationstats.com/#/background).
+
+### Two types of estimation plots
+
+- **Gardner-Altman plot** (2 groups): The raw data and the effect size with
+  its bootstrap CI are displayed side by side on a shared axis, making the
+  comparison immediately visual.
+- **Cumming plot** (3+ groups): All groups are shown on top, and effect sizes
+  with CIs are shown below in a separate panel. This layout scales to
+  multiple comparisons.
+
+comparpq provides four functions for estimation statistics on phyloseq objects:
+
+| Function | Level | Variable type |
+|----------|-------|---------------|
+| `estim_diff_pq()` | Single phyloseq | Categorical |
+| `estim_cor_pq()` | Single phyloseq | Numeric |
+| `estim_diff_lpq()` | list_phyloseq | Categorical |
+| `estim_cor_lpq()` | list_phyloseq | Numeric |
+
+## Setup
+
+```{r setup}
+library(comparpq)
+library(phyloseq)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r data}
+data("data_fungi", package = "MiscMetabar")
+
+# Clean data: remove samples with NA in Height
+pq <- subset_samples(data_fungi, !is.na(Height))
+pq <- clean_pq(pq)
+```
+
+## Categorical comparisons with `estim_diff_pq()`
+
+### Two-group comparison (Gardner-Altman plot)
+
+For two groups, `estim_diff_pq()` produces Gardner-Altman plots where the
+raw data and the effect size are displayed side by side:
+
+```{r estim_diff_2groups, eval = FALSE}
+res <- estim_diff_pq(pq, fact = "Height")
+
+# View summary table
+res$summary
+
+# View the Gardner-Altman plot for Hill_0 (richness)
+res$plots$Hill_0
+```
+
+### Different effect types
+
+You can choose among several effect size measures:
+
+```{r effect_types, eval = FALSE}
+# Cohen's d (standardized mean difference)
+res_d <- estim_diff_pq(pq, fact = "Height", effect_type = "cohens_d")
+res_d$summary
+
+# Hedges' g (bias-corrected Cohen's d for small samples)
+res_g <- estim_diff_pq(pq, fact = "Height", effect_type = "hedges_g")
+res_g$summary
+
+# Cliff's delta (non-parametric effect size)
+res_cliff <- estim_diff_pq(pq, fact = "Height", effect_type = "cliffs_delta")
+res_cliff$summary
+```
+
+### Three or more groups (Cumming plot)
+
+When the factor has 3+ levels, a Cumming estimation plot is produced
+automatically:
+
+```{r estim_diff_3groups, eval = FALSE}
+# If your factor has 3+ levels
+pq_time <- subset_samples(data_fungi, !is.na(Time))
+pq_time <- clean_pq(pq_time)
+
+res_time <- estim_diff_pq(pq_time, fact = "Time")
+res_time$plots$Hill_0
+```
+
+## Numeric variable analysis with `estim_cor_pq()`
+
+For continuous variables, `estim_cor_pq()` computes bootstrap confidence
+intervals for both correlation coefficients and regression slopes:
+
+```{r estim_cor, eval = FALSE}
+# Add library size as a numeric variable
+sam <- sample_data(pq)
+sam$lib_size <- sample_sums(pq)
+sample_data(pq) <- sam
+
+res_cor <- estim_cor_pq(pq, variable = "lib_size")
+
+# Correlation estimates with bootstrap CIs
+res_cor$correlations
+
+# Regression slopes with bootstrap CIs
+res_cor$regressions
+
+# Scatter plot with regression line and CI ribbon
+res_cor$plots$Hill_0
+```
+
+### Spearman correlation
+
+```{r spearman, eval = FALSE}
+res_spearman <- estim_cor_pq(pq, variable = "lib_size", method = "spearman")
+res_spearman$correlations
+```
+
+## Comparing across pipelines with list_phyloseq
+
+### Categorical: `estim_diff_lpq()`
+
+Apply estimation statistics across multiple phyloseq objects in a
+`list_phyloseq`:
+
+```{r estim_diff_lpq, eval = FALSE}
+lpq <- list_phyloseq(
+  list(
+    fungi = pq,
+    fungi_copy = pq
+  ),
+  same_bioinfo_pipeline = FALSE
+)
+
+res_lpq <- estim_diff_lpq(lpq, fact = "Height")
+
+# Combined summary across all pipelines
+res_lpq$summary
+
+# Access individual results
+res_lpq$results$fungi$plots$Hill_0
+```
+
+### Numeric: `estim_cor_lpq()`
+
+```{r estim_cor_lpq, eval = FALSE}
+# Assuming lib_size is in sample_data of all phyloseq objects
+res_cor_lpq <- estim_cor_lpq(lpq, variable = "lib_size")
+
+# Compare correlations across pipelines
+res_cor_lpq$correlations
+
+# Compare regression slopes
+res_cor_lpq$regressions
+```
+
+## Custom diversity functions
+
+You can supply any custom diversity function instead of Hill numbers.
+The function must take a phyloseq object and return either:
+
+- A named numeric vector (names = sample names)
+- A data.frame with one row per sample
+
+```{r custom_fn, eval = FALSE}
+# Example: use Pielou's evenness
+my_evenness <- function(physeq) {
+  otu <- as.data.frame(otu_table(physeq))
+  if (!taxa_are_rows(physeq)) otu <- t(otu)
+  otu <- t(otu)
+  H <- vegan::diversity(otu, index = "shannon")
+  S <- vegan::specnumber(otu)
+  J <- H / log(S)
+  stats::setNames(J, sample_names(physeq))
+}
+
+res_even <- estim_diff_pq(pq, fact = "Height", custom_fn = my_evenness)
+res_even$summary
+```
+
+## References
+
+- Gardner, M. J., & Altman, D. G. (1986). Confidence intervals rather than P
+  values: estimation rather than hypothesis testing. *BMJ*, 292(6522), 746-750.
+  <https://doi.org/10.1136/bmj.292.6522.746>
+- Ho, J., Tumkaya, T., Aryal, S., Choi, H., & Claridge-Chang, A. (2019).
+  Moving beyond P values: data analysis with estimation graphics. *Nature
+  Methods*, 16(7), 565-566.
+  <https://www.nature.com/articles/s41592-019-0470-3>
+- Claridge-Chang, A., & Assam, P. N. (2016). Estimation statistics should
+  replace significance testing. *Nature Methods*, 13(2), 108-109.
+
+### Online resources
+
+- [estimationstats.com](https://www.estimationstats.com/#/background) ---
+  Interactive web application for estimation statistics with background
+  tutorial, free dataset upload, and automated estimation plots.
+- [dabestr R package](https://cran.r-project.org/package=dabestr) ---
+  The R implementation of DABEST used internally by comparpq.
