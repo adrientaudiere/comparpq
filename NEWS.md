@@ -1,11 +1,12 @@
 # comparpq 0.1.0 (development version)
 
-* `compare_refseq_pq()` new function to compare reference sequences (`refseq` slot) between two phyloseq objects, identifying shared and unique ASVs/OTUs by name and by DNA sequence content, including detection of same-name-different-sequence and same-sequence-different-name mismatches. Computes mean nearest-neighbor k-mer distance for unique sequences.
+* `compare_refseq()` new function to compare reference sequences (`refseq` slot) between two phyloseq objects, identifying shared and unique ASVs/OTUs by name and by DNA sequence content, including detection of same-name-different-sequence and same-sequence-different-name mismatches. Computes mean nearest-neighbor k-mer distance for unique sequences.
 * Add function `apply_to_lpq()` to apply a function to each phyloseq object in a list_phyloseq
 * `estim_cor_lpq()` new function to compute bootstrap correlation/regression across a list_phyloseq
 * `estim_cor_pq()` new function to compute bootstrap correlation and regression CIs for diversity vs numeric variables
 * `estim_diff_lpq()` new function to run estimation statistics (effect sizes + CIs) across a list_phyloseq
 * `estim_diff_pq()` new function for estimation statistics (Gardner-Altman/Cumming plots) comparing diversity across groups via dabestr
+* `simple_venn_pq()` new function to draw Venn diagrams of shared taxa across 2-4 sample groups using pure ggplot2 (no external Venn package needed), with support for multiple taxonomic ranks and compact, clearly labeled circles/ellipses
 
 # Initial comparpq (0.01)
 

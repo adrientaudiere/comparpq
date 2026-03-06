@@ -21,7 +21,7 @@ devtools::install_github("adrientaudiere/comparpq")
 ### Compare phyloseq objects
 
 - **`list_phyloseq`**: S7 class for storing and comparing multiple phyloseq objects, with automatic detection of comparison type (REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS)
-- **`compare_refseq_pq()`**: Compare reference sequences between two phyloseq objects, identifying shared/unique ASVs by name and by DNA sequence content
+- **`compare_refseq()`**: Compare reference sequences between two phyloseq objects, identifying shared/unique ASVs by name and by DNA sequence content
 - **`filter_common_lpq()`**: Filter phyloseq objects to keep only shared samples and/or taxa
 - **`apply_to_lpq()`**: Apply any function to all phyloseq objects in a `list_phyloseq`
 

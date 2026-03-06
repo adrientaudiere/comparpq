@@ -72,21 +72,21 @@
 #'
 #' @examples
 #' # Compare a phyloseq object with itself (all shared)
-#' res <- compare_refseq_pq(data_fungi_mini, data_fungi_mini)
+#' res <- compare_refseq(data_fungi_mini, data_fungi_mini)
 #' res
 #'
 #' # Compare with a subset
 #' sub <- prune_taxa(taxa_names(data_fungi_mini)[1:20], data_fungi_mini)
-#' res2 <- compare_refseq_pq(data_fungi_mini, sub,
+#' res2 <- compare_refseq(data_fungi_mini, sub,
 #'   name1 = "full", name2 = "subset"
 #' )
 #' res2
 #'
 #' # From a list_phyloseq (uses the first two objects and their names)
 #' lpq <- list_phyloseq(list(full = data_fungi_mini, subset = sub))
-#' res3 <- compare_refseq_pq(lpq)
+#' res3 <- compare_refseq(lpq)
 #' res3
-compare_refseq_pq <- function(
+compare_refseq <- function(
   physeq1,
   physeq2 = NULL,
   name1 = NULL,
