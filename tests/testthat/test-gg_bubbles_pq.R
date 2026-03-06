@@ -130,6 +130,31 @@ test_that("gg_bubbles_pq square layout with facet returns ggplot", {
   expect_true(inherits(result$facet, "FacetWrap"))
 })
 
+test_that("gg_bubbles_pq rank_contour colors borders by tax_table column", {
+  skip_if_not_installed("packcircles")
+  result <- gg_bubbles_pq(
+    physeq = data_fungi_mini,
+    rank_color = "Class",
+    rank_contour = "Order"
+  )
+  expect_s3_class(result, "ggplot")
+  layer_data <- ggplot2::layer_data(result, 1)
+  expect_true("colour" %in% colnames(layer_data))
+  expect_true(length(unique(layer_data$colour)) > 1)
+})
+
+test_that("gg_bubbles_pq rank_contour adds column to return_dataframe", {
+  result <- gg_bubbles_pq(
+    physeq = data_fungi_mini,
+    rank_color = "Class",
+    rank_contour = "Order",
+    return_dataframe = TRUE
+  )
+  expect_true("rank_value_contour" %in% colnames(result))
+  expected <- as.vector(data_fungi_mini@tax_table[, "Order"])
+  expect_equal(result$rank_value_contour, expected)
+})
+
 test_that("gg_bubbles_pq with show_labels=FALSE still returns ggplot", {
   skip_if_not_installed("packcircles")
   result <- gg_bubbles_pq(

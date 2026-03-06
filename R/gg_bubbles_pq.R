@@ -17,6 +17,9 @@
 #'   are used.
 #' @param rank_color (character, default "Family") The name of the column in
 #'   the `@tax_table` slot to color the circles.
+#' @param rank_contour (character, default NULL) The name of a column in the
+#'   `@tax_table` slot to color the circle borders (contours). When NULL, the
+#'   fixed `border_color` is used for all borders.
 #' @param layout (character, default "circle") The packing layout. `"circle"`
 #'   produces a tight circular packing. `"square"` constrains circles inside a
 #'   square boundary, with large circles placed centrally.
@@ -50,6 +53,10 @@
 #' gg_bubbles_pq(physeq = data_fungi_mini, rank_color = "Class")
 #' gg_bubbles_pq(
 #'   physeq = data_fungi_mini, rank_color = "Class",
+#'   rank_contour = "Order"
+#' )
+#' gg_bubbles_pq(
+#'   physeq = data_fungi_mini, rank_color = "Class",
 #'   layout = "square"
 #' )
 #' \dontrun{
@@ -57,11 +64,32 @@
 #'   physeq = data_fungi, rank_color = "Order",
 #'   facet_by = "Height", min_nb_seq = 100
 #' ) + no_legend()
+#'
+#' # Highlight unique sequences when comparing two phyloseq objects.
+#' # Here we contour taxa found only in d_fast, using transparent borders
+#' # for shared taxa so that only unique ones stand out.
+#' pq_list <- list_phyloseq(list("fast" = d_fast, "normal" = d_normal))
+#' unique_seqs <-
+#'   pq_list@comparison$refseq_comparison$fast_vs_normal$unique_seqs_1
+#'
+#' tax_table(d_fast) <- cbind(
+#'   tax_table(d_fast),
+#'   unique_to_fast = ifelse(
+#'     as.character(d_fast@refseq) %in% unique_seqs, "Fast", ""
+#'   )
+#' )
+#'
+#' (gg_bubbles_pq(d_fast, rank_contour = "unique_to_fast", border_width = 1) +
+#'   ggplot2::scale_color_manual(
+#'     values = c("Fast" = "red", "" = "transparent")
+#'   )) /
+#'   gg_bubbles_pq(d_normal)
 #' }
 gg_bubbles_pq <- function(
   physeq,
   rank_label = "Taxa",
   rank_color = "Family",
+  rank_contour = NULL,
   layout = "circle",
   facet_by = NULL,
   log1ptransform = FALSE,
@@ -104,6 +132,10 @@ gg_bubbles_pq <- function(
       rank_value_color = as.vector(pq@tax_table[, rank_color]),
       stringsAsFactors = FALSE
     )
+
+    if (!is.null(rank_contour)) {
+      df$rank_value_contour <- as.vector(pq@tax_table[, rank_contour])
+    }
 
     if (min_nb_seq > 0) {
       df <- df[df$value > min_nb_seq, ]
@@ -200,6 +232,13 @@ gg_bubbles_pq <- function(
     vertices$label <- rep(df$label, each = npoints + 1)
     vertices$rank_value_color <- rep(df$rank_value_color, each = npoints + 1)
 
+    if (!is.null(rank_contour)) {
+      vertices$rank_value_contour <- rep(
+        df$rank_value_contour,
+        each = npoints + 1
+      )
+    }
+
     center <- data.frame(
       x = lay$x,
       y = lay$y,
@@ -230,19 +269,37 @@ gg_bubbles_pq <- function(
     centers <- do.call(rbind, centers_list)
   }
 
-  p <- ggplot2::ggplot() +
-    ggplot2::geom_polygon(
-      data = verts,
-      ggplot2::aes(
-        x = x,
-        y = y,
-        group = id,
-        fill = rank_value_color
-      ),
-      color = border_color,
-      linewidth = border_width,
-      alpha = alpha
-    ) +
+  if (!is.null(rank_contour)) {
+    p <- ggplot2::ggplot() +
+      ggplot2::geom_polygon(
+        data = verts,
+        ggplot2::aes(
+          x = x,
+          y = y,
+          group = id,
+          fill = rank_value_color,
+          color = rank_value_contour
+        ),
+        linewidth = border_width,
+        alpha = alpha
+      )
+  } else {
+    p <- ggplot2::ggplot() +
+      ggplot2::geom_polygon(
+        data = verts,
+        ggplot2::aes(
+          x = x,
+          y = y,
+          group = id,
+          fill = rank_value_color
+        ),
+        color = border_color,
+        linewidth = border_width,
+        alpha = alpha
+      )
+  }
+
+  p <- p +
     ggplot2::coord_fixed() +
     ggplot2::theme_void() +
     ggplot2::theme(legend.title = ggplot2::element_blank())
