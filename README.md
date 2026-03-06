@@ -18,6 +18,20 @@ devtools::install_github("adrientaudiere/comparpq")
 
 ## Main Features
 
+### Compare phyloseq objects
+
+- **`list_phyloseq`**: S7 class for storing and comparing multiple phyloseq objects, with automatic detection of comparison type (REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS)
+- **`compare_refseq_pq()`**: Compare reference sequences between two phyloseq objects, identifying shared/unique ASVs by name and by DNA sequence content
+- **`filter_common_lpq()`**: Filter phyloseq objects to keep only shared samples and/or taxa
+- **`apply_to_lpq()`**: Apply any function to all phyloseq objects in a `list_phyloseq`
+
+### Statistical Analysis
+
+- **`adonis_lpq()`**: PERMANOVA analysis across multiple phyloseq objects
+- **`estim_diff_pq()` & `estim_diff_lpq()`**: Estimation statistics for categorical comparisons using bootstrap confidence intervals (via [dabestr](https://cran.r-project.org/package=dabestr))
+- **`estim_cor_pq()` & `estim_cor_lpq()`**: Estimation statistics for continuous correlations with bootstrap confidence intervals
+- **`ancombc_lpq()`**, **`aldex_lpq()`**, **`multipatt_lpq()`**, **`maaslin3_pq()`**: Differential abundance analysis methods
+
 ### Taxonomic Comparison and Accuracy Metrics
 - **`tc_metrics_mock()`**: Compute accuracy metrics comparing taxonomic assignations against mock communities
 - **`tc_metrics_mock_vec()`**: Vectorized version for efficient metric computation
@@ -26,12 +40,18 @@ devtools::install_github("adrientaudiere/comparpq")
 ### Visualization Tools
 - **`bubbles_pq()`**: Interactive bubble plots using Observable HQ for phyloseq objects
 - **`tc_bar()` & `tc_circle()`**: Bar charts and circular plots for taxonomic comparisons
+- **`tc_sankey()`**: Sankey diagrams for taxonomic rank relationships
+- **`tc_linked_trees()`**: Side-by-side linked taxonomy trees for comparing two assignments
+- **`tc_congruence_metrics()`**: Congruence metrics between two taxonomic assignments
 - **`rainplot_taxo_na()`**: Rain plots for visualizing NA patterns in taxonomic data
+- **`formattable_lpq()` & `formattable_lpq_full()`**: Formatted summary tables with color bars for `list_phyloseq`
+- **`upset_lpq()`**: UpSet plots for visualizing sample/taxa overlap across phyloseq objects
+- **`gg_aldex_plot()` & `gg_maaslin3_plot()`**: ggplot2-based visualizations for differential abundance results
 
 ### Data Manipulation
-- **Fake taxa creation**: `add_external_seq_pq()`, `add_shuffle_seq_pq()` for mock community preparation
-- **Taxonomic table utilities**: `rename_ranks_pq()`, `select_ranks_pq()`, `resolve_taxo_conflict()`
-- **Pattern replacement**: `taxtab_replace_pattern_by_NA()` for data cleaning
+- **Mock community preparation**: `add_external_seq_pq()`, `add_shuffle_seq_pq()`, `multiply_counts_pq()`, `permute_da_pq()`, `midasim_pq()` for creating and manipulating fake taxa to benchmark taxonomic assignment or differential abundance methods
+- **Taxonomic table utilities**: `rename_ranks_pq()`, `select_ranks_pq()`, `resolve_taxo_conflict()`, `taxtab_replace_pattern_by_NA()`
+- **Taxonomy to tree**: `taxo2tree()` to build a phylogenetic tree from taxonomy table
 
 ## Quick Start
 

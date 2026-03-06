@@ -14,7 +14,7 @@ multiply_counts_pq(
   compensate = FALSE,
   min_prevalence = 0,
   round = TRUE,
-  verbose = FALSE
+  verbose = TRUE
 )
 }
 \arguments{
@@ -55,7 +55,7 @@ inflated, producing a stronger and more realistic DA signal.}
 counts to integers (since OTU tables typically contain integer
 counts).}
 
-\item{verbose}{(logical, default FALSE) If TRUE, print a message
+\item{verbose}{(logical, default TRUE) If TRUE, print a message
 with the number of modified taxa.}
 }
 \value{
@@ -160,6 +160,16 @@ res <- maaslin3_pq(d_da,
 
 gg_maaslin3_plot(res, type = "volcano")
 
+
+# Set to 0 the sequences numbers of 80\% of taxa in "High" samples
+ data_fungi_mini_with_less_otu_in_High =  multiply_counts_pq(data_fungi_mini,
+      fact = "Height", prop=0.8,
+      conditions = "High", 
+      multipliers = 0) 
+  
+ggbetween_pq(data_fungi_mini_with_less_otu_in_High, 
+  "Height", 
+  one_plot=T)
 }
 \author{
 Adrien Taudière

@@ -29,6 +29,11 @@ reference:
   contents:
   - list_phyloseq
 
+- title: "Phyloseq Comparison"
+  desc: "Functions for comparing phyloseq objects at a fine-grained level"
+  contents:
+  - compare_refseq_pq
+
 - title: "list_phyloseq Utilities"
   desc: "Functions for manipulating list_phyloseq objects"
   contents:
