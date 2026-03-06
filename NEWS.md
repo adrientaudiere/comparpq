@@ -1,5 +1,6 @@
 # comparpq 0.1.0 (development version)
 
+* `gg_bubbles_pq()` new ggplot2-based circle-packed bubble plot of taxa abundances. Unlike `bubbles_pq()`, it does not require d3js/Observable and supports faceting by a `@sam_data` variable to display one bubble chart per level. Uses `packcircles` for layout computation.
 * `compare_refseq()` new function to compare reference sequences (`refseq` slot) between two phyloseq objects, identifying shared and unique ASVs/OTUs by name and by DNA sequence content, including detection of same-name-different-sequence and same-sequence-different-name mismatches. Computes mean nearest-neighbor k-mer distance for unique sequences.
 * Add function `apply_to_lpq()` to apply a function to each phyloseq object in a list_phyloseq
 * `estim_cor_lpq()` new function to compute bootstrap correlation/regression across a list_phyloseq

@@ -204,13 +204,18 @@ check_nested_samples <- function(physeq_list) {
         samples_j <- sample_names_list[[j]]
 
         # Check if i is a proper subset of j (i contained in j, but not equal)
-        if (all(samples_i %in% samples_j) && length(samples_i) < length(samples_j)) {
-          nested_pairs <- c(nested_pairs, list(list(
-            subset = names_list[i],
-            superset = names_list[j],
-            n_subset = length(samples_i),
-            n_superset = length(samples_j)
-          )))
+        if (
+          all(samples_i %in% samples_j) && length(samples_i) < length(samples_j)
+        ) {
+          nested_pairs <- c(
+            nested_pairs,
+            list(list(
+              subset = names_list[i],
+              superset = names_list[j],
+              n_subset = length(samples_i),
+              n_superset = length(samples_j)
+            ))
+          )
         }
       }
     }
@@ -220,8 +225,14 @@ check_nested_samples <- function(physeq_list) {
     # Build description of nesting structure
     descriptions <- purrr::map_chr(nested_pairs, function(pair) {
       paste0(
-        pair$subset, " (", pair$n_subset, " samples) is nested in ",
-        pair$superset, " (", pair$n_superset, " samples)"
+        pair$subset,
+        " (",
+        pair$n_subset,
+        " samples) is nested in ",
+        pair$superset,
+        " (",
+        pair$n_superset,
+        " samples)"
       )
     })
     nesting_structure <- paste(descriptions, collapse = "; ")
@@ -396,7 +407,9 @@ determine_comparison_type <- function(
       type = "NESTED_ROBUSTNESS",
       description = paste0(
         "Nested samples detected (one phyloseq derived from another).\n",
-        "  Nesting: ", nested_info$nesting_structure, "\n",
+        "  Nesting: ",
+        nested_info$nesting_structure,
+        "\n",
         "  Useful to test robustness to data processing (e.g., rarefaction).\n",
         "  Comparisons should focus on the common (nested) samples."
       )
@@ -483,8 +496,44 @@ build_comparison_characteristics <- function(
     all_have_phy_tree = all(purrr::map_lgl(
       physeq_list,
       ~ !is.null(phyloseq::phy_tree(.x, errorIfNULL = FALSE))
-    ))
+    )),
+    refseq_comparison = build_refseq_comparison(physeq_list)
   )
+}
+
+#' Build refseq comparison for all pairs of phyloseq objects
+#'
+#' Returns NULL if not all objects have a refseq slot, or a named list of
+#' `compare_refseq` results (one per pair).
+#' @param physeq_list A named list of phyloseq objects
+#' @return A named list of compare_refseq results, or NULL
+#' @noRd
+build_refseq_comparison <- function(physeq_list) {
+  all_have_refseq <- all(purrr::map_lgl(
+    physeq_list,
+    ~ !is.null(phyloseq::refseq(.x, errorIfNULL = FALSE))
+  ))
+  if (!all_have_refseq || length(physeq_list) < 2) {
+    return(NULL)
+  }
+
+  nms <- names(physeq_list)
+  pairs <- utils::combn(seq_along(physeq_list), 2, simplify = FALSE)
+
+  results <- purrr::map(pairs, function(idx) {
+    compare_refseq(
+      physeq_list[[idx[1]]],
+      physeq_list[[idx[2]]],
+      name1 = nms[idx[1]],
+      name2 = nms[idx[2]],
+      verbose = FALSE
+    )
+  })
+  names(results) <- purrr::map_chr(
+    pairs,
+    ~ paste0(nms[.x[1]], "_vs_", nms[.x[2]])
+  )
+  results
 }
 
 # S7 Class Definition ----------------------------------------------------------
@@ -571,10 +620,12 @@ list_phyloseq <- S7::new_class(
       class = S7::class_list
     )
   ),
-  constructor = function(physeq_list,
-                         names = NULL,
-                         same_primer_seq_tech = TRUE,
-                         same_bioinfo_pipeline = TRUE) {
+  constructor = function(
+    physeq_list,
+    names = NULL,
+    same_primer_seq_tech = TRUE,
+    same_bioinfo_pipeline = TRUE
+  ) {
     if (!is.null(names)) {
       if (length(names) != length(physeq_list)) {
         stop("Length of 'names' must match length of 'physeq_list'")
@@ -623,6 +674,28 @@ S7::method(print, list_phyloseq) <- function(x, ...) {
   cat("Same taxa:", x@comparison$same_taxa, "\n")
   cat("Common samples:", x@comparison$n_common_samples, "\n")
   cat("Common taxa:", x@comparison$n_common_taxa, "\n")
+
+  if (!is.null(x@comparison$refseq_comparison)) {
+    cat("\n--- Reference sequence comparison ---\n")
+    for (pair_name in names(x@comparison$refseq_comparison)) {
+      rc <- x@comparison$refseq_comparison[[pair_name]]
+      cat(
+        pair_name,
+        ": ",
+        length(rc$shared_seqs),
+        " shared seqs, ",
+        length(rc$unique_seqs_1),
+        " unique in ",
+        rc$name1,
+        ", ",
+        length(rc$unique_seqs_2),
+        " unique in ",
+        rc$name2,
+        "\n",
+        sep = ""
+      )
+    }
+  }
   invisible(x)
 }
 
@@ -847,9 +920,17 @@ filter_common_lpq <- function(
 
     if (verbose) {
       message(
-        "  ", name, ": ",
-        original_nsamples, " -> ", phyloseq::nsamples(pq), " samples, ",
-        original_ntaxa, " -> ", phyloseq::ntaxa(pq), " taxa"
+        "  ",
+        name,
+        ": ",
+        original_nsamples,
+        " -> ",
+        phyloseq::nsamples(pq),
+        " samples, ",
+        original_ntaxa,
+        " -> ",
+        phyloseq::ntaxa(pq),
+        " taxa"
       )
     }
     pq
@@ -987,7 +1068,12 @@ n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
     })
   }
 
-  counts_list <- purrr::map(x@phyloseq_list, count_levels, ranks = taxonomic_ranks, na.rm = na.rm)
+  counts_list <- purrr::map(
+    x@phyloseq_list,
+    count_levels,
+    ranks = taxonomic_ranks,
+    na.rm = na.rm
+  )
 
   result <- do.call(rbind, counts_list)
   result <- as.data.frame(result)
@@ -1078,8 +1164,12 @@ apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
 
     if (!inherits(result, "phyloseq")) {
       stop(
-        "Function `", func_name, "` did not return a phyloseq object for '",
-        name, "'. Got class: ", paste(class(result), collapse = ", ")
+        "Function `",
+        func_name,
+        "` did not return a phyloseq object for '",
+        name,
+        "'. Got class: ",
+        paste(class(result), collapse = ", ")
       )
     }
 
@@ -1087,9 +1177,17 @@ apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
       new_nsamples <- phyloseq::nsamples(result)
       new_ntaxa <- phyloseq::ntaxa(result)
       message(
-        "  ", name, ": ",
-        original_nsamples, " -> ", new_nsamples, " samples, ",
-        original_ntaxa, " -> ", new_ntaxa, " taxa"
+        "  ",
+        name,
+        ": ",
+        original_nsamples,
+        " -> ",
+        new_nsamples,
+        " samples, ",
+        original_ntaxa,
+        " -> ",
+        new_ntaxa,
+        " taxa"
       )
     }
 
@@ -1097,7 +1195,13 @@ apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
   })
 
   if (verbose) {
-    message("Applied `", func_name, "` to ", length(transformed_list), " phyloseq objects.")
+    message(
+      "Applied `",
+      func_name,
+      "` to ",
+      length(transformed_list),
+      " phyloseq objects."
+    )
   }
 
   list_phyloseq(

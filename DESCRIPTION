@@ -39,7 +39,8 @@ Suggests:
     knitr,
     permute,
     rmarkdown,
-    MicrobiomeBenchmarkData
+    MicrobiomeBenchmarkData,
+    packcircles
 LazyData: true
 Config/testthat/edition: 3
 Config/testthat/parallel: true

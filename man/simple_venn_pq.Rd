@@ -10,12 +10,13 @@ simple_venn_pq(
   min_nb_seq = 0,
   taxonomic_rank = c("Class", "Order", "Family", "Genus", "Species"),
   na_remove = TRUE,
-  count_type = c("rank", "taxa", "sequences"),
+  count_type = c("rank", "taxa", "sequences", "rank_taxa"),
   add_nb_samples = TRUE,
   fill_alpha = 0.3,
   border_size = 0.8,
   text_size = 4,
   scale_text = FALSE,
+  hide_zero = TRUE,
   label_size = 4.5,
   colors = NULL,
   combine = TRUE,
@@ -50,6 +51,8 @@ shared Classes). This is the default.
 taxonomic levels.
 \item \code{"sequences"}: total number of reads for ASVs/OTUs assigned
 to the shared taxonomic levels.
+\item \code{"rank_taxa"}: shows both rank and taxa counts as
+\code{"nb_rank (nb_taxa)"}.
 Ignored when \code{taxonomic_rank} is \code{NULL} (ASV-level), where
 \code{"rank"} and \code{"taxa"} are equivalent.
 }}
@@ -68,6 +71,9 @@ inside regions.}
 \item{scale_text}{(logical, default FALSE) If \code{TRUE}, scale the
 size of count labels proportionally to the count value. The
 \code{text_size} parameter then acts as the base (minimum) size.}
+
+\item{hide_zero}{(logical, default TRUE) If \code{TRUE}, hide count
+labels that are zero (or \code{"0 (0)"} when \code{count_type = "rank_taxa"}).}
 
 \item{label_size}{(numeric, default 4.5) Size of group name labels.}
 

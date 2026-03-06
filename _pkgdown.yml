@@ -97,6 +97,7 @@ reference:
   desc: "Interactive plotting functions for phyloseq objects"
   contents:
   - bubbles_pq
+  - gg_bubbles_pq
 
 - title: "Fake Taxa Creation"
   desc: "Functions for adding fake taxa to test taxonomic assignment accuracy"

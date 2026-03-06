@@ -338,7 +338,7 @@ simple_venn_pq <- function(
     region_counts <- region_taxa_counts
   }
 
-  # Define shapes and compute centroids
+  # Define shapes and look up precomputed centroids
   # Shrink shapes when sample counts are shown to leave room for labels
   shapes <- venn_shapes(n_groups)
   if (add_nb_samples) {
@@ -350,7 +350,7 @@ simple_venn_pq <- function(
       s
     })
   }
-  centroids <- venn_centroids(shapes, n_groups)
+  centroids <- venn_centroids_precomputed(n_groups, add_nb_samples)
 
   # Default colors
   if (is.null(colors)) {
@@ -562,6 +562,89 @@ point_in_ellipse <- function(px, py, shape) {
   ly <- -dx * sin_a + dy * cos_a
   (lx / shape$a)^2 + (ly / shape$b)^2 <= 1
 }
+
+
+#' Look up precomputed centroids for standard Venn layouts
+#'
+#' Returns centroids for the standard 2-, 3-, or 4-set Venn shapes,
+#' with or without the 0.85 scaling applied for sample-count labels.
+#' These were computed once via [venn_centroids()] with n_grid = 200
+#' and hardcoded to avoid repeated grid sampling.
+#' @param n_sets Integer, number of sets (2, 3, or 4).
+#' @param scaled Logical, whether the 0.85 scaling is applied.
+#' @return Named list of numeric(2) centroids, keyed by binary code.
+#' @noRd
+venn_centroids_precomputed <- function(n_sets, scaled = FALSE) {
+  key <- paste0(n_sets, "_", if (scaled) "s" else "u")
+  .venn_centroid_cache[[key]]
+}
+
+# Precomputed centroid positions for all standard Venn configurations.
+# Keys: "{n_sets}_{u|s}" where u = unscaled, s = scaled (×0.85).
+.venn_centroid_cache <- list(
+  "2_u" = list(
+    "01" = c(1.003293, -0.005527),
+    "10" = c(-1.003156, -0.005527),
+    "11" = c(-0.008223, -0.005527)
+  ),
+  "2_s" = list(
+    "01" = c(0.852799, -0.004698),
+    "10" = c(-0.852683, -0.004698),
+    "11" = c(-0.006989, -0.004698)
+  ),
+  "3_u" = list(
+    "001" = c(0.953547, -0.546447),
+    "010" = c(-0.953409, -0.546447),
+    "011" = c(0.008360, -0.736815),
+    "100" = c(-0.008223, 1.103407),
+    "101" = c(0.638484, 0.373664),
+    "110" = c(-0.638347, 0.373664),
+    "111" = c(-0.008223, -0.007072)
+  ),
+  "3_s" = list(
+    "001" = c(0.810515, -0.464480),
+    "010" = c(-0.810398, -0.464480),
+    "011" = c(0.007106, -0.626293),
+    "100" = c(-0.006989, 0.937896),
+    "101" = c(0.542712, 0.317614),
+    "110" = c(-0.542595, 0.317614),
+    "111" = c(-0.006989, -0.006011)
+  ),
+  "4_u" = list(
+    "0001" = c(1.321071, 0.471399),
+    "0010" = c(0.404464, -1.055556),
+    "0011" = c(0.098929, -0.922777),
+    "0100" = c(-0.404306, 1.055626),
+    "0101" = c(1.105399, 0.179286),
+    "0110" = c(0.925672, -0.710331),
+    "0111" = c(1.015535, -0.298717),
+    "1000" = c(-1.320912, -0.471329),
+    "1001" = c(-0.763759, -0.763442),
+    "1010" = c(-1.105240, -0.179216),
+    "1011" = c(-0.404306, -0.803276),
+    "1100" = c(-0.098770, 0.922847),
+    "1101" = c(0.404464, 0.803346),
+    "1110" = c(-1.033350, 0.285509),
+    "1111" = c(-0.008907, -0.033160)
+  ),
+  "4_s" = list(
+    "0001" = c(1.122910, 0.400689),
+    "0010" = c(0.343795, -0.897222),
+    "0011" = c(0.084090, -0.784360),
+    "0100" = c(-0.343660, 0.897282),
+    "0101" = c(0.939589, 0.152393),
+    "0110" = c(0.786821, -0.603781),
+    "0111" = c(0.863205, -0.253909),
+    "1000" = c(-1.122775, -0.400630),
+    "1001" = c(-0.649195, -0.648926),
+    "1010" = c(-0.939454, -0.152334),
+    "1011" = c(-0.343660, -0.682785),
+    "1100" = c(-0.083955, 0.784420),
+    "1101" = c(0.343795, 0.682844),
+    "1110" = c(-0.878347, 0.242683),
+    "1111" = c(-0.007571, -0.028186)
+  )
+)
 
 
 #' Compute centroids of each Venn region via grid sampling

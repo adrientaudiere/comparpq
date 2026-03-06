@@ -61,7 +61,7 @@ test_that("simple_venn_pq errors with >4 groups", {
 
   expect_error(
     simple_venn_pq(data_fungi_mini, "many_groups", verbose = FALSE),
-    "2 to 4 groups"
+    "at most 4 groups"
   )
 })
 
@@ -130,7 +130,7 @@ test_that("simple_venn_pq count_type = 'both' shows rank and taxa", {
     data_fungi_mini,
     "Height",
     taxonomic_rank = "Genus",
-    count_type = "both",
+    count_type = "rank_taxa",
     verbose = FALSE
   )
   expect_s3_class(p, "ggplot")
