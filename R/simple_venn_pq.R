@@ -200,13 +200,22 @@ simple_venn_pq <- function(
   levels_fact <- unique(groups)
   n_groups <- length(levels_fact)
 
-  if (n_groups < 2 || n_groups > 4) {
+  if (n_groups < 2) {
     stop(
-      "simple_venn_pq() requires 2 to 4 groups. '",
+      "simple_venn_pq() requires at least 2 groups. '",
       fact,
       "' has ",
       n_groups,
       " unique level(s)."
+    )
+  }
+  if (n_groups > 4) {
+    stop(
+      "simple_venn_pq() supports at most 4 groups. '",
+      fact,
+      "' has ",
+      n_groups,
+      " unique level(s). Consider using MiscMetabar::upset_pq() for more groups."
     )
   }
 
@@ -262,10 +271,11 @@ simple_venn_pq <- function(
   )
 
   # Group labels
-  if (add_nb_samples) {
-    group_labels <- paste0(levels_fact, "\n(n=", n_samples, ")")
+  group_labels <- levels_fact
+  sample_labels <- if (add_nb_samples) {
+    paste0("(n=", n_samples, ")")
   } else {
-    group_labels <- levels_fact
+    NULL
   }
 
   # Compute region memberships
@@ -329,7 +339,17 @@ simple_venn_pq <- function(
   }
 
   # Define shapes and compute centroids
+  # Shrink shapes when sample counts are shown to leave room for labels
   shapes <- venn_shapes(n_groups)
+  if (add_nb_samples) {
+    shapes <- lapply(shapes, \(s) {
+      s$cx <- s$cx * 0.85
+      s$cy <- s$cy * 0.85
+      s$a <- s$a * 0.85
+      s$b <- s$b * 0.85
+      s
+    })
+  }
   centroids <- venn_centroids(shapes, n_groups)
 
   # Default colors
@@ -435,6 +455,17 @@ simple_venn_pq <- function(
         fontface = "bold",
         color = label_colors[i]
       )
+    if (add_nb_samples) {
+      p <- p +
+        ggplot2::annotate(
+          "text",
+          x = label_pos[[i]][1],
+          y = label_pos[[i]][2] - 0.22,
+          label = sample_labels[i],
+          size = label_size * 0.7,
+          color = "grey50"
+        )
+    }
   }
 
   # Title
@@ -446,13 +477,14 @@ simple_venn_pq <- function(
       sequences = "nb. sequences",
       rank_taxa = paste0("nb. ", taxonomic_rank, " (nb. taxa)")
     )
+    title_hjust <- if (n_groups == 3) 0.05 else 0.5
     p <- p +
       ggplot2::labs(title = taxonomic_rank, caption = count_label) +
       ggplot2::theme(
         plot.title = ggplot2::element_text(
           size = 14,
           face = "bold",
-          hjust = 0.05
+          hjust = title_hjust
         ),
         plot.caption = ggplot2::element_text(
           size = 10,
@@ -533,50 +565,75 @@ point_in_ellipse <- function(px, py, shape) {
 
 
 #' Compute centroids of each Venn region via grid sampling
+#'
+#' For each region, finds the grid point with the highest "depth
+#' score": how deeply inside the included sets and how far outside
+#' the excluded sets. This avoids placing labels at the center for
+#' symmetric regions that span both sides of the diagram.
 #' @param shapes List of shape parameter lists.
 #' @param n_sets Integer, number of sets.
 #' @param n_grid Integer, grid resolution per axis.
 #' @return Named list of numeric(2) centroids, keyed by binary code.
 #' @noRd
-venn_centroids <- function(shapes, n_sets, n_grid = 500) {
+venn_centroids <- function(shapes, n_sets, n_grid = 200) {
   all_pts <- do.call(rbind, lapply(shapes, ellipse_polygon))
   xlim <- range(all_pts$x) * 1.1
   ylim <- range(all_pts$y) * 1.1
 
-  xseq <- seq(xlim[1], xlim[2], length.out = n_grid)
-  yseq <- seq(ylim[1], ylim[2], length.out = n_grid)
-  grid <- expand.grid(x = xseq, y = yseq)
+  gx <- seq(xlim[1], xlim[2], length.out = n_grid)
+  gy <- seq(ylim[1], ylim[2], length.out = n_grid)
+  px <- rep(gx, n_grid)
+  py <- rep(gy, each = n_grid)
+  n_pts <- length(px)
 
-  membership <- vapply(
-    shapes,
-    \(s) point_in_ellipse(grid$x, grid$y, s),
-    logical(nrow(grid))
-  )
+  # Compute normalized ellipse distance for each shape
+  # (< 1 = inside, > 1 = outside)
+  ellipse_dist <- matrix(0, nrow = n_pts, ncol = n_sets)
+  for (s in seq_len(n_sets)) {
+    sh <- shapes[[s]]
+    dx <- px - sh$cx
+    dy <- py - sh$cy
+    cos_a <- cos(sh$angle)
+    sin_a <- sin(sh$angle)
+    lx <- dx * cos_a + dy * sin_a
+    ly <- -dx * sin_a + dy * cos_a
+    ellipse_dist[, s] <- sqrt((lx / sh$a)^2 + (ly / sh$b)^2)
+  }
 
-  codes <- apply(
-    membership,
-    1,
-    \(row) paste(as.integer(row), collapse = "")
-  )
-
-  all_zero <- paste(rep("0", n_sets), collapse = "")
+  # Encode region as integer (avoid slow apply+paste)
+  membership <- ellipse_dist <= 1
+  powers <- 10L^((n_sets - 1L):0L)
+  codes_int <- as.integer(membership %*% powers)
 
   # All possible non-empty codes
   combos <- expand.grid(rep(list(0:1), n_sets))
-  possible <- apply(combos, 1, \(row) paste(row, collapse = ""))
-  possible <- setdiff(possible, all_zero)
+  possible_int <- as.integer(as.matrix(combos) %*% powers)
+  possible_int <- possible_int[possible_int > 0L]
 
-  # Use spatial median (medoid) instead of mean for centroid,
-  # which is more robust for thin/curved regions
   centroids <- list()
-  for (code in possible) {
-    idx <- which(codes == code)
-    if (length(idx) > 0) {
-      centroids[[code]] <- c(
-        x = stats::median(grid$x[idx]),
-        y = stats::median(grid$y[idx])
-      )
+  for (code_int in possible_int) {
+    idx <- which(codes_int == code_int)
+    if (length(idx) == 0L) {
+      next
     }
+    # Decode bits
+    bits <- as.integer(strsplit(
+      formatC(code_int, width = n_sets, flag = "0"),
+      ""
+    )[[1]])
+    # Depth score: min across sets of distance to boundary
+    depth <- rep(Inf, length(idx))
+    for (s in seq_len(n_sets)) {
+      d <- ellipse_dist[idx, s]
+      if (bits[s] == 1L) {
+        depth <- pmin(depth, 1 - d)
+      } else {
+        depth <- pmin(depth, d - 1)
+      }
+    }
+    best <- which.max(depth)
+    code_str <- formatC(code_int, width = n_sets, flag = "0")
+    centroids[[code_str]] <- c(x = px[idx[best]], y = py[idx[best]])
   }
 
   centroids
