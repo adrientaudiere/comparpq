@@ -6,9 +6,9 @@
 \usage{
 compare_refseq_pq(
   physeq1,
-  physeq2,
-  name1 = "physeq1",
-  name2 = "physeq2",
+  physeq2 = NULL,
+  name1 = NULL,
+  name2 = NULL,
   k = 5,
   max_seqs = 500,
   seed = NULL,
@@ -16,17 +16,21 @@ compare_refseq_pq(
 )
 }
 \arguments{
-\item{physeq1}{(phyloseq, required) First phyloseq object. Must have a
-\code{refseq} slot.}
+\item{physeq1}{(phyloseq or list_phyloseq, required) First phyloseq
+object, which must have a \code{refseq} slot. Alternatively, a
+\link{list_phyloseq} object; in that case the first two phyloseq objects
+are used (with their names) and \code{physeq2} is ignored.}
 
-\item{physeq2}{(phyloseq, required) Second phyloseq object. Must have a
-\code{refseq} slot.}
+\item{physeq2}{(phyloseq, default NULL) Second phyloseq object. Must
+have a \code{refseq} slot. Ignored when \code{physeq1} is a \link{list_phyloseq}.}
 
-\item{name1}{(character, default "physeq1") Label for the first phyloseq
-object in the output.}
+\item{name1}{(character, default NULL) Label for the first phyloseq
+object in the output. If NULL, inferred from the \link{list_phyloseq}
+names or defaults to \code{"physeq1"}.}
 
-\item{name2}{(character, default "physeq2") Label for the second phyloseq
-object in the output.}
+\item{name2}{(character, default NULL) Label for the second phyloseq
+object in the output. If NULL, inferred from the \link{list_phyloseq}
+names or defaults to \code{"physeq2"}.}
 
 \item{k}{(integer, default 5) k-mer size for nearest-neighbor distance
 computation on unique sequences.}
@@ -100,6 +104,11 @@ res2 <- compare_refseq_pq(data_fungi_mini, sub,
   name1 = "full", name2 = "subset"
 )
 res2
+
+# From a list_phyloseq (uses the first two objects and their names)
+lpq <- list_phyloseq(list(full = data_fungi_mini, subset = sub))
+res3 <- compare_refseq_pq(lpq)
+res3
 }
 \author{
 Adrien Taudiere

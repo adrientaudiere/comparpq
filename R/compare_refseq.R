@@ -19,14 +19,18 @@
 #' gives a sense of how different the unmatched sequences are from their
 #' closest counterpart in the other object.
 #'
-#' @param physeq1 (phyloseq, required) First phyloseq object. Must have a
-#'   `refseq` slot.
-#' @param physeq2 (phyloseq, required) Second phyloseq object. Must have a
-#'   `refseq` slot.
-#' @param name1 (character, default "physeq1") Label for the first phyloseq
-#'   object in the output.
-#' @param name2 (character, default "physeq2") Label for the second phyloseq
-#'   object in the output.
+#' @param physeq1 (phyloseq or list_phyloseq, required) First phyloseq
+#'   object, which must have a `refseq` slot. Alternatively, a
+#'   [list_phyloseq] object; in that case the first two phyloseq objects
+#'   are used (with their names) and `physeq2` is ignored.
+#' @param physeq2 (phyloseq, default NULL) Second phyloseq object. Must
+#'   have a `refseq` slot. Ignored when `physeq1` is a [list_phyloseq].
+#' @param name1 (character, default NULL) Label for the first phyloseq
+#'   object in the output. If NULL, inferred from the [list_phyloseq]
+#'   names or defaults to `"physeq1"`.
+#' @param name2 (character, default NULL) Label for the second phyloseq
+#'   object in the output. If NULL, inferred from the [list_phyloseq]
+#'   names or defaults to `"physeq2"`.
 #' @param k (integer, default 5) k-mer size for nearest-neighbor distance
 #'   computation on unique sequences.
 #' @param max_seqs (integer, default 500) Maximum number of unique sequences
@@ -77,16 +81,58 @@
 #'   name1 = "full", name2 = "subset"
 #' )
 #' res2
+#'
+#' # From a list_phyloseq (uses the first two objects and their names)
+#' lpq <- list_phyloseq(list(full = data_fungi_mini, subset = sub))
+#' res3 <- compare_refseq_pq(lpq)
+#' res3
 compare_refseq_pq <- function(
   physeq1,
-  physeq2,
-  name1 = "physeq1",
-  name2 = "physeq2",
+  physeq2 = NULL,
+  name1 = NULL,
+  name2 = NULL,
   k = 5,
   max_seqs = 500,
   seed = NULL,
   verbose = TRUE
 ) {
+  # --- list_phyloseq dispatch ---
+  if (inherits(physeq1, "comparpq::list_phyloseq")) {
+    lpq <- physeq1
+    if (length(lpq) < 2) {
+      stop("list_phyloseq must contain at least 2 phyloseq objects.")
+    }
+    if (length(lpq) > 2) {
+      message(
+        "list_phyloseq contains ",
+        length(lpq),
+        " objects. Using the first two: '",
+        names(lpq)[1],
+        "' and '",
+        names(lpq)[2],
+        "'."
+      )
+    }
+    physeq1 <- lpq[[1]]
+    physeq2 <- lpq[[2]]
+    if (is.null(name1)) {
+      name1 <- names(lpq)[1]
+    }
+    if (is.null(name2)) {
+      name2 <- names(lpq)[2]
+    }
+  }
+
+  if (is.null(physeq2)) {
+    stop("'physeq2' is required when 'physeq1' is a phyloseq object.")
+  }
+  if (is.null(name1)) {
+    name1 <- "physeq1"
+  }
+  if (is.null(name2)) {
+    name2 <- "physeq2"
+  }
+
   rs1 <- phyloseq::refseq(physeq1, errorIfNULL = FALSE)
   rs2 <- phyloseq::refseq(physeq2, errorIfNULL = FALSE)
 
