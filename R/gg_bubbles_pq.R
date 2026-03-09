@@ -120,6 +120,13 @@
 #' gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE,
 #'   show_labels = FALSE, diff_border_width = 1) & no_legend()
 #'
+#' gg_bubbles_pq(
+#' physeq = data_fungi_mini,
+#' rank_color = "Class",
+#' facet_by="Height",
+#' ncol_facet=2,
+#' layout="square",
+#'  show_title=FALSE)
 gg_bubbles_pq <- function(
   physeq,
   rank_label = "Taxa",
