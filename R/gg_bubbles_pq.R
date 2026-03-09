@@ -16,10 +16,11 @@
 #' one sample) and the plot is automatically faceted by `source_name`.
 #'
 #' When `diff_contour = TRUE` together with `facet_by` (or a list_phyloseq
-#' input), taxa unique to each facet level are highlighted with a colored
-#' border contour. Each facet level gets its own contour color from
-#' `diff_contour_colors`, making it easy to spot taxa exclusive to a
-#' particular group. Shared taxa receive a transparent contour.
+#' input), all pairwise comparisons between facet levels are shown side by
+#' side using \pkg{patchwork}. For each pair (A vs B), taxa unique to A are
+#' highlighted with A's color and taxa unique to B with B's color. Shared
+#' taxa receive a transparent contour. This makes it easy to spot which taxa
+#' are exclusive to each group in every pairwise comparison.
 #'
 #' @inheritParams tc_points_matrix
 #' @param rank_label (character, default "Taxa") The name of the column in the
@@ -55,19 +56,19 @@
 #' @param ncol_facet (integer, default NULL) Number of columns for facet layout.
 #'   Passed to [ggplot2::facet_wrap()].
 #' @param return_dataframe (logical, default FALSE) If TRUE, the plot is not
-#'   returned, but the resulting dataframe to plot is returned.
+#'   returned, but the resulting dataframe to plot is returned. Ignored when
+#'   `diff_contour = TRUE`.
 #' @param diff_contour (logical, default FALSE) If TRUE and `facet_by` is set
-#'   (or `physeq` is a [list_phyloseq]), taxa unique to each facet level are
-#'   highlighted with a colored border contour. Each facet level gets its own
-#'   color from `diff_contour_colors`. Shared taxa (present in more than one
-#'   facet level) receive a transparent contour. When TRUE, `rank_contour` is
-#'   ignored.
+#'   (or `physeq` is a [list_phyloseq]), produces pairwise comparison panels
+#'   for all pairs of facet levels using \pkg{patchwork}. For each pair, taxa
+#'   unique to each side are highlighted with a distinct contour color from
+#'   `diff_contour_colors`. Shared taxa get a transparent contour. When TRUE,
+#'   `rank_contour` is ignored.
 #' @param diff_contour_colors (character vector, default
 #'   `c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3")`) Border colors for taxa
 #'   unique to each facet level in `diff_contour` mode. Recycled if shorter
-#'   than the number of facet levels. Each facet level's unique taxa get a
-#'   distinct color, making it easy to identify which group a taxon is
-#'   exclusive to.
+#'   than the number of facet levels. Each level gets a distinct color so
+#'   unique taxa from different groups are visually distinguishable.
 #' @param diff_border_width (numeric, default 1.5) Border width used in
 #'   `diff_contour` mode.
 #' @param match_by (character, default `"refseq"`) How to match taxa when
@@ -75,7 +76,8 @@
 #'   `"refseq"` (match by reference sequences) or `"names"` (match by taxa
 #'   names).
 #'
-#' @return A ggplot2 object, or a data.frame if `return_dataframe = TRUE`.
+#' @return A ggplot2 object, a patchwork object (when `diff_contour = TRUE`),
+#'   or a data.frame if `return_dataframe = TRUE`.
 #' @export
 #' @author Adrien Taudière
 #'
@@ -90,22 +92,29 @@
 #'   layout = "square"
 #' )
 #'
-#' # Faceted by sample variable with diff_contour
+#' # Faceted by sample variable
+#' gg_bubbles_pq(
+#'   physeq = data_fungi, rank_color = "Order",
+#'   facet_by = "Height", min_nb_seq = 100
+#' ) + no_legend()
+#'
+#' # Pairwise diff_contour on a faceted phyloseq
 #' gg_bubbles_pq(
 #'   physeq = data_fungi, rank_color = "Order",
 #'   facet_by = "Height", min_nb_seq = 100,
 #'   diff_contour = TRUE, show_labels = FALSE
-#' )
+#' ) & no_legend()
 #'
 #' # list_phyloseq: automatically merged and faceted
+#' mini2 <- subset_taxa_pq(data_fungi_mini, taxa_sums(data_fungi_mini) < 10000)
 #' lpq <- list_phyloseq(
-#'   list(full = data_fungi, mini = data_fungi_mini)
+#'   list(full = data_fungi, mini = data_fungi_mini, mini2 = mini2),
 #' )
 #' gg_bubbles_pq(lpq, rank_color = "Class")
 #'
-#' # list_phyloseq with diff_contour: unique taxa get distinct colors
+#' # list_phyloseq with diff_contour: pairwise panels
 #' gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE,
-#'   show_labels = FALSE, diff_border_width = 1)
+#'   show_labels = FALSE, diff_border_width = 1) & no_legend()
 #'
 gg_bubbles_pq <- function(
   physeq,
@@ -113,7 +122,6 @@ gg_bubbles_pq <- function(
   rank_color = "Family",
   rank_contour = NULL,
   layout = "circle",
-
   facet_by = NULL,
   log1ptransform = FALSE,
   min_nb_seq = 0,
@@ -167,46 +175,109 @@ gg_bubbles_pq <- function(
     rank_contour <- NULL
   }
 
-  # ---- Compute taxa presence per facet level (for diff_contour) --------------
-  diff_info <- NULL
+  # ---- diff_contour: pairwise comparison panels ------------------------------
   if (diff_contour) {
+    rlang::check_installed(
+      "patchwork",
+      reason = "to combine pairwise diff_contour panels"
+    )
+
     levels_var <- unique(as.character(physeq@sam_data[[facet_by]]))
     levels_var <- levels_var[!is.na(levels_var)]
-
-    taxa_per_level <- lapply(levels_var, function(lvl) {
-      sam_values <- as.character(physeq@sam_data[[facet_by]])
-      idx <- !is.na(sam_values) & sam_values == lvl
-      pq_sub <- prune_samples(idx, physeq)
-      taxa_names(prune_taxa(taxa_sums(pq_sub) > 0, pq_sub))
-    })
-    names(taxa_per_level) <- levels_var
-
-    all_taxa <- taxa_names(physeq)
-    taxa_n_levels <- vapply(
-      all_taxa,
-      function(tn) {
-        sum(vapply(
-          taxa_per_level,
-          \(tpl) tn %in% tpl,
-          logical(1)
-        ))
-      },
-      integer(1)
-    )
 
     diff_colors <- stats::setNames(
       rep_len(diff_contour_colors, length(levels_var)),
       levels_var
     )
 
-    diff_info <- list(
-      taxa_per_level = taxa_per_level,
-      taxa_n_levels = taxa_n_levels,
-      colors = diff_colors
+    # Shared fill scale across all panels
+    all_color_vals <- sort(unique(na.omit(
+      as.vector(physeq@tax_table[, rank_color])
+    )))
+
+    # Helper: subset physeq to a facet level, prune empty taxa
+    subset_to_level <- function(lvl) {
+      sam_values <- as.character(physeq@sam_data[[facet_by]])
+      idx <- !is.na(sam_values) & sam_values == lvl
+      pq_sub <- prune_samples(idx, physeq)
+      prune_taxa(taxa_sums(pq_sub) > 0, pq_sub)
+    }
+
+    # Helper: add .cmpq_diff tag and build one bubble plot
+    make_diff_panel <- function(pq, unique_taxa, contour_color, title) {
+      phyloseq::tax_table(pq) <- cbind(
+        phyloseq::tax_table(pq),
+        .cmpq_diff = ifelse(
+          phyloseq::taxa_names(pq) %in% unique_taxa,
+          "unique",
+          "shared"
+        )
+      )
+      p <- gg_bubbles_pq(
+        physeq = pq,
+        rank_label = rank_label,
+        rank_color = rank_color,
+        rank_contour = ".cmpq_diff",
+        layout = layout,
+        log1ptransform = log1ptransform,
+        min_nb_seq = min_nb_seq,
+        label_size = label_size,
+        label_color = label_color,
+        show_labels = show_labels,
+        border_width = diff_border_width,
+        alpha = alpha,
+        npoints = npoints
+      ) +
+        ggplot2::scale_color_manual(
+          values = c("unique" = contour_color, "shared" = "transparent"),
+          guide = "none"
+        )
+      if (length(all_color_vals) > 0) {
+        p <- p + ggplot2::scale_fill_discrete(limits = all_color_vals)
+      }
+      p + ggplot2::ggtitle(title)
+    }
+
+    # Build all pairwise panels
+    pair_indices <- utils::combn(seq_along(levels_var), 2, simplify = FALSE)
+
+    pair_plots <- lapply(pair_indices, function(idx) {
+      i <- idx[1]
+      j <- idx[2]
+      lvl_i <- levels_var[i]
+      lvl_j <- levels_var[j]
+
+      pq_i <- subset_to_level(lvl_i)
+      pq_j <- subset_to_level(lvl_j)
+
+      unique_i <- setdiff(
+        phyloseq::taxa_names(pq_i),
+        phyloseq::taxa_names(pq_j)
+      )
+      unique_j <- setdiff(
+        phyloseq::taxa_names(pq_j),
+        phyloseq::taxa_names(pq_i)
+      )
+
+      p_i <- make_diff_panel(pq_i, unique_i, diff_colors[lvl_i], lvl_i)
+      p_j <- make_diff_panel(pq_j, unique_j, diff_colors[lvl_j], lvl_j)
+
+      (p_i | p_j) +
+        patchwork::plot_annotation(
+          title = paste0(lvl_i, " vs ", lvl_j),
+          theme = ggplot2::theme(
+            plot.title = ggplot2::element_text(size = 11, face = "bold")
+          )
+        )
+    })
+
+    return(
+      patchwork::wrap_plots(pair_plots, ncol = 1) +
+        patchwork::plot_layout(guides = "collect")
     )
   }
 
-  # ---- Build data frame ------------------------------------------------------
+  # ---- Build data frame (standard mode) --------------------------------------
   build_bubble_df <- function(pq, facet_label = NULL) {
     if (rank_label == "Taxa") {
       label <- taxa_names(pq)
@@ -223,12 +294,6 @@ gg_bubbles_pq <- function(
 
     if (!is.null(rank_contour)) {
       df$rank_value_contour <- as.vector(pq@tax_table[, rank_contour])
-    }
-
-    if (!is.null(diff_info) && !is.null(facet_label)) {
-      tn <- taxa_names(pq)
-      is_unique <- diff_info$taxa_n_levels[tn] == 1L
-      df$diff_contour_tag <- ifelse(is_unique, facet_label, "shared")
     }
 
     if (min_nb_seq > 0) {
@@ -328,13 +393,6 @@ gg_bubbles_pq <- function(
       )
     }
 
-    if ("diff_contour_tag" %in% colnames(df)) {
-      vertices$diff_contour_tag <- rep(
-        df$diff_contour_tag,
-        each = npoints + 1
-      )
-    }
-
     center <- data.frame(
       x = lay$x,
       y = lay$y,
@@ -366,25 +424,7 @@ gg_bubbles_pq <- function(
   }
 
   # ---- Build plot ------------------------------------------------------------
-  if (diff_contour && "diff_contour_tag" %in% colnames(verts)) {
-    p <- ggplot2::ggplot() +
-      ggplot2::geom_polygon(
-        data = verts,
-        ggplot2::aes(
-          x = x,
-          y = y,
-          group = id,
-          fill = rank_value_color,
-          color = diff_contour_tag
-        ),
-        linewidth = diff_border_width,
-        alpha = alpha
-      ) +
-      ggplot2::scale_color_manual(
-        values = c(diff_info$colors, "shared" = "transparent"),
-        guide = "none"
-      )
-  } else if (!is.null(rank_contour)) {
+  if (!is.null(rank_contour)) {
     p <- ggplot2::ggplot() +
       ggplot2::geom_polygon(
         data = verts,

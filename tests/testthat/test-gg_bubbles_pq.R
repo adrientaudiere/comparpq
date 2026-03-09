@@ -175,7 +175,7 @@ create_test_lpq_bubbles <- function(n = 2) {
   list_phyloseq(pqs, same_bioinfo_pipeline = FALSE)
 }
 
-test_that("gg_bubbles_pq accepts a list_phyloseq and returns a ggplot", {
+test_that("gg_bubbles_pq accepts a list_phyloseq and returns faceted ggplot", {
   skip_if_not_installed("packcircles")
   lpq <- create_test_lpq_bubbles(2)
   result <- gg_bubbles_pq(lpq, rank_color = "Class")
@@ -200,58 +200,58 @@ test_that("gg_bubbles_pq list_phyloseq return_dataframe works", {
 
 # diff_contour -----------------------------------------------------------------
 
-test_that("diff_contour with facet_by tags unique taxa per level", {
+test_that("diff_contour with facet_by returns pairwise patchwork", {
   skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
   result <- gg_bubbles_pq(
     physeq = data_fungi_mini,
     rank_color = "Class",
     facet_by = "Height",
     diff_contour = TRUE
   )
-  expect_s3_class(result, "ggplot")
+  expect_true(inherits(result, "patchwork"))
 })
 
-test_that("diff_contour return_dataframe includes diff_contour_tag", {
-  result <- gg_bubbles_pq(
-    physeq = data_fungi_mini,
-    rank_color = "Class",
-    facet_by = "Height",
-    diff_contour = TRUE,
-    return_dataframe = TRUE
-  )
-  expect_true("diff_contour_tag" %in% colnames(result))
-  levels_h <- unique(as.character(data_fungi_mini@sam_data[["Height"]]))
-  expect_true(all(result$diff_contour_tag %in% c(levels_h, "shared")))
-})
-
-test_that("diff_contour with list_phyloseq works", {
+test_that("diff_contour with list_phyloseq returns patchwork", {
   skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
   lpq <- create_test_lpq_bubbles(2)
   result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
-  expect_s3_class(result, "ggplot")
+  expect_true(inherits(result, "patchwork"))
 })
 
-test_that("diff_contour with 4 list_phyloseq objects works", {
+test_that("diff_contour with 3 list_phyloseq objects returns patchwork", {
   skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
+  lpq <- create_test_lpq_bubbles(3)
+  result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
+  expect_true(inherits(result, "patchwork"))
+})
+
+test_that("diff_contour with 4 list_phyloseq objects returns patchwork", {
+  skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
   lpq <- create_test_lpq_bubbles(4)
   result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
-  expect_s3_class(result, "ggplot")
+  expect_true(inherits(result, "patchwork"))
 })
 
-test_that("diff_contour without facet_by warns", {
+test_that("diff_contour without facet_by warns and falls back", {
   skip_if_not_installed("packcircles")
   expect_warning(
-    gg_bubbles_pq(
+    result <- gg_bubbles_pq(
       physeq = data_fungi_mini,
       rank_color = "Class",
       diff_contour = TRUE
     ),
     "requires.*facet_by"
   )
+  expect_s3_class(result, "ggplot")
 })
 
 test_that("diff_contour overrides rank_contour with message", {
   skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
   expect_message(
     gg_bubbles_pq(
       physeq = data_fungi_mini,

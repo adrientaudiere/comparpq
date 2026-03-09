@@ -80,21 +80,21 @@ each circle polygon. Higher values produce smoother circles.}
 Passed to \code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}}.}
 
 \item{return_dataframe}{(logical, default FALSE) If TRUE, the plot is not
-returned, but the resulting dataframe to plot is returned.}
+returned, but the resulting dataframe to plot is returned. Ignored when
+\code{diff_contour = TRUE}.}
 
 \item{diff_contour}{(logical, default FALSE) If TRUE and \code{facet_by} is set
-(or \code{physeq} is a \link{list_phyloseq}), taxa unique to each facet level are
-highlighted with a colored border contour. Each facet level gets its own
-color from \code{diff_contour_colors}. Shared taxa (present in more than one
-facet level) receive a transparent contour. When TRUE, \code{rank_contour} is
-ignored.}
+(or \code{physeq} is a \link{list_phyloseq}), produces pairwise comparison panels
+for all pairs of facet levels using \pkg{patchwork}. For each pair, taxa
+unique to each side are highlighted with a distinct contour color from
+\code{diff_contour_colors}. Shared taxa get a transparent contour. When TRUE,
+\code{rank_contour} is ignored.}
 
 \item{diff_contour_colors}{(character vector, default
 \code{c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3")}) Border colors for taxa
 unique to each facet level in \code{diff_contour} mode. Recycled if shorter
-than the number of facet levels. Each facet level's unique taxa get a
-distinct color, making it easy to identify which group a taxon is
-exclusive to.}
+than the number of facet levels. Each level gets a distinct color so
+unique taxa from different groups are visually distinguishable.}
 
 \item{diff_border_width}{(numeric, default 1.5) Border width used in
 \code{diff_contour} mode.}
@@ -105,7 +105,8 @@ exclusive to.}
 names).}
 }
 \value{
-A ggplot2 object, or a data.frame if \code{return_dataframe = TRUE}.
+A ggplot2 object, a patchwork object (when \code{diff_contour = TRUE}),
+or a data.frame if \code{return_dataframe = TRUE}.
 }
 \description{
 \if{html}{\out{
@@ -124,10 +125,11 @@ single phyloseq object using \code{\link[=merge_lpq]{merge_lpq()}} (each origina
 one sample) and the plot is automatically faceted by \code{source_name}.
 
 When \code{diff_contour = TRUE} together with \code{facet_by} (or a list_phyloseq
-input), taxa unique to each facet level are highlighted with a colored
-border contour. Each facet level gets its own contour color from
-\code{diff_contour_colors}, making it easy to spot taxa exclusive to a
-particular group. Shared taxa receive a transparent contour.
+input), all pairwise comparisons between facet levels are shown side by
+side using \pkg{patchwork}. For each pair (A vs B), taxa unique to A are
+highlighted with A's color and taxa unique to B with B's color. Shared
+taxa receive a transparent contour. This makes it easy to spot which taxa
+are exclusive to each group in every pairwise comparison.
 }
 \examples{
 gg_bubbles_pq(physeq = data_fungi_mini, rank_color = "Class")
@@ -140,7 +142,13 @@ gg_bubbles_pq(
   layout = "square"
 )
 
-# Faceted by sample variable with diff_contour
+# Faceted by sample variable
+gg_bubbles_pq(
+  physeq = data_fungi, rank_color = "Order",
+  facet_by = "Height", min_nb_seq = 100
+)
+
+# Pairwise diff_contour on a faceted phyloseq
 gg_bubbles_pq(
   physeq = data_fungi, rank_color = "Order",
   facet_by = "Height", min_nb_seq = 100,
@@ -153,7 +161,7 @@ lpq <- list_phyloseq(
 )
 gg_bubbles_pq(lpq, rank_color = "Class")
 
-# list_phyloseq with diff_contour: unique taxa get distinct colors
+# list_phyloseq with diff_contour: pairwise panels
 gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE,
   show_labels = FALSE, diff_border_width = 1)
 
