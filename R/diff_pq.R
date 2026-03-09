@@ -81,11 +81,11 @@ div_pq <- function(
       df <- cbind(df, df_div)
     }
     if (!is.null(scales)) {
-      df_renyi <- as.data.frame(vegan::renyi(
+      df_renyi <- as.data.frame(rbind(vegan::renyi(
         comm,
         scales = scales,
         hill = hill
-      ))
+      )))
       names(df_renyi) <- paste0(if (hill) "hill_" else "renyi_", scales)
       df <- cbind(df, df_renyi)
     }
