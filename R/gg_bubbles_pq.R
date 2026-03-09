@@ -86,17 +86,22 @@
 #'
 #' # list_phyloseq: one bubble chart per phyloseq, shared legend
 #' lpq <- list_phyloseq(
-#'   list(full = data_fungi_mini, mini = data_fungi_mini),
-#'   same_bioinfo_pipeline = FALSE
+#'   list(full = data_fungi, mini = data_fungi_mini)
 #' )
-#' gg_bubbles_pq(lpq, rank_color = "Class")
+#' gg_bubbles_pq(lpq, rank_color = "Class") & no_legend()
 #'
 #' # Highlight unique sequences when comparing two phyloseq objects.
 #' # Here we contour taxa found only in data_fungi_mini,
 #' # using transparent borders
 #' # for shared taxa so that only unique ones stand out.
 #'
-#' mini2 <- subset_taxa_pq(data_fungi_mini, taxa_sums(data_fungi_mini) < 10000)
+#' lpq3 <- list_phyloseq(
+#'   list(full = data_fungi, mini = data_fungi_mini, mini2 = mini2)
+#' )
+#' gg_bubbles_pq(lpq3, rank_color = "Class", diff_contour=T, show_labels=F,
+#'  diff_border_width=1, diff_unique_color="#284028") & no_legend()
+#'
+#'
 #' pq_list <- list_phyloseq(list("full" = data_fungi_mini, "mini" = mini2),
 #'   same_bioinfo_pipeline = FALSE)
 #' unique_seqs <-
@@ -178,22 +183,25 @@ gg_bubbles_pq <- function(
       p + ggplot2::ggtitle(name)
     })
 
-    combined <- patchwork::wrap_plots(individual_plots) +
-      patchwork::plot_layout(guides = "collect")
-
     if (!diff_contour) {
-      return(combined)
-    }
-
-    if (n_pq < 3) {
-      message(
-        "`diff_contour` is only applied when there are at least 3 phyloseq ",
-        "objects in the list_phyloseq. Returning individual plots only."
+      return(
+        patchwork::wrap_plots(individual_plots) +
+          patchwork::plot_layout(guides = "collect")
       )
-      return(combined)
     }
 
-    # Helper: add a ".cmpq_diff" column to the tax_table marking unique taxa
+    if (!n_pq %in% c(2L, 3L)) {
+      message(
+        "`diff_contour` is only applied when the list_phyloseq contains ",
+        "exactly 2 or 3 phyloseq objects. Returning individual plots only."
+      )
+      return(
+        patchwork::wrap_plots(individual_plots) +
+          patchwork::plot_layout(guides = "collect")
+      )
+    }
+
+    # Helper: stamp ".cmpq_diff" onto a phyloseq tax_table
     add_diff_col <- function(pq, unique_taxa) {
       phyloseq::tax_table(pq) <- cbind(
         phyloseq::tax_table(pq),
@@ -206,7 +214,7 @@ gg_bubbles_pq <- function(
       pq
     }
 
-    # Helper: build one half of a pairwise diff panel
+    # Helper: one bubble plot with unique taxa outlined in diff_unique_color
     make_diff_half <- function(pq, title) {
       p <- gg_bubbles_pq(
         physeq = pq,
@@ -233,7 +241,29 @@ gg_bubbles_pq <- function(
       p + ggplot2::ggtitle(title)
     }
 
-    # Build one comparison panel per pair
+    # n = 2: replace the two individual plots with diff-highlighted versions
+    if (n_pq == 2L) {
+      pq_1 <- pq_list@phyloseq_list[[1]]
+      pq_2 <- pq_list@phyloseq_list[[2]]
+      unique_1 <- setdiff(
+        phyloseq::taxa_names(pq_1),
+        phyloseq::taxa_names(pq_2)
+      )
+      unique_2 <- setdiff(
+        phyloseq::taxa_names(pq_2),
+        phyloseq::taxa_names(pq_1)
+      )
+
+      p1 <- make_diff_half(add_diff_col(pq_1, unique_1), pq_names[1])
+      p2 <- make_diff_half(add_diff_col(pq_2, unique_2), pq_names[2])
+
+      return(
+        patchwork::wrap_plots(list(p1, p2)) +
+          patchwork::plot_layout(guides = "collect")
+      )
+    }
+
+    # n = 3: three pairwise comparison panels stacked in a single column
     pair_indices <- utils::combn(seq_len(n_pq), 2, simplify = FALSE)
 
     diff_panels <- purrr::map(pair_indices, function(idx) {
@@ -274,7 +304,7 @@ gg_bubbles_pq <- function(
     diff_combined <- patchwork::wrap_plots(diff_panels, ncol = 1) +
       patchwork::plot_layout(guides = "collect")
 
-    return(combined / diff_combined)
+    return(diff_combined)
   }
 
   # ---- Single phyloseq input (original logic) --------------------------------
