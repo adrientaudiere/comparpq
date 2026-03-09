@@ -164,3 +164,48 @@ test_that("gg_bubbles_pq with show_labels=FALSE still returns ggplot", {
   )
   expect_s3_class(result, "ggplot")
 })
+
+# list_phyloseq input ----------------------------------------------------------
+
+create_test_lpq_bubbles <- function(n = 2) {
+  pqs <- setNames(
+    rep(list(data_fungi_mini), n),
+    paste0("run", seq_len(n))
+  )
+  list_phyloseq(pqs, same_bioinfo_pipeline = FALSE)
+}
+
+test_that("gg_bubbles_pq accepts a list_phyloseq and returns a patchwork", {
+  skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
+  lpq <- create_test_lpq_bubbles(2)
+  result <- gg_bubbles_pq(lpq, rank_color = "Class")
+  expect_true(inherits(result, "patchwork"))
+})
+
+test_that("gg_bubbles_pq list_phyloseq with 3 objects returns patchwork", {
+  skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
+  lpq <- create_test_lpq_bubbles(3)
+  result <- gg_bubbles_pq(lpq, rank_color = "Class")
+  expect_true(inherits(result, "patchwork"))
+})
+
+test_that("gg_bubbles_pq diff_contour with 2 objects emits message and ignores", {
+  skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
+  lpq <- create_test_lpq_bubbles(2)
+  expect_message(
+    result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE),
+    "at least 3"
+  )
+  expect_true(inherits(result, "patchwork"))
+})
+
+test_that("gg_bubbles_pq diff_contour with 3 objects returns patchwork", {
+  skip_if_not_installed("packcircles")
+  skip_if_not_installed("patchwork")
+  lpq <- create_test_lpq_bubbles(3)
+  result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
+  expect_true(inherits(result, "patchwork"))
+})

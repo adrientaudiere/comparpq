@@ -11,6 +11,12 @@
 #' (tight, default) or a square layout. Optionally facets the plot by a sample
 #' data variable, producing one bubble chart per level.
 #'
+#' When a [list_phyloseq] is passed as `physeq`, one bubble chart is produced
+#' per phyloseq object and combined via \pkg{patchwork} with a shared legend.
+#' If `diff_contour = TRUE` and there are at least 3 phyloseq objects, one
+#' additional comparison panel is appended per pair, highlighting taxa unique
+#' to each object in red.
+#'
 #' @inheritParams tc_points_matrix
 #' @param rank_label (character, default "Taxa") The name of the column in the
 #'   `@tax_table` slot to label the circles. If set to "Taxa", the taxa names
@@ -25,7 +31,8 @@
 #'   square boundary, with large circles placed centrally.
 #' @param facet_by (character, default NULL) A column name from `@sam_data` to
 #'   facet the plot. When set, one bubble chart is produced per level of the
-#'   variable, with taxa abundances computed within each level.
+#'   variable, with taxa abundances computed within each level. Ignored when
+#'   `physeq` is a [list_phyloseq].
 #' @param log1ptransform (logical, default FALSE) If TRUE, the number of
 #'   sequences is log1p transformed before computing circle sizes.
 #' @param min_nb_seq (integer, default 0) Minimum number of sequences to filter
@@ -43,11 +50,23 @@
 #' @param ncol_facet (integer, default NULL) Number of columns for facet layout.
 #'   Passed to [ggplot2::facet_wrap()].
 #' @param return_dataframe (logical, default FALSE) If TRUE, the plot is not
-#'   returned, but the resulting dataframe to plot is returned.
+#'   returned, but the resulting dataframe to plot is returned. Ignored when
+#'   `physeq` is a [list_phyloseq].
+#' @param diff_contour (logical, default FALSE) Only used when `physeq` is a
+#'   [list_phyloseq] with at least 3 phyloseq objects. If TRUE, appends one
+#'   pairwise comparison panel per pair of phyloseq objects, where taxa unique
+#'   to each object (by taxa names) are highlighted with a red border contour.
+#'   Matching taxa (present in both) receive a transparent contour. Taxa
+#'   uniqueness is determined per pair by comparing `taxa_names()`.
+#' @param diff_unique_color (character, default `"red"`) Border color for taxa
+#'   that are unique to one object in a pairwise `diff_contour` comparison.
+#' @param diff_border_width (numeric, default 1.5) Border width used in
+#'   `diff_contour` comparison panels.
 #'
-#' @return A ggplot2 object, or a data.frame if `return_dataframe = TRUE`.
+#' @return A ggplot2 object (or patchwork when `physeq` is a [list_phyloseq]),
+#'   or a data.frame if `return_dataframe = TRUE`.
 #' @export
-#' @author Adrien Taudiere
+#' @author Adrien Taudière
 #'
 #' @examples
 #' gg_bubbles_pq(physeq = data_fungi_mini, rank_color = "Class")
@@ -59,17 +78,24 @@
 #'   physeq = data_fungi_mini, rank_color = "Class",
 #'   layout = "square"
 #' )
-#' 
+#'
 #' gg_bubbles_pq(
 #'   physeq = data_fungi, rank_color = "Order",
 #'   facet_by = "Height", min_nb_seq = 100
 #' ) + no_legend()
 #'
+#' # list_phyloseq: one bubble chart per phyloseq, shared legend
+#' lpq <- list_phyloseq(
+#'   list(full = data_fungi_mini, mini = data_fungi_mini),
+#'   same_bioinfo_pipeline = FALSE
+#' )
+#' gg_bubbles_pq(lpq, rank_color = "Class")
+#'
 #' # Highlight unique sequences when comparing two phyloseq objects.
-#' # Here we contour taxa found only in data_fungi_mini, 
+#' # Here we contour taxa found only in data_fungi_mini,
 #' # using transparent borders
 #' # for shared taxa so that only unique ones stand out.
-#' 
+#'
 #' mini2 <- subset_taxa_pq(data_fungi_mini, taxa_sums(data_fungi_mini) < 10000)
 #' pq_list <- list_phyloseq(list("full" = data_fungi_mini, "mini" = mini2),
 #'   same_bioinfo_pipeline = FALSE)
@@ -88,7 +114,7 @@
 #'     values = c("Only_1" = "red", "both" = "transparent")
 #'   )) /
 #'   gg_bubbles_pq(mini2, rank_color = "Class")
-#' 
+#'
 gg_bubbles_pq <- function(
   physeq,
   rank_label = "Taxa",
@@ -106,8 +132,152 @@ gg_bubbles_pq <- function(
   alpha = 0.8,
   npoints = 50,
   ncol_facet = NULL,
-  return_dataframe = FALSE
+  return_dataframe = FALSE,
+  diff_contour = FALSE,
+  diff_unique_color = "red",
+  diff_border_width = 1.5
 ) {
+  # ---- Branch: list_phyloseq input -------------------------------------------
+  if (inherits(physeq, "comparpq::list_phyloseq")) {
+    rlang::check_installed(
+      "patchwork",
+      reason = "to combine bubble plots for list_phyloseq"
+    )
+
+    pq_list <- physeq
+    n_pq <- length(pq_list@phyloseq_list)
+    pq_names <- names(pq_list@phyloseq_list)
+
+    # Collect all rank_color values across all objects for a shared legend
+    all_color_vals <- sort(unique(na.omit(unlist(purrr::map(
+      pq_list@phyloseq_list,
+      ~ as.vector(.x@tax_table[, rank_color])
+    )))))
+
+    # Build individual plots with a shared fill scale
+    individual_plots <- purrr::imap(pq_list@phyloseq_list, function(pq, name) {
+      p <- gg_bubbles_pq(
+        physeq = pq,
+        rank_label = rank_label,
+        rank_color = rank_color,
+        rank_contour = rank_contour,
+        layout = layout,
+        log1ptransform = log1ptransform,
+        min_nb_seq = min_nb_seq,
+        label_size = label_size,
+        label_color = label_color,
+        show_labels = show_labels,
+        border_color = border_color,
+        border_width = border_width,
+        alpha = alpha,
+        npoints = npoints
+      )
+      if (length(all_color_vals) > 0) {
+        p <- p + ggplot2::scale_fill_discrete(limits = all_color_vals)
+      }
+      p + ggplot2::ggtitle(name)
+    })
+
+    combined <- patchwork::wrap_plots(individual_plots) +
+      patchwork::plot_layout(guides = "collect")
+
+    if (!diff_contour) {
+      return(combined)
+    }
+
+    if (n_pq < 3) {
+      message(
+        "`diff_contour` is only applied when there are at least 3 phyloseq ",
+        "objects in the list_phyloseq. Returning individual plots only."
+      )
+      return(combined)
+    }
+
+    # Helper: add a ".cmpq_diff" column to the tax_table marking unique taxa
+    add_diff_col <- function(pq, unique_taxa) {
+      phyloseq::tax_table(pq) <- cbind(
+        phyloseq::tax_table(pq),
+        .cmpq_diff = ifelse(
+          phyloseq::taxa_names(pq) %in% unique_taxa,
+          "unique",
+          "shared"
+        )
+      )
+      pq
+    }
+
+    # Helper: build one half of a pairwise diff panel
+    make_diff_half <- function(pq, title) {
+      p <- gg_bubbles_pq(
+        physeq = pq,
+        rank_label = rank_label,
+        rank_color = rank_color,
+        rank_contour = ".cmpq_diff",
+        layout = layout,
+        log1ptransform = log1ptransform,
+        min_nb_seq = min_nb_seq,
+        label_size = label_size,
+        label_color = label_color,
+        show_labels = show_labels,
+        border_width = diff_border_width,
+        alpha = alpha,
+        npoints = npoints
+      ) +
+        ggplot2::scale_color_manual(
+          values = c("unique" = diff_unique_color, "shared" = "transparent"),
+          guide = "none"
+        )
+      if (length(all_color_vals) > 0) {
+        p <- p + ggplot2::scale_fill_discrete(limits = all_color_vals)
+      }
+      p + ggplot2::ggtitle(title)
+    }
+
+    # Build one comparison panel per pair
+    pair_indices <- utils::combn(seq_len(n_pq), 2, simplify = FALSE)
+
+    diff_panels <- purrr::map(pair_indices, function(idx) {
+      i <- idx[1]
+      j <- idx[2]
+      pq_i <- pq_list@phyloseq_list[[i]]
+      pq_j <- pq_list@phyloseq_list[[j]]
+      name_i <- pq_names[i]
+      name_j <- pq_names[j]
+
+      unique_i <- setdiff(
+        phyloseq::taxa_names(pq_i),
+        phyloseq::taxa_names(pq_j)
+      )
+      unique_j <- setdiff(
+        phyloseq::taxa_names(pq_j),
+        phyloseq::taxa_names(pq_i)
+      )
+
+      p_i <- make_diff_half(
+        add_diff_col(pq_i, unique_i),
+        paste0(name_i, "\n(unique vs ", name_j, ")")
+      )
+      p_j <- make_diff_half(
+        add_diff_col(pq_j, unique_j),
+        paste0(name_j, "\n(unique vs ", name_i, ")")
+      )
+
+      (p_i | p_j) +
+        patchwork::plot_annotation(
+          title = paste0(name_i, " vs ", name_j),
+          theme = ggplot2::theme(
+            plot.title = ggplot2::element_text(size = 11, face = "bold")
+          )
+        )
+    })
+
+    diff_combined <- patchwork::wrap_plots(diff_panels, ncol = 1) +
+      patchwork::plot_layout(guides = "collect")
+
+    return(combined / diff_combined)
+  }
+
+  # ---- Single phyloseq input (original logic) --------------------------------
   verify_pq(physeq)
   layout <- match.arg(layout, c("circle", "square"))
 
