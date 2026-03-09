@@ -160,7 +160,7 @@ gg_hill_lpq <- function(
     purrr::map_dfr(hill_cols, function(col) {
       data.frame(
         sample_name = merged$sample_name,
-        pair = paste0(nms[i], "\nvs\n", nms[j]),
+        pair = paste0("x: ", nms[i], " | y: ", nms[j]),
         pq_x = nms[i],
         pq_y = nms[j],
         hill_scale = col,
@@ -171,12 +171,14 @@ gg_hill_lpq <- function(
     })
   })
 
-  # Order pair factor to preserve the original object ordering
+  # Order factors to preserve original object ordering (pairs outer, hill inner)
   pair_levels <- purrr::map_chr(pair_indices, function(idx) {
-    paste0(nms[idx[1]], "\nvs\n", nms[idx[2]])
+    paste0("x: ", nms[idx[1]], " | y: ", nms[idx[2]])
   })
   plot_data$pair <- factor(plot_data$pair, levels = unique(pair_levels))
   plot_data$hill_scale <- factor(plot_data$hill_scale, levels = hill_cols)
+
+  n_pairs <- length(pair_indices)
 
   # ---- Compute per-panel correlation labels -----------------------------------
   cor_labels <- plot_data |>
@@ -240,14 +242,22 @@ gg_hill_lpq <- function(
       color = "grey30",
       inherit.aes = FALSE
     ) +
-    ggplot2::facet_grid(
-      rows = ggplot2::vars(.data$pair),
-      cols = ggplot2::vars(.data$hill_scale),
+    ggplot2::facet_wrap(
+      ggplot2::vars(.data$pair, .data$hill_scale),
+      nrow = n_pairs,
       scales = "free"
     ) +
     ggplot2::labs(
-      x = "Hill diversity (phyloseq x)",
-      y = "Hill diversity (phyloseq y)",
+      x = if (n_pairs == 1) {
+        paste0(plot_data$pq_x[[1]], " Hill diversity")
+      } else {
+        "Hill diversity (x object, see strip)"
+      },
+      y = if (n_pairs == 1) {
+        paste0(plot_data$pq_y[[1]], " Hill diversity")
+      } else {
+        "Hill diversity (y object, see strip)"
+      },
       title = paste0(
         "Hill diversity across pairs\n(",
         x@comparison$type_of_comparison,

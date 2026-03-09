@@ -59,32 +59,36 @@
 #'   physeq = data_fungi_mini, rank_color = "Class",
 #'   layout = "square"
 #' )
-#' \dontrun{
+#' 
 #' gg_bubbles_pq(
 #'   physeq = data_fungi, rank_color = "Order",
 #'   facet_by = "Height", min_nb_seq = 100
 #' ) + no_legend()
 #'
 #' # Highlight unique sequences when comparing two phyloseq objects.
-#' # Here we contour taxa found only in d_fast, using transparent borders
+#' # Here we contour taxa found only in data_fungi_mini, 
+#' # using transparent borders
 #' # for shared taxa so that only unique ones stand out.
-#' pq_list <- list_phyloseq(list("fast" = d_fast, "normal" = d_normal))
+#' 
+#' mini2 <- subset_taxa_pq(data_fungi_mini, taxa_sums(data_fungi_mini) < 10000)
+#' pq_list <- list_phyloseq(list("full" = data_fungi_mini, "mini" = mini2),
+#'   same_bioinfo_pipeline = FALSE)
 #' unique_seqs <-
-#'   pq_list@comparison$refseq_comparison$fast_vs_normal$unique_seqs_1
+#'   pq_list@comparison$refseq_comparison$full_vs_mini$unique_seqs_1
 #'
-#' tax_table(d_fast) <- cbind(
-#'   tax_table(d_fast),
-#'   unique_to_fast = ifelse(
-#'     as.character(d_fast@refseq) %in% unique_seqs, "Fast", ""
+#' tax_table(data_fungi_mini) <- cbind(
+#'   tax_table(data_fungi_mini),
+#'   unique_to_full = ifelse(
+#'     as.character(data_fungi_mini@refseq) %in% unique_seqs, "Only_1", "both"
 #'   )
 #' )
 #'
-#' (gg_bubbles_pq(d_fast, rank_contour = "unique_to_fast", border_width = 1) +
+#' (gg_bubbles_pq(data_fungi_mini, rank_color = "Class", rank_contour = "unique_to_full", border_width = 1) +
 #'   ggplot2::scale_color_manual(
-#'     values = c("Fast" = "red", "" = "transparent")
+#'     values = c("Only_1" = "red", "both" = "transparent")
 #'   )) /
-#'   gg_bubbles_pq(d_normal)
-#' }
+#'   gg_bubbles_pq(mini2, rank_color = "Class")
+#' 
 gg_bubbles_pq <- function(
   physeq,
   rank_label = "Taxa",
