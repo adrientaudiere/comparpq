@@ -23,8 +23,9 @@ gg_bubbles_pq(
   ncol_facet = NULL,
   return_dataframe = FALSE,
   diff_contour = FALSE,
-  diff_unique_color = "red",
-  diff_border_width = 1.5
+  diff_contour_colors = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3"),
+  diff_border_width = 1.5,
+  match_by = c("refseq", "names")
 )
 }
 \arguments{
@@ -40,7 +41,8 @@ the \verb{@tax_table} slot to color the circles.}
 
 \item{rank_contour}{(character, default NULL) The name of a column in the
 \verb{@tax_table} slot to color the circle borders (contours). When NULL, the
-fixed \code{border_color} is used for all borders.}
+fixed \code{border_color} is used for all borders. Ignored when
+\code{diff_contour = TRUE}.}
 
 \item{layout}{(character, default "circle") The packing layout. \code{"circle"}
 produces a tight circular packing. \code{"square"} constrains circles inside a
@@ -48,8 +50,8 @@ square boundary, with large circles placed centrally.}
 
 \item{facet_by}{(character, default NULL) A column name from \verb{@sam_data} to
 facet the plot. When set, one bubble chart is produced per level of the
-variable, with taxa abundances computed within each level. Ignored when
-\code{physeq} is a \link{list_phyloseq}.}
+variable, with taxa abundances computed within each level. When \code{physeq}
+is a \link{list_phyloseq}, this is automatically set to \code{"source_name"}.}
 
 \item{log1ptransform}{(logical, default FALSE) If TRUE, the number of
 sequences is log1p transformed before computing circle sizes.}
@@ -78,25 +80,32 @@ each circle polygon. Higher values produce smoother circles.}
 Passed to \code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}}.}
 
 \item{return_dataframe}{(logical, default FALSE) If TRUE, the plot is not
-returned, but the resulting dataframe to plot is returned. Ignored when
-\code{physeq} is a \link{list_phyloseq}.}
+returned, but the resulting dataframe to plot is returned.}
 
-\item{diff_contour}{(logical, default FALSE) Only used when \code{physeq} is a
-\link{list_phyloseq} with at least 3 phyloseq objects. If TRUE, appends one
-pairwise comparison panel per pair of phyloseq objects, where taxa unique
-to each object (by taxa names) are highlighted with a red border contour.
-Matching taxa (present in both) receive a transparent contour. Taxa
-uniqueness is determined per pair by comparing \code{taxa_names()}.}
+\item{diff_contour}{(logical, default FALSE) If TRUE and \code{facet_by} is set
+(or \code{physeq} is a \link{list_phyloseq}), taxa unique to each facet level are
+highlighted with a colored border contour. Each facet level gets its own
+color from \code{diff_contour_colors}. Shared taxa (present in more than one
+facet level) receive a transparent contour. When TRUE, \code{rank_contour} is
+ignored.}
 
-\item{diff_unique_color}{(character, default \code{"red"}) Border color for taxa
-that are unique to one object in a pairwise \code{diff_contour} comparison.}
+\item{diff_contour_colors}{(character vector, default
+\code{c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3")}) Border colors for taxa
+unique to each facet level in \code{diff_contour} mode. Recycled if shorter
+than the number of facet levels. Each facet level's unique taxa get a
+distinct color, making it easy to identify which group a taxon is
+exclusive to.}
 
 \item{diff_border_width}{(numeric, default 1.5) Border width used in
-\code{diff_contour} comparison panels.}
+\code{diff_contour} mode.}
+
+\item{match_by}{(character, default \code{"refseq"}) How to match taxa when
+\code{physeq} is a \link{list_phyloseq}. Passed to \code{\link[=merge_lpq]{merge_lpq()}}. One of
+\code{"refseq"} (match by reference sequences) or \code{"names"} (match by taxa
+names).}
 }
 \value{
-A ggplot2 object (or patchwork when \code{physeq} is a \link{list_phyloseq}),
-or a data.frame if \code{return_dataframe = TRUE}.
+A ggplot2 object, or a data.frame if \code{return_dataframe = TRUE}.
 }
 \description{
 \if{html}{\out{
@@ -110,11 +119,15 @@ phyloseq object using ggplot2. Circles can be packed in a circular layout
 (tight, default) or a square layout. Optionally facets the plot by a sample
 data variable, producing one bubble chart per level.
 
-When a \link{list_phyloseq} is passed as \code{physeq}, one bubble chart is produced
-per phyloseq object and combined via \pkg{patchwork} with a shared legend.
-If \code{diff_contour = TRUE} and there are at least 3 phyloseq objects, one
-additional comparison panel is appended per pair, highlighting taxa unique
-to each object in red.
+When a \link{list_phyloseq} is passed as \code{physeq}, it is first merged into a
+single phyloseq object using \code{\link[=merge_lpq]{merge_lpq()}} (each original phyloseq becomes
+one sample) and the plot is automatically faceted by \code{source_name}.
+
+When \code{diff_contour = TRUE} together with \code{facet_by} (or a list_phyloseq
+input), taxa unique to each facet level are highlighted with a colored
+border contour. Each facet level gets its own contour color from
+\code{diff_contour_colors}, making it easy to spot taxa exclusive to a
+particular group. Shared taxa receive a transparent contour.
 }
 \examples{
 gg_bubbles_pq(physeq = data_fungi_mini, rank_color = "Class")
@@ -127,46 +140,22 @@ gg_bubbles_pq(
   layout = "square"
 )
 
+# Faceted by sample variable with diff_contour
 gg_bubbles_pq(
   physeq = data_fungi, rank_color = "Order",
-  facet_by = "Height", min_nb_seq = 100
-) + no_legend()
+  facet_by = "Height", min_nb_seq = 100,
+  diff_contour = TRUE, show_labels = FALSE
+)
 
-# list_phyloseq: one bubble chart per phyloseq, shared legend
+# list_phyloseq: automatically merged and faceted
 lpq <- list_phyloseq(
   list(full = data_fungi, mini = data_fungi_mini)
 )
-gg_bubbles_pq(lpq, rank_color = "Class") & no_legend()
+gg_bubbles_pq(lpq, rank_color = "Class")
 
-# Highlight unique sequences when comparing two phyloseq objects.
-# Here we contour taxa found only in data_fungi_mini,
-# using transparent borders
-# for shared taxa so that only unique ones stand out.
-
-lpq3 <- list_phyloseq(
-  list(full = data_fungi, mini = data_fungi_mini, mini2 = mini2)
-)
-gg_bubbles_pq(lpq3, rank_color = "Class", diff_contour=T, show_labels=F,
- diff_border_width=1, diff_unique_color="#284028") & no_legend()
-
-
-pq_list <- list_phyloseq(list("full" = data_fungi_mini, "mini" = mini2),
-  same_bioinfo_pipeline = FALSE)
-unique_seqs <-
-  pq_list@comparison$refseq_comparison$full_vs_mini$unique_seqs_1
-
-tax_table(data_fungi_mini) <- cbind(
-  tax_table(data_fungi_mini),
-  unique_to_full = ifelse(
-    as.character(data_fungi_mini@refseq) \%in\% unique_seqs, "Only_1", "both"
-  )
-)
-
-(gg_bubbles_pq(data_fungi_mini, rank_color = "Class", rank_contour = "unique_to_full", border_width = 1) +
-  ggplot2::scale_color_manual(
-    values = c("Only_1" = "red", "both" = "transparent")
-  )) /
-  gg_bubbles_pq(mini2, rank_color = "Class")
+# list_phyloseq with diff_contour: unique taxa get distinct colors
+gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE,
+  show_labels = FALSE, diff_border_width = 1)
 
 }
 \author{

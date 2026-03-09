@@ -175,45 +175,91 @@ create_test_lpq_bubbles <- function(n = 2) {
   list_phyloseq(pqs, same_bioinfo_pipeline = FALSE)
 }
 
-test_that("gg_bubbles_pq accepts a list_phyloseq and returns a patchwork", {
+test_that("gg_bubbles_pq accepts a list_phyloseq and returns a ggplot", {
   skip_if_not_installed("packcircles")
-  skip_if_not_installed("patchwork")
   lpq <- create_test_lpq_bubbles(2)
   result <- gg_bubbles_pq(lpq, rank_color = "Class")
-  expect_true(inherits(result, "patchwork"))
+  expect_s3_class(result, "ggplot")
+  expect_true(inherits(result$facet, "FacetWrap"))
 })
 
-test_that("gg_bubbles_pq list_phyloseq with 3 objects returns patchwork", {
+test_that("gg_bubbles_pq list_phyloseq with 3 objects returns ggplot", {
   skip_if_not_installed("packcircles")
-  skip_if_not_installed("patchwork")
   lpq <- create_test_lpq_bubbles(3)
   result <- gg_bubbles_pq(lpq, rank_color = "Class")
-  expect_true(inherits(result, "patchwork"))
+  expect_s3_class(result, "ggplot")
 })
 
-test_that("gg_bubbles_pq diff_contour with 2 objects returns patchwork with highlighted plots", {
-  skip_if_not_installed("packcircles")
-  skip_if_not_installed("patchwork")
+test_that("gg_bubbles_pq list_phyloseq return_dataframe works", {
   lpq <- create_test_lpq_bubbles(2)
-  result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
-  expect_true(inherits(result, "patchwork"))
+  result <- gg_bubbles_pq(lpq, rank_color = "Class", return_dataframe = TRUE)
+  expect_s3_class(result, "data.frame")
+  expect_true("facet" %in% colnames(result))
+  expect_true(all(c("run1", "run2") %in% result$facet))
 })
 
-test_that("gg_bubbles_pq diff_contour with 3 objects returns patchwork", {
-  skip_if_not_installed("packcircles")
-  skip_if_not_installed("patchwork")
-  lpq <- create_test_lpq_bubbles(3)
-  result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
-  expect_true(inherits(result, "patchwork"))
-})
+# diff_contour -----------------------------------------------------------------
 
-test_that("gg_bubbles_pq diff_contour with 4 objects emits message and ignores", {
+test_that("diff_contour with facet_by tags unique taxa per level", {
   skip_if_not_installed("packcircles")
-  skip_if_not_installed("patchwork")
-  lpq <- create_test_lpq_bubbles(4)
-  expect_message(
-    result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE),
-    "exactly 2 or 3"
+  result <- gg_bubbles_pq(
+    physeq = data_fungi_mini,
+    rank_color = "Class",
+    facet_by = "Height",
+    diff_contour = TRUE
   )
-  expect_true(inherits(result, "patchwork"))
+  expect_s3_class(result, "ggplot")
+})
+
+test_that("diff_contour return_dataframe includes diff_contour_tag", {
+  result <- gg_bubbles_pq(
+    physeq = data_fungi_mini,
+    rank_color = "Class",
+    facet_by = "Height",
+    diff_contour = TRUE,
+    return_dataframe = TRUE
+  )
+  expect_true("diff_contour_tag" %in% colnames(result))
+  levels_h <- unique(as.character(data_fungi_mini@sam_data[["Height"]]))
+  expect_true(all(result$diff_contour_tag %in% c(levels_h, "shared")))
+})
+
+test_that("diff_contour with list_phyloseq works", {
+  skip_if_not_installed("packcircles")
+  lpq <- create_test_lpq_bubbles(2)
+  result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
+  expect_s3_class(result, "ggplot")
+})
+
+test_that("diff_contour with 4 list_phyloseq objects works", {
+  skip_if_not_installed("packcircles")
+  lpq <- create_test_lpq_bubbles(4)
+  result <- gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE)
+  expect_s3_class(result, "ggplot")
+})
+
+test_that("diff_contour without facet_by warns", {
+  skip_if_not_installed("packcircles")
+  expect_warning(
+    gg_bubbles_pq(
+      physeq = data_fungi_mini,
+      rank_color = "Class",
+      diff_contour = TRUE
+    ),
+    "requires.*facet_by"
+  )
+})
+
+test_that("diff_contour overrides rank_contour with message", {
+  skip_if_not_installed("packcircles")
+  expect_message(
+    gg_bubbles_pq(
+      physeq = data_fungi_mini,
+      rank_color = "Class",
+      rank_contour = "Order",
+      facet_by = "Height",
+      diff_contour = TRUE
+    ),
+    "rank_contour.*ignored"
+  )
 })
