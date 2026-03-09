@@ -138,56 +138,56 @@ gg_maaslin3_plot(res, type = "volcano", model = "prevalence")
 # Customize significance threshold
 gg_maaslin3_plot(res, type = "volcano", signif_threshold = 0.05, show_labels = TRUE)
 
- # Complete Example with HMP2 Dataset                                                              
-                                                                                                 
- library(maaslin3)                                                                                                              
- # ============================================================                                  
- # Convert maaslin3 default HMP2 dataset to phyloseq                                             
- # ============================================================                                  
-                                                                                                 
- # Read the HMP2 default dataset from maaslin3 package                                           
- taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")            
- taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)                              
-                                                                                                 
- metadata_name <- system.file("extdata", "HMP2_metadata.tsv", package = "maaslin3")              
- metadata <- read.csv(metadata_name, sep = "\t", row.names = 1)                                  
-                                                                                                 
- # Set factor levels                                                                             
- metadata$antibiotics <- factor(metadata$antibiotics, levels = c("No", "Yes"))                   
-                                                                                                 
- # Create phyloseq object (HMP2 data has samples as rows, taxa as columns)                       
- otu <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)                                  
- sam <- sample_data(metadata)                                                                    
- species_names <- colnames(taxa_table)                                                           
- tax_df <- data.frame(                                                                           
-   Species = species_names,                                                                      
-   Genus = sapply(strsplit(species_names, "_"), \(x) x[1]),                                      
-   row.names = species_names                                                                     
- )                                                                                               
- tax <- tax_table(as.matrix(tax_df))                                                             
- physeq_hmp2 <- phyloseq(otu, sam, tax)                                                          
-                                                                                                 
- # ============================================================                                  
- # Run MaAsLin3 analysis                                                                         
- # ============================================================                                  
-                                                                                                 
- res <- maaslin3_pq(                                                                             
-   physeq_hmp2,                                                                                  
-   formula = "~ antibiotics",                                                                    
-   reference = list(antibiotics = "No"),                                                         
-   output = "output/maaslin3_hmp2",                                                              
-   correction_for_sample_size = FALSE                                                            
- )                                                                                               
-                                                                                                 
- # ============================================================                                  
- # Compare plots                                                                                 
- # ============================================================                                  
-                                                                                                 
- # Summary plot (NEW DEFAULT) - uses maaslin3's native visualization                             
- gg_maaslin3_plot(res)                                                                           
-                                                                                                 
- # Alternative plot types                                                                        
- gg_maaslin3_plot(res, type = "volcano")                                                         
+ # Complete Example with HMP2 Dataset
+
+ library(maaslin3)
+ # ============================================================
+ # Convert maaslin3 default HMP2 dataset to phyloseq
+ # ============================================================
+
+ # Read the HMP2 default dataset from maaslin3 package
+ taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
+ taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
+
+ metadata_name <- system.file("extdata", "HMP2_metadata.tsv", package = "maaslin3")
+ metadata <- read.csv(metadata_name, sep = "\t", row.names = 1)
+
+ # Set factor levels
+ metadata$antibiotics <- factor(metadata$antibiotics, levels = c("No", "Yes"))
+
+ # Create phyloseq object (HMP2 data has samples as rows, taxa as columns)
+ otu <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)
+ sam <- sample_data(metadata)
+ species_names <- colnames(taxa_table)
+ tax_df <- data.frame(
+   Species = species_names,
+   Genus = sapply(strsplit(species_names, "_"), \(x) x[1]),
+   row.names = species_names
+ )
+ tax <- tax_table(as.matrix(tax_df))
+ physeq_hmp2 <- phyloseq(otu, sam, tax)
+
+ # ============================================================
+ # Run MaAsLin3 analysis
+ # ============================================================
+
+ res <- maaslin3_pq(
+   physeq_hmp2,
+   formula = "~ antibiotics",
+   reference = list(antibiotics = "No"),
+   output = "output/maaslin3_hmp2",
+   correction_for_sample_size = FALSE
+ )
+
+ # ============================================================
+ # Compare plots
+ # ============================================================
+
+ # Summary plot (NEW DEFAULT) - uses maaslin3's native visualization
+ gg_maaslin3_plot(res)
+
+ # Alternative plot types
+ gg_maaslin3_plot(res, type = "volcano")
  gg_maaslin3_plot(res, type = "forest", top_n = 15)
 }
 

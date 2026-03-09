@@ -95,28 +95,28 @@ res <- maaslin3_pq(
 
 # Plot results
 gg_maaslin3_plot(res, type = "volcano")
-            
-# Full example with GlobalPatterns dataset                                                                                                
- data("GlobalPatterns")                                                                          
-                                                                                                 
- # Subset to two very different environments: Feces vs Soil                                      
- gp_subset <- subset_samples(GlobalPatterns, SampleType \%in\% c("Feces", "Soil"))                 
-                                                                                                 
- # Agglomerate at Phylum level for clearer results                                               
- gp_phylum <- tax_glom(gp_subset, taxrank = "Phylum", NArm = FALSE)                              
-                                                                                                 
- # Run MaAsLin3 with Soil as reference                                                           
- res <- maaslin3_pq(                                                                             
-   gp_phylum,                                                                                    
-   formula = "~ SampleType",                                                                     
-   reference = list(SampleType = "Soil"),                                                        
+
+# Full example with GlobalPatterns dataset
+ data("GlobalPatterns")
+
+ # Subset to two very different environments: Feces vs Soil
+ gp_subset <- subset_samples(GlobalPatterns, SampleType \%in\% c("Feces", "Soil"))
+
+ # Agglomerate at Phylum level for clearer results
+ gp_phylum <- tax_glom(gp_subset, taxrank = "Phylum", NArm = FALSE)
+
+ # Run MaAsLin3 with Soil as reference
+ res <- maaslin3_pq(
+   gp_phylum,
+   formula = "~ SampleType",
+   reference = list(SampleType = "Soil"),
    output = "output/maaslin3_example"  ,
-  correction_for_sample_size = FALSE                                                          
- )                                                                                               
-                                                                                                 
+  correction_for_sample_size = FALSE
+ )
+
  # Plot results
  gg_maaslin3_plot(res, type = "volcano", signif_threshold = 0.1)
- gg_maaslin3_plot(res, type = "forest", top_n = 15) 
+ gg_maaslin3_plot(res, type = "forest", top_n = 15)
 }
 \references{
 Nickols WA, et al. (2024). MaAsLin 3: Refining and extending generalized

@@ -164,11 +164,11 @@ gg_maaslin3_plot(res, type = "volcano")
 # Set to 0 the sequences numbers of 80\% of taxa in "High" samples
  data_fungi_mini_with_less_otu_in_High =  multiply_counts_pq(data_fungi_mini,
       fact = "Height", prop=0.8,
-      conditions = "High", 
-      multipliers = 0) 
-  
-ggbetween_pq(data_fungi_mini_with_less_otu_in_High, 
-  "Height", 
+      conditions = "High",
+      multipliers = 0)
+
+ggbetween_pq(data_fungi_mini_with_less_otu_in_High,
+  "Height",
   one_plot=T)
 }
 \author{
