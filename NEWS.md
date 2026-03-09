@@ -7,7 +7,9 @@
 * `estim_cor_pq()` new function to compute bootstrap correlation and regression CIs for diversity vs numeric variables
 * `estim_diff_lpq()` new function to run estimation statistics (effect sizes + CIs) across a list_phyloseq
 * `estim_diff_pq()` new function for estimation statistics (Gardner-Altman/Cumming plots) comparing diversity across groups via dabestr
-* `simple_venn_pq()` new function to draw Venn diagrams of shared taxa across 2-4 sample groups using pure ggplot2 (no external Venn package needed), with support for multiple taxonomic ranks and compact, clearly labeled circles/ellipses
+* `merge_lpq()` new function to merge a list_phyloseq into a single phyloseq object where each original phyloseq becomes one sample. Taxa can be matched by reference sequences (`match_by = "refseq"`, default) or by taxa names (`match_by = "names"`).
+* `simple_venn_pq()` new function to draw Venn diagrams of shared taxa across 2-4 sample groups using pure ggplot2 (no external Venn package needed), with support for multiple taxonomic ranks and compact, clearly labeled circles/ellipses.
+* `simple_venn_pq()` now accepts a `list_phyloseq` object as input, automatically merging it via `merge_lpq()` before drawing the Venn diagram.
 
 # Initial comparpq (0.01)
 

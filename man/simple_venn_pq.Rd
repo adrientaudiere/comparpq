@@ -6,7 +6,7 @@
 \usage{
 simple_venn_pq(
   physeq,
-  fact,
+  fact = NULL,
   min_nb_seq = 0,
   taxonomic_rank = c("Class", "Order", "Family", "Genus", "Species"),
   na_remove = TRUE,
@@ -19,15 +19,23 @@ simple_venn_pq(
   hide_zero = TRUE,
   label_size = 4.5,
   colors = NULL,
+  show_na_count = FALSE,
+  count_taxa = TRUE,
+  match_by = c("refseq", "names"),
   combine = TRUE,
   verbose = TRUE
 )
 }
 \arguments{
-\item{physeq}{(phyloseq, required) A phyloseq object.}
+\item{physeq}{(phyloseq or list_phyloseq, required) A phyloseq
+object, or a \link{list_phyloseq} object. When a list_phyloseq is
+provided, it is first merged into a single phyloseq using
+\code{\link[=merge_lpq]{merge_lpq()}} (each original phyloseq becomes one sample) and
+the \code{fact} parameter is automatically set to \code{"source_name"}.}
 
-\item{fact}{(character, required) Name of a variable in
-\code{sample_data(physeq)} defining the groups (2-4 levels).}
+\item{fact}{(character, required when \code{physeq} is a phyloseq)
+Name of a variable in \code{sample_data(physeq)} defining the groups
+(2-4 levels). Ignored when \code{physeq} is a list_phyloseq.}
 
 \item{min_nb_seq}{(integer, default 0) Minimum total read count for
 a taxon to be considered present in a group. A taxon must have
@@ -79,6 +87,23 @@ labels that are zero (or \code{"0 (0)"} when \code{count_type = "rank_taxa"}).}
 
 \item{colors}{(character or NULL) Vector of colors, one per group.
 Defaults to a 4-color qualitative palette.}
+
+\item{show_na_count}{(logical, default FALSE) If \code{TRUE}, display
+the number of taxa with \code{NA} at the chosen \code{taxonomic_rank} in
+the bottom-left corner of the plot. When \code{count_type = "taxa"},
+the sum of all Venn region counts plus the NA count equals
+\code{ntaxa(physeq)}. Ignored when \code{taxonomic_rank} is \code{NULL}.}
+
+\item{count_taxa}{(logical, default TRUE) If \code{TRUE}, append a
+\code{"Taxa"} panel to the Venn diagram showing shared and unique
+individual taxa (ASVs/OTUs) alongside the aggregated taxonomic
+ranks. A temporary \code{Taxa} column is added to the tax_table
+with each taxon's name as its value. Ignored when
+\code{taxonomic_rank} is \code{NULL}.}
+
+\item{match_by}{(character, default \code{"refseq"}) Passed to
+\code{\link[=merge_lpq]{merge_lpq()}} when \code{physeq} is a list_phyloseq. One of
+\code{"refseq"} or \code{"names"}.}
 
 \item{combine}{(logical, default TRUE) When \code{taxonomic_rank} has
 length > 1, combine plots into a single patchwork figure. Set to
@@ -137,6 +162,13 @@ simple_venn_pq(data_fungi_mini, "Height",
 simple_venn_pq(data_fungi_mini, "Height",
   taxonomic_rank = "Genus", scale_text = TRUE
 )
+
+# From a list_phyloseq object
+lpq <- list_phyloseq(list(
+  fungi = data_fungi_mini,
+  fungi2 = data_fungi
+))
+simple_venn_pq(lpq, taxonomic_rank = "Genus", count_taxa)
 }
 \author{
 Adrien Taudiere

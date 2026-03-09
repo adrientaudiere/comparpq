@@ -41,6 +41,7 @@ reference:
   - add_phyloseq
   - apply_to_lpq
   - filter_common_lpq
+  - merge_lpq
   - n_levels_lpq
   - remove_phyloseq
   - shared_mod_lpq

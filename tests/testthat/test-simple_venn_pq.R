@@ -34,8 +34,8 @@ test_that("simple_venn_pq combine = FALSE returns list", {
     verbose = FALSE
   )
   expect_type(plots, "list")
-  expect_length(plots, 2)
-  expect_named(plots, c("Family", "Genus"))
+  expect_length(plots, 3)
+  expect_named(plots, c("Family", "Genus", "Taxa (OTU/ASV)"))
   expect_s3_class(plots[["Family"]], "ggplot")
   expect_s3_class(plots[["Genus"]], "ggplot")
 })
@@ -50,7 +50,7 @@ test_that("simple_venn_pq errors with missing factor", {
 test_that("simple_venn_pq errors with non-phyloseq input", {
   expect_error(
     simple_venn_pq(list(a = 1), "Height", verbose = FALSE),
-    "must be a phyloseq object"
+    "must be a phyloseq or list_phyloseq object"
   )
 })
 
@@ -134,6 +134,94 @@ test_that("simple_venn_pq count_type = 'both' shows rank and taxa", {
     verbose = FALSE
   )
   expect_s3_class(p, "ggplot")
+})
+
+test_that("simple_venn_pq works with list_phyloseq input", {
+  lpq <- list_phyloseq(list(
+    fungi = data_fungi_mini,
+    fungi2 = data_fungi_mini
+  ))
+  p <- simple_venn_pq(lpq, taxonomic_rank = "Genus", verbose = FALSE)
+  expect_s3_class(p, "ggplot")
+})
+
+test_that("simple_venn_pq count_taxa adds Taxa panel", {
+  skip_if_not_installed("patchwork")
+  p <- simple_venn_pq(
+    data_fungi_mini,
+    "Height",
+    taxonomic_rank = "Genus",
+    count_taxa = TRUE,
+    verbose = FALSE
+  )
+  expect_s3_class(p, "patchwork")
+})
+
+test_that("simple_venn_pq show_na_count adds NA annotation", {
+  p <- simple_venn_pq(
+    data_fungi_mini,
+    "Height",
+    taxonomic_rank = "Genus",
+    show_na_count = TRUE,
+    verbose = FALSE
+  )
+  expect_s3_class(p, "ggplot")
+  # Check that "NA:" label is present in the plot layers
+  labels <- vapply(p$layers, \(l) {
+    if (inherits(l$geom, "GeomText")) {
+      l$aes_params$label %||% ""
+    } else {
+      ""
+    }
+  }, character(1))
+  expect_true(any(grepl("^NA:", labels)))
+})
+
+test_that("show_na_count taxa counts sum to ntaxa", {
+  p <- simple_venn_pq(
+    data_fungi_mini,
+    "Height",
+    taxonomic_rank = "Genus",
+    count_type = "taxa",
+    show_na_count = TRUE,
+    na_remove = TRUE,
+    verbose = FALSE
+  )
+  # Extract all text annotations
+  annotations <- vapply(p$layers, \(l) {
+    if (inherits(l$geom, "GeomText")) {
+      l$aes_params$label %||% ""
+    } else {
+      ""
+    }
+  }, character(1))
+  # Get NA count from annotation
+  na_label <- annotations[grepl("^NA:", annotations)]
+  na_count <- as.integer(sub("NA: ", "", na_label))
+  # Get Venn region counts (numeric labels, not group names)
+  numeric_labels <- annotations[grepl("^[0-9]+$", annotations)]
+  venn_sum <- sum(as.integer(numeric_labels))
+  expect_equal(venn_sum + na_count, phyloseq::ntaxa(data_fungi_mini))
+})
+
+test_that("simple_venn_pq count_taxa = FALSE with combine = FALSE", {
+  plots <- simple_venn_pq(
+    data_fungi_mini,
+    "Height",
+    taxonomic_rank = "Genus",
+    count_taxa = TRUE,
+    combine = FALSE,
+    verbose = FALSE
+  )
+  expect_type(plots, "list")
+  expect_named(plots, c("Genus", "Taxa (OTU/ASV)"))
+})
+
+test_that("simple_venn_pq errors when fact is NULL for phyloseq", {
+  expect_error(
+    simple_venn_pq(data_fungi_mini, verbose = FALSE),
+    "fact.*required"
+  )
 })
 
 test_that("simple_venn_pq scale_text works", {

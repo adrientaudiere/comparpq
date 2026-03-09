@@ -8,6 +8,7 @@ gg_bubbles_pq(
   physeq,
   rank_label = "Taxa",
   rank_color = "Family",
+  rank_contour = NULL,
   layout = "circle",
   facet_by = NULL,
   log1ptransform = FALSE,
@@ -33,6 +34,10 @@ are used.}
 
 \item{rank_color}{(character, default "Family") The name of the column in
 the \verb{@tax_table} slot to color the circles.}
+
+\item{rank_contour}{(character, default NULL) The name of a column in the
+\verb{@tax_table} slot to color the circle borders (contours). When NULL, the
+fixed \code{border_color} is used for all borders.}
 
 \item{layout}{(character, default "circle") The packing layout. \code{"circle"}
 produces a tight circular packing. \code{"square"} constrains circles inside a
@@ -90,6 +95,10 @@ data variable, producing one bubble chart per level.
 gg_bubbles_pq(physeq = data_fungi_mini, rank_color = "Class")
 gg_bubbles_pq(
   physeq = data_fungi_mini, rank_color = "Class",
+  rank_contour = "Order"
+)
+gg_bubbles_pq(
+  physeq = data_fungi_mini, rank_color = "Class",
   layout = "square"
 )
 \dontrun{
@@ -97,6 +106,26 @@ gg_bubbles_pq(
   physeq = data_fungi, rank_color = "Order",
   facet_by = "Height", min_nb_seq = 100
 ) + no_legend()
+
+# Highlight unique sequences when comparing two phyloseq objects.
+# Here we contour taxa found only in d_fast, using transparent borders
+# for shared taxa so that only unique ones stand out.
+pq_list <- list_phyloseq(list("fast" = d_fast, "normal" = d_normal))
+unique_seqs <-
+  pq_list@comparison$refseq_comparison$fast_vs_normal$unique_seqs_1
+
+tax_table(d_fast) <- cbind(
+  tax_table(d_fast),
+  unique_to_fast = ifelse(
+    as.character(d_fast@refseq) \%in\% unique_seqs, "Fast", ""
+  )
+)
+
+(gg_bubbles_pq(d_fast, rank_contour = "unique_to_fast", border_width = 1) +
+  ggplot2::scale_color_manual(
+    values = c("Fast" = "red", "" = "transparent")
+  )) /
+  gg_bubbles_pq(d_normal)
 }
 }
 \author{

@@ -20,9 +20,14 @@ utils::globalVariables(c("x", "y"))
 #' For 2 and 3 groups, circles are used. For 4 groups, ellipses are
 #' used to ensure all intersection regions are representable.
 #'
-#' @param physeq (phyloseq, required) A phyloseq object.
-#' @param fact (character, required) Name of a variable in
-#'   `sample_data(physeq)` defining the groups (2-4 levels).
+#' @param physeq (phyloseq or list_phyloseq, required) A phyloseq
+#'   object, or a [list_phyloseq] object. When a list_phyloseq is
+#'   provided, it is first merged into a single phyloseq using
+#'   [merge_lpq()] (each original phyloseq becomes one sample) and
+#'   the `fact` parameter is automatically set to `"source_name"`.
+#' @param fact (character, required when `physeq` is a phyloseq)
+#'   Name of a variable in `sample_data(physeq)` defining the groups
+#'   (2-4 levels). Ignored when `physeq` is a list_phyloseq.
 #' @param min_nb_seq (integer, default 0) Minimum total read count for
 #'   a taxon to be considered present in a group. A taxon must have
 #'   strictly more than `min_nb_seq` reads in a group to be included.
@@ -64,6 +69,20 @@ utils::globalVariables(c("x", "y"))
 #'   length > 1, combine plots into a single patchwork figure. Set to
 #'   `FALSE` to return a named list of individual ggplot objects.
 #'   Requires the patchwork package.
+#' @param show_na_count (logical, default FALSE) If `TRUE`, display
+#'   the number of taxa with `NA` at the chosen `taxonomic_rank` in
+#'   the bottom-left corner of the plot. When `count_type = "taxa"`,
+#'   the sum of all Venn region counts plus the NA count equals
+#'   `ntaxa(physeq)`. Ignored when `taxonomic_rank` is `NULL`.
+#' @param count_taxa (logical, default TRUE) If `TRUE`, append a
+#'   `"Taxa"` panel to the Venn diagram showing shared and unique
+#'   individual taxa (ASVs/OTUs) alongside the aggregated taxonomic
+#'   ranks. A temporary `Taxa` column is added to the tax_table
+#'   with each taxon's name as its value. Ignored when
+#'   `taxonomic_rank` is `NULL`.
+#' @param match_by (character, default `"refseq"`) Passed to
+#'   [merge_lpq()] when `physeq` is a list_phyloseq. One of
+#'   `"refseq"` or `"names"`.
 #' @param verbose (logical, default TRUE) Print a message when no taxa
 #'   meet the criteria.
 #'
@@ -98,9 +117,16 @@ utils::globalVariables(c("x", "y"))
 #' simple_venn_pq(data_fungi_mini, "Height",
 #'   taxonomic_rank = "Genus", scale_text = TRUE
 #' )
+#'
+#' # From a list_phyloseq object
+#' lpq <- list_phyloseq(list(
+#'   fungi = data_fungi_mini,
+#'   fungi2 = data_fungi
+#' ))
+#' simple_venn_pq(lpq, taxonomic_rank = "Genus", count_taxa)
 simple_venn_pq <- function(
   physeq,
-  fact,
+  fact = NULL,
   min_nb_seq = 0,
   taxonomic_rank = c(
     "Class",
@@ -119,9 +145,35 @@ simple_venn_pq <- function(
   hide_zero = TRUE,
   label_size = 4.5,
   colors = NULL,
+  show_na_count = FALSE,
+  count_taxa = TRUE,
+  match_by = c("refseq", "names"),
   combine = TRUE,
-  verbose = TRUE
+  verbose = TRUE,
+  .lpq_n_samples = NULL
 ) {
+  # Handle list_phyloseq input
+  lpq_n_samples <- .lpq_n_samples
+  if (inherits(physeq, "comparpq::list_phyloseq")) {
+    match_by <- match.arg(match_by)
+    # Capture original sample counts before merging
+    lpq_n_samples <- vapply(
+      physeq@phyloseq_list, phyloseq::nsamples, integer(1)
+    )
+    physeq <- merge_lpq(physeq, match_by = match_by, verbose = verbose)
+    fact <- "source_name"
+  } else if (is.null(fact)) {
+    stop("'fact' is required when 'physeq' is a phyloseq object.")
+  }
+
+  # Add taxa-level count as a pseudo-rank
+  if (count_taxa && !is.null(taxonomic_rank) && inherits(physeq, "phyloseq")) {
+    tt <- as.data.frame(phyloseq::tax_table(physeq))
+    tt[["Taxa (OTU/ASV)"]] <- phyloseq::taxa_names(physeq)
+    phyloseq::tax_table(physeq) <- phyloseq::tax_table(as.matrix(tt))
+    taxonomic_rank <- c(taxonomic_rank, "Taxa (OTU/ASV)")
+  }
+
   # Multiple ranks -> combine or return list of plots
   if (length(taxonomic_rank) > 1) {
     plots <- lapply(taxonomic_rank, \(rank) {
@@ -140,8 +192,12 @@ simple_venn_pq <- function(
         hide_zero = hide_zero,
         label_size = label_size,
         colors = colors,
+        show_na_count = show_na_count,
+        count_taxa = FALSE,
+        match_by = match_by,
         combine = combine,
-        verbose = verbose
+        verbose = verbose,
+        .lpq_n_samples = lpq_n_samples
       )
     })
     names(plots) <- taxonomic_rank
@@ -179,7 +235,7 @@ simple_venn_pq <- function(
   count_type <- match.arg(count_type)
 
   if (!inherits(physeq, "phyloseq")) {
-    stop("'physeq' must be a phyloseq object.")
+    stop("'physeq' must be a phyloseq or list_phyloseq object.")
   }
 
   sam <- phyloseq::sample_data(physeq)
@@ -249,6 +305,7 @@ simple_venn_pq <- function(
       samp_idx <- which(groups == lev)
       if (length(samp_idx) == 1) {
         taxa_sums <- otu[, samp_idx]
+        names(taxa_sums) <- rownames(otu)
       } else {
         taxa_sums <- rowSums(otu[, samp_idx])
       }
@@ -264,11 +321,15 @@ simple_venn_pq <- function(
   }
 
   # Sample counts per group
-  n_samples <- vapply(
-    levels_fact,
-    \(lev) sum(groups == lev),
-    integer(1)
-  )
+  if (!is.null(lpq_n_samples)) {
+    n_samples <- lpq_n_samples[levels_fact]
+  } else {
+    n_samples <- vapply(
+      levels_fact,
+      \(lev) sum(groups == lev),
+      integer(1)
+    )
+  }
 
   # Group labels
   group_labels <- levels_fact
@@ -466,6 +527,38 @@ simple_venn_pq <- function(
           color = "grey50"
         )
     }
+  }
+
+  # NA count annotation
+  if (show_na_count && !is.null(taxonomic_rank)) {
+    if (count_type == "taxa" || count_type == "rank_taxa") {
+      # Count excluded taxa so Venn + NA = ntaxa(physeq_original)
+      na_count <- phyloseq::ntaxa(physeq_original) - sum(all_counts)
+    } else {
+      tt_na <- as.data.frame(phyloseq::tax_table(physeq_original))
+      na_count <- sum(
+        is.na(tt_na[[taxonomic_rank]]) |
+          tt_na[[taxonomic_rank]] == ""
+      )
+    }
+    # Position in bottom-left, outside the shapes
+    na_x <- if (n_groups == 4) -1.8 else -1.5
+    na_y <- if (n_groups == 3) -1.5 else -1.3
+    if (add_nb_samples) {
+      na_x <- na_x * 0.85
+      na_y <- na_y * 0.85
+    }
+    p <- p +
+      ggplot2::annotate(
+        "text",
+        x = na_x,
+        y = na_y,
+        label = paste0("NA: ", na_count),
+        size = text_size * 0.9,
+        color = "grey40",
+        fontface = "italic",
+        hjust = 0
+      )
   }
 
   # Title
