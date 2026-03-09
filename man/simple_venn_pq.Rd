@@ -23,7 +23,8 @@ simple_venn_pq(
   count_taxa = TRUE,
   match_by = c("refseq", "names"),
   combine = TRUE,
-  verbose = TRUE
+  verbose = TRUE,
+  .lpq_n_samples = NULL
 )
 }
 \arguments{

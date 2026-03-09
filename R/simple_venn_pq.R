@@ -158,7 +158,9 @@ simple_venn_pq <- function(
     match_by <- match.arg(match_by)
     # Capture original sample counts before merging
     lpq_n_samples <- vapply(
-      physeq@phyloseq_list, phyloseq::nsamples, integer(1)
+      physeq@phyloseq_list,
+      phyloseq::nsamples,
+      integer(1)
     )
     physeq <- merge_lpq(physeq, match_by = match_by, verbose = verbose)
     fact <- "source_name"

@@ -145,6 +145,30 @@ test_that("simple_venn_pq works with list_phyloseq input", {
   expect_s3_class(p, "ggplot")
 })
 
+test_that("simple_venn_pq list_phyloseq shows original sample counts", {
+  lpq <- list_phyloseq(list(
+    fungi = data_fungi_mini,
+    fungi2 = data_fungi_mini
+  ))
+  p <- simple_venn_pq(
+    lpq,
+    taxonomic_rank = "Genus",
+    add_nb_samples = TRUE,
+    count_taxa = FALSE,
+    verbose = FALSE
+  )
+  # Extract annotations and find sample count labels
+  labels <- vapply(p$layers, \(l) {
+    if (inherits(l$geom, "GeomText")) {
+      l$aes_params$label %||% ""
+    } else {
+      ""
+    }
+  }, character(1))
+  expected_n <- phyloseq::nsamples(data_fungi_mini)
+  expect_true(any(grepl(paste0("n=", expected_n), labels)))
+})
+
 test_that("simple_venn_pq count_taxa adds Taxa panel", {
   skip_if_not_installed("patchwork")
   p <- simple_venn_pq(
