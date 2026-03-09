@@ -158,13 +158,17 @@ test_that("simple_venn_pq list_phyloseq shows original sample counts", {
     verbose = FALSE
   )
   # Extract annotations and find sample count labels
-  labels <- vapply(p$layers, \(l) {
-    if (inherits(l$geom, "GeomText")) {
-      l$aes_params$label %||% ""
-    } else {
-      ""
-    }
-  }, character(1))
+  labels <- vapply(
+    p$layers,
+    \(l) {
+      if (inherits(l$geom, "GeomText")) {
+        l$aes_params$label %||% ""
+      } else {
+        ""
+      }
+    },
+    character(1)
+  )
   expected_n <- phyloseq::nsamples(data_fungi_mini)
   expect_true(any(grepl(paste0("n=", expected_n), labels)))
 })
@@ -191,13 +195,17 @@ test_that("simple_venn_pq show_na_count adds NA annotation", {
   )
   expect_s3_class(p, "ggplot")
   # Check that "NA:" label is present in the plot layers
-  labels <- vapply(p$layers, \(l) {
-    if (inherits(l$geom, "GeomText")) {
-      l$aes_params$label %||% ""
-    } else {
-      ""
-    }
-  }, character(1))
+  labels <- vapply(
+    p$layers,
+    \(l) {
+      if (inherits(l$geom, "GeomText")) {
+        l$aes_params$label %||% ""
+      } else {
+        ""
+      }
+    },
+    character(1)
+  )
   expect_true(any(grepl("^NA:", labels)))
 })
 
@@ -212,13 +220,17 @@ test_that("show_na_count taxa counts sum to ntaxa", {
     verbose = FALSE
   )
   # Extract all text annotations
-  annotations <- vapply(p$layers, \(l) {
-    if (inherits(l$geom, "GeomText")) {
-      l$aes_params$label %||% ""
-    } else {
-      ""
-    }
-  }, character(1))
+  annotations <- vapply(
+    p$layers,
+    \(l) {
+      if (inherits(l$geom, "GeomText")) {
+        l$aes_params$label %||% ""
+      } else {
+        ""
+      }
+    },
+    character(1)
+  )
   # Get NA count from annotation
   na_label <- annotations[grepl("^NA:", annotations)]
   na_count <- as.integer(sub("NA: ", "", na_label))

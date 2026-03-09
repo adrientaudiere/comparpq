@@ -52,29 +52,31 @@
 #' resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), method = "unanimity")@tax_table
 #'
 #' resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^Family\\.", "^Species\\."), method = "consensus")@tax_table
-resolve_taxo_conflict <- function(physeq,
-                                  pattern_tax_ranks = NULL,
-                                  method = c(
-                                    "consensus",
-                                    "rel_majority",
-                                    "abs_majority",
-                                    "preference",
-                                    "unanimity"
-                                  ),
-                                  strict = FALSE,
-                                  second_method = c(
-                                    "consensus",
-                                    "rel_majority",
-                                    "abs_majority",
-                                    "preference",
-                                    "unanimity"
-                                  ),
-                                  nb_agree_threshold = 1,
-                                  keep_tax_ranks = TRUE,
-                                  new_names = NULL,
-                                  preference_pattern = NULL,
-                                  collapse_string = "/",
-                                  replace_collapsed_rank_by_NA = FALSE) {
+resolve_taxo_conflict <- function(
+  physeq,
+  pattern_tax_ranks = NULL,
+  method = c(
+    "consensus",
+    "rel_majority",
+    "abs_majority",
+    "preference",
+    "unanimity"
+  ),
+  strict = FALSE,
+  second_method = c(
+    "consensus",
+    "rel_majority",
+    "abs_majority",
+    "preference",
+    "unanimity"
+  ),
+  nb_agree_threshold = 1,
+  keep_tax_ranks = TRUE,
+  new_names = NULL,
+  preference_pattern = NULL,
+  collapse_string = "/",
+  replace_collapsed_rank_by_NA = FALSE
+) {
   method <- match.arg(method)
 
   verify_pq(physeq)
@@ -84,7 +86,6 @@ resolve_taxo_conflict <- function(physeq,
   if (is.null(new_names)) {
     new_names <- paste0(pattern_tax_ranks, "_", method[1])
   }
-
 
   for (i in seq_along(pattern_tax_ranks)) {
     new_tax_ranks <- taxtab |>
@@ -123,8 +124,10 @@ resolve_taxo_conflict <- function(physeq,
   # remove pattern_tax_ranks but not new_names
   if (!keep_tax_ranks) {
     taxtab <- taxtab |>
-      dplyr::select(-dplyr::matches(paste(pattern_tax_ranks, collapse = "|")) |
-        all_of(new_names))
+      dplyr::select(
+        -dplyr::matches(paste(pattern_tax_ranks, collapse = "|")) |
+          all_of(new_names)
+      )
   }
 
   new_physeq@tax_table <- tax_table(as.matrix(taxtab))
@@ -133,7 +136,6 @@ resolve_taxo_conflict <- function(physeq,
   return(new_physeq)
 }
 ################################################################################
-
 
 ################################################################################
 #' Select taxonomic ranks in a phyloseq object
@@ -205,14 +207,16 @@ select_ranks_pq <- function(physeq, ...) {
 #'   colnames()
 #' rename_ranks_pq(data_fungi, pattern = ".", replacement = "_", fixed = TRUE)@tax_table |>
 #'   colnames()
-rename_ranks_pq <- function(physeq,
-                            old_names = NULL,
-                            new_names = NULL,
-                            pattern = NULL,
-                            replacement = NULL,
-                            fixed = FALSE,
-                            perl = FALSE,
-                            useBytes = FALSE) {
+rename_ranks_pq <- function(
+  physeq,
+  old_names = NULL,
+  new_names = NULL,
+  pattern = NULL,
+  replacement = NULL,
+  fixed = FALSE,
+  perl = FALSE,
+  useBytes = FALSE
+) {
   verify_pq(physeq)
   new_physeq <- physeq
 
@@ -240,9 +244,7 @@ rename_ranks_pq <- function(physeq,
     )
   }
 
-  rename_rank_pq <- function(physeq,
-                             old_name = NULL,
-                             new_name = NULL) {
+  rename_rank_pq <- function(physeq, old_name = NULL, new_name = NULL) {
     verify_pq(physeq)
     new_physeq <- physeq
 
@@ -262,7 +264,6 @@ rename_ranks_pq <- function(physeq,
   return(new_physeq)
 }
 ################################################################################
-
 
 ################################################################################
 #' Replace taxonomic value with a given pattern by NA
@@ -296,11 +297,13 @@ rename_ranks_pq <- function(physeq,
 #' data_fungi3 <-
 #'   taxtab_replace_pattern_by_NA(data_fungi, ignore.case = TRUE, progress_bar = TRUE)
 #' data_fungi3@tax_table["ASV85", "Family"]
-taxtab_replace_pattern_by_NA <- function(physeq,
-                                         patterns = c(".*_incertae_sedis", "unclassified.*"),
-                                         taxonomic_ranks = NULL,
-                                         progress_bar = FALSE,
-                                         ...) {
+taxtab_replace_pattern_by_NA <- function(
+  physeq,
+  patterns = c(".*_incertae_sedis", "unclassified.*"),
+  taxonomic_ranks = NULL,
+  progress_bar = FALSE,
+  ...
+) {
   if (is.null(taxonomic_ranks)) {
     taxonomic_ranks <- colnames(physeq@tax_table)
   }

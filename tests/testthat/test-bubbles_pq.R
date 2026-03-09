@@ -75,7 +75,9 @@ test_that("bubbles_pq respects log1ptransform parameter", {
   # For values > 1, log1p(x) < x
   high_values <- result_nolog$value > 1
   if (any(high_values)) {
-    expect_true(all(result_log$value[high_values] < result_nolog$value[high_values]))
+    expect_true(all(
+      result_log$value[high_values] < result_nolog$value[high_values]
+    ))
   }
 })
 

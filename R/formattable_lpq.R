@@ -524,8 +524,11 @@ upset_lpq <- function(
 
     if (!(tax_rank %in% colnames(tax_tab))) {
       stop(
-        "Taxonomic rank '", tax_rank, "' not found in tax_table. ",
-        "Available ranks: ", paste(colnames(tax_tab), collapse = ", ")
+        "Taxonomic rank '",
+        tax_rank,
+        "' not found in tax_table. ",
+        "Available ranks: ",
+        paste(colnames(tax_tab), collapse = ", ")
       )
     }
 
@@ -560,7 +563,9 @@ upset_lpq <- function(
     }
 
     p <- ggVennDiagram::ggVennDiagram(tax_values_list, ...) +
-      ggplot2::labs(title = paste("Shared", tax_rank, "across phyloseq objects"))
+      ggplot2::labs(
+        title = paste("Shared", tax_rank, "across phyloseq objects")
+      )
 
     return(p)
   } else {

@@ -81,18 +81,20 @@
 #'   ggtree::geom_nodelab(size = 2, nudge_x = -0.2, nudge_y = 0.6) +
 #'   ggtree::geom_tiplab()
 #' @export
-taxo2tree <- function(physeq,
-                      ranks = c(
-                        "Domain",
-                        "Phylum",
-                        "Class",
-                        "Order",
-                        "Family",
-                        "Genus",
-                        "Species"
-                      ),
-                      internal_node_singletons = TRUE,
-                      use_taxa_names = TRUE) {
+taxo2tree <- function(
+  physeq,
+  ranks = c(
+    "Domain",
+    "Phylum",
+    "Class",
+    "Order",
+    "Family",
+    "Genus",
+    "Species"
+  ),
+  internal_node_singletons = TRUE,
+  use_taxa_names = TRUE
+) {
   verify_pq(physeq)
 
   missing_ranks <- setdiff(ranks, colnames(physeq@tax_table))
@@ -111,14 +113,16 @@ taxo2tree <- function(physeq,
   if (!use_taxa_names) {
     tax_df <- tax_df |>
       dplyr::distinct() |>
-      dplyr::mutate(.tip_label = apply(
-        dplyr::pick(dplyr::everything()),
-        1,
-        \(x) {
-          non_na <- x[!is.na(x) & x != ""]
-          if (length(non_na) > 0) non_na[length(non_na)] else "Unknown"
-        }
-      ))
+      dplyr::mutate(
+        .tip_label = apply(
+          dplyr::pick(dplyr::everything()),
+          1,
+          \(x) {
+            non_na <- x[!is.na(x) & x != ""]
+            if (length(non_na) > 0) non_na[length(non_na)] else "Unknown"
+          }
+        )
+      )
 
     dup_labels <- tax_df$.tip_label[duplicated(tax_df$.tip_label)]
     if (length(dup_labels) > 0) {
@@ -193,11 +197,15 @@ build_newick <- function(tax_mat, ranks, internal_node_singletons = TRUE) {
       grouped_clades <- remaining_clades[same_val_idx]
       remaining_clades <- remaining_clades[-same_val_idx]
 
-
       if (length(grouped_clades) == 1) {
         merged_clade <- grouped_clades[[1]]
         if (internal_node_singletons && !is.na(first_val)) {
-          merged_clade$newick <- paste0("(", merged_clade$newick, ")", first_val)
+          merged_clade$newick <- paste0(
+            "(",
+            merged_clade$newick,
+            ")",
+            first_val
+          )
           merged_clade$label <- first_val
         } else if (!is.na(first_val)) {
           merged_clade$label <- first_val

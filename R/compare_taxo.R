@@ -35,18 +35,21 @@
 #' @export
 #' @seealso [tc_metrics_mock_vec()]
 #' @author Adrien Taudière
-tc_metrics_mock <- function(physeq,
-                            ranks_df,
-                            true_values_df,
-                            fake_taxa = TRUE,
-                            fake_pattern = c("^fake_", "^external_")) {
+tc_metrics_mock <- function(
+  physeq,
+  ranks_df,
+  true_values_df,
+  fake_taxa = TRUE,
+  fake_pattern = c("^fake_", "^external_")
+) {
   if (nrow(ranks_df) != ncol(true_values_df)) {
-    stop("The number of rows of ranks_df must be equal to the number of column in true_values_df")
+    stop(
+      "The number of rows of ranks_df must be equal to the number of column in true_values_df"
+    )
   }
 
   res_df <- data.frame(matrix(NA, nrow = 0, ncol = 4))
   colnames(res_df) <- c("method_db", "tax_level", "metrics", "values")
-
 
   for (nc in 1:ncol(ranks_df)) {
     for (i in 1:nrow(ranks_df)) {
@@ -136,16 +139,21 @@ tc_metrics_mock <- function(physeq,
 #' @seealso [tc_metrics_mock()], [add_external_seq_pq()], [add_shuffle_seq_pq()])
 #'
 #' @author Adrien Taudière
-tc_metrics_mock_vec <- function(physeq,
-                                taxonomic_rank,
-                                true_values,
-                                fake_taxa = TRUE,
-                                fake_pattern = c("^fake_", "^external_"),
-                                verbose = TRUE) {
+tc_metrics_mock_vec <- function(
+  physeq,
+  taxonomic_rank,
+  true_values,
+  fake_taxa = TRUE,
+  fake_pattern = c("^fake_", "^external_"),
+  verbose = TRUE
+) {
   if (fake_taxa) {
     fake_pattern <- paste(fake_pattern, collapse = "|")
 
-    fake_taxa_names <- taxa_names(physeq)[grepl(fake_pattern, taxa_names(physeq))]
+    fake_taxa_names <- taxa_names(physeq)[grepl(
+      fake_pattern,
+      taxa_names(physeq)
+    )]
 
     fake_taxa_cond <- taxa_names(physeq) %in% fake_taxa_names
     names(fake_taxa_cond) <- taxa_names(physeq)
@@ -172,7 +180,9 @@ tc_metrics_mock_vec <- function(physeq,
     FN <- sum(!(true_values %in% rank_pq))
 
     TN <- sum(is.na(
-      subset_taxa_pq(physeq, fake_taxa_cond, clean_pq = FALSE)@tax_table[, taxonomic_rank]
+      subset_taxa_pq(physeq, fake_taxa_cond, clean_pq = FALSE)@tax_table[,
+        taxonomic_rank
+      ]
     ))
 
     FDR <- FP / (FP + TP)

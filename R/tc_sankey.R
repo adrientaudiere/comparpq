@@ -55,10 +55,18 @@ tc_sankey <- function(physeq, rank_1, rank_2, fill_by = "rank_1") {
   fill_rank <- if (fill_by == "rank_1") rank_1 else rank_2
 
   rank_1_name <- colnames(physeq@tax_table)[
-    if (is.numeric(rank_1)) rank_1 else which(colnames(physeq@tax_table) == rank_1)
+    if (is.numeric(rank_1)) {
+      rank_1
+    } else {
+      which(colnames(physeq@tax_table) == rank_1)
+    }
   ]
   rank_2_name <- colnames(physeq@tax_table)[
-    if (is.numeric(rank_2)) rank_2 else which(colnames(physeq@tax_table) == rank_2)
+    if (is.numeric(rank_2)) {
+      rank_2
+    } else {
+      which(colnames(physeq@tax_table) == rank_2)
+    }
   ]
   fill_name <- if (fill_by == "rank_1") rank_1_name else rank_2_name
 

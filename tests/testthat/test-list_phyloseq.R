@@ -103,8 +103,10 @@ test_that("list_phyloseq detects EXPLORATION for different samples with shared m
   lpq <- list_phyloseq(list(fungi = td$pq1, fungi_mini = td$pq2))
 
   # Should be EXPLORATION or related type (depends on shared modalities)
-  expect_true(lpq@comparison$type_of_comparison %in%
-    c("EXPLORATION", "SEPARATE_ANALYSIS", "NESTED_ROBUSTNESS"))
+  expect_true(
+    lpq@comparison$type_of_comparison %in%
+      c("EXPLORATION", "SEPARATE_ANALYSIS", "NESTED_ROBUSTNESS")
+  )
 })
 
 # ==============================================================================
@@ -335,7 +337,11 @@ test_that("filter_common_lpq filters to common samples", {
 
   # Skip if no common samples
   if (lpq@comparison$n_common_samples > 0) {
-    lpq_filtered <- filter_common_lpq(lpq, filter_samples = TRUE, verbose = FALSE)
+    lpq_filtered <- filter_common_lpq(
+      lpq,
+      filter_samples = TRUE,
+      verbose = FALSE
+    )
 
     expect_true(lpq_filtered@comparison$same_samples)
     expect_equal(

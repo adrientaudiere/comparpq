@@ -10,8 +10,10 @@ test_that("tc_congruence_metrics returns correct structure", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order", "Family"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-      "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
+      "Order__eukaryome_Glomero",
+      "Family__eukaryome_Glomero"
     )
   )
 
@@ -33,8 +35,10 @@ test_that("tc_congruence_metrics summary has correct columns", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order", "Family"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-      "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
+      "Order__eukaryome_Glomero",
+      "Family__eukaryome_Glomero"
     )
   )
 
@@ -48,8 +52,10 @@ test_that("tc_congruence_metrics counts are non-negative", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order", "Family"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-      "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
+      "Order__eukaryome_Glomero",
+      "Family__eukaryome_Glomero"
     )
   )
 
@@ -63,8 +69,10 @@ test_that("tc_congruence_metrics total counts match number of taxa", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order", "Family"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-      "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
+      "Order__eukaryome_Glomero",
+      "Family__eukaryome_Glomero"
     )
   )
 
@@ -81,8 +89,10 @@ test_that("tc_congruence_metrics details has correct columns", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order", "Family"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-      "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
+      "Order__eukaryome_Glomero",
+      "Family__eukaryome_Glomero"
     )
   )
 
@@ -98,8 +108,10 @@ test_that("tc_congruence_metrics works with NULL physeq_2", {
     physeq_2 = NULL,
     ranks_1 = c("Kingdom", "Class", "Order", "Family"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-      "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
+      "Order__eukaryome_Glomero",
+      "Family__eukaryome_Glomero"
     )
   )
 
@@ -113,8 +125,10 @@ test_that("tc_congruence_metrics categories are mutually exclusive", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order", "Family"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
-      "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
+      "Order__eukaryome_Glomero",
+      "Family__eukaryome_Glomero"
     )
   )
 
@@ -152,7 +166,10 @@ test_that("tc_congruence_metrics warns with no common taxa", {
 test_that("tc_congruence_metrics works with some common taxa", {
   # Create a subset with different taxa names
   physeq_subset <- phyloseq::prune_taxa(taxa_names(Glom_otu)[1:5], Glom_otu)
-  taxa_names(physeq_subset)[1:2] <- paste0("new_", taxa_names(physeq_subset)[1:2])
+  taxa_names(physeq_subset)[1:2] <- paste0(
+    "new_",
+    taxa_names(physeq_subset)[1:2]
+  )
 
   result <- tc_congruence_metrics(
     Glom_otu,
@@ -162,7 +179,10 @@ test_that("tc_congruence_metrics works with some common taxa", {
   )
   expect_type(result, "list")
 
-  expect_equal(result$summary |> filter(category == "total_congruent") |> pull(count), 3)
+  expect_equal(
+    result$summary |> filter(category == "total_congruent") |> pull(count),
+    3
+  )
 })
 
 
@@ -177,7 +197,8 @@ test_that("tc_linked_trees returns a ggplot object", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
       "Order__eukaryome_Glomero"
     )
   )
@@ -192,7 +213,8 @@ test_that("tc_linked_trees works with link_by_taxa = TRUE", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
       "Order__eukaryome_Glomero"
     ),
     link_by_taxa = TRUE
@@ -208,7 +230,8 @@ test_that("tc_linked_trees works with show_tip_links = FALSE", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
       "Order__eukaryome_Glomero"
     ),
     show_tip_links = FALSE
@@ -224,7 +247,8 @@ test_that("tc_linked_trees works with show_labels = FALSE", {
     Glom_otu,
     ranks_1 = c("Kingdom", "Class", "Order"),
     ranks_2 = c(
-      "Kingdom__eukaryome_Glomero", "Class__eukaryome_Glomero",
+      "Kingdom__eukaryome_Glomero",
+      "Class__eukaryome_Glomero",
       "Order__eukaryome_Glomero"
     ),
     show_labels = FALSE

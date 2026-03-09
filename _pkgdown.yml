@@ -52,6 +52,7 @@ reference:
   contents:
   - formattable_lpq
   - formattable_lpq_full
+  - gg_hill_lpq
   - upset_lpq
 
 - title: "list_phyloseq Analysis"

@@ -86,8 +86,10 @@ tc_congruence_metrics <- function(
   }
 
   if (is.null(ranks_2) && is.null(physeq_2)) {
-    stop("Your are comparing two equivalent object.
-    Either ranks_2 or physeq_2 must be provided.")
+    stop(
+      "Your are comparing two equivalent object.
+    Either ranks_2 or physeq_2 must be provided."
+    )
   }
 
   common_taxa <- intersect(taxa_names(physeq_1), taxa_names(physeq_2))
@@ -165,7 +167,8 @@ tc_congruence_metrics <- function(
       NA
     }
 
-    leaf_match <- !is.na(last_valid_1) && !is.na(last_valid_2) &&
+    leaf_match <- !is.na(last_valid_1) &&
+      !is.na(last_valid_2) &&
       last_valid_1 == last_valid_2
 
     details_list[[i]] <- data.frame(
@@ -211,7 +214,9 @@ tc_congruence_metrics <- function(
         path_1[shared_range] == path_2[shared_range],
         na.rm = TRUE
       )
-      shared_na_match <- all(is.na(path_1[shared_range]) == is.na(path_2[shared_range]))
+      shared_na_match <- all(
+        is.na(path_1[shared_range]) == is.na(path_2[shared_range])
+      )
 
       if (shared_values_match && shared_na_match) {
         if (leaf_pos_1 > leaf_pos_2) {
@@ -254,16 +259,30 @@ tc_congruence_metrics <- function(
   n_total <- length(taxa_names(physeq_1)) + length(only_in_2_taxa)
   summary_df <- data.frame(
     category = c(
-      "only_in_1", "only_in_2", "classified_only_1", "classified_only_2",
-      "unclassified_both", "total_congruent", "leaf_match_congruence",
-      "partial_1_deeper", "partial_2_deeper",
-      "incongruent_leaves", "incongruent_nodes"
+      "only_in_1",
+      "only_in_2",
+      "classified_only_1",
+      "classified_only_2",
+      "unclassified_both",
+      "total_congruent",
+      "leaf_match_congruence",
+      "partial_1_deeper",
+      "partial_2_deeper",
+      "incongruent_leaves",
+      "incongruent_nodes"
     ),
     count = c(
-      length(only_in_1_taxa), length(only_in_2_taxa), length(classified_only_1),
-      length(classified_only_2), length(unclassified_both), length(total_congruent),
-      n_leaf_match, length(partial_1_deeper), length(partial_2_deeper),
-      length(incongruent_leaves), length(incongruent_nodes)
+      length(only_in_1_taxa),
+      length(only_in_2_taxa),
+      length(classified_only_1),
+      length(classified_only_2),
+      length(unclassified_both),
+      length(total_congruent),
+      n_leaf_match,
+      length(partial_1_deeper),
+      length(partial_2_deeper),
+      length(incongruent_leaves),
+      length(incongruent_nodes)
     ),
     stringsAsFactors = FALSE
   )
@@ -699,23 +718,25 @@ tc_linked_trees <- function(
     p <- p + scale_size_identity()
 
     # add a title with the name of the ranks and phyloseq objects
-    if (!is.null(physeq_2) &&
-      !identical(physeq_1, physeq_2)) {
+    if (
+      !is.null(physeq_2) &&
+        !identical(physeq_1, physeq_2)
+    ) {
       name_1 <- deparse(substitute(physeq_1))
       name_2 <- deparse(substitute(physeq_2))
     } else {
       name_1 <- deparse(substitute(physeq_1))
       name_2 <- deparse(substitute(physeq_1))
     }
-    p <- p + labs(
-      title =
-        paste0(name_1, " (left) vs ", name_2, " (right)"),
-      subtitle =
-        paste0(
-          paste(ranks_1, collapse = " > "), "\n",
+    p <- p +
+      labs(
+        title = paste0(name_1, " (left) vs ", name_2, " (right)"),
+        subtitle = paste0(
+          paste(ranks_1, collapse = " > "),
+          "\n",
           paste(ranks_2, collapse = " > ")
         )
-    )
+      )
   }
 
   p + theme_void()

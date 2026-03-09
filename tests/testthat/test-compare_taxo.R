@@ -11,8 +11,12 @@ setup_mock_data <- function() {
   pq_with_fake <- add_shuffle_seq_pq(data_fungi_mini, n_fake = 10)
 
   # Get true values from original taxonomy
-  true_genera <- unique(na.omit(as.vector(data_fungi_mini@tax_table[, "Genus"])))
-  true_families <- unique(na.omit(as.vector(data_fungi_mini@tax_table[, "Family"])))
+  true_genera <- unique(na.omit(as.vector(data_fungi_mini@tax_table[,
+    "Genus"
+  ])))
+  true_families <- unique(na.omit(as.vector(data_fungi_mini@tax_table[,
+    "Family"
+  ])))
 
   list(
     physeq = pq_with_fake,
@@ -54,7 +58,9 @@ test_that("tc_metrics_mock_vec returns list with basic metrics when fake_taxa=FA
   result <- tc_metrics_mock_vec(
     data_fungi_mini,
     taxonomic_rank = "Genus",
-    true_values = unique(na.omit(as.vector(data_fungi_mini@tax_table[, "Genus"]))),
+    true_values = unique(na.omit(as.vector(data_fungi_mini@tax_table[,
+      "Genus"
+    ]))),
     fake_taxa = FALSE,
     verbose = FALSE
   )
@@ -199,7 +205,10 @@ test_that("tc_metrics_mock returns dataframe with correct structure", {
   )
 
   expect_s3_class(result, "data.frame")
-  expect_equal(colnames(result), c("method_db", "tax_level", "metrics", "values"))
+  expect_equal(
+    colnames(result),
+    c("method_db", "tax_level", "metrics", "values")
+  )
 })
 
 test_that("tc_metrics_mock fails with mismatched dimensions", {
@@ -258,7 +267,9 @@ test_that("tc_metrics_mock respects fake_taxa parameter", {
     data_fungi_mini,
     ranks_df = data.frame(method1 = "Genus"),
     true_values_df = data.frame(
-      Genus = unique(na.omit(as.vector(data_fungi_mini@tax_table[, "Genus"])))[1:5]
+      Genus = unique(na.omit(as.vector(data_fungi_mini@tax_table[, "Genus"])))[
+        1:5
+      ]
     ),
     fake_taxa = FALSE
   )

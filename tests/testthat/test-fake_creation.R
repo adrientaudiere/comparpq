@@ -72,7 +72,11 @@ test_that("add_shuffle_seq_pq fails when both n_fake and prop_fake specified", {
 
 test_that("add_shuffle_seq_pq respects custom prefix", {
   set.seed(123)
-  result <- add_shuffle_seq_pq(data_fungi_mini, n_fake = 5, prefix = "shuffled_")
+  result <- add_shuffle_seq_pq(
+    data_fungi_mini,
+    n_fake = 5,
+    prefix = "shuffled_"
+  )
 
   shuffled_names <- grep("^shuffled_", taxa_names(result), value = TRUE)
 

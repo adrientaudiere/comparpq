@@ -1,7 +1,7 @@
 #' Run MaAsLin3 differential abundance analysis on a phyloseq object
 #'
 #' #' #TODO VERY experimental
-#' 
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
@@ -79,28 +79,28 @@
 #'
 #' # Plot results
 #' gg_maaslin3_plot(res, type = "volcano")
-#'             
-#' # Full example with GlobalPatterns dataset                                                                                                
-#'  data("GlobalPatterns")                                                                          
-#'                                                                                                  
-#'  # Subset to two very different environments: Feces vs Soil                                      
-#'  gp_subset <- subset_samples(GlobalPatterns, SampleType %in% c("Feces", "Soil"))                 
-#'                                                                                                  
-#'  # Agglomerate at Phylum level for clearer results                                               
-#'  gp_phylum <- tax_glom(gp_subset, taxrank = "Phylum", NArm = FALSE)                              
-#'                                                                                                  
-#'  # Run MaAsLin3 with Soil as reference                                                           
-#'  res <- maaslin3_pq(                                                                             
-#'    gp_phylum,                                                                                    
-#'    formula = "~ SampleType",                                                                     
-#'    reference = list(SampleType = "Soil"),                                                        
+#'
+#' # Full example with GlobalPatterns dataset
+#'  data("GlobalPatterns")
+#'
+#'  # Subset to two very different environments: Feces vs Soil
+#'  gp_subset <- subset_samples(GlobalPatterns, SampleType %in% c("Feces", "Soil"))
+#'
+#'  # Agglomerate at Phylum level for clearer results
+#'  gp_phylum <- tax_glom(gp_subset, taxrank = "Phylum", NArm = FALSE)
+#'
+#'  # Run MaAsLin3 with Soil as reference
+#'  res <- maaslin3_pq(
+#'    gp_phylum,
+#'    formula = "~ SampleType",
+#'    reference = list(SampleType = "Soil"),
 #'    output = "output/maaslin3_example"  ,
-#'   correction_for_sample_size = FALSE                                                          
-#'  )                                                                                               
-#'                                                                                                  
+#'   correction_for_sample_size = FALSE
+#'  )
+#'
 #'  # Plot results
 #'  gg_maaslin3_plot(res, type = "volcano", signif_threshold = 0.1)
-#'  gg_maaslin3_plot(res, type = "forest", top_n = 15) 
+#'  gg_maaslin3_plot(res, type = "forest", top_n = 15)
 maaslin3_pq <- function(
   physeq,
   formula,
@@ -147,8 +147,12 @@ maaslin3_pq <- function(
         ref_level <- reference[[var]]
         if (!ref_level %in% levels(col)) {
           stop(
-            "Reference level '", ref_level, "' not found in variable '", var,
-            "'. Available levels: ", paste(levels(col), collapse = ", ")
+            "Reference level '",
+            ref_level,
+            "' not found in variable '",
+            var,
+            "'. Available levels: ",
+            paste(levels(col), collapse = ", ")
           )
         }
         metadata[[var]] <- relevel(col, ref = ref_level)
@@ -179,7 +183,7 @@ maaslin3_pq <- function(
 
 
 #' Plot MaAsLin3 results
-#' 
+#'
 #' #TODO VERY experimental
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
@@ -279,60 +283,60 @@ maaslin3_pq <- function(
 #'
 #' # Customize significance threshold
 #' gg_maaslin3_plot(res, type = "volcano", signif_threshold = 0.05, show_labels = TRUE)
-#' 
-#'  # Complete Example with HMP2 Dataset                                                              
-#'                                                                                                  
-#'  library(maaslin3)                                                                                                              
-#'  # ============================================================                                  
-#'  # Convert maaslin3 default HMP2 dataset to phyloseq                                             
-#'  # ============================================================                                  
-#'                                                                                                  
-#'  # Read the HMP2 default dataset from maaslin3 package                                           
-#'  taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")            
-#'  taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)                              
-#'                                                                                                  
-#'  metadata_name <- system.file("extdata", "HMP2_metadata.tsv", package = "maaslin3")              
-#'  metadata <- read.csv(metadata_name, sep = "\t", row.names = 1)                                  
-#'                                                                                                  
-#'  # Set factor levels                                                                             
-#'  metadata$antibiotics <- factor(metadata$antibiotics, levels = c("No", "Yes"))                   
-#'                                                                                                  
-#'  # Create phyloseq object (HMP2 data has samples as rows, taxa as columns)                       
-#'  otu <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)                                  
-#'  sam <- sample_data(metadata)                                                                    
-#'  species_names <- colnames(taxa_table)                                                           
-#'  tax_df <- data.frame(                                                                           
-#'    Species = species_names,                                                                      
-#'    Genus = sapply(strsplit(species_names, "_"), \(x) x[1]),                                      
-#'    row.names = species_names                                                                     
-#'  )                                                                                               
-#'  tax <- tax_table(as.matrix(tax_df))                                                             
-#'  physeq_hmp2 <- phyloseq(otu, sam, tax)                                                          
-#'                                                                                                  
-#'  # ============================================================                                  
-#'  # Run MaAsLin3 analysis                                                                         
-#'  # ============================================================                                  
-#'                                                                                                  
-#'  res <- maaslin3_pq(                                                                             
-#'    physeq_hmp2,                                                                                  
-#'    formula = "~ antibiotics",                                                                    
-#'    reference = list(antibiotics = "No"),                                                         
-#'    output = "output/maaslin3_hmp2",                                                              
-#'    correction_for_sample_size = FALSE                                                            
-#'  )                                                                                               
-#'                                                                                                  
-#'  # ============================================================                                  
-#'  # Compare plots                                                                                 
-#'  # ============================================================                                  
-#'                                                                                                  
-#'  # Summary plot (NEW DEFAULT) - uses maaslin3's native visualization                             
-#'  gg_maaslin3_plot(res)                                                                           
-#'                                                                                                  
-#'  # Alternative plot types                                                                        
-#'  gg_maaslin3_plot(res, type = "volcano")                                                         
+#'
+#'  # Complete Example with HMP2 Dataset
+#'
+#'  library(maaslin3)
+#'  # ============================================================
+#'  # Convert maaslin3 default HMP2 dataset to phyloseq
+#'  # ============================================================
+#'
+#'  # Read the HMP2 default dataset from maaslin3 package
+#'  taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
+#'  taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
+#'
+#'  metadata_name <- system.file("extdata", "HMP2_metadata.tsv", package = "maaslin3")
+#'  metadata <- read.csv(metadata_name, sep = "\t", row.names = 1)
+#'
+#'  # Set factor levels
+#'  metadata$antibiotics <- factor(metadata$antibiotics, levels = c("No", "Yes"))
+#'
+#'  # Create phyloseq object (HMP2 data has samples as rows, taxa as columns)
+#'  otu <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)
+#'  sam <- sample_data(metadata)
+#'  species_names <- colnames(taxa_table)
+#'  tax_df <- data.frame(
+#'    Species = species_names,
+#'    Genus = sapply(strsplit(species_names, "_"), \(x) x[1]),
+#'    row.names = species_names
+#'  )
+#'  tax <- tax_table(as.matrix(tax_df))
+#'  physeq_hmp2 <- phyloseq(otu, sam, tax)
+#'
+#'  # ============================================================
+#'  # Run MaAsLin3 analysis
+#'  # ============================================================
+#'
+#'  res <- maaslin3_pq(
+#'    physeq_hmp2,
+#'    formula = "~ antibiotics",
+#'    reference = list(antibiotics = "No"),
+#'    output = "output/maaslin3_hmp2",
+#'    correction_for_sample_size = FALSE
+#'  )
+#'
+#'  # ============================================================
+#'  # Compare plots
+#'  # ============================================================
+#'
+#'  # Summary plot (NEW DEFAULT) - uses maaslin3's native visualization
+#'  gg_maaslin3_plot(res)
+#'
+#'  # Alternative plot types
+#'  gg_maaslin3_plot(res, type = "volcano")
 #'  gg_maaslin3_plot(res, type = "forest", top_n = 15)
 #' }
-#' 
+#'
 gg_maaslin3_plot <- function(
   res,
   type = c("summary", "volcano", "forest"),
@@ -358,11 +362,16 @@ gg_maaslin3_plot <- function(
 
   if (type == "summary") {
     # Check required components - maaslin3 uses "metadata" for unstandardized metadata
-    required_components <- c("transformed_data", "metadata", "fit_data_abundance")
+    required_components <- c(
+      "transformed_data",
+      "metadata",
+      "fit_data_abundance"
+    )
     if (!is.list(res) || !all(required_components %in% names(res))) {
       stop(
         "For type='summary', 'res' must be the full maaslin3 result object from maaslin3_pq().\n",
-        "Required components: ", paste(required_components, collapse = ", ")
+        "Required components: ",
+        paste(required_components, collapse = ", ")
       )
     }
 
@@ -395,7 +404,6 @@ gg_maaslin3_plot <- function(
     return(plot_res$summary_plot$final)
   }
 
-
   # Extract results data frame from maaslin3 output
   # MaAsLin3 stores results in nested structure:
   #   $fit_data_abundance$results and $fit_data_prevalence$results
@@ -407,8 +415,11 @@ gg_maaslin3_plot <- function(
   } else if (is.list(res)) {
     # Try different maaslin3 output structures
     if (model == "abundance" || model == "both") {
-      if ("fit_data_abundance" %in% names(res) &&
-          "results" %in% names(res$fit_data_abundance)) {
+      if (
+        "fit_data_abundance" %in%
+          names(res) &&
+          "results" %in% names(res$fit_data_abundance)
+      ) {
         df <- res$fit_data_abundance$results
         if (!is.null(df)) df$model <- "abundance"
       }
@@ -416,8 +427,11 @@ gg_maaslin3_plot <- function(
 
     if (model == "prevalence" || model == "both") {
       prev_df <- NULL
-      if ("fit_data_prevalence" %in% names(res) &&
-          "results" %in% names(res$fit_data_prevalence)) {
+      if (
+        "fit_data_prevalence" %in%
+          names(res) &&
+          "results" %in% names(res$fit_data_prevalence)
+      ) {
         prev_df <- res$fit_data_prevalence$results
         if (!is.null(prev_df)) prev_df$model <- "prevalence"
       }
@@ -463,7 +477,9 @@ gg_maaslin3_plot <- function(
   } else if ("metadata" %in% colnames(df)) {
     # Exclude intercept and nb_seq (library size covariate)
     available_meta <- unique(df$metadata)
-    available_meta <- available_meta[!available_meta %in% c("(Intercept)", "nb_seq")]
+    available_meta <- available_meta[
+      !available_meta %in% c("(Intercept)", "nb_seq")
+    ]
     if (length(available_meta) > 0) {
       metadata_filter <- available_meta[1]
       df <- df[df$metadata == metadata_filter, ]
@@ -515,8 +531,18 @@ gg_maaslin3_plot <- function(
 
       # Common variable names: Height, SampleType, Treatment, Group, etc.
       common_vars <- c(
-        "SampleType", "Treatment", "Group", "Condition", "Status",
-        "Height", "Time", "Site", "Location", "Diet", "Age", "Sex"
+        "SampleType",
+        "Treatment",
+        "Group",
+        "Condition",
+        "Status",
+        "Height",
+        "Time",
+        "Site",
+        "Location",
+        "Diet",
+        "Age",
+        "Sex"
       )
 
       for (var in common_vars) {
@@ -543,7 +569,11 @@ gg_maaslin3_plot <- function(
   if (type == "volcano") {
     p <- ggplot2::ggplot(
       df,
-      ggplot2::aes(x = .data$coef, y = .data$neg_log10_p, color = .data$significant)
+      ggplot2::aes(
+        x = .data$coef,
+        y = .data$neg_log10_p,
+        color = .data$significant
+      )
     ) +
       ggplot2::geom_point(size = point_size, alpha = 0.7) +
       ggplot2::geom_hline(
@@ -551,7 +581,11 @@ gg_maaslin3_plot <- function(
         linetype = "dashed",
         color = "grey40"
       ) +
-      ggplot2::geom_vline(xintercept = 0, linetype = "solid", color = "grey40") +
+      ggplot2::geom_vline(
+        xintercept = 0,
+        linetype = "solid",
+        color = "grey40"
+      ) +
       ggplot2::scale_color_manual(
         values = colors,
         labels = c("FALSE" = "Not significant", "TRUE" = "Significant"),
@@ -563,7 +597,14 @@ gg_maaslin3_plot <- function(
         title = if (show_annotations && !is.null(comparison_label)) {
           paste0("MaAsLin3: ", comparison_label, " vs ", ref_label)
         } else {
-          paste0("MaAsLin3 Volcano Plot", if (!is.null(metadata_filter)) paste0(" - ", metadata_filter) else "")
+          paste0(
+            "MaAsLin3 Volcano Plot",
+            if (!is.null(metadata_filter)) {
+              paste0(" - ", metadata_filter)
+            } else {
+              ""
+            }
+          )
         }
       ) +
       ggplot2::theme_bw() +
@@ -572,14 +613,15 @@ gg_maaslin3_plot <- function(
     if (show_labels) {
       df_signif <- df[df$significant, ]
       if (nrow(df_signif) > 0) {
-        p <- p + ggplot2::geom_text(
-          data = df_signif,
-          ggplot2::aes(label = .data$feature),
-          hjust = -0.1,
-          vjust = 0.5,
-          size = 3,
-          check_overlap = TRUE
-        )
+        p <- p +
+          ggplot2::geom_text(
+            data = df_signif,
+            ggplot2::aes(label = .data$feature),
+            hjust = -0.1,
+            vjust = 0.5,
+            size = 3,
+            check_overlap = TRUE
+          )
       }
     }
 
@@ -588,27 +630,28 @@ gg_maaslin3_plot <- function(
       x_range <- range(df$coef, na.rm = TRUE)
       y_max <- max(df$neg_log10_p, na.rm = TRUE)
 
-      p <- p + ggplot2::annotate(
-        "text",
-        x = x_range[2] * 0.7,
-        y = y_max * 0.95,
-        label = paste0("\u2191 in ", comparison_label),
-        hjust = 0.5,
-        size = 3.5,
-        color = "darkred",
-        fontface = "bold"
-      ) + ggplot2::annotate(
-        "text",
-        x = x_range[1] * 0.7,
-        y = y_max * 0.95,
-        label = paste0("\u2191 in ", ref_label),
-        hjust = 0.5,
-        size = 3.5,
-        color = "darkblue",
-        fontface = "bold"
-      )
+      p <- p +
+        ggplot2::annotate(
+          "text",
+          x = x_range[2] * 0.7,
+          y = y_max * 0.95,
+          label = paste0("\u2191 in ", comparison_label),
+          hjust = 0.5,
+          size = 3.5,
+          color = "darkred",
+          fontface = "bold"
+        ) +
+        ggplot2::annotate(
+          "text",
+          x = x_range[1] * 0.7,
+          y = y_max * 0.95,
+          label = paste0("\u2191 in ", ref_label),
+          hjust = 0.5,
+          size = 3.5,
+          color = "darkblue",
+          fontface = "bold"
+        )
     }
-
   } else if (type == "forest") {
     # Select top N by absolute coefficient
     df <- df[order(abs(df$coef), decreasing = TRUE), ]
@@ -627,7 +670,11 @@ gg_maaslin3_plot <- function(
         color = .data$significant
       )
     ) +
-      ggplot2::geom_vline(xintercept = 0, linetype = "dashed", color = "grey40") +
+      ggplot2::geom_vline(
+        xintercept = 0,
+        linetype = "dashed",
+        color = "grey40"
+      ) +
       ggplot2::geom_errorbarh(
         ggplot2::aes(xmin = .data$ci_low, xmax = .data$ci_high),
         height = 0.2
@@ -642,11 +689,22 @@ gg_maaslin3_plot <- function(
         x = "Coefficient (log2 fold change)",
         y = NULL,
         title = paste0(
-          "MaAsLin3 Forest Plot - Top ", nrow(df), " features",
-          if (!is.null(metadata_filter)) paste0(" (", metadata_filter, ")") else ""
+          "MaAsLin3 Forest Plot - Top ",
+          nrow(df),
+          " features",
+          if (!is.null(metadata_filter)) {
+            paste0(" (", metadata_filter, ")")
+          } else {
+            ""
+          }
         ),
         subtitle = if (show_annotations && !is.null(comparison_label)) {
-          paste0("Positive = more in ", comparison_label, " | Negative = more in ", ref_label)
+          paste0(
+            "Positive = more in ",
+            comparison_label,
+            " | Negative = more in ",
+            ref_label
+          )
         } else {
           NULL
         }

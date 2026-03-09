@@ -33,20 +33,20 @@
 #'     fungi_rarefy = rarefy_even_depth(data_fungi),
 #'     fungi_with_less_otu_in_High =  multiply_counts_pq(data_fungi,
 #'       fact = "Height", prop=0.8,
-#'       conditions = "High", 
-#'       multipliers = 0) 
+#'       conditions = "High",
+#'       multipliers = 0)
 #'   ),
 #'   same_bioinfo_pipeline = FALSE
 #' )
 #'
 #' results <- estim_diff_lpq(lpq, fact = "Height")
 #' results$summary
-#' 
+#'
 #' # Plot results for two phyloseq objects
 #'  ggplot(results$summary, aes(x = metric, y = effect_size, color=name)) +
-#'    facet_wrap(~comparison) + 
+#'    facet_wrap(~comparison) +
 #'    geom_point(position=position_dodge(width=0.5)) +
-#'    geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2, position=position_dodge(width=0.5 )) 
+#'    geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2, position=position_dodge(width=0.5 ))
 #' @seealso [estim_diff_pq()], [estim_cor_lpq()], [adonis_lpq()]
 #' @export
 estim_diff_lpq <- function(x, fact, ..., verbose = TRUE) {

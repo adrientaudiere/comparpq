@@ -15,7 +15,6 @@ create_test_phyloseq <- function(n_taxa, tax_levels) {
   rownames(otu_mat) <- paste0("ASV_", seq_len(n_taxa))
   colnames(otu_mat) <- paste0("Sample_", seq_len(5))
 
-
   # Create tax table with specified levels
   tax_mat <- matrix(
     NA_character_,
@@ -43,7 +42,16 @@ create_test_phyloseq <- function(n_taxa, tax_levels) {
 test_levels_A <- list(
   Phylum = c("Phylum_A", "Phylum_B", "Phylum_C"),
   Class = c("Class_1", "Class_2", "Class_3", "Class_4", "Class_5"),
-  Genus = c("Genus_1", "Genus_2", "Genus_3", "Genus_4", "Genus_5", "Genus_6", "Genus_7", "Genus_8")
+  Genus = c(
+    "Genus_1",
+    "Genus_2",
+    "Genus_3",
+    "Genus_4",
+    "Genus_5",
+    "Genus_6",
+    "Genus_7",
+    "Genus_8"
+  )
 )
 physeq_A <- create_test_phyloseq(n_taxa = 20, tax_levels = test_levels_A)
 
@@ -106,7 +114,10 @@ test_that("n_levels_lpq counts NA as a level when na.rm = FALSE", {
   result_without_na <- n_levels_lpq(lpq, c("Genus"), na.rm = TRUE)
 
   # With na.rm = FALSE, NA counts as an additional level
-  expect_equal(result_with_na["C", "Genus"], result_without_na["C", "Genus"] + 1)
+  expect_equal(
+    result_with_na["C", "Genus"],
+    result_without_na["C", "Genus"] + 1
+  )
 })
 
 test_that("n_levels_lpq works with single phyloseq object", {

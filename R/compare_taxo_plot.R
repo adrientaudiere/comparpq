@@ -30,14 +30,16 @@
 #'   color_rank = "Family"
 #' )
 #' }
-tc_bar <- function(physeq,
-                   rank_1,
-                   rank_2,
-                   color_rank,
-                   point_size = 0.3,
-                   point_alpha = 0.3,
-                   merge_sample_by = NULL,
-                   log10trans = TRUE) {
+tc_bar <- function(
+  physeq,
+  rank_1,
+  rank_2,
+  color_rank,
+  point_size = 0.3,
+  point_alpha = 0.3,
+  merge_sample_by = NULL,
+  log10trans = TRUE
+) {
   verify_pq(physeq)
 
   if (!is.null(merge_sample_by)) {
@@ -51,7 +53,9 @@ tc_bar <- function(physeq,
 
   psm2 <- psm |>
     group_by(across(all_of(c(
-      "Sample", ranks1, ranks2
+      "Sample",
+      ranks1,
+      ranks2
     )))) |>
     summarise(Abundance = sum(Abundance), n = n()) |>
     dplyr::filter(Abundance > 0)
@@ -60,12 +64,15 @@ tc_bar <- function(physeq,
     psm2 <- psm2 |>
       mutate(Abundance = log10(Abundance))
   }
-  p <- ggplot(psm2, aes(
-    x = .data[[ranks2[1]]],
-    y = Abundance,
-    fill = .data[[ranks2[[2]]]],
-    label = .data[[ranks2[1]]]
-  )) +
+  p <- ggplot(
+    psm2,
+    aes(
+      x = .data[[ranks2[1]]],
+      y = Abundance,
+      fill = .data[[ranks2[[2]]]],
+      label = .data[[ranks2[1]]]
+    )
+  ) +
     stat_summary(
       fun.y = mean,
       position = "dodge",
@@ -95,15 +102,18 @@ tc_bar <- function(physeq,
       width = .2,
       position = position_dodge(.9)
     ) +
-    theme(axis.text.x = element_text(
-      angle = 90,
-      vjust = 0.5,
-      hjust = 1
-    )) +
+    theme(
+      axis.text.x = element_text(
+        angle = 90,
+        vjust = 0.5,
+        hjust = 1
+      )
+    ) +
     geom_hline(aes(yintercept = 0)) +
-    geom_jitter(aes(x = .data[[ranks1[1]]], y = -Abundance),
-      size =
-        point_size, alpha = point_alpha
+    geom_jitter(
+      aes(x = .data[[ranks1[1]]], y = -Abundance),
+      size = point_size,
+      alpha = point_alpha
     )
 
   if (log10trans) {
@@ -162,13 +172,15 @@ tc_bar <- function(physeq,
 #'   stat_across_sample = "mean"
 #' )
 #' }
-tc_points_matrix <- function(physeq,
-                             rank_1,
-                             rank_2,
-                             color_1 = "#dc863b",
-                             color_2 = "#2e7891",
-                             stat_across_sample = "sum",
-                             merge_sample_by = NULL) {
+tc_points_matrix <- function(
+  physeq,
+  rank_1,
+  rank_2,
+  color_1 = "#dc863b",
+  color_2 = "#2e7891",
+  stat_across_sample = "sum",
+  merge_sample_by = NULL
+) {
   verify_pq(physeq)
 
   if (!is.null(merge_sample_by)) {
@@ -182,7 +194,9 @@ tc_points_matrix <- function(physeq,
 
   psm2 <- psm |>
     group_by(across(all_of(c(
-      "Sample", ranks1, ranks2
+      "Sample",
+      ranks1,
+      ranks2
     )))) |>
     summarise(Abundance = sum(Abundance), n = n()) |>
     dplyr::filter(Abundance > 0)
@@ -203,17 +217,21 @@ tc_points_matrix <- function(physeq,
     ) |>
     mutate(Rank = .data[[ranks2[[1]]]])
 
-  psm2_summary <- full_join(psm2_summary_taxo1,
+  psm2_summary <- full_join(
+    psm2_summary_taxo1,
     psm2_summary_taxo2,
     by = join_by(Rank == Rank)
   )
 
   if (stat_across_sample == "mean") {
-    p <- ggplot(psm2_summary, aes(
-      x = .data[[ranks1[[1]]]],
-      y = .data[[ranks2[[1]]]],
-      size = mean_ab.x
-    )) +
+    p <- ggplot(
+      psm2_summary,
+      aes(
+        x = .data[[ranks1[[1]]]],
+        y = .data[[ranks2[[1]]]],
+        size = mean_ab.x
+      )
+    ) +
       geom_point(
         shape = 21,
         color = color_1,
@@ -222,15 +240,19 @@ tc_points_matrix <- function(physeq,
       geom_point(
         aes(size = mean_ab.y),
         color = color_2,
-        shape = 21, ,
+        shape = 21,
+        ,
         fill = alpha(color_2, 0.2)
       )
   } else if (stat_across_sample == "sum") {
-    p <- ggplot(psm2_summary, aes(
-      x = .data[[ranks1[[1]]]],
-      y = .data[[ranks2[[1]]]],
-      size = sum_ab.x
-    )) +
+    p <- ggplot(
+      psm2_summary,
+      aes(
+        x = .data[[ranks1[[1]]]],
+        y = .data[[ranks2[[1]]]],
+        size = sum_ab.x
+      )
+    ) +
       geom_point(
         shape = 21,
         color = color_1,
@@ -239,17 +261,21 @@ tc_points_matrix <- function(physeq,
       geom_point(
         aes(size = sum_ab.y),
         color = color_2,
-        shape = 21, ,
+        shape = 21,
+        ,
         fill = alpha(color_2, 0.2)
       )
   } else {
     stop("Param stat_across_sample must be set to mean or sum !")
   }
-  p <- p + theme(axis.text.x = element_text(
-    angle = 90,
-    vjust = 0.5,
-    hjust = 1
-  ))
+  p <- p +
+    theme(
+      axis.text.x = element_text(
+        angle = 90,
+        vjust = 0.5,
+        hjust = 1
+      )
+    )
 
   return(p)
 }
@@ -304,13 +330,15 @@ tc_points_matrix <- function(physeq,
 #' ) +
 #'   theme(legend.position = "none")
 #' }
-rainplot_taxo_na <- function(physeq,
-                             ranks = NULL,
-                             min_nb_seq = 0,
-                             merge_sample_by = NULL,
-                             sample_colored = FALSE,
-                             sample_linked = FALSE,
-                             ...) {
+rainplot_taxo_na <- function(
+  physeq,
+  ranks = NULL,
+  min_nb_seq = 0,
+  merge_sample_by = NULL,
+  sample_colored = FALSE,
+  sample_linked = FALSE,
+  ...
+) {
   verify_pq(physeq)
 
   if (is.null(ranks)) {
@@ -359,7 +387,6 @@ rainplot_taxo_na <- function(physeq,
 }
 ################################################################################
 
-
 ################################################################################
 #' Circle of correspondence between two taxonomic levels
 #'
@@ -393,11 +420,13 @@ rainplot_taxo_na <- function(physeq,
 #'   suffix_1 = "_Euk",
 #'   suffix_2 = "_Marjaam"
 #' )
-tc_circle <- function(physeq,
-                      rank_1 = NULL,
-                      rank_2 = NULL,
-                      suffix_1 = "_1",
-                      suffix_2 = "_2") {
+tc_circle <- function(
+  physeq,
+  rank_1 = NULL,
+  rank_2 = NULL,
+  suffix_1 = "_1",
+  suffix_2 = "_2"
+) {
   tab <- table(physeq@tax_table[, rank_1], physeq@tax_table[, rank_2])
   df_circle <- data.frame(
     from = rep(paste0(rownames(tab), suffix_1), times = ncol(tab)),
@@ -406,7 +435,10 @@ tc_circle <- function(physeq,
     stringsAsFactors = FALSE
   )
 
-  suffix_name <- c(paste0(rownames(tab), suffix_1), paste0(colnames(tab), suffix_2))
+  suffix_name <- c(
+    paste0(rownames(tab), suffix_1),
+    paste0(colnames(tab), suffix_2)
+  )
 
   uniq_names <- unique(c(rownames(tab), colnames(tab)))
 

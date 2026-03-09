@@ -29,8 +29,20 @@ test_that("tc_bar works with character rank names", {
 test_that("tc_bar respects log10trans parameter", {
   pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
 
-  result_log <- tc_bar(pq, rank_1 = 5, rank_2 = 13, color_rank = 3, log10trans = TRUE)
-  result_nolog <- tc_bar(pq, rank_1 = 5, rank_2 = 13, color_rank = 3, log10trans = FALSE)
+  result_log <- tc_bar(
+    pq,
+    rank_1 = 5,
+    rank_2 = 13,
+    color_rank = 3,
+    log10trans = TRUE
+  )
+  result_nolog <- tc_bar(
+    pq,
+    rank_1 = 5,
+    rank_2 = 13,
+    color_rank = 3,
+    log10trans = FALSE
+  )
 
   expect_s3_class(result_log, "ggplot")
   expect_s3_class(result_nolog, "ggplot")

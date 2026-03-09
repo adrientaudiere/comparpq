@@ -80,7 +80,10 @@ test_that("rename_ranks_pq renames with pattern/replacement", {
   # Check that dots are replaced with underscores
   original_with_dot <- grep("\\.", colnames(data_fungi@tax_table), value = TRUE)
   if (length(original_with_dot) > 0) {
-    expect_false(any(grepl("\\.", colnames(result@tax_table)[grepl("_", colnames(result@tax_table))])))
+    expect_false(any(grepl(
+      "\\.",
+      colnames(result@tax_table)[grepl("_", colnames(result@tax_table))]
+    )))
   }
 })
 
@@ -135,8 +138,14 @@ test_that("taxtab_replace_pattern_by_NA replaces pattern with NA", {
   )
 
   # Check that pattern is replaced
-  original_matches <- sum(grepl("fam_Incertae_sedis", data_fungi@tax_table[, "Family"]))
-  result_matches <- sum(grepl("fam_Incertae_sedis", result@tax_table[, "Family"], fixed = TRUE), na.rm = TRUE)
+  original_matches <- sum(grepl(
+    "fam_Incertae_sedis",
+    data_fungi@tax_table[, "Family"]
+  ))
+  result_matches <- sum(
+    grepl("fam_Incertae_sedis", result@tax_table[, "Family"], fixed = TRUE),
+    na.rm = TRUE
+  )
 
   expect_true(result_matches < original_matches || original_matches == 0)
 })
@@ -282,7 +291,10 @@ test_that("resolve_taxo_conflict respects replace_collapsed_rank_by_NA", {
     )
 
     # Check that collapsed values are replaced by NA
-    collapsed_count <- sum(grepl("/", result@tax_table[, "Genus_consensus"]), na.rm = TRUE)
+    collapsed_count <- sum(
+      grepl("/", result@tax_table[, "Genus_consensus"]),
+      na.rm = TRUE
+    )
     expect_equal(collapsed_count, 0)
   }
 })

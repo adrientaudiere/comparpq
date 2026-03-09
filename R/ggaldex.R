@@ -125,21 +125,31 @@ gg_aldex_plot <- function(
 
   # Determine significance
   if (test == "welch") {
-    if (is.null(x$we.eBH)) stop("Welch test results (we.eBH) not in dataset.")
+    if (is.null(x$we.eBH)) {
+      stop("Welch test results (we.eBH) not in dataset.")
+    }
     p.add <- min(x$we.eBH[x$we.eBH > 0], na.rm = TRUE) / 10
     x$.called <- x$we.eBH <= cutoff.pval
     x$.qval <- x$we.eBH + p.add
   } else if (test == "wilcox") {
-    if (is.null(x$wi.eBH)) stop("Wilcoxon test results (wi.eBH) not in dataset.")
+    if (is.null(x$wi.eBH)) {
+      stop("Wilcoxon test results (wi.eBH) not in dataset.")
+    }
     p.add <- min(x$wi.eBH[x$wi.eBH > 0], na.rm = TRUE) / 10
     x$.called <- x$wi.eBH <= cutoff.pval
     x$.qval <- x$wi.eBH + p.add
   } else if (test == "effect") {
-    if (cutoff.effect < 0.5) stop("Please set cutoff.effect to at least 0.5.")
+    if (cutoff.effect < 0.5) {
+      stop("Please set cutoff.effect to at least 0.5.")
+    }
     x$.called <- abs(x$effect) >= cutoff.effect
   } else if (test == "both") {
-    if (cutoff.effect < 0.5) stop("Please set cutoff.effect to at least 0.5.")
-    if (is.null(x$we.eBH)) stop("Welch test results (we.eBH) not in dataset.")
+    if (cutoff.effect < 0.5) {
+      stop("Please set cutoff.effect to at least 0.5.")
+    }
+    if (is.null(x$we.eBH)) {
+      stop("Welch test results (we.eBH) not in dataset.")
+    }
     p.add <- min(x$we.eBH[x$we.eBH > 0], na.rm = TRUE) / 10
     x$.called <- abs(x$effect) >= cutoff.effect & x$we.eBH <= cutoff.pval
     x$.qval <- x$we.eBH + p.add
@@ -152,7 +162,10 @@ gg_aldex_plot <- function(
   x$.status <- "not significant"
   x$.status[x$.rare] <- "rare"
   x$.status[x$.called] <- "significant"
-  x$.status <- factor(x$.status, levels = c("not significant", "rare", "significant"))
+  x$.status <- factor(
+    x$.status,
+    levels = c("not significant", "rare", "significant")
+  )
 
   color_values <- c(
     "not significant" = all.col,
@@ -163,10 +176,23 @@ gg_aldex_plot <- function(
   has_facet <- "name" %in% colnames(x)
 
   if (type == "MW") {
-    p <- ggplot2::ggplot(x, ggplot2::aes(x = diff.win, y = diff.btw, color = .status)) +
+    p <- ggplot2::ggplot(
+      x,
+      ggplot2::aes(x = diff.win, y = diff.btw, color = .status)
+    ) +
       ggplot2::geom_point(size = point.size, alpha = point.alpha) +
-      ggplot2::geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "darkgrey") +
-      ggplot2::geom_abline(slope = -1, intercept = 0, linetype = "dashed", color = "darkgrey") +
+      ggplot2::geom_abline(
+        slope = 1,
+        intercept = 0,
+        linetype = "dashed",
+        color = "darkgrey"
+      ) +
+      ggplot2::geom_abline(
+        slope = -1,
+        intercept = 0,
+        linetype = "dashed",
+        color = "darkgrey"
+      ) +
       ggplot2::scale_color_manual(values = color_values) +
       ggplot2::labs(
         x = expression("Median" ~ Log[2] ~ "Dispersion"),
@@ -175,7 +201,10 @@ gg_aldex_plot <- function(
       ) +
       ggplot2::theme_minimal()
   } else if (type == "MA") {
-    p <- ggplot2::ggplot(x, ggplot2::aes(x = rab.all, y = diff.btw, color = .status)) +
+    p <- ggplot2::ggplot(
+      x,
+      ggplot2::aes(x = rab.all, y = diff.btw, color = .status)
+    ) +
       ggplot2::geom_point(size = point.size, alpha = point.alpha) +
       ggplot2::scale_color_manual(values = color_values) +
       ggplot2::labs(
@@ -186,10 +215,15 @@ gg_aldex_plot <- function(
       ggplot2::theme_minimal()
   } else if (type == "volcano") {
     x$.neg_log10_q <- -1 * log10(x$.qval)
-    p <- ggplot2::ggplot(x, ggplot2::aes(x = diff.btw, y = .neg_log10_q, color = .status)) +
+    p <- ggplot2::ggplot(
+      x,
+      ggplot2::aes(x = diff.btw, y = .neg_log10_q, color = .status)
+    ) +
       ggplot2::geom_point(size = point.size, alpha = point.alpha) +
       ggplot2::geom_hline(
-        yintercept = -1 * log10(cutoff.pval), linetype = "dashed", color = "darkgrey"
+        yintercept = -1 * log10(cutoff.pval),
+        linetype = "dashed",
+        color = "darkgrey"
       ) +
       ggplot2::scale_color_manual(values = color_values) +
       ggplot2::labs(
@@ -200,7 +234,10 @@ gg_aldex_plot <- function(
       ggplot2::theme_minimal()
   } else if (type == "volcano.var") {
     x$.neg_log10_q <- -1 * log10(x$.qval)
-    p <- ggplot2::ggplot(x, ggplot2::aes(x = diff.win, y = .neg_log10_q, color = .status)) +
+    p <- ggplot2::ggplot(
+      x,
+      ggplot2::aes(x = diff.win, y = .neg_log10_q, color = .status)
+    ) +
       ggplot2::geom_point(size = point.size, alpha = point.alpha) +
       ggplot2::scale_color_manual(values = color_values) +
       ggplot2::labs(

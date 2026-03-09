@@ -437,7 +437,8 @@ maybe_suffix_taxa <- function(phyloseq_list, n_common_taxa) {
 validate_fact_column <- function(x, fact, func_name) {
   if (x@comparison$type_of_comparison == "SEPARATE_ANALYSIS") {
     stop(
-      func_name, " cannot be used with SEPARATE_ANALYSIS type list_phyloseq.\n",
+      func_name,
+      " cannot be used with SEPARATE_ANALYSIS type list_phyloseq.\n",
       "The factor must be a variable common to all phyloseq objects."
     )
   }
@@ -451,8 +452,11 @@ validate_fact_column <- function(x, fact, func_name) {
 
   if (!fact %in% common_cols) {
     stop(
-      "Factor '", fact, "' not found in common sample_data columns.\n",
-      "Available common columns: ", paste(common_cols, collapse = ", ")
+      "Factor '",
+      fact,
+      "' not found in common sample_data columns.\n",
+      "Available common columns: ",
+      paste(common_cols, collapse = ", ")
     )
   }
 }
@@ -537,13 +541,17 @@ ancombc_lpq <- function(
 
   if (verbose) {
     message(
-      "Running ANCOM-BC on ", length(pq_list), " phyloseq objects"
+      "Running ANCOM-BC on ",
+      length(pq_list),
+      " phyloseq objects"
     )
     message("Factor: ", fact, " | Tax level: ", tax_level)
   }
 
   results_list <- purrr::imap(pq_list, function(pq, name) {
-    if (verbose) cli::cli_alert(cli::col_red("Processing: {name}"))
+    if (verbose) {
+      cli::cli_alert(cli::col_red("Processing: {name}"))
+    }
 
     tryCatch(
       {
@@ -658,7 +666,9 @@ aldex_lpq <- function(
   }
 
   results_list <- purrr::imap(pq_list, function(pq, name) {
-    if (verbose) cli::cli_alert(cli::col_red("Processing: {name}"))
+    if (verbose) {
+      cli::cli_alert(cli::col_red("Processing: {name}"))
+    }
 
     tryCatch(
       {
@@ -773,7 +783,9 @@ multipatt_lpq <- function(
   }
 
   results_list <- purrr::imap(pq_list, function(pq, name) {
-    if (verbose) cli::cli_alert(cli::col_red("Processing: {name}"))
+    if (verbose) {
+      cli::cli_alert(cli::col_red("Processing: {name}"))
+    }
 
     tryCatch(
       {

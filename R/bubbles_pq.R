@@ -47,23 +47,25 @@
 #' bubbles_pq(physeq = data_fungi, rank_color = "Order", include = c("chart"), log1ptransform = TRUE)
 #' bubbles_pq(physeq = data_fungi, rank_label = "Genus", rank_color = "Class", include = c("chart"), randomize = TRUE, seed = 3)
 #' bubbles_pq(physeq = as_binary_otu_table(data_fungi), min_nb_seq = 20, title = "Nb of samples per OTU. <br> Only OTU present in more than 20 samples are shown", title_size = "12px")
-bubbles_pq <- function(physeq,
-                       rank_label = "Taxa",
-                       rank_color = "Family",
-                       categorical_scheme = "d3.schemeCategory10",
-                       label_color = "grey10",
-                       value_color = "grey20",
-                       label_size = 8,
-                       log1ptransform = FALSE,
-                       min_nb_seq = 0,
-                       randomize = FALSE,
-                       seed = 32,
-                       width = 600,
-                       include = c("TitleCell", "key", "chart"),
-                       notebook = "https://observablehq.com/d/d755af3197af2320",
-                       return_dataframe = FALSE,
-                       title = "",
-                       title_size = "22px") {
+bubbles_pq <- function(
+  physeq,
+  rank_label = "Taxa",
+  rank_color = "Family",
+  categorical_scheme = "d3.schemeCategory10",
+  label_color = "grey10",
+  value_color = "grey20",
+  label_size = 8,
+  log1ptransform = FALSE,
+  min_nb_seq = 0,
+  randomize = FALSE,
+  seed = 32,
+  width = 600,
+  include = c("TitleCell", "key", "chart"),
+  notebook = "https://observablehq.com/d/d755af3197af2320",
+  return_dataframe = FALSE,
+  title = "",
+  title_size = "22px"
+) {
   if (rank_label == "Taxa") {
     label <- taxa_names(physeq)
   } else {

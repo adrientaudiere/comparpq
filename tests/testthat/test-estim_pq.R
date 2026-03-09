@@ -114,7 +114,9 @@ test_that("bootstrap_cor returns correct structure", {
   res <- bootstrap_cor(x, y, resamples = 500)
 
   expect_true(is.list(res))
-  expect_true(all(c("estimate", "ci_lower", "ci_upper", "boot_distribution") %in% names(res)))
+  expect_true(all(
+    c("estimate", "ci_lower", "ci_upper", "boot_distribution") %in% names(res)
+  ))
   expect_true(res$ci_lower < res$estimate)
   expect_true(res$ci_upper > res$estimate)
   expect_length(res$boot_distribution, 500)
@@ -131,7 +133,16 @@ test_that("bootstrap_lm returns correct structure", {
   res <- bootstrap_lm(x, y, resamples = 500)
 
   expect_true(is.list(res))
-  expect_true(all(c("intercept", "slope", "slope_ci_lower", "slope_ci_upper", "boot_slopes") %in% names(res)))
+  expect_true(all(
+    c(
+      "intercept",
+      "slope",
+      "slope_ci_lower",
+      "slope_ci_upper",
+      "boot_slopes"
+    ) %in%
+      names(res)
+  ))
   expect_true(res$slope_ci_lower < res$slope)
   expect_true(res$slope_ci_upper > res$slope)
   expect_length(res$boot_slopes, 500)
@@ -148,19 +159,35 @@ test_that("estim_diff_pq returns correct result structure", {
   res <- estim_diff_pq(pq, fact = "Height", resamples = 100)
 
   expect_s3_class(res, "estim_diff_pq_result")
-  expect_true(all(c("data", "dabest_objects", "plots", "summary") %in% names(res)))
+  expect_true(all(
+    c("data", "dabest_objects", "plots", "summary") %in% names(res)
+  ))
   expect_true(tibble::is_tibble(res$summary))
-  expect_true(all(c(
-    "metric", "comparison", "effect_size", "ci_lower", "ci_upper",
-    "pvalue_permtest", "pvalue_welch", "pvalue_mann_whitney"
-  ) %in% colnames(res$summary)))
+  expect_true(all(
+    c(
+      "metric",
+      "comparison",
+      "effect_size",
+      "ci_lower",
+      "ci_upper",
+      "pvalue_permtest",
+      "pvalue_welch",
+      "pvalue_mann_whitney"
+    ) %in%
+      colnames(res$summary)
+  ))
 })
 
 test_that("estim_diff_pq summary has rows for each metric", {
   skip_if_not_installed("dabestr")
   pq <- create_test_pq()
 
-  res <- estim_diff_pq(pq, fact = "Height", hill_scales = c(0, 1), resamples = 100)
+  res <- estim_diff_pq(
+    pq,
+    fact = "Height",
+    hill_scales = c(0, 1),
+    resamples = 100
+  )
 
   metrics <- unique(res$summary$metric)
   expect_true("Hill_0" %in% metrics)
@@ -172,9 +199,12 @@ test_that("estim_diff_pq supports different effect types", {
   pq <- create_test_pq()
 
   for (etype in c("mean_diff", "cohens_d")) {
-    res <- estim_diff_pq(pq,
-      fact = "Height", hill_scales = c(0),
-      effect_type = etype, resamples = 100
+    res <- estim_diff_pq(
+      pq,
+      fact = "Height",
+      hill_scales = c(0),
+      effect_type = etype,
+      resamples = 100
     )
     expect_s3_class(res, "estim_diff_pq_result")
   }
@@ -184,9 +214,12 @@ test_that("estim_diff_pq handles NA removal", {
   skip_if_not_installed("dabestr")
   pq <- data_fungi # Has NAs in Height
 
-  res <- estim_diff_pq(pq,
-    fact = "Height", hill_scales = c(0),
-    na_remove = TRUE, resamples = 100
+  res <- estim_diff_pq(
+    pq,
+    fact = "Height",
+    hill_scales = c(0),
+    na_remove = TRUE,
+    resamples = 100
   )
   expect_s3_class(res, "estim_diff_pq_result")
 })
@@ -211,10 +244,7 @@ test_that("estim_diff_pq works with custom function", {
     stats::setNames(sample_sums(physeq), sample_names(physeq))
   }
 
-  res <- estim_diff_pq(pq,
-    fact = "Height", custom_fn = custom,
-    resamples = 100
-  )
+  res <- estim_diff_pq(pq, fact = "Height", custom_fn = custom, resamples = 100)
   expect_s3_class(res, "estim_diff_pq_result")
   expect_true("custom_metric" %in% unique(res$summary$metric))
 })
@@ -223,10 +253,7 @@ test_that("print works for estim_diff_pq_result", {
   skip_if_not_installed("dabestr")
   pq <- create_test_pq()
 
-  res <- estim_diff_pq(pq,
-    fact = "Height", hill_scales = c(0),
-    resamples = 100
-  )
+  res <- estim_diff_pq(pq, fact = "Height", hill_scales = c(0), resamples = 100)
   expect_output(print(res), "categorical comparison")
   expect_output(print(res), "legacy purposes")
 })
@@ -247,7 +274,9 @@ test_that("estim_cor_pq returns correct result structure", {
   res <- estim_cor_pq(pq, variable = "lib_size", resamples = 100)
 
   expect_s3_class(res, "estim_cor_pq_result")
-  expect_true(all(c("data", "correlations", "regressions", "plots") %in% names(res)))
+  expect_true(all(
+    c("data", "correlations", "regressions", "plots") %in% names(res)
+  ))
   expect_true(tibble::is_tibble(res$correlations))
   expect_true(tibble::is_tibble(res$regressions))
 })
@@ -259,8 +288,10 @@ test_that("estim_cor_pq correlations tibble has expected columns", {
   sample_data(pq) <- sam
 
   set.seed(42)
-  res <- estim_cor_pq(pq,
-    variable = "lib_size", hill_scales = c(0),
+  res <- estim_cor_pq(
+    pq,
+    variable = "lib_size",
+    hill_scales = c(0),
     resamples = 100
   )
 
@@ -277,8 +308,10 @@ test_that("estim_cor_pq regressions tibble has expected columns", {
   sample_data(pq) <- sam
 
   set.seed(42)
-  res <- estim_cor_pq(pq,
-    variable = "lib_size", hill_scales = c(0),
+  res <- estim_cor_pq(
+    pq,
+    variable = "lib_size",
+    hill_scales = c(0),
     resamples = 100
   )
 
@@ -295,9 +328,12 @@ test_that("estim_cor_pq supports spearman method", {
   sample_data(pq) <- sam
 
   set.seed(42)
-  res <- estim_cor_pq(pq,
-    variable = "lib_size", hill_scales = c(0),
-    method = "spearman", resamples = 100
+  res <- estim_cor_pq(
+    pq,
+    variable = "lib_size",
+    hill_scales = c(0),
+    method = "spearman",
+    resamples = 100
   )
 
   expect_equal(res$correlations$method[1], "spearman")
@@ -320,8 +356,10 @@ test_that("print works for estim_cor_pq_result", {
   sample_data(pq) <- sam
 
   set.seed(42)
-  res <- estim_cor_pq(pq,
-    variable = "lib_size", hill_scales = c(0),
+  res <- estim_cor_pq(
+    pq,
+    variable = "lib_size",
+    hill_scales = c(0),
     resamples = 100
   )
   expect_output(print(res), "numeric correlation")
@@ -336,9 +374,12 @@ test_that("estim_diff_lpq returns combined summary with name column", {
   skip_if_not_installed("dabestr")
   lpq <- create_test_lpq()
 
-  res <- estim_diff_lpq(lpq,
-    fact = "Height", hill_scales = c(0),
-    resamples = 100, verbose = FALSE
+  res <- estim_diff_lpq(
+    lpq,
+    fact = "Height",
+    hill_scales = c(0),
+    resamples = 100,
+    verbose = FALSE
   )
 
   expect_s3_class(res, "estim_diff_lpq_result")
@@ -382,9 +423,12 @@ test_that("print works for estim_diff_lpq_result", {
   skip_if_not_installed("dabestr")
   lpq <- create_test_lpq()
 
-  res <- estim_diff_lpq(lpq,
-    fact = "Height", hill_scales = c(0),
-    resamples = 100, verbose = FALSE
+  res <- estim_diff_lpq(
+    lpq,
+    fact = "Height",
+    hill_scales = c(0),
+    resamples = 100,
+    verbose = FALSE
   )
   expect_output(print(res), "list_phyloseq")
 })
@@ -405,9 +449,12 @@ test_that("estim_cor_lpq returns combined results with name column", {
   )
 
   set.seed(42)
-  res <- estim_cor_lpq(lpq,
-    variable = "lib_size", hill_scales = c(0),
-    resamples = 100, verbose = FALSE
+  res <- estim_cor_lpq(
+    lpq,
+    variable = "lib_size",
+    hill_scales = c(0),
+    resamples = 100,
+    verbose = FALSE
   )
 
   expect_s3_class(res, "estim_cor_lpq_result")
@@ -443,9 +490,12 @@ test_that("print works for estim_cor_lpq_result", {
   )
 
   set.seed(42)
-  res <- estim_cor_lpq(lpq,
-    variable = "lib_size", hill_scales = c(0),
-    resamples = 100, verbose = FALSE
+  res <- estim_cor_lpq(
+    lpq,
+    variable = "lib_size",
+    hill_scales = c(0),
+    resamples = 100,
+    verbose = FALSE
   )
   expect_output(print(res), "list_phyloseq")
 })

@@ -106,8 +106,18 @@ test_that("adonis_lpq returns one row per term per phyloseq", {
 test_that("adonis_lpq respects dist_method parameter", {
   lpq <- create_test_lpq_for_adonis()
 
-  result_bray <- adonis_lpq(lpq, formula = "Height", dist_method = "bray", verbose = FALSE)
-  result_jaccard <- adonis_lpq(lpq, formula = "Height", dist_method = "jaccard", verbose = FALSE)
+  result_bray <- adonis_lpq(
+    lpq,
+    formula = "Height",
+    dist_method = "bray",
+    verbose = FALSE
+  )
+  result_jaccard <- adonis_lpq(
+    lpq,
+    formula = "Height",
+    dist_method = "jaccard",
+    verbose = FALSE
+  )
 
   # Both should work
   expect_s3_class(result_bray, "adonis_lpq_result")
@@ -127,7 +137,12 @@ test_that("adonis_lpq respects na_remove parameter", {
   )
 
   # Should work with na_remove = TRUE
-  result <- adonis_lpq(lpq, formula = "Height", na_remove = TRUE, verbose = FALSE)
+  result <- adonis_lpq(
+    lpq,
+    formula = "Height",
+    na_remove = TRUE,
+    verbose = FALSE
+  )
 
   expect_s3_class(result, "adonis_lpq_result")
 })

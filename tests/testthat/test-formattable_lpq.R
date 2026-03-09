@@ -56,10 +56,13 @@ test_that("formattable_lpq accepts custom bar_colors", {
 
   lpq <- list_phyloseq(list(fungi = data_fungi))
 
-  result <- formattable_lpq(lpq, bar_colors = list(
-    n_samples = "red",
-    n_taxa = "blue"
-  ))
+  result <- formattable_lpq(
+    lpq,
+    bar_colors = list(
+      n_samples = "red",
+      n_taxa = "blue"
+    )
+  )
 
   expect_s3_class(result, "formattable")
 })
@@ -94,7 +97,11 @@ test_that("formattable_lpq_full respects show_summary parameter", {
 
   lpq <- list_phyloseq(list(fungi = data_fungi))
 
-  result <- formattable_lpq_full(lpq, show_summary = FALSE, show_comparison = TRUE)
+  result <- formattable_lpq_full(
+    lpq,
+    show_summary = FALSE,
+    show_comparison = TRUE
+  )
 
   expect_s3_class(result, "formattable")
 })
@@ -104,7 +111,11 @@ test_that("formattable_lpq_full respects show_comparison parameter", {
 
   lpq <- list_phyloseq(list(fungi = data_fungi))
 
-  result <- formattable_lpq_full(lpq, show_summary = TRUE, show_comparison = FALSE)
+  result <- formattable_lpq_full(
+    lpq,
+    show_summary = TRUE,
+    show_comparison = FALSE
+  )
 
   expect_s3_class(result, "formattable")
 })
