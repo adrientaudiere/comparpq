@@ -56,7 +56,7 @@
 #'
 #' @examples
 #' lpq <- list_phyloseq(
-#'   list(run1 = data_fungi, run2 = data_fungi),
+#'   list(run1 = data_fungi, run2 = data_fungi_mini),
 #'   same_bioinfo_pipeline = FALSE
 #' )
 #'
