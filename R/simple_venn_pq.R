@@ -663,7 +663,7 @@ point_in_ellipse <- function(px, py, shape) {
 #'
 #' Returns centroids for the standard 2-, 3-, or 4-set Venn shapes,
 #' with or without the 0.85 scaling applied for sample-count labels.
-#' These were computed once via [venn_centroids()] with n_grid = 200
+#' These were computed once via `venn_centroids()` with n_grid = 200
 #' and hardcoded to avoid repeated grid sampling.
 #' @param n_sets Integer, number of sets (2, 3, or 4).
 #' @param scaled Logical, whether the 0.85 scaling is applied.

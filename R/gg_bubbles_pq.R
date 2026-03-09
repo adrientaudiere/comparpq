@@ -54,7 +54,8 @@
 #' @param npoints (integer, default 50) Number of vertices used to approximate
 #'   each circle polygon. Higher values produce smoother circles.
 #' @param ncol_facet (integer, default NULL) Number of columns for facet layout.
-#'   Passed to [ggplot2::facet_wrap()].
+#'   Passed to [ggplot2::facet_wrap()]. Not used if diff_contour is TRUE since
+#'   patchwork is used for layout instead.
 #' @param return_dataframe (logical, default FALSE) If TRUE, the plot is not
 #'   returned, but the resulting dataframe to plot is returned. Ignored when
 #'   `diff_contour = TRUE`.
@@ -71,6 +72,9 @@
 #'   unique taxa from different groups are visually distinguishable.
 #' @param diff_border_width (numeric, default 1.5) Border width used in
 #'   `diff_contour` mode.
+#' @param show_title (logical, default TRUE) If TRUE, adds an informative
+#'   title describing what the fill color, contour color, circle size, and
+#'   labels represent.
 #' @param match_by (character, default `"refseq"`) How to match taxa when
 #'   `physeq` is a [list_phyloseq]. Passed to [merge_lpq()]. One of
 #'   `"refseq"` (match by reference sequences) or `"names"` (match by taxa
@@ -121,7 +125,7 @@ gg_bubbles_pq <- function(
   rank_label = "Taxa",
   rank_color = "Family",
   rank_contour = NULL,
-  layout = "circle",
+  layout = c("circle", "square"),
   facet_by = NULL,
   log1ptransform = FALSE,
   min_nb_seq = 0,
@@ -137,6 +141,7 @@ gg_bubbles_pq <- function(
   diff_contour = FALSE,
   diff_contour_colors = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3"),
   diff_border_width = 1.5,
+  show_title = TRUE,
   match_by = c("refseq", "names")
 ) {
   # ---- Branch: list_phyloseq -> merge and facet ------------------------------
@@ -226,7 +231,8 @@ gg_bubbles_pq <- function(
         show_labels = show_labels,
         border_width = diff_border_width,
         alpha = alpha,
-        npoints = npoints
+        npoints = npoints,
+        show_title = FALSE
       ) +
         ggplot2::scale_color_manual(
           values = c("unique" = contour_color, "shared" = "transparent"),
@@ -271,10 +277,34 @@ gg_bubbles_pq <- function(
         )
     })
 
-    return(
-      patchwork::wrap_plots(pair_plots, ncol = 1) +
-        patchwork::plot_layout(guides = "collect")
-    )
+    pw <- patchwork::wrap_plots(pair_plots, ncol = 1) +
+      patchwork::plot_layout(guides = "collect")
+
+    if (show_title) {
+      size_desc <- if (log1ptransform) {
+        "log1p(nb sequences)"
+      } else {
+        "Nb sequences"
+      }
+      label_desc <- if (rank_label == "Taxa") "taxa names" else rank_label
+      title_parts <- paste0(
+        "Fill: ",
+        rank_color,
+        " | Contour: unique taxa in each comparison",
+        " | Size: ",
+        size_desc,
+        if (show_labels) paste0(" | Label: ", label_desc) else ""
+      )
+      pw <- pw +
+        patchwork::plot_annotation(
+          title = title_parts,
+          theme = ggplot2::theme(
+            plot.title = ggplot2::element_text(size = 10)
+          )
+        )
+    }
+
+    return(pw)
   }
 
   # ---- Build data frame (standard mode) --------------------------------------
@@ -477,6 +507,29 @@ gg_bubbles_pq <- function(
 
   if (!is.null(facet_by)) {
     p <- p + ggplot2::facet_wrap(~facet, ncol = ncol_facet)
+  }
+
+  if (show_title) {
+    size_desc <- if (log1ptransform) {
+      "log1p(nb sequences)"
+    } else {
+      "Nb sequences"
+    }
+    contour_part <- if (!is.null(rank_contour)) {
+      paste0(" | Contour: ", rank_contour)
+    } else {
+      ""
+    }
+    label_desc <- if (rank_label == "Taxa") "taxa names" else rank_label
+    title_parts <- paste0(
+      "Fill: ",
+      rank_color,
+      contour_part,
+      " | Size: ",
+      size_desc,
+      if (show_labels) paste0(" | Label: ", label_desc) else ""
+    )
+    p <- p + ggplot2::ggtitle(title_parts)
   }
 
   p

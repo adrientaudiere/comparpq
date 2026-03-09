@@ -9,7 +9,7 @@ gg_bubbles_pq(
   rank_label = "Taxa",
   rank_color = "Family",
   rank_contour = NULL,
-  layout = "circle",
+  layout = c("circle", "square"),
   facet_by = NULL,
   log1ptransform = FALSE,
   min_nb_seq = 0,
@@ -25,6 +25,7 @@ gg_bubbles_pq(
   diff_contour = FALSE,
   diff_contour_colors = c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3"),
   diff_border_width = 1.5,
+  show_title = TRUE,
   match_by = c("refseq", "names")
 )
 }
@@ -99,6 +100,10 @@ unique taxa from different groups are visually distinguishable.}
 \item{diff_border_width}{(numeric, default 1.5) Border width used in
 \code{diff_contour} mode.}
 
+\item{show_title}{(logical, default TRUE) If TRUE, adds an informative
+title describing what the fill color, contour color, circle size, and
+labels represent.}
+
 \item{match_by}{(character, default \code{"refseq"}) How to match taxa when
 \code{physeq} is a \link{list_phyloseq}. Passed to \code{\link[=merge_lpq]{merge_lpq()}}. One of
 \code{"refseq"} (match by reference sequences) or \code{"names"} (match by taxa
@@ -146,24 +151,25 @@ gg_bubbles_pq(
 gg_bubbles_pq(
   physeq = data_fungi, rank_color = "Order",
   facet_by = "Height", min_nb_seq = 100
-)
+) + no_legend()
 
 # Pairwise diff_contour on a faceted phyloseq
 gg_bubbles_pq(
   physeq = data_fungi, rank_color = "Order",
   facet_by = "Height", min_nb_seq = 100,
   diff_contour = TRUE, show_labels = FALSE
-)
+) & no_legend()
 
 # list_phyloseq: automatically merged and faceted
+mini2 <- subset_taxa_pq(data_fungi_mini, taxa_sums(data_fungi_mini) < 10000)
 lpq <- list_phyloseq(
-  list(full = data_fungi, mini = data_fungi_mini)
+  list(full = data_fungi, mini = data_fungi_mini, mini2 = mini2),
 )
 gg_bubbles_pq(lpq, rank_color = "Class")
 
 # list_phyloseq with diff_contour: pairwise panels
 gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE,
-  show_labels = FALSE, diff_border_width = 1)
+  show_labels = FALSE, diff_border_width = 1) & no_legend()
 
 }
 \author{

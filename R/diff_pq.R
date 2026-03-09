@@ -38,7 +38,7 @@
 #'   group (possibly `NA`). When `aggregate = TRUE` rows are collapsed to
 #'   one per group with summary statistics.
 #' @author Adrien Taudière
-#' 
+#'
 #' @examples
 #' div_pq(data_fungi_mini, indices = c("shannon", "simpson"))
 #'

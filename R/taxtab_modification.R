@@ -153,6 +153,7 @@ resolve_taxo_conflict <- function(
 #'   See ?dplyr::select.
 #' @returns A phyloseq object
 #' @export
+#' @importFrom dplyr select
 #' @author Adrien Taudière
 #'
 #' @examples

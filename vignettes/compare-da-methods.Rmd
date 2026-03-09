@@ -86,7 +86,7 @@ ancombc_df_fungi <- res_ancombc_fungi$res |>
     qvalue = q_HeightHigh,
     significant = diff_HeightHigh
   ) |>
-  select(taxon, method, effect, qvalue, significant)
+  dplyr::select(taxon, method, effect, qvalue, significant)
 
 cat("ANCOM-BC significant taxa:", sum(ancombc_df_fungi$significant), "\n")
 ```
@@ -110,7 +110,7 @@ aldex_df_fungi <- res_aldex_fungi |>
     qvalue = wi.eBH,
     significant = wi.eBH < 0.05
   ) |>
-  select(taxon, method, effect, qvalue, significant)
+  dplyr::select(taxon, method, effect, qvalue, significant)
 
 cat("ALDEx2 significant taxa:", sum(aldex_df_fungi$significant), "\n")
 ```
@@ -139,7 +139,7 @@ maaslin3_df_fungi <- res_maaslin3_fungi$fit_data_abundance$results |>
     qvalue = qval_individual,
     significant = qval_individual < 0.05
   ) |>
-  select(taxon, method, effect, qvalue, significant)
+  dplyr::select(taxon, method, effect, qvalue, significant)
 
 cat("MaAsLin3 significant taxa:", sum(maaslin3_df_fungi$significant, na.rm = TRUE), "\n")
 ```
@@ -246,7 +246,7 @@ ancombc_df_hmp2 <- res_ancombc_hmp2$res |>
     qvalue = q_antibioticsYes,
     significant = diff_antibioticsYes
   ) |>
-  select(taxon, method, effect, qvalue, significant)
+  dplyr::select(taxon, method, effect, qvalue, significant)
 
 cat("ANCOM-BC significant taxa:", sum(ancombc_df_hmp2$significant), "\n")
 ```
@@ -307,7 +307,7 @@ maaslin3_df_hmp2 <- res_maaslin3_hmp2$fit_data_abundance$results |>
     qvalue = qval_individual,
     significant = qval_individual < 0.05
   ) |>
-  select(taxon, method, effect, qvalue, significant)
+  dplyr::select(taxon, method, effect, qvalue, significant)
 
 cat("MaAsLin3 significant taxa:", sum(maaslin3_df_hmp2$significant, na.rm = TRUE), "\n")
 ```
