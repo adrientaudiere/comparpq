@@ -128,7 +128,7 @@ utils::globalVariables(c("x", "y"))
 #'   fungi = data_fungi_mini,
 #'   fungi2 = data_fungi
 #' ))
-#' simple_venn_pq(lpq, taxonomic_rank = "Genus", count_taxa)
+#' simple_venn_pq(lpq, taxonomic_rank = "Genus")
 #'
 #'  simple_venn_pq(data_fungi_mini, "Height",
 #'    taxonomic_rank = NULL,
@@ -179,16 +179,32 @@ simple_venn_pq <- function(
     taxonomic_rank <- c(taxonomic_rank, "Taxa (OTU/ASV)")
   }
 
+  count_type <- match.arg(count_type)
+
+  if (is.null(taxonomic_rank) && count_type == "rank_taxa") {
+    # At ASV/OTU level, rank count = taxa count, so "rank_taxa" is
+    # redundant. Switch to "taxa" to avoid displaying "nb (nb)".
+    count_type <- "taxa"
+  }
+
   # Multiple ranks -> combine or return list of plots
   if (length(taxonomic_rank) > 1) {
     plots <- lapply(taxonomic_rank, \(rank) {
+      # At ASV/OTU level, rank count = taxa count, so "rank_taxa" is
+      # redundant. Switch to "taxa" to avoid displaying "nb (nb)".
+      rank_count_type <-
+        if (rank == "Taxa (OTU/ASV)" && count_type == "rank_taxa") {
+          "taxa"
+        } else {
+          count_type
+        }
       simple_venn_pq(
         physeq,
         fact,
         min_nb_seq = min_nb_seq,
         taxonomic_rank = rank,
         na_remove = na_remove,
-        count_type = count_type,
+        count_type = rank_count_type,
         add_nb_samples = add_nb_samples,
         fill_alpha = fill_alpha,
         border_size = border_size,
@@ -236,8 +252,6 @@ simple_venn_pq <- function(
     }
     return(plots)
   }
-
-  count_type <- match.arg(count_type)
 
   if (!inherits(physeq, "phyloseq")) {
     stop("'physeq' must be a phyloseq or list_phyloseq object.")
@@ -473,6 +487,10 @@ simple_venn_pq <- function(
   max_count <- max(all_counts, 1L)
 
   # Build label strings
+  use_richtext <- count_type == "rank_taxa" &&
+    !is.null(taxonomic_rank) &&
+    requireNamespace("ggtext", quietly = TRUE)
+
   if (count_type == "rank_taxa" && !is.null(taxonomic_rank)) {
     all_labels <- vapply(
       names(centroids),
@@ -483,7 +501,18 @@ simple_venn_pq <- function(
         } else {
           0L
         }
-        paste0(primary, " (", secondary, ")")
+        if (use_richtext) {
+          paste0(
+            "**",
+            primary,
+            "** ",
+            "<span style='font-weight:normal;color:grey40'>(",
+            secondary,
+            ")</span>"
+          )
+        } else {
+          paste0(primary, " (", secondary, ")")
+        }
       },
       character(1)
     )
@@ -503,15 +532,27 @@ simple_venn_pq <- function(
     } else {
       scaled_size <- text_size
     }
-    p <- p +
-      ggplot2::annotate(
-        "text",
-        x = pos[1],
-        y = pos[2],
-        label = all_labels[[code]],
-        size = scaled_size,
-        fontface = "bold"
-      )
+    if (use_richtext) {
+      p <- p +
+        ggtext::geom_richtext(
+          data = data.frame(x = pos[1], y = pos[2]),
+          ggplot2::aes(x = x, y = y),
+          label = all_labels[[code]],
+          size = scaled_size,
+          fill = NA,
+          label.colour = NA
+        )
+    } else {
+      p <- p +
+        ggplot2::annotate(
+          "text",
+          x = pos[1],
+          y = pos[2],
+          label = all_labels[[code]],
+          size = scaled_size,
+          fontface = "bold"
+        )
+    }
   }
 
   # Add group name labels (darkened colors for readability)
@@ -550,19 +591,14 @@ simple_venn_pq <- function(
 
   # NA count annotation
   if (show_na_count && !is.null(taxonomic_rank)) {
-    if (count_type == "taxa" || count_type == "rank_taxa") {
-      # Count excluded taxa so Venn + NA = ntaxa(physeq_original)
-      na_count <- phyloseq::ntaxa(physeq_original) - sum(all_counts)
-    } else {
-      tt_na <- as.data.frame(phyloseq::tax_table(physeq_original))
-      na_count <- sum(
-        is.na(tt_na[[taxonomic_rank]]) |
-          tt_na[[taxonomic_rank]] == ""
-      )
-    }
+    tt_na <- as.data.frame(phyloseq::tax_table(physeq_original))
+    na_count <- sum(
+      is.na(tt_na[[taxonomic_rank]]) |
+        tt_na[[taxonomic_rank]] == ""
+    )
     # Position in bottom-left, outside the shapes
     na_x <- if (n_groups == 4) -1.8 else -1.5
-    na_y <- if (n_groups == 3) -1.5 else -1.3
+    na_y <- if (n_groups == 3) 1.5 else -1.3
     if (add_nb_samples) {
       na_x <- na_x * 0.85
       na_y <- na_y * 0.85
@@ -572,9 +608,9 @@ simple_venn_pq <- function(
         "text",
         x = na_x,
         y = na_y,
-        label = paste0("NA: ", na_count),
-        size = text_size * 0.9,
-        color = "grey40",
+        label = paste0("NA Taxa: ", na_count),
+        size = text_size * 0.8,
+        color = "grey20",
         fontface = "italic",
         hjust = 0
       )
