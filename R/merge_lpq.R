@@ -239,6 +239,7 @@ merge_by_refseq <- function(pq_list, pq_names, tax_priority, verbose) {
   # Build sample_data
   sam_df <- data.frame(
     source_name = pq_names,
+    n_samples = vapply(pq_list, phyloseq::nsamples, integer(1)),
     row.names = pq_names,
     stringsAsFactors = FALSE
   )
@@ -385,6 +386,7 @@ merge_by_names <- function(pq_list, pq_names, tax_priority, verbose) {
   # Build sample_data
   sam_df <- data.frame(
     source_name = pq_names,
+    n_samples = vapply(pq_list, phyloseq::nsamples, integer(1)),
     row.names = pq_names,
     stringsAsFactors = FALSE
   )

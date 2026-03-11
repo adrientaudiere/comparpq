@@ -80,6 +80,11 @@ utils::globalVariables(c("x", "y"))
 #'   ranks. A temporary `Taxa` column is added to the tax_table
 #'   with each taxon's name as its value. Ignored when
 #'   `taxonomic_rank` is `NULL`.
+#' @param labels (character or NULL, default NULL) Custom labels for
+#'   the groups, in the same order as the levels of `fact` (or the
+#'   list_phyloseq names). Must have the same length as the number of
+#'   groups. When `NULL`, the original level names are used. Not that
+#'   the order is the one of the levels in `fact`.
 #' @param match_by (character, default `"refseq"`) Passed to
 #'   [merge_lpq()] when `physeq` is a list_phyloseq. One of
 #'   `"refseq"` or `"names"`.
@@ -124,6 +129,11 @@ utils::globalVariables(c("x", "y"))
 #'   fungi2 = data_fungi
 #' ))
 #' simple_venn_pq(lpq, taxonomic_rank = "Genus", count_taxa)
+#'
+#'  simple_venn_pq(data_fungi_mini, "Height",
+#'    taxonomic_rank = NULL,
+#'    labels = c("Low alt.", "Mid alt.", "High alt.")
+#'  )
 simple_venn_pq <- function(
   physeq,
   fact = NULL,
@@ -145,23 +155,16 @@ simple_venn_pq <- function(
   hide_zero = TRUE,
   label_size = 4.5,
   colors = NULL,
+  labels = NULL,
   show_na_count = FALSE,
   count_taxa = TRUE,
   match_by = c("refseq", "names"),
   combine = TRUE,
-  verbose = TRUE,
-  .lpq_n_samples = NULL
+  verbose = TRUE
 ) {
   # Handle list_phyloseq input
-  lpq_n_samples <- .lpq_n_samples
   if (inherits(physeq, "comparpq::list_phyloseq")) {
     match_by <- match.arg(match_by)
-    # Capture original sample counts before merging
-    lpq_n_samples <- vapply(
-      physeq@phyloseq_list,
-      phyloseq::nsamples,
-      integer(1)
-    )
     physeq <- merge_lpq(physeq, match_by = match_by, verbose = verbose)
     fact <- "source_name"
   } else if (is.null(fact)) {
@@ -194,12 +197,12 @@ simple_venn_pq <- function(
         hide_zero = hide_zero,
         label_size = label_size,
         colors = colors,
+        labels = labels,
         show_na_count = show_na_count,
         count_taxa = FALSE,
         match_by = match_by,
         combine = combine,
-        verbose = verbose,
-        .lpq_n_samples = lpq_n_samples
+        verbose = verbose
       )
     })
     names(plots) <- taxonomic_rank
@@ -323,8 +326,10 @@ simple_venn_pq <- function(
   }
 
   # Sample counts per group
-  if (!is.null(lpq_n_samples)) {
-    n_samples <- lpq_n_samples[levels_fact]
+  if ("n_samples" %in% colnames(sam)) {
+    n_samples_col <- as.integer(sam[["n_samples"]])
+    names(n_samples_col) <- rownames(sam)
+    n_samples <- n_samples_col[levels_fact]
   } else {
     n_samples <- vapply(
       levels_fact,
@@ -334,7 +339,19 @@ simple_venn_pq <- function(
   }
 
   # Group labels
-  group_labels <- levels_fact
+  if (!is.null(labels)) {
+    if (length(labels) != n_groups) {
+      stop(
+        "'labels' must have the same length as the number of groups (",
+        n_groups,
+        ").",
+        call. = FALSE
+      )
+    }
+    group_labels <- as.character(labels)
+  } else {
+    group_labels <- levels_fact
+  }
   sample_labels <- if (add_nb_samples) {
     paste0("(n=", n_samples, ")")
   } else {
@@ -826,7 +843,7 @@ venn_label_positions <- function(n) {
   if (n == 2) {
     list(c(-1.1, 1.1), c(1.1, 1.1))
   } else if (n == 3) {
-    list(c(0, 2.0), c(-1.3, -1.0), c(1.3, -1.0))
+    list(c(0, 1.7), c(-1.3, -1.0), c(1.3, -1.0))
   } else {
     list(c(-1.7, -0.7), c(-0.8, 1.5), c(0.8, -1.5), c(1.7, 0.7))
   }
