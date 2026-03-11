@@ -1,5 +1,6 @@
 # comparpq 0.1.0 (development version)
 
+* Add params `significance`, `test` and `p_alpha` to `div_pq()` to report tuckey hsd paired-test using letters.
 * `gg_hill_lpq()` new function to visualize Hill diversity correlations across pairs of phyloseq objects in a `list_phyloseq`. Produces a faceted scatter plot (pairs × Hill orders) with optional 1:1 line, regression line, and per-panel correlation annotation, enabling visual assessment of REPRODUCIBILITY, ROBUSTNESS, and REPLICABILITY.
 * `gg_bubbles_pq()` now uses `merge_lpq()` when a `list_phyloseq` is passed, merging into a single phyloseq and faceting by `source_name` instead of building separate patchwork panels. `diff_contour` now works with any `facet_by` variable (not just list_phyloseq), highlighting taxa unique to each facet level with a distinct contour color from `diff_contour_colors`. No longer limited to 2 or 3 objects. New `match_by` parameter controls how taxa are matched when merging list_phyloseq objects.
 * `gg_bubbles_pq()` new ggplot2-based circle-packed bubble plot of taxa abundances. Unlike `bubbles_pq()`, it does not require d3js/Observable and supports faceting by a `@sam_data` variable to display one bubble chart per level. Uses `packcircles` for layout computation.

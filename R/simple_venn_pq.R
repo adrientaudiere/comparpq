@@ -43,7 +43,7 @@ utils::globalVariables(c("x", "y"))
 #' @param fill_alpha (numeric, default 0.3) Fill transparency for
 #'   shapes.
 #' @param border_size (numeric, default 0.8) Border line width.
-#' @param count_type (character, default `"rank"`) What to count in
+#' @param count_type (character, default `"rank_taxa"`) What to count in
 #'   each Venn region. One of:
 #'   - `"rank"`: number of unique taxonomic levels (e.g. number of
 #'     shared Classes). This is the default.
@@ -146,7 +146,7 @@ simple_venn_pq <- function(
     "Species"
   ),
   na_remove = TRUE,
-  count_type = c("rank", "taxa", "sequences", "rank_taxa"),
+  count_type = c("rank_taxa", "rank", "taxa", "sequences"),
   add_nb_samples = TRUE,
   fill_alpha = 0.3,
   border_size = 0.8,
