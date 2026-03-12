@@ -1,3 +1,22 @@
+# comparpq 0.1.2 (Development version)
+
+## New Features
+
+- Add your new features here
+
+## Changes
+
+- Add improvements and changes here
+
+## Bug Fixes
+
+- Add bug fixes here
+
+## Documentation
+
+- Add documentation updates here
+
+
 # comparpq 0.1.1 (Development version)
 
 ## New Features
