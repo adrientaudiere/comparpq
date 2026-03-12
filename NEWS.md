@@ -1,42 +1,6 @@
-# comparpq 0.1.2 (Development version)
+# comparpq 0.1.3 (Development version)
 
-## New Features
-
-- Add your new features here
-
-## Changes
-
-- Add improvements and changes here
-
-## Bug Fixes
-
-- Add bug fixes here
-
-## Documentation
-
-- Add documentation updates here
-
-
-# comparpq 0.1.1 (Development version)
-
-## New Features
-
-- Add your new features here
-
-## Changes
-
-- Add improvements and changes here
-
-## Bug Fixes
-
-- Add bug fixes here
-
-## Documentation
-
-- Add documentation updates here
-
-
-# comparpq 0.1.0 (development version)
+# comparpq 0.1.2
 
 * Add params `significance`, `test` and `p_alpha` to `div_pq()` to report tuckey hsd paired-test using letters.
 * `gg_hill_lpq()` new function to visualize Hill diversity correlations across pairs of phyloseq objects in a `list_phyloseq`. Produces a faceted scatter plot (pairs × Hill orders) with optional 1:1 line, regression line, and per-panel correlation annotation, enabling visual assessment of REPRODUCIBILITY, ROBUSTNESS, and REPLICABILITY.
