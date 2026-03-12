@@ -1,3 +1,22 @@
+# comparpq 0.1.1 (Development version)
+
+## New Features
+
+- Add your new features here
+
+## Changes
+
+- Add improvements and changes here
+
+## Bug Fixes
+
+- Add bug fixes here
+
+## Documentation
+
+- Add documentation updates here
+
+
 # comparpq 0.1.0 (development version)
 
 * Add params `significance`, `test` and `p_alpha` to `div_pq()` to report tuckey hsd paired-test using letters.
