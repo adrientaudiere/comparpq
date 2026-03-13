@@ -1,5 +1,8 @@
 # comparpq 0.1.3 (Development version)
 
+* Add param `compute_dist` to `list_phyloseq()`
+
+
 # comparpq 0.1.2
 
 * Add params `significance`, `test` and `p_alpha` to `div_pq()` to report tuckey hsd paired-test using letters.
