@@ -54,6 +54,12 @@ Adrien Taudière
 
 ``` r
 lpq <- list_phyloseq(list(fungi = data_fungi, fungi_mini = data_fungi_mini))
+#> ℹ Building summary table for 2 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 137 common samples, 45 common taxa
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 
 n_levels_lpq(lpq, c("Phylum", "Class", "Order", "Family", "Genus"))
 #>            Phylum Class Order Family Genus

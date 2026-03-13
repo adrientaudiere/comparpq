@@ -10,7 +10,7 @@ reference versions.
 ## Usage
 
 ``` r
-tc_congruence_metrics(physeq_1, physeq_2 = NULL, ranks_1, ranks_2)
+tc_congruence_metrics(physeq_1, physeq_2 = NULL, ranks_1, ranks_2 = NULL)
 ```
 
 ## Arguments
@@ -35,8 +35,9 @@ tc_congruence_metrics(physeq_1, physeq_2 = NULL, ranks_1, ranks_2)
 
 - ranks_2:
 
-  (character vector, required) Taxonomic rank names to use for the
-  second assignment. Must match column names in physeq_2's tax_table.
+  (character vector, default NULL) Taxonomic rank names to use for the
+  second assignment. Must match column names in physeq_2's tax_table. If
+  NULL, uses the same ranks as ranks_1 vector.
 
 ## Value
 
@@ -45,8 +46,8 @@ A list with the following components:
 - summary:
 
   A data frame with counts and percentages for each category, including
-  `leaf_match_total` which counts taxa where the deepest classification
-  matches regardless of the path
+  `leaf_match_congruence` which counts taxa where the deepest
+  classification matches regardless of the path
 
 - only_in_1:
 
@@ -70,7 +71,7 @@ A list with the following components:
 
   Character vector of common taxa with all NA in both physeq objects
 
-- congruent:
+- total_congruent:
 
   Character vector of taxa with identical taxonomic paths (same values
   at all ranks, same NA positions)
@@ -120,18 +121,18 @@ metrics <- tc_congruence_metrics(
 
 # View summary
 metrics$summary
-#>              category count percentage
-#> 1           only_in_1     0       0.00
-#> 2           only_in_2     0       0.00
-#> 3   classified_only_1     0       0.00
-#> 4   classified_only_2     0       0.00
-#> 5   unclassified_both     0       0.00
-#> 6           congruent     0       0.00
-#> 7    partial_1_deeper     0       0.00
-#> 8    partial_2_deeper     0       0.00
-#> 9  incongruent_leaves   673      58.67
-#> 10  incongruent_nodes   474      41.33
-#> 11   leaf_match_total   111       9.68
+#>                 category count percentage
+#> 1              only_in_1     0       0.00
+#> 2              only_in_2     0       0.00
+#> 3      classified_only_1     0       0.00
+#> 4      classified_only_2     0       0.00
+#> 5      unclassified_both     0       0.00
+#> 6        total_congruent     0       0.00
+#> 7  leaf_match_congruence   111       9.68
+#> 8       partial_1_deeper     0       0.00
+#> 9       partial_2_deeper     0       0.00
+#> 10    incongruent_leaves   673      58.67
+#> 11     incongruent_nodes   474      41.33
 
 # Get taxa with leaf-level incongruence
 metrics$incongruent_leaves

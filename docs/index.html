@@ -22,7 +22,7 @@
 
     <a class="navbar-brand me-2" href="index.html">comparpq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,9 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="articles/list-phyloseq.html">The list_phyloseq Class</a></li>
+    <li><a class="dropdown-item" href="articles/compare-da-methods.html">Comparing DA Methods</a></li>
+    <li><a class="dropdown-item" href="articles/benchmark-da-methods.html">Benchmarking DA Methods</a></li>
+    <li><a class="dropdown-item" href="articles/estimation-statistics.html">Estimation Statistics</a></li>
     <li><a class="dropdown-item" href="articles/OJS_visualization.html">OJS Visualization</a></li>
   </ul>
 </li>
@@ -72,6 +75,35 @@
 <h2 id="main-features">Main Features<a class="anchor" aria-label="anchor" href="#main-features"></a>
 </h2>
 <div class="section level3">
+<h3 id="compare-phyloseq-objects">Compare phyloseq objects<a class="anchor" aria-label="anchor" href="#compare-phyloseq-objects"></a>
+</h3>
+<ul>
+<li>
+<strong><code>list_phyloseq</code></strong>: S7 class for storing and comparing multiple phyloseq objects, with automatic detection of comparison type (REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS)</li>
+<li>
+<strong><code><a href="reference/compare_refseq.html">compare_refseq()</a></code></strong>: Compare reference sequences between two phyloseq objects, identifying shared/unique ASVs by name and by DNA sequence content</li>
+<li>
+<strong><code><a href="reference/filter_common_lpq.html">filter_common_lpq()</a></code></strong>: Filter phyloseq objects to keep only shared samples and/or taxa</li>
+<li>
+<strong><code><a href="reference/apply_to_lpq.html">apply_to_lpq()</a></code></strong>: Apply any function to all phyloseq objects in a <code>list_phyloseq</code>
+</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="statistical-analysis">Statistical Analysis<a class="anchor" aria-label="anchor" href="#statistical-analysis"></a>
+</h3>
+<ul>
+<li>
+<strong><code><a href="reference/adonis_lpq.html">adonis_lpq()</a></code></strong>: PERMANOVA analysis across multiple phyloseq objects</li>
+<li>
+<strong><code><a href="reference/estim_diff_pq.html">estim_diff_pq()</a></code> &amp; <code><a href="reference/estim_diff_lpq.html">estim_diff_lpq()</a></code></strong>: Estimation statistics for categorical comparisons using bootstrap confidence intervals (via <a href="https://cran.r-project.org/package=dabestr" class="external-link">dabestr</a>)</li>
+<li>
+<strong><code><a href="reference/estim_cor_pq.html">estim_cor_pq()</a></code> &amp; <code><a href="reference/estim_cor_lpq.html">estim_cor_lpq()</a></code></strong>: Estimation statistics for continuous correlations with bootstrap confidence intervals</li>
+<li>
+<strong><code><a href="reference/ancombc_lpq.html">ancombc_lpq()</a></code></strong>, <strong><code><a href="reference/aldex_lpq.html">aldex_lpq()</a></code></strong>, <strong><code><a href="reference/multipatt_lpq.html">multipatt_lpq()</a></code></strong>, <strong><code><a href="reference/maaslin3_pq.html">maaslin3_pq()</a></code></strong>: Differential abundance analysis methods</li>
+</ul>
+</div>
+<div class="section level3">
 <h3 id="taxonomic-comparison-and-accuracy-metrics">Taxonomic Comparison and Accuracy Metrics<a class="anchor" aria-label="anchor" href="#taxonomic-comparison-and-accuracy-metrics"></a>
 </h3>
 <ul>
@@ -92,7 +124,20 @@
 <li>
 <strong><code><a href="reference/tc_bar.html">tc_bar()</a></code> &amp; <code><a href="reference/tc_circle.html">tc_circle()</a></code></strong>: Bar charts and circular plots for taxonomic comparisons</li>
 <li>
+<strong><code><a href="reference/tc_sankey.html">tc_sankey()</a></code></strong>: Sankey diagrams for taxonomic rank relationships</li>
+<li>
+<strong><code><a href="reference/tc_linked_trees.html">tc_linked_trees()</a></code></strong>: Side-by-side linked taxonomy trees for comparing two assignments</li>
+<li>
+<strong><code><a href="reference/tc_congruence_metrics.html">tc_congruence_metrics()</a></code></strong>: Congruence metrics between two taxonomic assignments</li>
+<li>
 <strong><code><a href="reference/rainplot_taxo_na.html">rainplot_taxo_na()</a></code></strong>: Rain plots for visualizing NA patterns in taxonomic data</li>
+<li>
+<strong><code><a href="reference/formattable_lpq.html">formattable_lpq()</a></code> &amp; <code><a href="reference/formattable_lpq_full.html">formattable_lpq_full()</a></code></strong>: Formatted summary tables with color bars for <code>list_phyloseq</code>
+</li>
+<li>
+<strong><code><a href="reference/upset_lpq.html">upset_lpq()</a></code></strong>: UpSet plots for visualizing sample/taxa overlap across phyloseq objects</li>
+<li>
+<strong><code><a href="reference/gg_aldex_plot.html">gg_aldex_plot()</a></code> &amp; <code><a href="reference/gg_maaslin3_plot.html">gg_maaslin3_plot()</a></code></strong>: ggplot2-based visualizations for differential abundance results</li>
 </ul>
 </div>
 <div class="section level3">
@@ -100,12 +145,12 @@
 </h3>
 <ul>
 <li>
-<strong>Fake taxa creation</strong>: <code><a href="reference/add_external_seq_pq.html">add_external_seq_pq()</a></code>, <code><a href="reference/add_shuffle_seq_pq.html">add_shuffle_seq_pq()</a></code> for mock community preparation</li>
+<strong>Mock community preparation</strong>: <code><a href="reference/add_external_seq_pq.html">add_external_seq_pq()</a></code>, <code><a href="reference/add_shuffle_seq_pq.html">add_shuffle_seq_pq()</a></code>, <code><a href="reference/multiply_counts_pq.html">multiply_counts_pq()</a></code>, <code><a href="reference/permute_da_pq.html">permute_da_pq()</a></code>, <code><a href="reference/midasim_pq.html">midasim_pq()</a></code> for creating and manipulating fake taxa to benchmark taxonomic assignment or differential abundance methods</li>
 <li>
-<strong>Taxonomic table utilities</strong>: <code><a href="reference/rename_ranks_pq.html">rename_ranks_pq()</a></code>, <code><a href="reference/select_ranks_pq.html">select_ranks_pq()</a></code>, <code><a href="reference/resolve_taxo_conflict.html">resolve_taxo_conflict()</a></code>
+<strong>Taxonomic table utilities</strong>: <code><a href="reference/rename_ranks_pq.html">rename_ranks_pq()</a></code>, <code><a href="reference/select_ranks_pq.html">select_ranks_pq()</a></code>, <code><a href="reference/resolve_taxo_conflict.html">resolve_taxo_conflict()</a></code>, <code><a href="reference/taxtab_replace_pattern_by_NA.html">taxtab_replace_pattern_by_NA()</a></code>
 </li>
 <li>
-<strong>Pattern replacement</strong>: <code><a href="reference/taxtab_replace_pattern_by_NA.html">taxtab_replace_pattern_by_NA()</a></code> for data cleaning</li>
+<strong>Taxonomy to tree</strong>: <code><a href="reference/taxo2tree.html">taxo2tree()</a></code> to build a phylogenetic tree from taxonomy table</li>
 </ul>
 </div>
 </div>

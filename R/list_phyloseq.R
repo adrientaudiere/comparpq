@@ -443,13 +443,20 @@ determine_comparison_type <- function(
 #'   technology was used across all phyloseq objects
 #' @param same_bioinfo_pipeline Logical, whether the same bioinformatics pipeline
 #'   was used across all phyloseq objects
+#' @param compute_dist Logical, whether to compute k-mer distances between
+#'   refseq slots
 #' @return A list of comparison characteristics
 #' @noRd
 build_comparison_characteristics <- function(
   physeq_list,
   same_primer_seq_tech = TRUE,
-  same_bioinfo_pipeline = TRUE
+  same_bioinfo_pipeline = TRUE,
+  compute_dist = TRUE,
+  verbose = TRUE
 ) {
+  if (verbose) {
+    cli::cli_alert_info("Checking sample and taxa overlap...")
+  }
   common_samples <- get_common_samples(physeq_list)
   common_taxa <- get_common_taxa(physeq_list)
   same_samples <- check_same_samples(physeq_list)
@@ -465,6 +472,15 @@ build_comparison_characteristics <- function(
     same_primer_seq_tech,
     same_bioinfo_pipeline
   )
+
+  if (verbose) {
+    cli::cli_alert_info(
+      "Detected comparison type: {comparison_type$type}"
+    )
+    cli::cli_alert_info(
+      "{length(common_samples)} common sample{?s}, {length(common_taxa)} common tax{?on/a}"
+    )
+  }
 
   list(
     type_of_comparison = comparison_type$type,
@@ -497,7 +513,11 @@ build_comparison_characteristics <- function(
       physeq_list,
       ~ !is.null(phyloseq::phy_tree(.x, errorIfNULL = FALSE))
     )),
-    refseq_comparison = build_refseq_comparison(physeq_list)
+    refseq_comparison = build_refseq_comparison(
+      physeq_list,
+      compute_dist,
+      verbose
+    )
   )
 }
 
@@ -506,14 +526,34 @@ build_comparison_characteristics <- function(
 #' Returns NULL if not all objects have a refseq slot, or a named list of
 #' `compare_refseq` results (one per pair).
 #' @param physeq_list A named list of phyloseq objects
+#' @param compute_dist Logical, whether to compute k-mer distances
+#' @param verbose Logical, whether to print progress messages
 #' @return A named list of compare_refseq results, or NULL
 #' @noRd
-build_refseq_comparison <- function(physeq_list) {
+build_refseq_comparison <- function(
+  physeq_list,
+  compute_dist = TRUE,
+  verbose = TRUE
+) {
   all_have_refseq <- all(purrr::map_lgl(
     physeq_list,
     ~ !is.null(phyloseq::refseq(.x, errorIfNULL = FALSE))
   ))
   if (!all_have_refseq || length(physeq_list) < 2) {
+    if (verbose && !all_have_refseq) {
+      cli::cli_alert_info(
+        "Skipping refseq comparison (not all objects have refseq)"
+      )
+    }
+    return(NULL)
+  }
+
+  if (!compute_dist) {
+    if (verbose) {
+      cli::cli_alert_info(
+        "Skipping refseq distance computation (compute_dist = FALSE)"
+      )
+    }
     return(NULL)
   }
 
@@ -557,6 +597,12 @@ build_refseq_comparison <- function(physeq_list) {
 #'   bioinformatics pipeline was used across all phyloseq objects. Set to FALSE
 #'   when comparing different clustering methods, taxonomic databases, or
 #'   analysis parameters.
+#' @param compute_dist (logical, default TRUE) Whether to compute pairwise
+#'   k-mer distances between refseq slots. Set to FALSE to skip this
+#'   potentially slow computation, especially when phyloseq objects have many
+#'   taxa or very different sequence sets.
+#' @param verbose (logical, default TRUE) Whether to print progress messages
+#'   via [cli::cli_alert_info()].
 #'
 #' @slot phyloseq_list A named list of phyloseq objects
 #' @slot summary_table A tibble summarizing each phyloseq object
@@ -624,7 +670,9 @@ list_phyloseq <- S7::new_class(
     physeq_list,
     names = NULL,
     same_primer_seq_tech = TRUE,
-    same_bioinfo_pipeline = TRUE
+    same_bioinfo_pipeline = TRUE,
+    compute_dist = TRUE,
+    verbose = TRUE
   ) {
     if (!is.null(names)) {
       if (length(names) != length(physeq_list)) {
@@ -635,12 +683,29 @@ list_phyloseq <- S7::new_class(
       names(physeq_list) <- paste0("physeq_", seq_along(physeq_list))
     }
 
+    if (verbose) {
+      cli::cli_alert_info(
+        "Building summary table for {length(physeq_list)} phyloseq object{?s}..."
+      )
+    }
     summary_table <- build_summary_table(physeq_list)
+
+    if (verbose) {
+      cli::cli_alert_info("Computing comparison characteristics...")
+    }
     comparison <- build_comparison_characteristics(
       physeq_list,
       same_primer_seq_tech,
-      same_bioinfo_pipeline
+      same_bioinfo_pipeline,
+      compute_dist,
+      verbose
     )
+
+    if (verbose) {
+      cli::cli_alert_success(
+        "list_phyloseq created ({comparison$type_of_comparison})"
+      )
+    }
 
     S7::new_object(
       S7::S7_object(),
@@ -714,7 +779,8 @@ S7::method(`[`, list_phyloseq) <- function(x, i) {
   list_phyloseq(
     x@phyloseq_list[i],
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
-    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline
+    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline,
+    verbose = FALSE
   )
 }
 
@@ -740,12 +806,16 @@ S7::method(`[[`, list_phyloseq) <- function(x, i) {
 #'   and sequencing technology was used. If NULL, preserves the original value.
 #' @param same_bioinfo_pipeline (logical, default NULL) Whether the same
 #'   bioinformatics pipeline was used. If NULL, preserves the original value.
+#' @param compute_dist (logical, default TRUE) Whether to compute pairwise
+#'   k-mer distances between refseq slots.
 #' @return An updated list_phyloseq object
 #' @export
 update_list_phyloseq <- function(
   x,
   same_primer_seq_tech = NULL,
-  same_bioinfo_pipeline = NULL
+  same_bioinfo_pipeline = NULL,
+  compute_dist = TRUE,
+  verbose = TRUE
 ) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
@@ -760,7 +830,9 @@ update_list_phyloseq <- function(
   list_phyloseq(
     x@phyloseq_list,
     same_primer_seq_tech = same_primer_seq_tech,
-    same_bioinfo_pipeline = same_bioinfo_pipeline
+    same_bioinfo_pipeline = same_bioinfo_pipeline,
+    compute_dist = compute_dist,
+    verbose = verbose
   )
 }
 
@@ -772,7 +844,7 @@ update_list_phyloseq <- function(
 #'   If NULL, a name is generated automatically.
 #' @return A new list_phyloseq object with the added phyloseq
 #' @export
-add_phyloseq <- function(x, physeq, name = NULL) {
+add_phyloseq <- function(x, physeq, name = NULL, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
   stopifnot(inherits(physeq, "phyloseq"))
 
@@ -787,7 +859,8 @@ add_phyloseq <- function(x, physeq, name = NULL) {
   list_phyloseq(
     new_list,
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
-    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline
+    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline,
+    verbose = verbose
   )
 }
 
@@ -797,7 +870,7 @@ add_phyloseq <- function(x, physeq, name = NULL) {
 #' @param name (character or integer) Name or index of the phyloseq object to remove.
 #' @return A new list_phyloseq object without the removed phyloseq
 #' @export
-remove_phyloseq <- function(x, name) {
+remove_phyloseq <- function(x, name, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   new_list <- x@phyloseq_list
@@ -814,7 +887,8 @@ remove_phyloseq <- function(x, name) {
   list_phyloseq(
     new_list,
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
-    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline
+    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline,
+    verbose = verbose
   )
 }
 
@@ -939,7 +1013,8 @@ filter_common_lpq <- function(
   list_phyloseq(
     filtered_list,
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
-    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline
+    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline,
+    verbose = verbose
   )
 }
 
@@ -1207,6 +1282,7 @@ apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
   list_phyloseq(
     transformed_list,
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
-    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline
+    same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline,
+    verbose = verbose
   )
 }

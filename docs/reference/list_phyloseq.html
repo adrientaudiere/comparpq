@@ -25,7 +25,7 @@ An S7 class to store and compare multiple phyloseq objects."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">comparpq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,9 @@ An S7 class to store and compare multiple phyloseq objects."></head><body>
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/list-phyloseq.html">The list_phyloseq Class</a></li>
+    <li><a class="dropdown-item" href="../articles/compare-da-methods.html">Comparing DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/benchmark-da-methods.html">Benchmarking DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/estimation-statistics.html">Estimation Statistics</a></li>
     <li><a class="dropdown-item" href="../articles/OJS_visualization.html">OJS Visualization</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -152,7 +155,7 @@ Used to test <strong>robustness</strong> of conclusions to methodological choice
 <dt>NESTED_ROBUSTNESS</dt>
 <dd><p>One phyloseq object is derived from another, with
 samples being a subset (e.g., rarefied version created with
-<code>rarefy_even_depth()</code>). Used to test <strong>robustness</strong> to data processing
+<code><a href="https://rdrr.io/pkg/phyloseq/man/rarefy_even_depth.html" class="external-link">rarefy_even_depth()</a></code>). Used to test <strong>robustness</strong> to data processing
 choices like rarefaction, filtering, or subsetting. Comparisons should
 focus on the common (nested) samples.</p></dd>
 
@@ -183,18 +186,36 @@ comparison may not be meaningful.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># REPRODUCIBILITY: Same samples, same pipeline (default)</span></span></span>
 <span class="r-in"><span><span class="va">lpq_repro</span> <span class="op">&lt;-</span> <span class="fu">list_phyloseq</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>run1 <span class="op">=</span> <span class="va">data_fungi</span>, run2 <span class="op">=</span> <span class="va">data_fungi</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 2 phyloseq objects...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: REPRODUCIBILITY</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 185 common samples, 1420 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (REPRODUCIBILITY)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># ROBUSTNESS: Same samples, different pipeline</span></span></span>
 <span class="r-in"><span><span class="va">lpq_robust</span> <span class="op">&lt;-</span> <span class="fu">list_phyloseq</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>method_A <span class="op">=</span> <span class="va">data_fungi</span>, method_B <span class="op">=</span> <span class="va">data_fungi</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  same_bioinfo_pipeline <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 2 phyloseq objects...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: ROBUSTNESS</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 185 common samples, 1420 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (ROBUSTNESS)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># REPLICABILITY: Same samples, different primer/technology</span></span></span>
 <span class="r-in"><span><span class="va">lpq_replic</span> <span class="op">&lt;-</span> <span class="fu">list_phyloseq</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>ITS1 <span class="op">=</span> <span class="va">data_fungi</span>, ITS2 <span class="op">=</span> <span class="va">data_fungi</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  same_primer_seq_tech <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 2 phyloseq objects...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: REPLICABILITY</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 185 common samples, 1420 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (REPLICABILITY)</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

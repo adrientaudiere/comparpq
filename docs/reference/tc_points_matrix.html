@@ -13,7 +13,7 @@ Useful to compare taxonomy from two different source/db/algo side-by-side"></hea
 
     <a class="navbar-brand me-2" href="../index.html">comparpq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,9 @@ Useful to compare taxonomy from two different source/db/algo side-by-side"></hea
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/list-phyloseq.html">The list_phyloseq Class</a></li>
+    <li><a class="dropdown-item" href="../articles/compare-da-methods.html">Comparing DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/benchmark-da-methods.html">Benchmarking DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/estimation-statistics.html">Estimation Statistics</a></li>
     <li><a class="dropdown-item" href="../articles/OJS_visualization.html">OJS Visualization</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -116,7 +119,7 @@ Need to be in <code>physeq@sam_data</code>.</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu">subset_taxa_pq</span><span class="op">(</span><span class="va">Glom_otu</span>, <span class="fu">taxa_sums</span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">5000</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://adrientaudiere.github.io/MiscMetabar/reference/subset_taxa_pq.html" class="external-link">subset_taxa_pq</a></span><span class="op">(</span><span class="va">Glom_otu</span>, <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_sums.html" class="external-link">taxa_sums</a></span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">5000</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  <span class="st">"Order"</span>, <span class="st">"Order__eukaryome_Glomero"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Cleaning suppress 0 taxa (  ) and 1 sample(s) ( samp_Blanc-PCR-racines ).</span>
@@ -133,11 +136,11 @@ Need to be in <code>physeq@sam_data</code>.</p></dd>
 <span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span><span class="va">Glom_otu</span>, <span class="fl">4</span>, <span class="fl">12</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span><span class="va">Glom_otu</span>, <span class="fl">4</span>, <span class="fl">12</span>, stat_across_sample <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">Glom_otu</span><span class="op">@</span><span class="va">sam_data</span><span class="op">$</span><span class="va">unique_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"samp"</span>, <span class="fu">nsamples</span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span><span class="fu">as_binary_otu_table</span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span>, <span class="fl">5</span>, <span class="fl">13</span>,</span></span>
+<span class="r-in"><span><span class="va">Glom_otu</span><span class="op">@</span><span class="va">sam_data</span><span class="op">$</span><span class="va">unique_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="st">"samp"</span>, <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/nsamples-methods.html" class="external-link">nsamples</a></span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span><span class="fu"><a href="https://adrientaudiere.github.io/MiscMetabar/reference/as_binary_otu_table.html" class="external-link">as_binary_otu_table</a></span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span>, <span class="fl">5</span>, <span class="fl">13</span>,</span></span>
 <span class="r-in"><span>  stat_across_sample <span class="op">=</span> <span class="st">"sum"</span>, merge_sample_by <span class="op">=</span> <span class="st">"unique_value"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span><span class="fu">as_binary_otu_table</span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span>, <span class="fl">5</span>, <span class="fl">13</span>,</span></span>
+<span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span><span class="fu"><a href="https://adrientaudiere.github.io/MiscMetabar/reference/as_binary_otu_table.html" class="external-link">as_binary_otu_table</a></span><span class="op">(</span><span class="va">Glom_otu</span><span class="op">)</span>, <span class="fl">5</span>, <span class="fl">13</span>,</span></span>
 <span class="r-in"><span>  stat_across_sample <span class="op">=</span> <span class="st">"mean"</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">tc_points_matrix</span><span class="op">(</span><span class="va">Glom_otu</span>, <span class="fl">5</span>, <span class="fl">13</span>,</span></span>

@@ -1,6 +1,11 @@
 url: https://adrientaudiere.github.io/comparpq/
 template:
   bootstrap: 5
+  bslib:
+    bg: "#dadada"
+    fg: "#3b3b3b"
+    primary: "#324629"
+    secondary: "#5a1413"
 
 navbar:
   structure:
@@ -122,6 +127,11 @@ reference:
   desc: "Helper functions for formatting tables"
   contents:
   - factor_formatter
+
+- title: "Other"
+  desc: "Helper functions for miscellaneous tasks"
+  contents:
+  - div_pq
 
 articles:
 - title: "Getting Started"

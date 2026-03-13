@@ -78,6 +78,10 @@ rainplot_taxo_na(subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000),
 #> Number of filtered-out ASV 955
 #> Number of kept ASV 192
 #> Number of kept samples 443
+#> Registered S3 methods overwritten by 'ggpp':
+#>   method                  from   
+#>   heightDetails.titleGrob ggplot2
+#>   widthDetails.titleGrob  ggplot2
 
 if (FALSE) { # \dontrun{
 rainplot_taxo_na(Glom_otu)

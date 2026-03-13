@@ -7,14 +7,27 @@ S7 class for storing and comparing multiple phyloseq objects
 - [`list_phyloseq()`](https://adrientaudiere.github.io/comparpq/reference/list_phyloseq.md)
   : S7 class for comparing phyloseq objects
 
+## Phyloseq Comparison
+
+Functions for comparing phyloseq objects at a fine-grained level
+
+- [`compare_refseq()`](https://adrientaudiere.github.io/comparpq/reference/compare_refseq.md)
+  : Compare refseq slots between two phyloseq objects
+- [`simple_venn_pq()`](https://adrientaudiere.github.io/comparpq/reference/simple_venn_pq.md)
+  : Venn diagram of shared taxa across sample groups
+
 ## list_phyloseq Utilities
 
 Functions for manipulating list_phyloseq objects
 
 - [`add_phyloseq()`](https://adrientaudiere.github.io/comparpq/reference/add_phyloseq.md)
   : Add a phyloseq object to a list_phyloseq
+- [`apply_to_lpq()`](https://adrientaudiere.github.io/comparpq/reference/apply_to_lpq.md)
+  : Apply a function to all phyloseq objects in a list_phyloseq
 - [`filter_common_lpq()`](https://adrientaudiere.github.io/comparpq/reference/filter_common_lpq.md)
   : Filter phyloseq objects to keep only shared samples and/or taxa
+- [`merge_lpq()`](https://adrientaudiere.github.io/comparpq/reference/merge_lpq.md)
+  : Merge a list_phyloseq into a single phyloseq object
 - [`n_levels_lpq()`](https://adrientaudiere.github.io/comparpq/reference/n_levels_lpq.md)
   : Count unique taxonomic levels across phyloseq objects
 - [`remove_phyloseq()`](https://adrientaudiere.github.io/comparpq/reference/remove_phyloseq.md)
@@ -32,6 +45,8 @@ Visualization functions for list_phyloseq objects
   : Formattable visualization for list_phyloseq summary
 - [`formattable_lpq_full()`](https://adrientaudiere.github.io/comparpq/reference/formattable_lpq_full.md)
   : Extended formattable for list_phyloseq with comparison info
+- [`gg_hill_lpq()`](https://adrientaudiere.github.io/comparpq/reference/gg_hill_lpq.md)
+  : Scatter plots of Hill diversity across pairs of phyloseq objects
 - [`upset_lpq()`](https://adrientaudiere.github.io/comparpq/reference/upset_lpq.md)
   : UpSet or Venn plot of shared taxonomic values across phyloseq
   objects
@@ -42,8 +57,31 @@ Statistical analysis functions for list_phyloseq objects
 
 - [`adonis_lpq()`](https://adrientaudiere.github.io/comparpq/reference/adonis_lpq.md)
   : PERMANOVA analysis on each phyloseq object in a list_phyloseq
+- [`aldex_lpq()`](https://adrientaudiere.github.io/comparpq/reference/aldex_lpq.md)
+  : ALDEx2 analysis on each phyloseq object in a list_phyloseq
+- [`ancombc_lpq()`](https://adrientaudiere.github.io/comparpq/reference/ancombc_lpq.md)
+  : ANCOM-BC analysis on each phyloseq object in a list_phyloseq
+- [`estim_cor_lpq()`](https://adrientaudiere.github.io/comparpq/reference/estim_cor_lpq.md)
+  : Estimation statistics for numeric correlation on a list_phyloseq
+- [`estim_cor_pq()`](https://adrientaudiere.github.io/comparpq/reference/estim_cor_pq.md)
+  : Estimation statistics for numeric variable correlation on a phyloseq
+  object
+- [`estim_diff_lpq()`](https://adrientaudiere.github.io/comparpq/reference/estim_diff_lpq.md)
+  : Estimation statistics for categorical comparisons on a list_phyloseq
+- [`estim_diff_pq()`](https://adrientaudiere.github.io/comparpq/reference/estim_diff_pq.md)
+  : Estimation statistics for categorical comparisons on a phyloseq
+  object
+- [`gg_aldex_plot()`](https://adrientaudiere.github.io/comparpq/reference/gg_aldex_plot.md)
+  : ggplot2 version of ALDEx2 diagnostic plots
+- [`gg_maaslin3_plot()`](https://adrientaudiere.github.io/comparpq/reference/gg_maaslin3_plot.md)
+  : Plot MaAsLin3 results
 - [`glmulti_lpq()`](https://adrientaudiere.github.io/comparpq/reference/glmulti_lpq.md)
   : Automated model selection for Hill diversity on each phyloseq in a
+  list_phyloseq
+- [`maaslin3_pq()`](https://adrientaudiere.github.io/comparpq/reference/maaslin3_pq.md)
+  : Run MaAsLin3 differential abundance analysis on a phyloseq object
+- [`multipatt_lpq()`](https://adrientaudiere.github.io/comparpq/reference/multipatt_lpq.md)
+  : Indicator species analysis on each phyloseq object in a
   list_phyloseq
 
 ## Taxonomic Utilities
@@ -95,6 +133,9 @@ Interactive plotting functions for phyloseq objects
   Bubble plot of phyloseq object with observablehq
   [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
+- [`gg_bubbles_pq()`](https://adrientaudiere.github.io/comparpq/reference/gg_bubbles_pq.md)
+  : Circle-packed bubble plot of a phyloseq object using ggplot2
+
 ## Fake Taxa Creation
 
 Functions for adding fake taxa to test taxonomic assignment accuracy
@@ -103,6 +144,12 @@ Functions for adding fake taxa to test taxonomic assignment accuracy
   : Add external sequences to a phyloseq object
 - [`add_shuffle_seq_pq()`](https://adrientaudiere.github.io/comparpq/reference/add_shuffle_seq_pq.md)
   : Add fake sequences by shuffling existing ones in a phyloseq object
+- [`midasim_pq()`](https://adrientaudiere.github.io/comparpq/reference/midasim_pq.md)
+  : Simulate microbiome data with differential abundance using MIDASim
+- [`multiply_counts_pq()`](https://adrientaudiere.github.io/comparpq/reference/multiply_counts_pq.md)
+  : Multiply OTU counts conditionally based on sample metadata
+- [`permute_da_pq()`](https://adrientaudiere.github.io/comparpq/reference/permute_da_pq.md)
+  : Simulate differential abundance by redistributing OTU counts
 
 ## Tax Table Manipulation
 
@@ -123,3 +170,10 @@ Helper functions for formatting tables
 
 - [`factor_formatter()`](https://adrientaudiere.github.io/comparpq/reference/factor_formatter.md)
   : Format factor columns with funky colored backgrounds
+
+## Other
+
+Helper functions for miscellaneous tasks
+
+- [`div_pq()`](https://adrientaudiere.github.io/comparpq/reference/div_pq.md)
+  : Diversity indices per sample, optionally grouped by a modality

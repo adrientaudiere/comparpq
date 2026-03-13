@@ -627,9 +627,6 @@ combined_selex |>
 ```
 
 
-
-
-
 ## Summary Across Datasets
 
 ```{r summary_table}
@@ -679,15 +676,6 @@ The three methods show different sensitivities across datasets:
    prevalence models. Its sensitivity depends on the transformation and
    normalization settings used.
 
-Key considerations when choosing a method:
-
-- **Sample size**: ALDEx2 may be less powerful with small sample sizes
-- **Compositionality**: All three methods address this, but differently
-- **Effect size interpretation**: ANCOM-BC and MaAsLin3 provide log fold changes
-- **Computational time**: ALDEx2 can be slower due to Monte Carlo sampling
-
-For robust results, consider using multiple methods and focusing on taxa
-identified by at least two methods.
 
 ## Session Info
 

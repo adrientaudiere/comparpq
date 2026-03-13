@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">comparpq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,9 @@
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/list-phyloseq.html">The list_phyloseq Class</a></li>
+    <li><a class="dropdown-item" href="../articles/compare-da-methods.html">Comparing DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/benchmark-da-methods.html">Benchmarking DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/estimation-statistics.html">Estimation Statistics</a></li>
     <li><a class="dropdown-item" href="../articles/OJS_visualization.html">OJS Visualization</a></li>
   </ul>
 </li>
@@ -62,7 +65,7 @@
                         <h4 data-toc-skip class="author">Adrien
 Taudière</h4>
             
-            <h4 data-toc-skip class="date">2026-01-23</h4>
+            <h4 data-toc-skip class="date">2026-03-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/vignettes/list-phyloseq.Rmd" class="external-link"><code>vignettes/list-phyloseq.Rmd</code></a></small>
       <div class="d-none name"><code>list-phyloseq.Rmd</code></div>
@@ -146,7 +149,10 @@ parameters to control the comparison type:</p>
 <span><span class="co">#&gt; Nested samples: TRUE </span></span>
 <span><span class="co">#&gt; Same taxa: FALSE </span></span>
 <span><span class="co">#&gt; Common samples: 137 </span></span>
-<span><span class="co">#&gt; Common taxa: 45</span></span></code></pre></div>
+<span><span class="co">#&gt; Common taxa: 45 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; --- Reference sequence comparison ---</span></span>
+<span><span class="co">#&gt; fungi_vs_fungi_mini: 45 shared seqs, 1375 unique in fungi, 0 unique in fungi_mini</span></span></code></pre></div>
 <p>The output shows:</p>
 <ul>
 <li>
@@ -248,8 +254,8 @@ comparison is classified as ROBUSTNESS.</p>
 <span><span class="va">lpq_robust</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/list_phyloseq.html">list_phyloseq</a></span><span class="op">(</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
 <span>    raw_fungi <span class="op">=</span> <span class="va">data_fungi</span>,</span>
-<span>    fungi_swarm <span class="op">=</span> <span class="fu">postcluster_pq</span><span class="op">(</span><span class="va">data_fungi</span>, method <span class="op">=</span> <span class="st">"swarm"</span><span class="op">)</span>,</span>
-<span>    fungi_mumu <span class="op">=</span> <span class="fu">mumu_pq</span><span class="op">(</span><span class="va">data_fungi</span><span class="op">)</span><span class="op">$</span><span class="va">new_physeq</span></span>
+<span>    fungi_swarm <span class="op">=</span> <span class="fu"><a href="https://adrientaudiere.github.io/MiscMetabar/reference/postcluster_pq.html" class="external-link">postcluster_pq</a></span><span class="op">(</span><span class="va">data_fungi</span>, method <span class="op">=</span> <span class="st">"swarm"</span><span class="op">)</span>,</span>
+<span>    fungi_mumu <span class="op">=</span> <span class="fu"><a href="https://adrientaudiere.github.io/MiscMetabar/reference/mumu_pq.html" class="external-link">mumu_pq</a></span><span class="op">(</span><span class="va">data_fungi</span><span class="op">)</span><span class="op">$</span><span class="va">new_physeq</span></span>
 <span>  <span class="op">)</span>,</span>
 <span>  same_bioinfo_pipeline <span class="op">=</span> <span class="cn">FALSE</span> <span class="co"># Different bioinformatics pipelines</span></span>
 <span><span class="op">)</span></span>
@@ -607,7 +613,10 @@ your data:</p>
 <span><span class="co">#&gt; Nested samples: TRUE </span></span>
 <span><span class="co">#&gt; Same taxa: FALSE </span></span>
 <span><span class="co">#&gt; Common samples: 143 </span></span>
-<span><span class="co">#&gt; Common taxa: 1397</span></span>
+<span><span class="co">#&gt; Common taxa: 1397 </span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; --- Reference sequence comparison ---</span></span>
+<span><span class="co">#&gt; original_vs_rarefied: 1397 shared seqs, 23 unique in original, 0 unique in rarefied</span></span>
 <span></span>
 <span><span class="co"># Step 4: Filter to common samples for fair comparison</span></span>
 <span><span class="va">lpq_common</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/filter_common_lpq.html">filter_common_lpq</a></span><span class="op">(</span><span class="va">lpq_rarefaction</span>,</span>

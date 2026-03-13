@@ -108,7 +108,8 @@ There are six main types of comparisons:
 - NESTED_ROBUSTNESS:
 
   One phyloseq object is derived from another, with samples being a
-  subset (e.g., rarefied version created with `rarefy_even_depth()`).
+  subset (e.g., rarefied version created with
+  [`rarefy_even_depth()`](https://rdrr.io/pkg/phyloseq/man/rarefy_even_depth.html)).
   Used to test **robustness** to data processing choices like
   rarefaction, filtering, or subsetting. Comparisons should focus on the
   common (nested) samples.
@@ -136,16 +137,34 @@ There are six main types of comparisons:
 ``` r
 # REPRODUCIBILITY: Same samples, same pipeline (default)
 lpq_repro <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi))
+#> ℹ Building summary table for 2 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: REPRODUCIBILITY
+#> ℹ 185 common samples, 1420 common taxa
+#> ✔ list_phyloseq created (REPRODUCIBILITY)
 
 # ROBUSTNESS: Same samples, different pipeline
 lpq_robust <- list_phyloseq(
   list(method_A = data_fungi, method_B = data_fungi),
   same_bioinfo_pipeline = FALSE
 )
+#> ℹ Building summary table for 2 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: ROBUSTNESS
+#> ℹ 185 common samples, 1420 common taxa
+#> ✔ list_phyloseq created (ROBUSTNESS)
 
 # REPLICABILITY: Same samples, different primer/technology
 lpq_replic <- list_phyloseq(
   list(ITS1 = data_fungi, ITS2 = data_fungi),
   same_primer_seq_tech = FALSE
 )
+#> ℹ Building summary table for 2 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: REPLICABILITY
+#> ℹ 185 common samples, 1420 common taxa
+#> ✔ list_phyloseq created (REPLICABILITY)
 ```

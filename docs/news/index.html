@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">comparpq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,6 +20,9 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/list-phyloseq.html">The list_phyloseq Class</a></li>
+    <li><a class="dropdown-item" href="../articles/compare-da-methods.html">Comparing DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/benchmark-da-methods.html">Benchmarking DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/estimation-statistics.html">Estimation Statistics</a></li>
     <li><a class="dropdown-item" href="../articles/OJS_visualization.html">OJS Visualization</a></li>
   </ul></li>
 <li class="active nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -39,9 +42,39 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.1.0" id="comparpq-010-development-version">comparpq 0.1.0 (development version)<a class="anchor" aria-label="anchor" href="#comparpq-010-development-version"></a></h2>
-</div>
-  </main></div>
+<h2 class="pkg-version" data-toc-text="0.1.3" id="comparpq-013-development-version">comparpq 0.1.3 (Development version)<a class="anchor" aria-label="anchor" href="#comparpq-013-development-version"></a></h2>
+<ul><li>Add param <code>compute_dist</code> to <code><a href="../reference/list_phyloseq.html">list_phyloseq()</a></code>
+</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.2" id="comparpq-012">comparpq 0.1.2<a class="anchor" aria-label="anchor" href="#comparpq-012"></a></h2>
+<ul><li>Add params <code>significance</code>, <code>test</code> and <code>p_alpha</code> to <code><a href="../reference/div_pq.html">div_pq()</a></code> to report tuckey hsd paired-test using letters.</li>
+<li>
+<code><a href="../reference/gg_hill_lpq.html">gg_hill_lpq()</a></code> new function to visualize Hill diversity correlations across pairs of phyloseq objects in a <code>list_phyloseq</code>. Produces a faceted scatter plot (pairs × Hill orders) with optional 1:1 line, regression line, and per-panel correlation annotation, enabling visual assessment of REPRODUCIBILITY, ROBUSTNESS, and REPLICABILITY.</li>
+<li>
+<code><a href="../reference/gg_bubbles_pq.html">gg_bubbles_pq()</a></code> now uses <code><a href="../reference/merge_lpq.html">merge_lpq()</a></code> when a <code>list_phyloseq</code> is passed, merging into a single phyloseq and faceting by <code>source_name</code> instead of building separate patchwork panels. <code>diff_contour</code> now works with any <code>facet_by</code> variable (not just list_phyloseq), highlighting taxa unique to each facet level with a distinct contour color from <code>diff_contour_colors</code>. No longer limited to 2 or 3 objects. New <code>match_by</code> parameter controls how taxa are matched when merging list_phyloseq objects.</li>
+<li>
+<code><a href="../reference/gg_bubbles_pq.html">gg_bubbles_pq()</a></code> new ggplot2-based circle-packed bubble plot of taxa abundances. Unlike <code><a href="../reference/bubbles_pq.html">bubbles_pq()</a></code>, it does not require d3js/Observable and supports faceting by a <code>@sam_data</code> variable to display one bubble chart per level. Uses <code>packcircles</code> for layout computation.</li>
+<li>
+<code><a href="../reference/compare_refseq.html">compare_refseq()</a></code> new function to compare reference sequences (<code>refseq</code> slot) between two phyloseq objects, identifying shared and unique ASVs/OTUs by name and by DNA sequence content, including detection of same-name-different-sequence and same-sequence-different-name mismatches. Computes mean nearest-neighbor k-mer distance for unique sequences.</li>
+<li>Add function <code><a href="../reference/apply_to_lpq.html">apply_to_lpq()</a></code> to apply a function to each phyloseq object in a list_phyloseq</li>
+<li>
+<code><a href="../reference/estim_cor_lpq.html">estim_cor_lpq()</a></code> new function to compute bootstrap correlation/regression across a list_phyloseq</li>
+<li>
+<code><a href="../reference/estim_cor_pq.html">estim_cor_pq()</a></code> new function to compute bootstrap correlation and regression CIs for diversity vs numeric variables</li>
+<li>
+<code><a href="../reference/estim_diff_lpq.html">estim_diff_lpq()</a></code> new function to run estimation statistics (effect sizes + CIs) across a list_phyloseq</li>
+<li>
+<code><a href="../reference/estim_diff_pq.html">estim_diff_pq()</a></code> new function for estimation statistics (Gardner-Altman/Cumming plots) comparing diversity across groups via dabestr</li>
+<li>
+<code><a href="../reference/merge_lpq.html">merge_lpq()</a></code> new function to merge a list_phyloseq into a single phyloseq object where each original phyloseq becomes one sample. Taxa can be matched by reference sequences (<code>match_by = "refseq"</code>, default) or by taxa names (<code>match_by = "names"</code>).</li>
+<li>
+<code><a href="../reference/simple_venn_pq.html">simple_venn_pq()</a></code> new function to draw Venn diagrams of shared taxa across 2-4 sample groups using pure ggplot2 (no external Venn package needed), with support for multiple taxonomic ranks and compact, clearly labeled circles/ellipses.</li>
+<li>
+<code><a href="../reference/simple_venn_pq.html">simple_venn_pq()</a></code> now accepts a <code>list_phyloseq</code> object as input, automatically merging it via <code><a href="../reference/merge_lpq.html">merge_lpq()</a></code> before drawing the Venn diagram.</li>
+</ul></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

@@ -17,7 +17,7 @@ taxonomic databases, assignment methods, or reference versions."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">comparpq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,6 +30,9 @@ taxonomic databases, assignment methods, or reference versions."></head><body>
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
     <li><a class="dropdown-item" href="../articles/list-phyloseq.html">The list_phyloseq Class</a></li>
+    <li><a class="dropdown-item" href="../articles/compare-da-methods.html">Comparing DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/benchmark-da-methods.html">Benchmarking DA Methods</a></li>
+    <li><a class="dropdown-item" href="../articles/estimation-statistics.html">Estimation Statistics</a></li>
     <li><a class="dropdown-item" href="../articles/OJS_visualization.html">OJS Visualization</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -60,7 +63,7 @@ taxonomic databases, assignment methods, or reference versions.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tc_congruence_metrics</span><span class="op">(</span><span class="va">physeq_1</span>, physeq_2 <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">ranks_1</span>, <span class="va">ranks_2</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">tc_congruence_metrics</span><span class="op">(</span><span class="va">physeq_1</span>, physeq_2 <span class="op">=</span> <span class="cn">NULL</span>, <span class="va">ranks_1</span>, ranks_2 <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -84,15 +87,16 @@ the first assignment. Must match column names in physeq_1's tax_table.</p></dd>
 
 
 <dt id="arg-ranks-">ranks_2<a class="anchor" aria-label="anchor" href="#arg-ranks-"></a></dt>
-<dd><p>(character vector, required) Taxonomic rank names to use for
-the second assignment. Must match column names in physeq_2's tax_table.</p></dd>
+<dd><p>(character vector, default NULL) Taxonomic rank names to use for
+the second assignment. Must match column names in physeq_2's tax_table. If
+NULL, uses the same ranks as ranks_1 vector.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A list with the following components:</p><dl><dt>summary</dt>
 <dd><p>A data frame with counts and percentages for each category,
-including <code>leaf_match_total</code> which counts taxa where the deepest
+including <code>leaf_match_congruence</code> which counts taxa where the deepest
 classification matches regardless of the path</p></dd>
 
 <dt>only_in_1</dt>
@@ -113,7 +117,7 @@ in physeq_2 (all NA in physeq_1 for the specified ranks)</p></dd>
 <dd><p>Character vector of common taxa with all NA in
 both physeq objects</p></dd>
 
-<dt>congruent</dt>
+<dt>total_congruent</dt>
 <dd><p>Character vector of taxa with identical taxonomic paths
 (same values at all ranks, same NA positions)</p></dd>
 
@@ -149,7 +153,7 @@ and category</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Compare two taxonomic assignments from the same phyloseq object</span></span></span>
 <span class="r-in"><span><span class="va">metrics</span> <span class="op">&lt;-</span> <span class="fu">tc_congruence_metrics</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu">subset_taxa</span><span class="op">(</span><span class="va">Glom_otu</span>, <span class="va">Phyla</span> <span class="op">==</span> <span class="st">"Fungi"</span> <span class="op">|</span> <span class="va">Phylum__eukaryome_Glomero</span> <span class="op">==</span> <span class="st">"Fungi"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/subset_taxa-methods.html" class="external-link">subset_taxa</a></span><span class="op">(</span><span class="va">Glom_otu</span>, <span class="va">Phyla</span> <span class="op">==</span> <span class="st">"Fungi"</span> <span class="op">|</span> <span class="va">Phylum__eukaryome_Glomero</span> <span class="op">==</span> <span class="st">"Fungi"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  ranks_1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Phyla"</span>, <span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  ranks_2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span></span>
 <span class="r-in"><span>    <span class="st">"Phylum__eukaryome_Glomero"</span>, <span class="st">"Class__eukaryome_Glomero"</span>,</span></span>
@@ -159,18 +163,18 @@ and category</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># View summary</span></span></span>
 <span class="r-in"><span><span class="va">metrics</span><span class="op">$</span><span class="va">summary</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              category count percentage</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1           only_in_1     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2           only_in_2     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   classified_only_1     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   classified_only_2     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   unclassified_both     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6           congruent     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    partial_1_deeper     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8    partial_2_deeper     0       0.00</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  incongruent_leaves   673      58.67</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10  incongruent_nodes   474      41.33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   leaf_match_total   111       9.68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 category count percentage</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1              only_in_1     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2              only_in_2     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      classified_only_1     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4      classified_only_2     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5      unclassified_both     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        total_congruent     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  leaf_match_congruence   111       9.68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8       partial_1_deeper     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9       partial_2_deeper     0       0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10    incongruent_leaves   673      58.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11     incongruent_nodes   474      41.33</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Get taxa with leaf-level incongruence</span></span></span>
 <span class="r-in"><span><span class="va">metrics</span><span class="op">$</span><span class="va">incongruent_leaves</span></span></span>

@@ -66,7 +66,10 @@ lpq
 #> Nested samples: TRUE 
 #> Same taxa: FALSE 
 #> Common samples: 137 
-#> Common taxa: 45
+#> Common taxa: 45 
+#> 
+#> --- Reference sequence comparison ---
+#> fungi_vs_fungi_mini: 45 shared seqs, 1375 unique in fungi, 0 unique in fungi_mini
 ```
 
 The output shows:
@@ -544,7 +547,10 @@ print(lpq_rarefaction)
 #> Nested samples: TRUE 
 #> Same taxa: FALSE 
 #> Common samples: 143 
-#> Common taxa: 1397
+#> Common taxa: 1397 
+#> 
+#> --- Reference sequence comparison ---
+#> original_vs_rarefied: 1397 shared seqs, 23 unique in original, 0 unique in rarefied
 
 # Step 4: Filter to common samples for fair comparison
 lpq_common <- filter_common_lpq(lpq_rarefaction,

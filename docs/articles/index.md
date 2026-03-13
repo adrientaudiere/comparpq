@@ -15,6 +15,22 @@ phyloseq objects
 - [The list_phyloseq
   Class](https://adrientaudiere.github.io/comparpq/articles/list-phyloseq.md):
 
+### Differential Abundance
+
+Comparing differential abundance methods
+
+- [Comparing Differential Abundance
+  Methods](https://adrientaudiere.github.io/comparpq/articles/compare-da-methods.md):
+- [Benchmarking Differential Abundance
+  Methods](https://adrientaudiere.github.io/comparpq/articles/benchmark-da-methods.md):
+
+### Estimation Statistics
+
+Effect sizes and bootstrap confidence intervals
+
+- [Estimation Statistics for Microbiome
+  Data](https://adrientaudiere.github.io/comparpq/articles/estimation-statistics.md):
+
 ### Advanced Tutorials
 
 In-depth examples and advanced usage

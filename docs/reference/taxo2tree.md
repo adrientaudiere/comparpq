@@ -67,6 +67,19 @@ data_fungi_mini@phy_tree <-
 #> Also defined by ‘tidytree’
 
 library(ggtree)
+#> ggtree v4.0.4 Learn more at https://yulab-smu.top/contribution-tree-data/
+#> 
+#> Please cite:
+#> 
+#> S Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L
+#> Zhan, T Wu, E Hu, Y Jiang, X Bo, G Yu. ggtreeExtra: Compact
+#> visualization of richly annotated phylogenetic data. Molecular Biology
+#> and Evolution. 2021, 38(9):4039-4042. doi: 10.1093/molbev/msab166
+#> 
+#> Attaching package: ‘ggtree’
+#> The following object is masked from ‘package:MiscMetabar’:
+#> 
+#>     multiplot
 
 ggtree(data_fungi_mini@phy_tree) +
   geom_nodelab(size = 2, nudge_x = -0.2, nudge_y = 0.6) +

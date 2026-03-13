@@ -72,15 +72,33 @@ lpq <- list_phyloseq(list(
 #>  the random seed of your session for reproducibility.
 #> See `?set.seed`
 #> ...
-#> 1014OTUs were removed because they are no longer 
+#> 1016OTUs were removed because they are no longer 
 #> present in any sample after random subsampling
 #> ...
+#> ℹ Building summary table for 4 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 0 common samples, 0 common taxa
+#> ℹ Skipping refseq comparison (not all objects have refseq)
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 upset_lpq(lpq, plot_type = "upset")
+#> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+#> ℹ Please use `linewidth` instead.
+#> ℹ The deprecated feature was likely used in the ComplexUpset package.
+#>   Please report the issue at
+#>   <https://github.com/krassowski/complex-upset/issues>.
 
 lpq2 <- list_phyloseq(list(
   fung = data_fungi,
   fung_mini = data_fungi_mini
 ))
+#> ℹ Building summary table for 2 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 137 common samples, 45 common taxa
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 upset_lpq(lpq2, tax_rank = "Family")
 
 ```

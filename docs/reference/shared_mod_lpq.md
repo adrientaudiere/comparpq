@@ -41,6 +41,12 @@ A tibble or NULL if no shared modalities exist
 
 ``` r
 lpq <- list_phyloseq(list(data1 = data_fungi, data2 = data_fungi_mini))
+#> ℹ Building summary table for 2 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 137 common samples, 45 common taxa
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 
 shared_mod_lpq(lpq)
 #> # A tibble: 5 × 3
@@ -61,6 +67,12 @@ shared_mod_lpq(lpq, 10)
 #> 4 Height              4 Low, High, Middle, NA                                   
 #> 5 Diameter           70 52, 28,4, 30,7, 32,8, 33,3, 99, 32, 55,4, 115,5, -, ...…
 lpq <- list_phyloseq(list(data1 = data_fungi, data2 = data_fungi_mini))
+#> ℹ Building summary table for 2 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 137 common samples, 45 common taxa
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 
 shared_mod_lpq(lpq)
 #> # A tibble: 5 × 3

@@ -33,9 +33,9 @@
 #'   names or defaults to `"physeq2"`.
 #' @param k (integer, default 5) k-mer size for nearest-neighbor distance
 #'   computation on unique sequences.
-#' @param max_seqs (integer, default 500) Maximum number of unique sequences
-#'   per object to use for distance computation. If there are more, a random
-#'   sample is drawn. Set to `Inf` to use all (may be slow).
+#' @param max_seqs (integer, default 500) Maximum number of query and target
+#'   sequences to use for k-mer distance computation. If there are more, a
+#'   random sample is drawn. Set to `Inf` to use all (may be slow).
 #' @param seed (integer, default NULL) Random seed for reproducible sampling
 #'   when `max_seqs` is exceeded.
 #' @param verbose (logical, default TRUE) If TRUE, print a summary of the
@@ -362,6 +362,13 @@ compute_mean_nn_kmer <- function(query_seqs, target_refseq, k, max_seqs, seed) {
       set.seed(seed)
     }
     query_seqs <- sample(query_seqs, max_seqs)
+  }
+
+  if (length(target_refseq) > max_seqs) {
+    if (!is.null(seed)) {
+      set.seed(seed)
+    }
+    target_refseq <- target_refseq[sample(length(target_refseq), max_seqs)]
   }
 
   query_dss <- Biostrings::DNAStringSet(query_seqs)

@@ -74,33 +74,48 @@ lpq <- list_phyloseq(list(
 #>  the random seed of your session for reproducibility.
 #> See `?set.seed`
 #> ...
-#> 1014OTUs were removed because they are no longer 
+#> 1007OTUs were removed because they are no longer 
 #> present in any sample after random subsampling
 #> ...
+#> ℹ Building summary table for 3 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 137 common samples, 42 common taxa
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 
 # Filter to keep only common samples (useful for nested comparisons)
 lpq_filtered <- filter_common_lpq(lpq, filter_samples = TRUE, verbose = FALSE)
 #> Cleaning suppress 10 taxa and 0 samples.
-#> Cleaning suppress 60 taxa and 0 samples.
+#> Cleaning suppress 61 taxa and 0 samples.
 
 # Filter to keep only common taxa
 lpq_filtered <- filter_common_lpq(lpq, filter_samples = FALSE, filter_taxa = TRUE)
 #> Filtering to 42 common taxa.
-#> Cleaning suppress 0 taxa and 49 samples.
-#>   original: 185 -> 136 samples, 1420 -> 42 taxa
-#> Cleaning suppress 0 taxa and 1 samples.
-#>   mini: 137 -> 136 samples, 45 -> 42 taxa
-#> Cleaning suppress 0 taxa and 107 samples.
-#>   rarefied: 185 -> 78 samples, 406 -> 42 taxa
+#> Cleaning suppress 0 taxa and 48 samples.
+#>   original: 185 -> 137 samples, 1420 -> 42 taxa
+#>   mini: 137 -> 137 samples, 45 -> 42 taxa
+#> Cleaning suppress 0 taxa and 115 samples.
+#>   rarefied: 185 -> 70 samples, 413 -> 42 taxa
+#> ℹ Building summary table for 3 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 70 common samples, 42 common taxa
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 
 # Filter both samples and taxa
 lpq_filtered <- filter_common_lpq(lpq, filter_samples = TRUE, filter_taxa = TRUE)
 #> Filtering to 137 common samples.
 #> Filtering to 42 common taxa.
-#> Cleaning suppress 0 taxa and 1 samples.
-#>   original: 185 -> 136 samples, 1420 -> 42 taxa
-#> Cleaning suppress 0 taxa and 1 samples.
-#>   mini: 137 -> 136 samples, 45 -> 42 taxa
-#> Cleaning suppress 0 taxa and 59 samples.
-#>   rarefied: 185 -> 78 samples, 406 -> 42 taxa
+#>   original: 185 -> 137 samples, 1420 -> 42 taxa
+#>   mini: 137 -> 137 samples, 45 -> 42 taxa
+#> Cleaning suppress 0 taxa and 67 samples.
+#>   rarefied: 185 -> 70 samples, 413 -> 42 taxa
+#> ℹ Building summary table for 3 phyloseq objects...
+#> ℹ Computing comparison characteristics...
+#> ℹ Checking sample and taxa overlap...
+#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ 70 common samples, 42 common taxa
+#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 ```
