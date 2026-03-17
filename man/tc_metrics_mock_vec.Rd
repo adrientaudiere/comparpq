@@ -70,6 +70,16 @@ taxa (by shuffling sequences and/or by adding external sequences). The user
 must fake taxa using functions \code{\link[=add_external_seq_pq]{add_external_seq_pq()}},
 \code{\link[=add_shuffle_seq_pq]{add_shuffle_seq_pq()}}) before taxonomic assignation.
 }
+\examples{
+true_vals <- c("Basidiomycota", "Ascomycota", "Mucoromycota")
+tc_metrics_mock_vec(
+  data_fungi_mini,
+  taxonomic_rank = "Phylum",
+  true_values = true_vals,
+  fake_taxa = FALSE,
+  verbose = FALSE
+)
+}
 \seealso{
 \code{\link[=tc_metrics_mock]{tc_metrics_mock()}}, \code{\link[=add_external_seq_pq]{add_external_seq_pq()}}, \code{\link[=add_shuffle_seq_pq]{add_shuffle_seq_pq()}})
 }

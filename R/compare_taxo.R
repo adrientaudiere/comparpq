@@ -35,6 +35,16 @@
 #' @export
 #' @seealso [tc_metrics_mock_vec()]
 #' @author Adrien Taudière
+#' @examples
+#' ranks_df <- data.frame(
+#'   silva = c("Phylum", "Class"),
+#'   unite = c("Phylum", "Class")
+#' )
+#' true_values_df <- data.frame(
+#'   Phylum = c("Basidiomycota", "Ascomycota"),
+#'   Class  = c("Agaricomycetes", "Sordariomycetes")
+#' )
+#' tc_metrics_mock(data_fungi_mini, ranks_df, true_values_df)
 tc_metrics_mock <- function(
   physeq,
   ranks_df,
@@ -139,6 +149,15 @@ tc_metrics_mock <- function(
 #' @seealso [tc_metrics_mock()], [add_external_seq_pq()], [add_shuffle_seq_pq()])
 #'
 #' @author Adrien Taudière
+#' @examples
+#' true_vals <- c("Basidiomycota", "Ascomycota", "Mucoromycota")
+#' tc_metrics_mock_vec(
+#'   data_fungi_mini,
+#'   taxonomic_rank = "Phylum",
+#'   true_values = true_vals,
+#'   fake_taxa = FALSE,
+#'   verbose = FALSE
+#' )
 tc_metrics_mock_vec <- function(
   physeq,
   taxonomic_rank,

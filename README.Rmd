@@ -24,7 +24,13 @@ knitr::opts_chunk$set(
 
 ## Installation
 
-You can install the development version of comparpq from [GitHub](https://github.com/) with:
+You can install the released version of comparpq from CRAN with:
+
+``` r
+install.packages("comparpq")
+```
+
+You can install the development version of comparpq from [GitHub](https://github.com/adrientaudiere/comparpq) with:
 
 ``` r
 # install.packages("devtools")

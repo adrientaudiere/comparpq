@@ -8,7 +8,9 @@ list_phyloseq(
   physeq_list,
   names = NULL,
   same_primer_seq_tech = TRUE,
-  same_bioinfo_pipeline = TRUE
+  same_bioinfo_pipeline = TRUE,
+  compute_dist = TRUE,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -26,6 +28,18 @@ when comparing different primers (e.g., ITS1 vs ITS2) or technologies
 bioinformatics pipeline was used across all phyloseq objects. Set to FALSE
 when comparing different clustering methods, taxonomic databases, or
 analysis parameters.}
+
+\item{compute_dist}{(logical, default TRUE) Whether to compute pairwise
+k-mer distances between refseq slots. Set to FALSE to skip this
+potentially slow computation, especially when phyloseq objects have many
+taxa or very different sequence sets.}
+
+\item{verbose}{(logical, default TRUE) Whether to print progress messages
+via \code{\link[cli:cli_alert]{cli::cli_alert_info()}}.}
+}
+\value{
+A \code{list_phyloseq} S7 object with slots \code{phyloseq_list},
+\code{summary_table}, and \code{comparison}.
 }
 \description{
 \if{html}{\out{

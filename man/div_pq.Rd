@@ -11,7 +11,10 @@ div_pq(
   scales = NULL,
   hill = TRUE,
   aggregate = FALSE,
-  funs = list(mean = mean, sd = sd)
+  funs = list(mean = mean, sd = sd),
+  significance = FALSE,
+  test = c("kruskal", "wilcox"),
+  p_alpha = 0.05
 )
 }
 \arguments{
@@ -38,13 +41,37 @@ not \code{NULL}, summarise per-group results using \code{funs}.}
 
 \item{funs}{(named list, default \code{list(mean = mean, sd = sd)}) Summary
 functions applied when \code{aggregate = TRUE}. Passed to \code{\link[dplyr:across]{dplyr::across()}}.}
+
+\item{significance}{(logical, default FALSE) If \code{TRUE}, \code{aggregate} is
+\code{TRUE}, and \code{modality} has at least 2 levels, run a significance test
+for each index. P-values are appended as extra columns named
+\verb{\{index\}_(kruskal.p)} (or \verb{\{index\}_(wilcox.p)} when
+\code{test = "wilcox"}). When \code{modality} has more than 2 levels, Tukey
+HSD pairwise comparisons are also run (via \code{\link[stats:TukeyHSD]{stats::TukeyHSD()}} on
+\code{\link[stats:aov]{stats::aov()}}) and compact letter display columns
+\verb{\{index\}_(tukey.letters)} are appended using the
+\code{multcompView} package (must be installed).}
+
+\item{test}{(character, default \code{"kruskal"}) Overall test used when
+\code{significance = TRUE}. One of:
+\itemize{
+\item \code{"kruskal"}: \code{\link[stats:kruskal.test]{stats::kruskal.test()}} (works for 2 or more groups).
+\item \code{"wilcox"}: \code{\link[stats:wilcox.test]{stats::wilcox.test()}} (requires exactly 2 levels).
+}}
+
+\item{p_alpha}{(numeric, default 0.05) Significance threshold used for
+the compact letter display when \code{significance = TRUE} and
+\code{modality} has more than 2 levels.}
 }
 \value{
 A data frame with one row per sample. Columns correspond to the
 requested \code{indices} and/or Hill / Rényi scales. When \code{modality} is
 supplied, an additional column named after \code{modality} identifies the
 group (possibly \code{NA}). When \code{aggregate = TRUE} rows are collapsed to
-one per group with summary statistics.
+one per group with summary statistics. When \code{significance = TRUE},
+additional columns \verb{\{index\}_(test.p)} contain the overall p-value and,
+for more than 2 groups, \verb{\{index\}_(tukey.letters)} contains the compact
+letter display from Tukey HSD pairwise comparisons.
 }
 \description{
 Computes alpha-diversity indices (via \code{\link[vegan:diversity]{vegan::diversity()}}) and/or

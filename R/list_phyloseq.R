@@ -49,6 +49,8 @@
 #'     comparison may not be meaningful.}
 #' }
 #'
+#' @return A `list_phyloseq` S7 object with slots `phyloseq_list`,
+#'   `summary_table`, and `comparison`.
 #' @name list_phyloseq
 #' @importFrom S7 new_class new_property class_list class_any
 #' @importFrom tibble tibble
@@ -810,6 +812,11 @@ S7::method(`[[`, list_phyloseq) <- function(x, i) {
 #'   k-mer distances between refseq slots.
 #' @return An updated list_phyloseq object
 #' @export
+#' @examples
+#' lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+#'   verbose = FALSE
+#' )
+#' lpq2 <- update_list_phyloseq(lpq, compute_dist = FALSE, verbose = FALSE)
 update_list_phyloseq <- function(
   x,
   same_primer_seq_tech = NULL,
@@ -844,6 +851,10 @@ update_list_phyloseq <- function(
 #'   If NULL, a name is generated automatically.
 #' @return A new list_phyloseq object with the added phyloseq
 #' @export
+#' @examples
+#' lpq <- list_phyloseq(list(run1 = data_fungi), verbose = FALSE)
+#' lpq2 <- add_phyloseq(lpq, data_fungi_mini, name = "run2", verbose = FALSE)
+#' length(lpq2)
 add_phyloseq <- function(x, physeq, name = NULL, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
   stopifnot(inherits(physeq, "phyloseq"))
@@ -870,6 +881,12 @@ add_phyloseq <- function(x, physeq, name = NULL, verbose = TRUE) {
 #' @param name (character or integer) Name or index of the phyloseq object to remove.
 #' @return A new list_phyloseq object without the removed phyloseq
 #' @export
+#' @examples
+#' lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+#'   verbose = FALSE
+#' )
+#' lpq2 <- remove_phyloseq(lpq, "run2", verbose = FALSE)
+#' length(lpq2)
 remove_phyloseq <- function(x, name, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 

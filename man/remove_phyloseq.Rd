@@ -4,7 +4,7 @@
 \alias{remove_phyloseq}
 \title{Remove a phyloseq object from a list_phyloseq}
 \usage{
-remove_phyloseq(x, name)
+remove_phyloseq(x, name, verbose = TRUE)
 }
 \arguments{
 \item{x}{(required) A list_phyloseq object.}
@@ -16,4 +16,11 @@ A new list_phyloseq object without the removed phyloseq
 }
 \description{
 Remove a phyloseq object from a list_phyloseq
+}
+\examples{
+lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+  verbose = FALSE
+)
+lpq2 <- remove_phyloseq(lpq, "run2", verbose = FALSE)
+length(lpq2)
 }

@@ -4,7 +4,7 @@
 \alias{add_phyloseq}
 \title{Add a phyloseq object to a list_phyloseq}
 \usage{
-add_phyloseq(x, physeq, name = NULL)
+add_phyloseq(x, physeq, name = NULL, verbose = TRUE)
 }
 \arguments{
 \item{x}{(required) A list_phyloseq object.}
@@ -19,4 +19,9 @@ A new list_phyloseq object with the added phyloseq
 }
 \description{
 Add a phyloseq object to a list_phyloseq
+}
+\examples{
+lpq <- list_phyloseq(list(run1 = data_fungi), verbose = FALSE)
+lpq2 <- add_phyloseq(lpq, data_fungi_mini, name = "run2", verbose = FALSE)
+length(lpq2)
 }
