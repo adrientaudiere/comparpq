@@ -90,24 +90,29 @@ diversity_samples_pq <- function(
 #' @param ci Confidence level (0-100)
 #' @return A list with estimate, ci_lower, ci_upper, boot_distribution
 #' @noRd
-bootstrap_cor <- function(x, y, method = "pearson", resamples = 5000, ci = 95) {
+bootstrap_cor <- function(x, y, method = "pearson", resamples = 5000, ci = 95, use = "complete.obs") {
   n <- length(x)
-  estimate <- stats::cor(x, y, method = method)
+  estimate <- stats::cor(x, y, method = method, use = use)
 
   alpha <- (100 - ci) / 200
   boot_vals <- vapply(
     seq_len(resamples),
     \(i) {
       idx <- sample.int(n, replace = TRUE)
-      stats::cor(x[idx], y[idx], method = method)
+      stats::cor(x[idx], y[idx], method = method, use = use)
     },
     numeric(1)
   )
 
   list(
     estimate = estimate,
-    ci_lower = stats::quantile(boot_vals, alpha, names = FALSE),
-    ci_upper = stats::quantile(boot_vals, 1 - alpha, names = FALSE),
+    ci_lower = stats::quantile(boot_vals, alpha, names = FALSE, na.rm = TRUE),
+    ci_upper = stats::quantile(
+      boot_vals,
+      1 - alpha,
+      names = FALSE,
+      na.rm = TRUE
+    ),
     boot_distribution = boot_vals
   )
 }
@@ -140,8 +145,18 @@ bootstrap_lm <- function(x, y, resamples = 5000, ci = 95) {
   list(
     intercept = unname(intercept),
     slope = unname(slope),
-    slope_ci_lower = stats::quantile(boot_slopes, alpha, names = FALSE),
-    slope_ci_upper = stats::quantile(boot_slopes, 1 - alpha, names = FALSE),
+    slope_ci_lower = stats::quantile(
+      boot_slopes,
+      alpha,
+      names = FALSE,
+      na.rm = TRUE
+    ),
+    slope_ci_upper = stats::quantile(
+      boot_slopes,
+      1 - alpha,
+      names = FALSE,
+      na.rm = TRUE
+    ),
     boot_slopes = boot_slopes
   )
 }
@@ -283,6 +298,24 @@ estim_diff_pq <- function(
 
   if (length(levs) < 2) {
     stop("Factor '", fact, "' must have at least 2 levels, got ", length(levs))
+  }
+
+  # Validate minimum group size (dabestr requires >= 3 samples per group)
+  group_sizes <- table(div_df[[fact]])
+  if (any(group_sizes < 3)) {
+    small_groups <- names(group_sizes)[group_sizes < 3]
+    stop(
+      "Each group needs at least 3 samples for estimation statistics. ",
+      "Group(s) with insufficient samples: ",
+      paste0(
+        "'",
+        small_groups,
+        "' (n=",
+        group_sizes[small_groups],
+        ")",
+        collapse = ", "
+      )
+    )
   }
 
   # Build idx if NULL

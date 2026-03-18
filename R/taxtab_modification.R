@@ -327,8 +327,8 @@ taxtab_replace_pattern_by_NA <- function(
         pb_val <- pb_val + 1
         setTxtProgressBar(pb, pb_val)
       }
-      taxtab[, taxonomic_ranks] <-
-        gsub(pat, NA, taxtab[, taxonomic_ranks], ...)
+      taxtab[, taxrank] <-
+        gsub(pat, NA, taxtab[, taxrank], ...)
     }
   }
 

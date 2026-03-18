@@ -1,5 +1,13 @@
 # comparpq 0.1.3 (Development version)
 
+* `add_external_seq_pq()` now checks for a `refseq` slot upfront and emits a clear error when absent, instead of crashing with a cryptic message. It also strips the `phy_tree` slot before calling `merge_phyloseq()` to avoid tip-count mismatches on objects that carry a tree.
+* `add_shuffle_seq_pq()` now checks for a `refseq` slot upfront and emits a clear error when absent. It also strips the `phy_tree` slot before calling `merge_phyloseq()` to avoid tip-count mismatches.
+* `compare_refseq()` correctly handles `list_phyloseq` S7 objects by accessing `@phyloseq_list` directly instead of calling `length()` on the S7 object itself.
+* `estim_cor_pq()` / `estim_cor_lpq()` bootstrap now passes `use = "complete.obs"` to `stats::cor()` and `na.rm = TRUE` to `stats::quantile()`, preventing NaN-induced crashes on degenerate resamples.
+* `estim_diff_pq()` now validates that each group has at least 3 samples before delegating to `dabestr`, providing an informative error message instead of a cryptic dabestr crash.
+* `rainplot_taxo_na()` now checks that requested rank columns exist in the `psmelt()` output before calling `across()`, providing a clear error when all-NA rank columns are dropped.
+* `taxtab_replace_pattern_by_NA()` fixes an inner-loop variable bug where patterns were applied to all `taxonomic_ranks` columns simultaneously instead of one at a time.
+* `tc_points_matrix()` now checks that requested rank columns exist in the `psmelt()` output before grouping, providing a clear error when all-NA rank columns are dropped.
 * Add param `compute_dist` to `list_phyloseq()`
 
 

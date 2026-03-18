@@ -192,6 +192,14 @@ tc_points_matrix <- function(
   ranks1 <- colnames(physeq@tax_table[, c(rank_1)])
   ranks2 <- colnames(physeq@tax_table[, c(rank_2)])
 
+  missing_ranks <- setdiff(c(ranks1, ranks2), colnames(psm))
+  if (length(missing_ranks) > 0) {
+    stop(
+      "Rank column(s) absent from psmelt output; check for all-NA ranks: ",
+      paste(missing_ranks, collapse = ", ")
+    )
+  }
+
   psm2 <- psm |>
     group_by(across(all_of(c(
       "Sample",
@@ -351,6 +359,14 @@ rainplot_taxo_na <- function(
   rank_names <- colnames(physeq@tax_table[, ranks])
 
   psm <- psmelt(physeq)
+
+  missing_ranks <- setdiff(rank_names, colnames(psm))
+  if (length(missing_ranks) > 0) {
+    stop(
+      "Rank column(s) absent from psmelt output; check for all-NA ranks: ",
+      paste(missing_ranks, collapse = ", ")
+    )
+  }
 
   sum_not_na <- function(x) {
     sum(!is.na(x))

@@ -99,27 +99,28 @@ compare_refseq <- function(
   # --- list_phyloseq dispatch ---
   if (inherits(physeq1, "comparpq::list_phyloseq")) {
     lpq <- physeq1
-    if (length(lpq) < 2) {
+    pq_list <- lpq@phyloseq_list
+    if (length(pq_list) < 2) {
       stop("list_phyloseq must contain at least 2 phyloseq objects.")
     }
-    if (length(lpq) > 2) {
+    if (length(pq_list) > 2) {
       message(
         "list_phyloseq contains ",
-        length(lpq),
+        length(pq_list),
         " objects. Using the first two: '",
-        names(lpq)[1],
+        names(pq_list)[1],
         "' and '",
-        names(lpq)[2],
+        names(pq_list)[2],
         "'."
       )
     }
-    physeq1 <- lpq[[1]]
-    physeq2 <- lpq[[2]]
+    physeq1 <- pq_list[[1]]
+    physeq2 <- pq_list[[2]]
     if (is.null(name1)) {
-      name1 <- names(lpq)[1]
+      name1 <- names(pq_list)[1]
     }
     if (is.null(name2)) {
-      name2 <- names(lpq)[2]
+      name2 <- names(pq_list)[2]
     }
   }
 
