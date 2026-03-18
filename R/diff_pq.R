@@ -5,9 +5,10 @@
 #' alt="lifecycle-experimental"></a>
 #'
 #' @description
-#' Computes alpha-diversity indices (via [vegan::diversity()]) and/or
-#' Hill numbers / Rényi entropy (via [vegan::renyi()]) for each sample in
-#' a phyloseq object. When `modality` is supplied the computation is done
+#' Computes alpha-diversity indices (via [divent::ent_shannon()],
+#' [divent::ent_simpson()] or [vegan::diversity()] for other indices) and/or
+#' Hill numbers (via [MiscMetabar::divent_hill_matrix_pq()]) for each sample
+#' in a phyloseq object. When `modality` is supplied the computation is done
 #' separately for each level of that grouping variable and the level label
 #' is appended as an extra column. `NA` values in the modality column are
 #' kept as a distinct group so that samples with missing metadata are never
@@ -19,14 +20,13 @@
 #'   `sample_data(physeq)` used to split samples into groups. `NA` values
 #'   are treated as a separate group. When `NULL`, indices are computed for
 #'   the whole dataset without grouping.
-#' @param indices (character, default `"shannon"`) One or more index names
-#'   accepted by [vegan::diversity()] (e.g. `"shannon"`, `"simpson"`,
-#'   `"invsimpson"`). Set to `NULL` to skip classical diversity indices.
-#' @param scales (numeric or NULL, default NULL) Scale values passed to
-#'   [vegan::renyi()]. When `NULL`, Hill / Rényi computation is skipped.
-#' @param hill (logical, default TRUE) If `TRUE`, return Hill numbers;
-#'   if `FALSE`, return Rényi entropy. Passed to [vegan::renyi()]. Only
-#'   relevant when `scales` is not `NULL`.
+#' @param indices (character, default `"shannon"`) One or more index names.
+#'   `"shannon"` and `"simpson"` are computed via divent; other names are
+#'   forwarded to [vegan::diversity()]. Set to `NULL` to skip.
+#' @param q (numeric or NULL, default NULL) Hill diversity orders passed to
+#'   [MiscMetabar::divent_hill_matrix_pq()]. When `NULL`, Hill computation is
+#'   skipped. Formerly `scales`.
+#' @param scales `r lifecycle::badge("deprecated")` Use `q` instead.
 #' @param aggregate (logical, default FALSE) If `TRUE` and `modality` is
 #'   not `NULL`, summarise per-group results using `funs`.
 #' @param funs (named list, default `list(mean = mean, sd = sd)`) Summary
@@ -65,8 +65,7 @@
 #'   data_fungi_mini,
 #'   modality = "Height",
 #'   indices = c("shannon", "simpson"),
-#'   scales = c(0, 1, 2),
-#'   hill = TRUE
+#'   q = c(0, 1, 2)
 #' )
 #'
 #' div_pq(
@@ -75,43 +74,61 @@
 #'   indices = "shannon",
 #'   aggregate = TRUE
 #' )
-#' @seealso [vegan::diversity()], [vegan::renyi()]
+#' @seealso [MiscMetabar::divent_hill_matrix_pq()], [divent::div_hill()]
 #' @export
 div_pq <- function(
   physeq,
   modality = NULL,
   indices = "shannon",
-  scales = NULL,
-  hill = TRUE,
+  q = NULL,
+  scales = lifecycle::deprecated(),
   aggregate = FALSE,
   funs = list(mean = mean, sd = sd),
   significance = FALSE,
   test = c("kruskal", "wilcox"),
   p_alpha = 0.05
 ) {
+  if (lifecycle::is_present(scales)) {
+    lifecycle::deprecate_warn("0.1.4", "div_pq(scales=)", "div_pq(q=)")
+    q <- scales
+  }
+  
   .compute_div <- function(sub) {
     comm <- as.data.frame(otu_table(sub))
     if (taxa_are_rows(sub)) {
       comm <- t(comm)
     }
-    df <- data.frame(row.names = seq_len(nrow(comm)))
+    res <- data.frame(row.names = seq_len(nrow(comm)))
     if (!is.null(indices)) {
+      divent_idx <- c("shannon", "simpson")
       df_div <- data.frame(lapply(indices, \(idx) {
-        vegan::diversity(comm, index = idx)
+        if (idx %in% divent_idx) {
+          vapply(
+            seq_len(nrow(comm)),
+            \(i) {
+              x <- as.numeric(comm[i, ])
+              x <- x[x > 0]
+              switch(
+                idx,
+                "shannon" = divent::ent_shannon(x, as_numeric = TRUE),
+                "simpson" = divent::ent_simpson(x, as_numeric = TRUE)
+              )
+            },
+            numeric(1)
+          )
+        } else {
+          as.numeric(vegan::diversity(comm, index = idx))
+        }
       }))
       names(df_div) <- indices
-      df <- cbind(df, df_div)
+      res <- cbind(res, df_div)
     }
-    if (!is.null(scales)) {
-      df_renyi <- as.data.frame(rbind(vegan::renyi(
-        comm,
-        scales = scales,
-        hill = hill
-      )))
-      names(df_renyi) <- paste0(if (hill) "hill_" else "renyi_", scales)
-      df <- cbind(df, df_renyi)
+    if (!is.null(q)) {
+      df_hill <- MiscMetabar::divent_hill_matrix_pq(comm, q = q)
+      names(df_hill) <- paste0("hill_", q)
+      res <- cbind(res, df_hill)
     }
-    df
+    res
   }
 
   if (is.null(modality)) {

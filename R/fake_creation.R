@@ -58,16 +58,18 @@ add_shuffle_seq_pq <- function(
   taxa_names(subset_physeq) <- paste0(prefix, 1:n_fake)
 
   # Strip phy_tree before merge to avoid tip count mismatch, then restore
-  if(!is.null(phyloseq::phy_tree(physeq, errorIfNULL = FALSE))){
-   physeq <- phyloseq::phyloseq(
+  if (!is.null(phyloseq::phy_tree(physeq, errorIfNULL = FALSE))) {
+    physeq <- phyloseq::phyloseq(
       phyloseq::otu_table(physeq),
       phyloseq::tax_table(physeq),
       phyloseq::sample_data(physeq),
       phyloseq::refseq(physeq)
     )
 
-    cli::cli_alert_info("phy_tree slot was stripped.
-      The resulting phyloseq object will not have a phy_tree.")
+    cli::cli_alert_info(
+      "phy_tree slot was stripped.
+      The resulting phyloseq object will not have a phy_tree."
+    )
   }
 
   new_physeq <- merge_phyloseq(physeq, subset_physeq)
@@ -145,16 +147,18 @@ add_external_seq_pq <- function(physeq, ext_seqs, prefix = "external_") {
   )
 
   # Strip phy_tree before merge to avoid tip count mismatch, then restore
-  if(!is.null(phyloseq::phy_tree(physeq, errorIfNULL = FALSE))){
-   physeq <- phyloseq::phyloseq(
+  if (!is.null(phyloseq::phy_tree(physeq, errorIfNULL = FALSE))) {
+    physeq <- phyloseq::phyloseq(
       phyloseq::otu_table(physeq),
       phyloseq::tax_table(physeq),
       phyloseq::sample_data(physeq),
       phyloseq::refseq(physeq)
     )
 
-    cli::cli_alert_info("phy_tree slot was stripped.
-     The resulting phyloseq object will not have a phy_tree.")
+    cli::cli_alert_info(
+      "phy_tree slot was stripped.
+     The resulting phyloseq object will not have a phy_tree."
+    )
   }
 
   new_physeq <- merge_phyloseq(physeq, fake_pq)

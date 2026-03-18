@@ -5,16 +5,14 @@
 #' Compute Hill numbers per sample
 #'
 #' @param physeq A phyloseq object
-#' @param hill_scales Numeric vector of Hill number orders (q values)
+#' @param q Numeric vector of Hill number orders (q values)
 #' @return A data.frame with Hill columns and all sample_data columns
 #' @noRd
-hill_samples_pq <- function(physeq, hill_scales = c(0, 1, 2)) {
+hill_samples_pq <- function(physeq, q = c(0, 1, 2)) {
   otu <- as.data.frame(phyloseq::otu_table(taxa_as_columns(physeq)))
 
-  hill_mat <- vegan::renyi(otu, scales = hill_scales, hill = TRUE)
-  hill_df <- as.data.frame(hill_mat)
-  colnames(hill_df) <- paste0("Hill_", hill_scales)
-
+  hill_df <- MiscMetabar::divent_hill_matrix_pq(otu, q = q)
+  colnames(hill_df) <- paste0("Hill_", q)
   sam <- as.data.frame(phyloseq::sample_data(physeq))
   cbind(hill_df, sam)
 }
@@ -25,18 +23,18 @@ hill_samples_pq <- function(physeq, hill_scales = c(0, 1, 2)) {
 #' Delegates to hill_samples_pq or uses a custom function.
 #'
 #' @param physeq A phyloseq object
-#' @param hill_scales Numeric vector of Hill number orders
+#' @param q Numeric vector of Hill number orders
 #' @param custom_fn A function taking a phyloseq and returning a named numeric
 #'   vector (names = sample names) or a data.frame with one row per sample
 #' @return A data.frame with metric columns and sample_data columns
 #' @noRd
 diversity_samples_pq <- function(
   physeq,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   custom_fn = NULL
 ) {
   if (is.null(custom_fn)) {
-    return(hill_samples_pq(physeq, hill_scales))
+    return(hill_samples_pq(physeq, q = q))
   }
 
   result <- custom_fn(physeq)
@@ -90,7 +88,14 @@ diversity_samples_pq <- function(
 #' @param ci Confidence level (0-100)
 #' @return A list with estimate, ci_lower, ci_upper, boot_distribution
 #' @noRd
-bootstrap_cor <- function(x, y, method = "pearson", resamples = 5000, ci = 95, use = "complete.obs") {
+bootstrap_cor <- function(
+  x,
+  y,
+  method = "pearson",
+  resamples = 5000,
+  ci = 95,
+  use = "complete.obs"
+) {
   n <- length(x)
   estimate <- stats::cor(x, y, method = method, use = use)
 
@@ -185,13 +190,13 @@ bootstrap_lm <- function(x, y, resamples = 5000, ci = 95) {
 #' @param physeq (phyloseq, required) A phyloseq object.
 #' @param fact (character, required) The name of a categorical column in
 #'   `sample_data` to use as the grouping factor.
-#' @param hill_scales (numeric vector, default `c(0, 1, 2)`) The q values
+#' @param q (numeric vector, default `c(0, 1, 2)`) The q values
 #'   for Hill number computation: 0 = richness, 1 = Shannon exponential,
 #'   2 = inverse Simpson.
 #' @param custom_fn (function, default NULL) An optional custom diversity
 #'   function. Must take a phyloseq object and return a named numeric
 #'   vector (names = sample names) or a data.frame with one row per
-#'   sample. If provided, `hill_scales` is ignored.
+#'   sample. If provided, `q` is ignored.
 #' @param effect_type (character, default `"mean_diff"`) The type of
 #'   effect size to compute. One of: `"mean_diff"`, `"median_diff"`,
 #'   `"cohens_d"`, `"hedges_g"`, `"cliffs_delta"`.
@@ -247,7 +252,7 @@ bootstrap_lm <- function(x, y, resamples = 5000, ci = 95) {
 estim_diff_pq <- function(
   physeq,
   fact,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   custom_fn = NULL,
   effect_type = "cohens_d",
   idx = NULL,
@@ -280,7 +285,7 @@ estim_diff_pq <- function(
   }
 
   # Compute diversity
-  div_df <- diversity_samples_pq(physeq, hill_scales, custom_fn)
+  div_df <- diversity_samples_pq(physeq, q, custom_fn)
 
   # Handle NAs
   if (na_remove) {
@@ -329,7 +334,7 @@ estim_diff_pq <- function(
 
   # Identify metric columns
   metric_cols <- if (is.null(custom_fn)) {
-    paste0("Hill_", hill_scales)
+    paste0("Hill_", q)
   } else {
     setdiff(colnames(div_df), colnames(sam))
   }
@@ -432,7 +437,7 @@ estim_diff_pq <- function(
 #' @param physeq (phyloseq, required) A phyloseq object.
 #' @param variable (character, required) The name of a numeric column in
 #'   `sample_data`.
-#' @param hill_scales (numeric vector, default `c(0, 1, 2)`) The q
+#' @param q (numeric vector, default `c(0, 1, 2)`) The q
 #'   values for Hill number computation.
 #' @param custom_fn (function, default NULL) An optional custom diversity
 #'   function (see [estim_diff_pq()] for details).
@@ -476,7 +481,7 @@ estim_diff_pq <- function(
 estim_cor_pq <- function(
   physeq,
   variable,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   custom_fn = NULL,
   method = "pearson",
   resamples = 5000,
@@ -499,7 +504,7 @@ estim_cor_pq <- function(
   }
 
   # Compute diversity
-  div_df <- diversity_samples_pq(physeq, hill_scales, custom_fn)
+  div_df <- diversity_samples_pq(physeq, q, custom_fn)
 
   # Handle NAs
   if (na_remove) {
@@ -513,7 +518,7 @@ estim_cor_pq <- function(
 
   # Identify metric columns
   metric_cols <- if (is.null(custom_fn)) {
-    paste0("Hill_", hill_scales)
+    paste0("Hill_", q)
   } else {
     setdiff(
       colnames(div_df),

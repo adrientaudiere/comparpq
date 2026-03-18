@@ -24,7 +24,7 @@ create_test_lpq <- function() {
 
 test_that("hill_samples_pq returns correct structure", {
   pq <- create_test_pq()
-  res <- hill_samples_pq(pq, hill_scales = c(0, 1, 2))
+  res <- hill_samples_pq(pq, q = c(0, 1, 2))
 
   expect_true(is.data.frame(res))
   expect_equal(nrow(res), nsamples(pq))
@@ -48,9 +48,9 @@ test_that("hill_samples_pq returns positive values", {
   expect_true(all(res$Hill_2 > 0))
 })
 
-test_that("hill_samples_pq respects custom hill_scales", {
+test_that("hill_samples_pq respects custom q", {
   pq <- create_test_pq()
-  res <- hill_samples_pq(pq, hill_scales = c(0))
+  res <- hill_samples_pq(pq, q = c(0))
 
   expect_true("Hill_0" %in% colnames(res))
   expect_false("Hill_1" %in% colnames(res))
@@ -63,7 +63,7 @@ test_that("hill_samples_pq respects custom hill_scales", {
 
 test_that("diversity_samples_pq delegates to hill when custom_fn is NULL", {
   pq <- create_test_pq()
-  res <- diversity_samples_pq(pq, hill_scales = c(0, 1))
+  res <- diversity_samples_pq(pq, q = c(0, 1))
 
   expect_true("Hill_0" %in% colnames(res))
   expect_true("Hill_1" %in% colnames(res))
@@ -185,7 +185,7 @@ test_that("estim_diff_pq summary has rows for each metric", {
   res <- estim_diff_pq(
     pq,
     fact = "Height",
-    hill_scales = c(0, 1),
+    q = c(0, 1),
     resamples = 100
   )
 
@@ -202,7 +202,7 @@ test_that("estim_diff_pq supports different effect types", {
     res <- estim_diff_pq(
       pq,
       fact = "Height",
-      hill_scales = c(0),
+      q = c(0),
       effect_type = etype,
       resamples = 100
     )
@@ -217,7 +217,7 @@ test_that("estim_diff_pq handles NA removal", {
   res <- estim_diff_pq(
     pq,
     fact = "Height",
-    hill_scales = c(0),
+    q = c(0),
     na_remove = TRUE,
     resamples = 100
   )
@@ -253,7 +253,7 @@ test_that("print works for estim_diff_pq_result", {
   skip_if_not_installed("dabestr")
   pq <- create_test_pq()
 
-  res <- estim_diff_pq(pq, fact = "Height", hill_scales = c(0), resamples = 100)
+  res <- estim_diff_pq(pq, fact = "Height", q = c(0), resamples = 100)
   expect_output(print(res), "categorical comparison")
   expect_output(print(res), "legacy purposes")
 })
@@ -291,7 +291,7 @@ test_that("estim_cor_pq correlations tibble has expected columns", {
   res <- estim_cor_pq(
     pq,
     variable = "lib_size",
-    hill_scales = c(0),
+    q = c(0),
     resamples = 100
   )
 
@@ -311,7 +311,7 @@ test_that("estim_cor_pq regressions tibble has expected columns", {
   res <- estim_cor_pq(
     pq,
     variable = "lib_size",
-    hill_scales = c(0),
+    q = c(0),
     resamples = 100
   )
 
@@ -331,7 +331,7 @@ test_that("estim_cor_pq supports spearman method", {
   res <- estim_cor_pq(
     pq,
     variable = "lib_size",
-    hill_scales = c(0),
+    q = c(0),
     method = "spearman",
     resamples = 100
   )
@@ -359,7 +359,7 @@ test_that("print works for estim_cor_pq_result", {
   res <- estim_cor_pq(
     pq,
     variable = "lib_size",
-    hill_scales = c(0),
+    q = c(0),
     resamples = 100
   )
   expect_output(print(res), "numeric correlation")
@@ -377,7 +377,7 @@ test_that("estim_diff_lpq returns combined summary with name column", {
   res <- estim_diff_lpq(
     lpq,
     fact = "Height",
-    hill_scales = c(0),
+    q = c(0),
     resamples = 100,
     verbose = FALSE
   )
@@ -426,7 +426,7 @@ test_that("print works for estim_diff_lpq_result", {
   res <- estim_diff_lpq(
     lpq,
     fact = "Height",
-    hill_scales = c(0),
+    q = c(0),
     resamples = 100,
     verbose = FALSE
   )
@@ -452,7 +452,7 @@ test_that("estim_cor_lpq returns combined results with name column", {
   res <- estim_cor_lpq(
     lpq,
     variable = "lib_size",
-    hill_scales = c(0),
+    q = c(0),
     resamples = 100,
     verbose = FALSE
   )
@@ -493,7 +493,7 @@ test_that("print works for estim_cor_lpq_result", {
   res <- estim_cor_lpq(
     lpq,
     variable = "lib_size",
-    hill_scales = c(0),
+    q = c(0),
     resamples = 100,
     verbose = FALSE
   )

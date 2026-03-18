@@ -1,4 +1,7 @@
-# comparpq 0.1.3 (Development version)
+# comparpq 0.2.1 (Development version)
+
+* `div_pq()` and `hill_samples_pq()` now use `divent` (via `MiscMetabar::divent_hill_matrix_pq()`) instead of `vegan::renyi()` for Hill number computation, and `divent::ent_shannon()` / `divent::ent_simpson()` instead of `vegan::diversity()` for Shannon and Simpson indices. The default estimator is now `"UnveilJ"` (bias-corrected); pass `estimator = "naive"` to restore old numeric behavior.
+* `div_pq()`: the `scales` parameter is deprecated in favour of `q`. The `hill` parameter is deprecated; only Hill numbers are now supported.
 
 * `add_external_seq_pq()` now checks for a `refseq` slot upfront and emits a clear error when absent, instead of crashing with a cryptic message. It also strips the `phy_tree` slot before calling `merge_phyloseq()` to avoid tip-count mismatches on objects that carry a tree.
 * `add_shuffle_seq_pq()` now checks for a `refseq` slot upfront and emits a clear error when absent. It also strips the `phy_tree` slot before calling `merge_phyloseq()` to avoid tip-count mismatches.

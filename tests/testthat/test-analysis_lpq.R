@@ -253,13 +253,13 @@ test_that("glmulti_lpq returns results for all phyloseq objects", {
   expect_true(all(c("original", "copy") %in% result$name))
 })
 
-test_that("glmulti_lpq respects hill_scales parameter", {
+test_that("glmulti_lpq respects q parameter", {
   lpq <- create_test_lpq_for_adonis()
 
   result <- glmulti_lpq(
     lpq,
     formula = "Hill_1 ~ Height",
-    hill_scales = c(1),
+    q = c(1),
     verbose = FALSE
   )
 
