@@ -20,19 +20,27 @@ for microbiome data analysis.
 
 ## Installation
 
-You can install the released version of comparpq from CRAN with:
+**comparpq** is not available on CRAN yet. You can install the
+stable development version from GitHub with:
 
 ``` r
-install.packages("comparpq")
-```
-
-You can install the development version of comparpq from
-[GitHub](https://github.com/adrientaudiere/comparpq) with:
-
-``` r
-# install.packages("devtools")
+# Install from GitHub (development version)
+if (!require("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
 devtools::install_github("adrientaudiere/comparpq")
 ```
+
+You can install the unstable development version from
+[GitHub](https://github.com/) with:
+
+``` r
+if (!require("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+devtools::install_github("adrientaudiere/comparpq", ref = "dev")
+```
+
 
 ## Main Features
 
