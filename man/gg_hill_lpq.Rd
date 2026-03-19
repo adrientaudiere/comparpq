@@ -6,7 +6,7 @@
 \usage{
 gg_hill_lpq(
   x,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   pairs = NULL,
   add_1to1 = TRUE,
   add_smooth = TRUE,
@@ -21,7 +21,7 @@ gg_hill_lpq(
 \arguments{
 \item{x}{(required) A \link{list_phyloseq} object.}
 
-\item{hill_scales}{(numeric vector, default \code{c(0, 1, 2)}) Hill number
+\item{q}{(numeric vector, default \code{c(0, 1, 2)}) Hill number
 orders to compute: 0 = richness, 1 = Shannon exponential, 2 = inverse
 Simpson.}
 
@@ -94,7 +94,7 @@ lpq <- list_phyloseq(
 )
 
 gg_hill_lpq(lpq)
-gg_hill_lpq(lpq, hill_scales = c(0, 1))
+gg_hill_lpq(lpq, q = c(0, 1))
 gg_hill_lpq(lpq, add_smooth = FALSE, add_1to1 = TRUE)
 
 }

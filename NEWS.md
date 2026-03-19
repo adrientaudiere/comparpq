@@ -9,6 +9,7 @@
 * `estim_cor_pq()` / `estim_cor_lpq()` bootstrap now passes `use = "complete.obs"` to `stats::cor()` and `na.rm = TRUE` to `stats::quantile()`, preventing NaN-induced crashes on degenerate resamples.
 * `estim_diff_pq()` now validates that each group has at least 3 samples before delegating to `dabestr`, providing an informative error message instead of a cryptic dabestr crash.
 * `rainplot_taxo_na()` now checks that requested rank columns exist in the `psmelt()` output before calling `across()`, providing a clear error when all-NA rank columns are dropped.
+* `tc_heatmap()` new function to visualize the correspondence between two taxonomic ranks as a heatmap, where each cell shows the number of taxa assigned to a given pair of rank values.
 * `taxtab_replace_pattern_by_NA()` fixes an inner-loop variable bug where patterns were applied to all `taxonomic_ranks` columns simultaneously instead of one at a time.
 * `tc_points_matrix()` now checks that requested rank columns exist in the `psmelt()` output before grouping, providing a clear error when all-NA rank columns are dropped.
 * Add param `compute_dist` to `list_phyloseq()`

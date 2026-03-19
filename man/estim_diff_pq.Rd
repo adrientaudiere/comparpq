@@ -7,7 +7,7 @@
 estim_diff_pq(
   physeq,
   fact,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   custom_fn = NULL,
   effect_type = "cohens_d",
   idx = NULL,
@@ -23,14 +23,14 @@ estim_diff_pq(
 \item{fact}{(character, required) The name of a categorical column in
 \code{sample_data} to use as the grouping factor.}
 
-\item{hill_scales}{(numeric vector, default \code{c(0, 1, 2)}) The q values
+\item{q}{(numeric vector, default \code{c(0, 1, 2)}) The q values
 for Hill number computation: 0 = richness, 1 = Shannon exponential,
 2 = inverse Simpson.}
 
 \item{custom_fn}{(function, default NULL) An optional custom diversity
 function. Must take a phyloseq object and return a named numeric
 vector (names = sample names) or a data.frame with one row per
-sample. If provided, \code{hill_scales} is ignored.}
+sample. If provided, \code{q} is ignored.}
 
 \item{effect_type}{(character, default \code{"mean_diff"}) The type of
 effect size to compute. One of: \code{"mean_diff"}, \code{"median_diff"},

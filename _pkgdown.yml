@@ -95,6 +95,7 @@ reference:
   - tc_df_pq
   - tc_bar
   - tc_circle
+  - tc_heatmap
   - tc_points_matrix
   - rainplot_taxo_na
   - tc_linked_trees

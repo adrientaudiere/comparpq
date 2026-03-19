@@ -8,8 +8,8 @@ div_pq(
   physeq,
   modality = NULL,
   indices = "shannon",
-  scales = NULL,
-  hill = TRUE,
+  q = NULL,
+  scales = lifecycle::deprecated(),
   aggregate = FALSE,
   funs = list(mean = mean, sd = sd),
   significance = FALSE,
@@ -25,16 +25,15 @@ div_pq(
 are treated as a separate group. When \code{NULL}, indices are computed for
 the whole dataset without grouping.}
 
-\item{indices}{(character, default \code{"shannon"}) One or more index names
-accepted by \code{\link[vegan:diversity]{vegan::diversity()}} (e.g. \code{"shannon"}, \code{"simpson"},
-\code{"invsimpson"}). Set to \code{NULL} to skip classical diversity indices.}
+\item{indices}{(character, default \code{"shannon"}) One or more index names.
+\code{"shannon"} and \code{"simpson"} are computed via divent; other names are
+forwarded to \code{\link[vegan:diversity]{vegan::diversity()}}. Set to \code{NULL} to skip.}
 
-\item{scales}{(numeric or NULL, default NULL) Scale values passed to
-\code{\link[vegan:renyi]{vegan::renyi()}}. When \code{NULL}, Hill / Rényi computation is skipped.}
+\item{q}{(numeric or NULL, default NULL) Hill diversity orders passed to
+\code{\link[MiscMetabar:divent_hill_matrix_pq]{MiscMetabar::divent_hill_matrix_pq()}}. When \code{NULL}, Hill computation is
+skipped. Formerly \code{scales}.}
 
-\item{hill}{(logical, default TRUE) If \code{TRUE}, return Hill numbers;
-if \code{FALSE}, return Rényi entropy. Passed to \code{\link[vegan:renyi]{vegan::renyi()}}. Only
-relevant when \code{scales} is not \code{NULL}.}
+\item{scales}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use \code{q} instead.}
 
 \item{aggregate}{(logical, default FALSE) If \code{TRUE} and \code{modality} is
 not \code{NULL}, summarise per-group results using \code{funs}.}
@@ -74,9 +73,10 @@ for more than 2 groups, \verb{\{index\}_(tukey.letters)} contains the compact
 letter display from Tukey HSD pairwise comparisons.
 }
 \description{
-Computes alpha-diversity indices (via \code{\link[vegan:diversity]{vegan::diversity()}}) and/or
-Hill numbers / Rényi entropy (via \code{\link[vegan:renyi]{vegan::renyi()}}) for each sample in
-a phyloseq object. When \code{modality} is supplied the computation is done
+Computes alpha-diversity indices (via \code{\link[divent:ent_shannon]{divent::ent_shannon()}},
+\code{\link[divent:ent_simpson]{divent::ent_simpson()}} or \code{\link[vegan:diversity]{vegan::diversity()}} for other indices) and/or
+Hill numbers (via \code{\link[MiscMetabar:divent_hill_matrix_pq]{MiscMetabar::divent_hill_matrix_pq()}}) for each sample
+in a phyloseq object. When \code{modality} is supplied the computation is done
 separately for each level of that grouping variable and the level label
 is appended as an extra column. \code{NA} values in the modality column are
 kept as a distinct group so that samples with missing metadata are never
@@ -97,8 +97,7 @@ div_pq(
   data_fungi_mini,
   modality = "Height",
   indices = c("shannon", "simpson"),
-  scales = c(0, 1, 2),
-  hill = TRUE
+  q = c(0, 1, 2)
 )
 
 div_pq(
@@ -109,7 +108,7 @@ div_pq(
 )
 }
 \seealso{
-\code{\link[vegan:diversity]{vegan::diversity()}}, \code{\link[vegan:renyi]{vegan::renyi()}}
+\code{\link[MiscMetabar:divent_hill_matrix_pq]{MiscMetabar::divent_hill_matrix_pq()}}, \code{\link[divent:div_hill]{divent::div_hill()}}
 }
 \author{
 Adrien Taudière

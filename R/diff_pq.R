@@ -92,7 +92,7 @@ div_pq <- function(
     lifecycle::deprecate_warn("0.1.4", "div_pq(scales=)", "div_pq(q=)")
     q <- scales
   }
-  
+
   .compute_div <- function(sub) {
     comm <- as.data.frame(otu_table(sub))
     if (taxa_are_rows(sub)) {

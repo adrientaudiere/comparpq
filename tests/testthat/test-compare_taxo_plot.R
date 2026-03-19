@@ -236,3 +236,41 @@ test_that("tc_circle respects custom suffixes", {
     )
   )
 })
+
+# ==============================================================================
+# Tests for tc_heatmap
+# ==============================================================================
+
+test_that("tc_heatmap creates ggplot object", {
+  pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
+
+  result <- tc_heatmap(
+    pq,
+    rank_1 = "Family",
+    rank_2 = "Family__eukaryome_Glomero"
+  )
+
+  expect_s3_class(result, "ggplot")
+})
+
+test_that("tc_heatmap works with integer ranks", {
+  pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
+
+  result <- tc_heatmap(pq, rank_1 = 5, rank_2 = 13)
+
+  expect_s3_class(result, "ggplot")
+})
+
+test_that("tc_heatmap respects custom colors", {
+  pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
+
+  result <- tc_heatmap(
+    pq,
+    rank_1 = "Family",
+    rank_2 = "Family__eukaryome_Glomero",
+    low_color = "lightyellow",
+    high_color = "darkred"
+  )
+
+  expect_s3_class(result, "ggplot")
+})

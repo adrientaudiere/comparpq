@@ -404,6 +404,106 @@ rainplot_taxo_na <- function(
 ################################################################################
 
 ################################################################################
+#' Heatmap of correspondence between two taxonomic ranks
+#'
+#' @description
+#'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' Useful to compare taxonomy from two different source/db/algo side-by-side.
+#' Each cell shows the number of taxa assigned to the combination of the two
+#' ranks.
+#'
+#' @inheritParams tc_points_matrix
+#' @param zero_color (character, default "white") Color for cells with a count
+#'   of zero.
+#' @param low_color (character, default "grey90") Color for the lowest non-zero
+#'   count cells.
+#' @param high_color (character, default "steelblue") Color for high count cells.
+#' @param na_value (character, default "grey60") Color for NA count cells.
+#' @param log10trans (logical, default TRUE) If TRUE, apply a log1p
+#'   transformation to the fill scale. Legend labels always show real counts.
+#' @return A ggplot2 object
+#' @export
+#' @author Adrien Taudière
+#' @examples
+#' tc_heatmap(
+#'   subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000),
+#'   rank_1 = "Family",
+#'   rank_2 = "Family__eukaryome_Glomero"
+#' )
+#' \dontrun{
+#' tc_heatmap(Glom_otu, rank_1 = 5, rank_2 = 13)
+#' tc_heatmap(Glom_otu, rank_1 = "Genus", rank_2 = "Genus__eukaryome_Glomero",
+#'   high_color = "darkred", zero_color = "black", low_color="pink")
+#' }
+tc_heatmap <- function(
+  physeq,
+  rank_1,
+  rank_2,
+  zero_color = "white",
+  low_color = "grey90",
+  high_color = "steelblue",
+  na_value = "grey60",
+  merge_sample_by = NULL,
+  log10trans = TRUE
+) {
+  verify_pq(physeq)
+
+  if (!is.null(merge_sample_by)) {
+    physeq <- clean_pq(merge_samples2(physeq, merge_sample_by))
+  }
+
+  ranks1 <- colnames(physeq@tax_table[, rank_1])
+  ranks2 <- colnames(physeq@tax_table[, rank_2])
+
+  tbl <- table(
+    physeq@tax_table[, ranks1],
+    physeq@tax_table[, ranks2],
+    useNA = "ifany"
+  )
+  df <- as.data.frame(tbl)
+  colnames(df) <- c("rank_1_val", "rank_2_val", "Freq")
+
+  # Transform Freq for fill; legend will use custom breaks/labels for real counts
+  df$Freq_fill <- if (log10trans) log1p(df$Freq) else df$Freq
+
+  max_fill <- max(df$Freq_fill, na.rm = TRUE)
+  non_zero_min <- min(df$Freq_fill[df$Freq_fill > 0], na.rm = TRUE)
+  # Pin zero_color exactly at 0, low_color just below the first non-zero value
+  grad_values <- scales::rescale(c(0, non_zero_min / 2, max_fill))
+
+  max_freq <- max(df$Freq, na.rm = TRUE)
+  if (log10trans) {
+    breaks_real <- c(0, 10^seq(0, floor(log10(max(max_freq, 1)))))
+    breaks_real <- unique(c(breaks_real[breaks_real <= max_freq], max_freq))
+    breaks_fill <- log1p(breaks_real)
+  } else {
+    breaks_real <- unique(c(pretty(df$Freq, n = 5), max_freq))
+    breaks_fill <- breaks_real
+  }
+
+  scale <- scale_fill_gradientn(
+    colours = c(zero_color, low_color, high_color),
+    values = grad_values,
+    breaks = breaks_fill,
+    labels = as.character(breaks_real),
+    na.value = na_value
+  )
+
+  p <- ggplot(df, aes(x = rank_1_val, y = rank_2_val, fill = Freq_fill)) +
+    geom_tile() +
+    scale +
+    theme_minimal() +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    labs(x = ranks1, y = ranks2, fill = "Count")
+
+  return(p)
+}
+################################################################################
+
+################################################################################
 #' Circle of correspondence between two taxonomic levels
 #'
 #' @description
