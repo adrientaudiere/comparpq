@@ -1191,6 +1191,11 @@ n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
 #'   The function must take a phyloseq object as its first argument and return
 #'   a phyloseq object.
 #' @param ... Additional arguments passed to `.f`.
+#' @param compute_dist (logical, default NULL) Whether to compute pairwise
+#'   k-mer distances in the rebuilt list_phyloseq. When NULL (default),
+#'   automatically inherits the setting from `x`: distances are recomputed only
+#'   if they were computed in the original object (i.e.
+#'   `x@comparison$refseq_comparison` is not NULL).
 #' @param verbose (logical, default TRUE) If TRUE, print information about the
 #'   transformation applied to each phyloseq object.
 #'
@@ -1237,11 +1242,15 @@ n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
 #' lpq_processed <- lpq |>
 #'   apply_to_lpq(MiscMetabar::clean_pq) |>
 #'   apply_to_lpq(MiscMetabar::taxa_as_rows)
-apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
+apply_to_lpq <- function(x, .f, ..., compute_dist = NULL, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   if (!is.function(.f)) {
     stop("`.f` must be a function")
+  }
+
+  if (is.null(compute_dist)) {
+    compute_dist <- !is.null(x@comparison$refseq_comparison)
   }
 
   func_name <- deparse(substitute(.f))
@@ -1300,6 +1309,7 @@ apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
     transformed_list,
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
     same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline,
+    compute_dist = compute_dist,
     verbose = verbose
   )
 }
