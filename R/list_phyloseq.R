@@ -709,12 +709,18 @@ list_phyloseq <- S7::new_class(
       )
     }
 
-    S7::new_object(
+    obj <- S7::new_object(
       S7::S7_object(),
       phyloseq_list = physeq_list,
       summary_table = summary_table,
       comparison = comparison
     )
+    # S7 stores the class as "comparpq::list_phyloseq" (package-qualified),
+    # which blocks S3 dispatch (R looks for length.comparpq::list_phyloseq,
+    # an invalid symbol). Prepending the bare class name enables S3 methods
+    # (length, names, [, [[) to dispatch correctly.
+    attr(obj, "class") <- c("list_phyloseq", attr(obj, "class"))
+    obj
   }
 )
 
@@ -766,18 +772,40 @@ S7::method(print, list_phyloseq) <- function(x, ...) {
   invisible(x)
 }
 
-# Length method for list_phyloseq
-S7::method(length, list_phyloseq) <- function(x) {
+#' Number of phyloseq objects in a `list_phyloseq`
+#'
+#' @param x A `list_phyloseq` object.
+#' @return An integer: the number of phyloseq objects stored.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' length(lpq) # 2
+#' @exportS3Method base::length
+length.list_phyloseq <- function(x) {
   length(x@phyloseq_list)
 }
 
-# Names method for list_phyloseq
-S7::method(names, list_phyloseq) <- function(x) {
+#' Names of phyloseq objects in a `list_phyloseq`
+#'
+#' @param x A `list_phyloseq` object.
+#' @return A character vector of names.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' names(lpq) # c("a", "b")
+#' @exportS3Method base::names
+names.list_phyloseq <- function(x) {
   names(x@phyloseq_list)
 }
 
-# Subset method for list_phyloseq
-S7::method(`[`, list_phyloseq) <- function(x, i) {
+#' Subset a `list_phyloseq` object
+#'
+#' @param x A `list_phyloseq` object.
+#' @param i Index (integer or character) selecting elements.
+#' @return A new `list_phyloseq` built from the selected phyloseq objects.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' lpq[1]
+#' @rawNamespace S3method("[", list_phyloseq)
+`[.list_phyloseq` <- function(x, i) {
   list_phyloseq(
     x@phyloseq_list[i],
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
@@ -786,8 +814,16 @@ S7::method(`[`, list_phyloseq) <- function(x, i) {
   )
 }
 
-# Extract method for list_phyloseq (single element)
-S7::method(`[[`, list_phyloseq) <- function(x, i) {
+#' Extract a single phyloseq object from a `list_phyloseq`
+#'
+#' @param x A `list_phyloseq` object.
+#' @param i Index (integer or character) selecting one element.
+#' @return The selected `phyloseq` object.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' lpq[[1]]
+#' @rawNamespace S3method("[[", list_phyloseq)
+`[[.list_phyloseq` <- function(x, i) {
   x@phyloseq_list[[i]]
 }
 

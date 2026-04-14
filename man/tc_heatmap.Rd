@@ -8,10 +8,12 @@ tc_heatmap(
   physeq,
   rank_1,
   rank_2,
-  low_color = "white",
+  zero_color = "white",
+  low_color = "grey90",
   high_color = "steelblue",
-  na_value = "grey80",
-  merge_sample_by = NULL
+  na_value = "grey60",
+  merge_sample_by = NULL,
+  log10trans = TRUE
 )
 }
 \arguments{
@@ -24,15 +26,22 @@ number or the name of the column in tax_table slot.}
 \item{rank_2}{(character or integer) Define the second taxonomic rank as the
 number or the name of the column in tax_table slot.}
 
-\item{low_color}{(character, default "white") Color for low count cells.}
+\item{zero_color}{(character, default "white") Color for cells with a count
+of zero.}
+
+\item{low_color}{(character, default "grey90") Color for the lowest non-zero
+count cells.}
 
 \item{high_color}{(character, default "steelblue") Color for high count cells.}
 
-\item{na_value}{(character, default "grey80") Color for NA count cells.}
+\item{na_value}{(character, default "grey60") Color for NA count cells.}
 
 \item{merge_sample_by}{(character, default NULL) A vector to determine
 which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
 Need to be in \code{physeq@sam_data}.}
+
+\item{log10trans}{(logical, default TRUE) If TRUE, apply a log1p
+transformation to the fill scale. Legend labels always show real counts.}
 }
 \value{
 A ggplot2 object
@@ -57,8 +66,7 @@ tc_heatmap(
 \dontrun{
 tc_heatmap(Glom_otu, rank_1 = 5, rank_2 = 13)
 tc_heatmap(Glom_otu, rank_1 = "Genus", rank_2 = "Genus__eukaryome_Glomero",
-  high_color = "darkred"
-)
+  high_color = "darkred", zero_color = "black", low_color="pink")
 }
 }
 \author{

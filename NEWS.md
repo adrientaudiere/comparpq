@@ -13,6 +13,7 @@
 * `taxtab_replace_pattern_by_NA()` fixes an inner-loop variable bug where patterns were applied to all `taxonomic_ranks` columns simultaneously instead of one at a time.
 * `tc_points_matrix()` now checks that requested rank columns exist in the `psmelt()` output before grouping, providing a clear error when all-NA rank columns are dropped.
 * Add param `compute_dist` to `list_phyloseq()`
+* `length()`, `names()`, `[()`, and `[[()` now work correctly on `list_phyloseq` objects. S7 stores the class attribute as `"comparpq::list_phyloseq"` (package-qualified), which prevented S3 dispatch from finding `length.list_phyloseq`. The constructor now prepends the bare `"list_phyloseq"` name to the class vector, enabling S3 dispatch. The four accessor methods are now documented and exported.
 
 
 # comparpq 0.1.2

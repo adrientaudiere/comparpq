@@ -4,7 +4,7 @@
 \alias{apply_to_lpq}
 \title{Apply a function to all phyloseq objects in a list_phyloseq}
 \usage{
-apply_to_lpq(x, .f, ..., verbose = TRUE)
+apply_to_lpq(x, .f, ..., compute_dist = NULL, verbose = TRUE)
 }
 \arguments{
 \item{x}{(required) A list_phyloseq object.}
@@ -14,6 +14,12 @@ The function must take a phyloseq object as its first argument and return
 a phyloseq object.}
 
 \item{...}{Additional arguments passed to \code{.f}.}
+
+\item{compute_dist}{(logical, default NULL) Whether to compute pairwise
+k-mer distances in the rebuilt list_phyloseq. When NULL (default),
+automatically inherits the setting from \code{x}: distances are recomputed only
+if they were computed in the original object (i.e.
+\code{x@comparison$refseq_comparison} is not NULL).}
 
 \item{verbose}{(logical, default TRUE) If TRUE, print information about the
 transformation applied to each phyloseq object.}
