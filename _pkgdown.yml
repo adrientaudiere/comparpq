@@ -106,6 +106,10 @@ reference:
   contents:
   - bubbles_pq
   - gg_bubbles_pq
+  - community_sharing_pq
+  - community_sharing_barplot_pq
+  - make_sharing_metric
+  - default_sharing_metrics
 
 - title: "Fake Taxa Creation"
   desc: "Functions for adding fake taxa to test taxonomic assignment accuracy"

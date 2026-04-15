@@ -1,5 +1,10 @@
 # comparpq 0.2.1 (Development version)
 
+* `community_sharing_barplot_pq()` new function to display pairwise community-sharing metrics as grouped bar charts, faceted by metric or by pair. Companion to `community_sharing_pq()`.
+* `community_sharing_pq()` new function to visualize community sharing between 2–4 modalities of a sample variable as a network figure: each node is a pie chart of taxonomic composition, and curved links encode multiple pairwise similarity metrics (Bray-Curtis, Jaccard, shared species, shared genera proportion). Supports label-permutation significance testing (`n_perm`). Requires packages `ggforce` and `RColorBrewer`.
+* `default_sharing_metrics()` new function returning the 4 built-in metric definitions used by `community_sharing_pq()` and `community_sharing_barplot_pq()`.
+* `make_sharing_metric()` new function to create custom metric definitions for `community_sharing_pq()` and `community_sharing_barplot_pq()`.
+
 * `div_pq()` and `hill_samples_pq()` now use `divent` (via `MiscMetabar::divent_hill_matrix_pq()`) instead of `vegan::renyi()` for Hill number computation, and `divent::ent_shannon()` / `divent::ent_simpson()` instead of `vegan::diversity()` for Shannon and Simpson indices. The default estimator is now `"UnveilJ"` (bias-corrected); pass `estimator = "naive"` to restore old numeric behavior.
 * `div_pq()`: the `scales` parameter is deprecated in favour of `q`. The `hill` parameter is deprecated; only Hill numbers are now supported.
 
