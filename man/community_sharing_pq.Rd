@@ -127,7 +127,7 @@ min / mean / max over all pairs.
 label permutation: the \code{fact} column in \code{sample_data(physeq)} is shuffled
 uniformly at random among samples (preserving group sizes), then all \code{prep()}
 functions and metric computations are re-run on the permuted data. This is
-repeated \code{n_perm} times. The empirical p-value for each pair × metric
+repeated \code{n_perm} times. The empirical p-value for each (pair, metric)
 combination is the proportion of permuted values greater than or equal to
 the observed value (one-sided upper-tail test). This null model is
 appropriate for all built-in metrics because they compare aggregated

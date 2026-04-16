@@ -306,7 +306,7 @@ default_sharing_metrics <- function() {
 #' label permutation: the `fact` column in `sample_data(physeq)` is shuffled
 #' uniformly at random among samples (preserving group sizes), then all `prep()`
 #' functions and metric computations are re-run on the permuted data. This is
-#' repeated `n_perm` times. The empirical p-value for each pair × metric
+#' repeated `n_perm` times. The empirical p-value for each (pair, metric)
 #' combination is the proportion of permuted values greater than or equal to
 #' the observed value (one-sided upper-tail test). This null model is
 #' appropriate for all built-in metrics because they compare aggregated
@@ -677,7 +677,7 @@ community_sharing_pq <- function(
       !!pie_taxrank := factor(.data[[pie_taxrank]], levels = tax_order)
     )
 
-  # ── geom_curve layers (one per metric × pair_flip × significant) ──────────
+  # geom_curve layers (one per metric x pair_flip x significant)
   make_curve_layers <- function(m) {
     sub <- dplyr::filter(link_df, metric == m)
     meta <- dplyr::filter(metric_meta, metric == m)
