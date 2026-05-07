@@ -212,7 +212,7 @@ test_that("print method works for adonis_lpq_result", {
 
   result <- adonis_lpq(lpq, formula = "Height", verbose = FALSE)
 
-  expect_output(print(result), "PERMANOVA")
+  expect_output(print(result), "Pr\\(>F\\)")
 })
 
 test_that("adonis_lpq handles errors in individual phyloseq gracefully", {

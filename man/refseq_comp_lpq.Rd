@@ -24,9 +24,6 @@ sensitivity for divergent sequences.}
 \value{
 A list of class \code{"refseq_comp_lpq_result"} with:
 \describe{
-\item{\code{line_plot}}{ggplot2 line plot: x = number of shared sequence
-clusters, y = minimum similarity threshold, one line per pairwise
-comparison.}
 \item{\code{venn_plots}}{Named list of ggVennDiagram objects (one per
 threshold, names follow \code{"<threshold>_pct"}), or \code{NULL} if
 \pkg{ggVennDiagram} is not installed or N > 7.}
@@ -42,8 +39,7 @@ and \code{n_shared} (named list of shared cluster counts per pair).}
 For each pair of phyloseq objects in \code{x}, computes pairwise sequence
 similarity between \verb{@refseq} slots using k-mer Jaccard similarity, then
 groups near-identical sequences across all objects via connected components
-(union-find). Returns a ggplot2 line plot showing how many
-sequence clusters are shared at each dissimilarity threshold, and one Venn
+(union-find). Returns a list of results per threshold, and one Venn
 diagram per threshold (requires \pkg{ggVennDiagram}).
 
 Similarity is approximated as \verb{p ≈ (2j / (1 + j))^(1/k)} where \code{j} is the
@@ -64,7 +60,6 @@ lpq <- list_phyloseq(list(
   b = prune_taxa(taxa_names(data_fungi_mini)[1:20], data_fungi_mini)
 ))
 res <- refseq_comp_lpq(lpq)
-res$line_plot
 }
 \author{
 Adrien Taudière
