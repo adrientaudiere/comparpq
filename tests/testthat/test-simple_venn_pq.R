@@ -206,7 +206,7 @@ test_that("simple_venn_pq show_na_count adds NA annotation", {
     },
     character(1)
   )
-  expect_true(any(grepl("^NA:", labels)))
+  expect_true(any(grepl("^NA Taxa:", labels)))
 })
 
 test_that("show_na_count taxa counts sum to ntaxa", {
@@ -232,8 +232,8 @@ test_that("show_na_count taxa counts sum to ntaxa", {
     character(1)
   )
   # Get NA count from annotation
-  na_label <- annotations[grepl("^NA:", annotations)]
-  na_count <- as.integer(sub("NA: ", "", na_label))
+  na_label <- annotations[grepl("^NA Taxa:", annotations)]
+  na_count <- as.integer(sub("NA Taxa: ", "", na_label))
   # Get Venn region counts (numeric labels, not group names)
   numeric_labels <- annotations[grepl("^[0-9]+$", annotations)]
   venn_sum <- sum(as.integer(numeric_labels))

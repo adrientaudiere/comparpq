@@ -1,5 +1,8 @@
 # comparpq 0.2.1 (Development version)
 
+* `refseq_comp_lpq()` new function to compare `@refseq` sequences across all phyloseq objects in a `list_phyloseq` using k-mer Jaccard similarity and union-find connected components. Returns per-threshold Venn diagrams and shared-cluster counts. No igraph dependency.
+* `find_primers_pq()` new function to detect taxa whose reference sequences match primer sequences (IUPAC-aware, forward and reverse complement). Returns a data frame suitable for use with `tidypq::filter_taxa_pq()` to prune contaminated taxa.
+
 * `community_sharing_barplot_pq()` new function to display pairwise community-sharing metrics as grouped bar charts, faceted by metric or by pair. Companion to `community_sharing_pq()`.
 * `community_sharing_pq()` new function to visualize community sharing between 2–4 modalities of a sample variable as a network figure: each node is a pie chart of taxonomic composition, and curved links encode multiple pairwise similarity metrics (Bray-Curtis, Jaccard, shared species, shared genera proportion). Supports label-permutation significance testing (`n_perm`). Requires packages `ggforce` and `RColorBrewer`.
 * `default_sharing_metrics()` new function returning the 4 built-in metric definitions used by `community_sharing_pq()` and `community_sharing_barplot_pq()`.

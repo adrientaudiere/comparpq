@@ -180,7 +180,7 @@ test_that("tc_congruence_metrics works with some common taxa", {
   expect_type(result, "list")
 
   expect_equal(
-    result$summary |> filter(category == "total_congruent") |> pull(count),
+    result$summary |> dplyr::filter(category == "total_congruent") |> dplyr::pull(count),
     3
   )
 })

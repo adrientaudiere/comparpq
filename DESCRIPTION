@@ -19,6 +19,7 @@ Depends:
         phyloseq,
         S7 
 Imports:
+    Biostrings,
     dplyr,
     ggplot2,
     lifecycle,
