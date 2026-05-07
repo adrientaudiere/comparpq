@@ -248,6 +248,7 @@ bootstrap_lm <- function(x, y, resamples = 5000, ci = 95) {
 #' res$summary
 #'
 #' @seealso [estim_cor_pq()], [estim_diff_lpq()], [adonis_lpq()]
+#' @importFrom rlang check_installed sym
 #' @export
 estim_diff_pq <- function(
   physeq,

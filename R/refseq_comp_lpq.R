@@ -2,7 +2,9 @@ uf_components <- function(n_nodes, edges) {
   parent <- seq_len(n_nodes)
 
   find_root <- function(x) {
-    while (parent[x] != x) x <- parent[x]
+    while (parent[x] != x) {
+      x <- parent[x]
+    }
     x
   }
 

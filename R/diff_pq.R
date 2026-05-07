@@ -75,6 +75,8 @@
 #'   aggregate = TRUE
 #' )
 #' @seealso [MiscMetabar::divent_hill_matrix_pq()], [divent::div_hill()]
+#' @importFrom vegan diversity
+#' @importFrom multcompView multcompLetters
 #' @export
 div_pq <- function(
   physeq,

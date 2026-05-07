@@ -67,6 +67,8 @@
 #'     `NA` if no unique sequences.}
 #' }
 #'
+#' @importFrom ape as.DNAbin
+#' @importFrom kmer kdistance
 #' @export
 #' @author Adrien Taudiere
 #'

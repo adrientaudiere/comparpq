@@ -16,6 +16,9 @@
 #'   transformed.
 #'
 #' @return A ggplot2 object
+#' @importFrom scales rescale
+#' @importFrom tidyr pivot_longer
+#' @importFrom circlize rand_color circos.par chordDiagram circos.clear
 #' @export
 #' @author Adrien Taudière
 #' @examples

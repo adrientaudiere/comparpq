@@ -380,6 +380,11 @@ default_sharing_metrics <- function() {
 #'   seed   = 42
 #' )
 #' }
+#' @importFrom vegan vegdist
+#' @importFrom scales rescale
+#' @importFrom tidyr pivot_longer
+#' @importFrom cli cli_progress_bar cli_progress_update cli_progress_done
+#' @importFrom purrr map_dfr pmap_chr map_lgl
 #' @export
 #' @author Adrien Taudière
 community_sharing_pq <- function(

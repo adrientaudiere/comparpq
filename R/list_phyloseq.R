@@ -55,6 +55,10 @@
 #' @importFrom S7 new_class new_property class_list class_any
 #' @importFrom tibble tibble
 #' @importFrom phyloseq nsamples ntaxa sample_sums taxa_sums sample_data
+#' @importFrom purrr map map_dfr map2_dfr map_chr map_lgl map_int imap compact reduce
+#' @importFrom cli cli_alert_info cli_alert cli_alert_success col_red
+#' @importFrom ape as.DNAbin
+#' @importFrom kmer kdistance
 #' @export
 NULL
 

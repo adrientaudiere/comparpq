@@ -39,6 +39,7 @@
 #' which can help account for compositional effects and sequencing depth
 #' differences between samples.
 #'
+#' @importFrom maaslin3 maaslin3 maaslin_plot_results
 #' @export
 #' @author Adrien Taudière
 #'

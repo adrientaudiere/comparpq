@@ -809,6 +809,7 @@ permute_da_pq <- function(
 #' - Library sizes follow realistic distributions
 #' - The DA signal is embedded in the data generation process
 #'
+#' @importFrom MIDASim MIDASim.setup MIDASim.modify MIDASim
 #' @export
 #' @author Adrien Taudière
 #'
