@@ -5,7 +5,7 @@ confidence intervals for correlation coefficients and regression
 slopes."><meta property="og:description" content="Computes diversity metrics (Hill numbers by default) per sample and
 assesses their relationship with a numeric variable using bootstrap
 confidence intervals for correlation coefficients and regression
-slopes."></head><body>
+slopes."><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -42,8 +42,7 @@ slopes."></head><body>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Estimation statistics for numeric variable correlation on a phyloseq object</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>Estimation statistics for numeric variable correlation on a phyloseq object</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/estim_pq.R" class="external-link"><code>R/estim_pq.R</code></a></small>
       <div class="d-none name"><code>estim_cor_pq.Rd</code></div>
     </div>
@@ -60,7 +59,7 @@ slopes.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">estim_cor_pq</span><span class="op">(</span></span>
 <span>  <span class="va">physeq</span>,</span>
 <span>  <span class="va">variable</span>,</span>
-<span>  hill_scales <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
+<span>  q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>,</span>
 <span>  custom_fn <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  method <span class="op">=</span> <span class="st">"pearson"</span>,</span>
 <span>  resamples <span class="op">=</span> <span class="fl">5000</span>,</span>
@@ -82,7 +81,7 @@ slopes.</p>
 <code>sample_data</code>.</p></dd>
 
 
-<dt id="arg-hill-scales">hill_scales<a class="anchor" aria-label="anchor" href="#arg-hill-scales"></a></dt>
+<dt id="arg-q">q<a class="anchor" aria-label="anchor" href="#arg-q"></a></dt>
 <dd><p>(numeric vector, default <code>c(0, 1, 2)</code>) The q
 values for Hill number computation.</p></dd>
 

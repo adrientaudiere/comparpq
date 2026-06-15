@@ -230,6 +230,9 @@ refseq_comp_lpq <- function(
 }
 
 
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @export
 print.refseq_comp_lpq_result <- function(x, ...) {
   cat(

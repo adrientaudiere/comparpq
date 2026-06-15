@@ -19,7 +19,9 @@ list_phyloseq(
   physeq_list,
   names = NULL,
   same_primer_seq_tech = TRUE,
-  same_bioinfo_pipeline = TRUE
+  same_bioinfo_pipeline = TRUE,
+  compute_dist = TRUE,
+  verbose = TRUE
 )
 ```
 
@@ -48,6 +50,23 @@ list_phyloseq(
   used across all phyloseq objects. Set to FALSE when comparing
   different clustering methods, taxonomic databases, or analysis
   parameters.
+
+- compute_dist:
+
+  (logical, default TRUE) Whether to compute pairwise k-mer distances
+  between refseq slots. Set to FALSE to skip this potentially slow
+  computation, especially when phyloseq objects have many taxa or very
+  different sequence sets.
+
+- verbose:
+
+  (logical, default TRUE) Whether to print progress messages via
+  [`cli::cli_alert_info()`](https://cli.r-lib.org/reference/cli_alert.html).
+
+## Value
+
+A `list_phyloseq` S7 object with slots `phyloseq_list`, `summary_table`,
+and `comparison`.
 
 ## Details
 

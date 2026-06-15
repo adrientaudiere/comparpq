@@ -3,7 +3,7 @@
 modifying the phyloseq objects in place or to change the comparison
 parameters."><meta property="og:description" content="Recomputes the summary_table and comparison slots. Useful after
 modifying the phyloseq objects in place or to change the comparison
-parameters."></head><body>
+parameters."><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -40,8 +40,7 @@ parameters."></head><body>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Update the summary table and comparison characteristics</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>Update the summary table and comparison characteristics</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/list_phyloseq.R" class="external-link"><code>R/list_phyloseq.R</code></a></small>
       <div class="d-none name"><code>update_list_phyloseq.Rd</code></div>
     </div>
@@ -57,7 +56,9 @@ parameters.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">update_list_phyloseq</span><span class="op">(</span></span>
 <span>  <span class="va">x</span>,</span>
 <span>  same_primer_seq_tech <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  same_bioinfo_pipeline <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  same_bioinfo_pipeline <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  compute_dist <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -78,6 +79,11 @@ and sequencing technology was used. If NULL, preserves the original value.</p></
 <dd><p>(logical, default NULL) Whether the same
 bioinformatics pipeline was used. If NULL, preserves the original value.</p></dd>
 
+
+<dt id="arg-compute-dist">compute_dist<a class="anchor" aria-label="anchor" href="#arg-compute-dist"></a></dt>
+<dd><p>(logical, default TRUE) Whether to compute pairwise
+k-mer distances between refseq slots.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -89,6 +95,14 @@ bioinformatics pipeline was used. If NULL, preserves the original value.</p></dd
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a></p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lpq</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_phyloseq.html">list_phyloseq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>run1 <span class="op">=</span> <span class="va">data_fungi</span>, run2 <span class="op">=</span> <span class="va">data_fungi_mini</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  verbose <span class="op">=</span> <span class="cn">FALSE</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lpq2</span> <span class="op">&lt;-</span> <span class="fu">update_list_phyloseq</span><span class="op">(</span><span class="va">lpq</span>, compute_dist <span class="op">=</span> <span class="cn">FALSE</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

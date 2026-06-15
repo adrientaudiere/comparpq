@@ -11,7 +11,7 @@ all phyloseq objects."><meta property="og:description" content="
 Applies a function to each phyloseq object in a list_phyloseq and returns
 a new list_phyloseq with the transformed objects. This is useful for
 applying cleaning, filtering, or transformation functions uniformly across
-all phyloseq objects."></head><body>
+all phyloseq objects."><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -48,8 +48,7 @@ all phyloseq objects."></head><body>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Apply a function to all phyloseq objects in a list_phyloseq</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>Apply a function to all phyloseq objects in a list_phyloseq</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/list_phyloseq.R" class="external-link"><code>R/list_phyloseq.R</code></a></small>
       <div class="d-none name"><code>apply_to_lpq.Rd</code></div>
     </div>
@@ -66,7 +65,7 @@ all phyloseq objects.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">apply_to_lpq</span><span class="op">(</span><span class="va">x</span>, <span class="va">.f</span>, <span class="va">...</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">apply_to_lpq</span><span class="op">(</span><span class="va">x</span>, <span class="va">.f</span>, <span class="va">...</span>, compute_dist <span class="op">=</span> <span class="cn">NULL</span>, verbose <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -85,6 +84,14 @@ a phyloseq object.</p></dd>
 
 <dt id="arg--">...<a class="anchor" aria-label="anchor" href="#arg--"></a></dt>
 <dd><p>Additional arguments passed to <code>.f</code>.</p></dd>
+
+
+<dt id="arg-compute-dist">compute_dist<a class="anchor" aria-label="anchor" href="#arg-compute-dist"></a></dt>
+<dd><p>(logical, default NULL) Whether to compute pairwise
+k-mer distances in the rebuilt list_phyloseq. When NULL (default),
+automatically inherits the setting from <code>x</code>: distances are recomputed only
+if they were computed in the original object (i.e.
+<code>x@comparison$refseq_comparison</code> is not NULL).</p></dd>
 
 
 <dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
@@ -178,7 +185,7 @@ are preserved from the original object.</p>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">lpq_rar</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;comparpq::list_phyloseq&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;list_phyloseq&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  @ phyloseq_list:List of 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ fungi     :Formal class 'phyloseq' [package "phyloseq"] with 5 slots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ otu_table:Formal class 'otu_table' [package "phyloseq"] with 2 slots</span>
@@ -217,9 +224,9 @@ are preserved from the original object.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ refseq   :Formal class 'DNAStringSet' [package "Biostrings"] with 5 slots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ pool           :Formal class 'SharedRaw_Pool' [package "XVector"] with 2 slots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ xp_list                    :List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;externalptr&gt; </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;pointer: (nil)&gt; </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ .link_to_cached_object_list:List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;environment: 0x556d79d199d8&gt; </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;environment: 0x5f77327c4000&gt; </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ ranges         :Formal class 'GroupedIRanges' [package "XVector"] with 7 slots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ group          : int [1:420] 1 1 1 1 1 1 1 1 1 1 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ start          : int [1:420] 1 313 614 963 1320 1620 1950 2241 2599 2939 ...</span>
@@ -268,9 +275,9 @@ are preserved from the original object.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ refseq   :Formal class 'DNAStringSet' [package "Biostrings"] with 5 slots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ pool           :Formal class 'SharedRaw_Pool' [package "XVector"] with 2 slots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ xp_list                    :List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;externalptr&gt; </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;pointer: (nil)&gt; </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ .link_to_cached_object_list:List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;environment: 0x556d80c990f8&gt; </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;environment: 0x5f7734e524b0&gt; </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ ranges         :Formal class 'GroupedIRanges' [package "XVector"] with 7 slots</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ group          : int [1:38] 1 1 1 1 1 1 1 1 1 1 ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ start          : int [1:38] 614 963 1620 2241 3898 4248 4595 5297 5903 6589 ...</span>

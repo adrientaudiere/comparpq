@@ -30,7 +30,7 @@ adonis_lpq(
 - formula:
 
   (character, required) The right part of a formula for
-  [`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/vegan-defunct.html).
+  [`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/adonis.html).
   Variables must be present in the `sample_data` slot of **all**
   phyloseq objects. The formula should contain variables that are in the
   shared modalities.
@@ -59,7 +59,7 @@ adonis_lpq(
 - by:
 
   (character, default "margin") The `by` argument passed to
-  [`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/vegan-defunct.html).
+  [`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/adonis.html).
   Options are "terms", "margin", or NULL.
 
 - verbose:
@@ -118,12 +118,12 @@ common across all phyloseq objects.
 The function is a wrapper around
 [`MiscMetabar::adonis_pq()`](https://adrientaudiere.github.io/MiscMetabar/reference/adonis_pq.html),
 which itself wraps
-[`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/vegan-defunct.html).
+[`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/adonis.html).
 
 ## See also
 
 [`MiscMetabar::adonis_pq()`](https://adrientaudiere.github.io/MiscMetabar/reference/adonis_pq.html),
-[`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/vegan-defunct.html)
+[`vegan::adonis2()`](https://vegandevs.github.io/vegan/reference/adonis.html)
 
 ## Examples
 

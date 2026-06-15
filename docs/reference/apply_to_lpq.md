@@ -10,7 +10,7 @@ across all phyloseq objects.
 ## Usage
 
 ``` r
-apply_to_lpq(x, .f, ..., verbose = TRUE)
+apply_to_lpq(x, .f, ..., compute_dist = NULL, verbose = TRUE)
 ```
 
 ## Arguments
@@ -28,6 +28,14 @@ apply_to_lpq(x, .f, ..., verbose = TRUE)
 - ...:
 
   Additional arguments passed to `.f`.
+
+- compute_dist:
+
+  (logical, default NULL) Whether to compute pairwise k-mer distances in
+  the rebuilt list_phyloseq. When NULL (default), automatically inherits
+  the setting from `x`: distances are recomputed only if they were
+  computed in the original object (i.e. `x@comparison$refseq_comparison`
+  is not NULL).
 
 - verbose:
 
@@ -133,7 +141,7 @@ lpq_rar <- apply_to_lpq(lpq, rarefy_even_depth, rngseed = 21)
 #> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 
 lpq_rar
-#> <comparpq::list_phyloseq>
+#> <list_phyloseq>
 #>  @ phyloseq_list:List of 2
 #>  .. $ fungi     :Formal class 'phyloseq' [package "phyloseq"] with 5 slots
 #>  ..  .. ..@ otu_table:Formal class 'otu_table' [package "phyloseq"] with 2 slots
@@ -172,9 +180,9 @@ lpq_rar
 #>  ..  .. ..@ refseq   :Formal class 'DNAStringSet' [package "Biostrings"] with 5 slots
 #>  ..  .. .. .. ..@ pool           :Formal class 'SharedRaw_Pool' [package "XVector"] with 2 slots
 #>  ..  .. .. .. .. .. ..@ xp_list                    :List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<externalptr> 
+#>  ..  .. .. .. .. .. .. ..$ :<pointer: (nil)> 
 #>  ..  .. .. .. .. .. ..@ .link_to_cached_object_list:List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<environment: 0x556d79d199d8> 
+#>  ..  .. .. .. .. .. .. ..$ :<environment: 0x5f77327c4000> 
 #>  ..  .. .. .. ..@ ranges         :Formal class 'GroupedIRanges' [package "XVector"] with 7 slots
 #>  ..  .. .. .. .. .. ..@ group          : int [1:420] 1 1 1 1 1 1 1 1 1 1 ...
 #>  ..  .. .. .. .. .. ..@ start          : int [1:420] 1 313 614 963 1320 1620 1950 2241 2599 2939 ...
@@ -223,9 +231,9 @@ lpq_rar
 #>  ..  .. ..@ refseq   :Formal class 'DNAStringSet' [package "Biostrings"] with 5 slots
 #>  ..  .. .. .. ..@ pool           :Formal class 'SharedRaw_Pool' [package "XVector"] with 2 slots
 #>  ..  .. .. .. .. .. ..@ xp_list                    :List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<externalptr> 
+#>  ..  .. .. .. .. .. .. ..$ :<pointer: (nil)> 
 #>  ..  .. .. .. .. .. ..@ .link_to_cached_object_list:List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<environment: 0x556d80c990f8> 
+#>  ..  .. .. .. .. .. .. ..$ :<environment: 0x5f7734e524b0> 
 #>  ..  .. .. .. ..@ ranges         :Formal class 'GroupedIRanges' [package "XVector"] with 7 slots
 #>  ..  .. .. .. .. .. ..@ group          : int [1:38] 1 1 1 1 1 1 1 1 1 1 ...
 #>  ..  .. .. .. .. .. ..@ start          : int [1:38] 614 963 1620 2241 3898 4248 4595 5297 5903 6589 ...

@@ -1,6 +1,9 @@
 ################################################################################
 #' Resolve taxonomic conflict in the tax_table of a phyloseq object
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param physeq (required) A phyloseq object.
 #' @param pattern_tax_ranks (character vector, default NULL) A vector of patterns
 #'   to aggregate taxonomic ranks. For example "^Genus" stands for all taxonomic

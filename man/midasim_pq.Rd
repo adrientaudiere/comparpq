@@ -41,7 +41,9 @@ differentially abundant.}
 
 \item{effect_size}{(numeric, default 1) Log-fold change for DA taxa in
 case samples. Positive values increase abundance; negative decrease.
-Typical values: 0.5-2 for moderate effects.}
+Typical values: 0.5-2 for moderate effects.
+\if{html}{\out{<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">}}
+\if{html}{\out{<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental">}}\if{html}{\out{</a>}}}
 
 \item{da_taxa_idx}{(integer vector, default NULL) Specific taxon indices
 to make DA. If NULL, randomly selects \code{n_da_taxa} from prevalent taxa.}

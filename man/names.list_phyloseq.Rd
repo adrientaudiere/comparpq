@@ -13,7 +13,10 @@
 A character vector of names.
 }
 \description{
-Names of phyloseq objects in a \code{list_phyloseq}
+\if{html}{\out{
+<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+}}
 }
 \examples{
 lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))

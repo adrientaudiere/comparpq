@@ -13,6 +13,7 @@
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="OJS_visualization_files/libs/quarto-html/popper.min.js"></script><script src="OJS_visualization_files/libs/quarto-html/tippy.umd.min.js"></script><link href="OJS_visualization_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="OJS_visualization_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <script src="OJS_visualization_files/libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="OJS_visualization_files/libs/robservable-binding-0.2.2/robservable.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="essai">
+<meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -58,8 +59,7 @@
 </nav><div class="container template-quarto">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>essai</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>essai</h1>
 
       <p class="author">Adrien Taudière</p>
 
@@ -85,12 +85,6 @@
 <pre><code>Loading required package: ggplot2</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: dada2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: Rcpp</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
 <pre><code>Loading required package: dplyr</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -107,17 +101,14 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Loading required package: purrr</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"Glom_otu"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in data("Glom_otu"): data set 'Glom_otu' not found</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bubbles_pq</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">physeq</span>,</span>
 <span>                       <span class="va">rank_label</span> <span class="op">=</span> <span class="st">"Taxa"</span>,</span>
 <span>                       <span class="va">rank_color</span> <span class="op">=</span> <span class="st">"Family"</span>,</span>
@@ -174,7 +165,7 @@ Attaching package: 'dplyr'</code></pre>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bubbles_pq.html">bubbles_pq</a></span><span class="op">(</span>physeq <span class="op">=</span> <span class="va">data_fungi</span>, rank_color <span class="op">=</span> <span class="st">"Class"</span>, randomize <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="htmlwidget-3eaefed75c168a5c7fc0" style="width:600px;height:480px;" class="robservable html-widget"></div>
@@ -182,7 +173,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bubbles_pq.html">bubbles_pq</a></span><span class="op">(</span>physeq <span class="op">=</span> <span class="va">data_fungi</span>, min_nb_seq <span class="op">=</span> <span class="fl">10000</span>, categorical_scheme <span class="op">=</span> <span class="st">"d3.schemePastel1"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="htmlwidget-50040d76cea10bab1a42" style="width:600px;height:480px;" class="robservable html-widget"></div>
@@ -190,7 +181,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bubbles_pq.html">bubbles_pq</a></span><span class="op">(</span>physeq <span class="op">=</span> <span class="va">data_fungi</span>, rank_color <span class="op">=</span> <span class="st">"Order"</span>, include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"chart"</span><span class="op">)</span>, log1ptransform <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="htmlwidget-e4ee0c76975824de3822" style="width:600px;height:480px;" class="robservable html-widget"></div>
@@ -198,7 +189,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/bubbles_pq.html">bubbles_pq</a></span><span class="op">(</span>physeq <span class="op">=</span> <span class="va">data_fungi</span>, rank_label <span class="op">=</span> <span class="st">"Genus"</span>, rank_color <span class="op">=</span> <span class="st">"Class"</span>, include <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"chart"</span><span class="op">)</span>, randomize <span class="op">=</span> <span class="cn">TRUE</span>, seed <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output-display">
 <div id="htmlwidget-c5d058ef3965958e2598" style="width:600px;height:480px;" class="robservable html-widget"></div>

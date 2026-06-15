@@ -42,7 +42,7 @@ rainplot_taxo_na(
 
   (character, default NULL) A vector to determine which samples to merge
   using
-  [`MiscMetabar::merge_samples2()`](https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html)
+  [`merge_samples2()`](https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html)
   function. Need to be in `physeq@sam_data`.
 
 - sample_colored:

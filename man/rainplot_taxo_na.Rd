@@ -27,7 +27,7 @@ matching the colnames of the \code{tax_table} slot).}
 out taxa with low abundance.}
 
 \item{merge_sample_by}{(character, default NULL) A vector to determine
-which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
+which samples to merge using \code{\link[MiscMetabar:merge_samples2]{merge_samples2()}} function.
 Need to be in \code{physeq@sam_data}.}
 
 \item{sample_colored}{(logical, default FALSE) If TRUE, points are colored by

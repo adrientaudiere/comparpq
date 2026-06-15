@@ -28,7 +28,7 @@ primers.}
 \description{
 Searches every sequence in \verb{@refseq} for occurrences of the supplied
 primers (forward \strong{and} reverse complement) using IUPAC-aware matching via
-\code{\link[Biostrings:matchPattern]{Biostrings::vcountPattern()}}. Returns a data frame of taxa that match at
+\code{\link[Biostrings:vcountPattern]{Biostrings::vcountPattern()}}. Returns a data frame of taxa that match at
 least one primer, which can be passed directly to
 \code{tidypq::filter_taxa_pq()} to prune them from the phyloseq object.
 }

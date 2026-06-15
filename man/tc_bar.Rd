@@ -33,7 +33,7 @@ as the number or the name of the column in tax_table slot.}
 \item{point_alpha}{(numeric, default 0.3) Transparency of points.}
 
 \item{merge_sample_by}{(character, default NULL) A vector to determine
-which samples to merge using \code{\link[MiscMetabar:merge_samples2]{MiscMetabar::merge_samples2()}} function.
+which samples to merge using \code{\link[MiscMetabar:merge_samples2]{merge_samples2()}} function.
 Need to be in \code{physeq@sam_data}.}
 
 \item{log10trans}{(logical, default TRUE) If TRUE, the abundance is log10

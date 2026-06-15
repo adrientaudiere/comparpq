@@ -123,10 +123,6 @@ tc_linked_trees(
     "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
   )
 )
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 
 if (FALSE) { # \dontrun{

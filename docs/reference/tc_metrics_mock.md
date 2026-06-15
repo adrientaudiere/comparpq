@@ -74,3 +74,20 @@ for more details) and (iv) the `values`.
 ## Author
 
 Adrien Taudière
+
+## Examples
+
+``` r
+ranks_df <- data.frame(
+  silva = c("Phylum", "Class"),
+  unite = c("Phylum", "Class")
+)
+true_values_df <- data.frame(
+  Phylum = c("Basidiomycota", "Ascomycota"),
+  Class  = c("Agaricomycetes", "Sordariomycetes")
+)
+tc_metrics_mock(data_fungi_mini, ranks_df, true_values_df)
+#> 0fake taxa were found using pattern^fake_|^external_.
+#> Error in validObject(.Object): invalid class “otu_table” object: 
+#>  OTU abundance data must have non-zero dimensions.
+```

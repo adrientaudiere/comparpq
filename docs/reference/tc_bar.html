@@ -5,7 +5,7 @@
 Useful to compare taxonomy from two different source/db/algo side-by-side"><meta property="og:description" content="
 
 
-Useful to compare taxonomy from two different source/db/algo side-by-side"></head><body>
+Useful to compare taxonomy from two different source/db/algo side-by-side"><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -42,8 +42,7 @@ Useful to compare taxonomy from two different source/db/algo side-by-side"></hea
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Barchart of ratio to compare 2 taxonomic ranks</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>Barchart of ratio to compare 2 taxonomic ranks</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/compare_taxo_plot.R" class="external-link"><code>R/compare_taxo_plot.R</code></a></small>
       <div class="d-none name"><code>tc_bar.Rd</code></div>
     </div>
@@ -103,7 +102,7 @@ as the number or the name of the column in tax_table slot.</p></dd>
 
 <dt id="arg-merge-sample-by">merge_sample_by<a class="anchor" aria-label="anchor" href="#arg-merge-sample-by"></a></dt>
 <dd><p>(character, default NULL) A vector to determine
-which samples to merge using <code><a href="https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html" class="external-link">MiscMetabar::merge_samples2()</a></code> function.
+which samples to merge using <code><a href="https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html" class="external-link">merge_samples2()</a></code> function.
 Need to be in <code>physeq@sam_data</code>.</p></dd>
 
 
@@ -135,7 +134,7 @@ transformed.</p></dd>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use the `fun` argument instead.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">comparpq</span> package.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   Please report the issue at</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;</span><a href="https://github.com/adrientaudiere/comparpq/issues" class="external-link"><span style="color: #0000BB; font-style: italic;">https://github.com/adrientaudiere/comparpq/issues</span></a><span style="color: #0000BB; font-style: italic;">&gt;</span>.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/adrientaudiere/comparpq/issues&gt;</span>.</span>
 <span class="r-plt img"><img src="tc_bar-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span> <span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="fu">tc_bar</span><span class="op">(</span><span class="va">Glom_otu</span>, rank_1 <span class="op">=</span> <span class="fl">5</span>, rank_2 <span class="op">=</span> <span class="fl">13</span>, color_rank <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>

@@ -135,6 +135,8 @@ gg_bubbles_pq(
 
   (integer, default NULL) Number of columns for facet layout. Passed to
   [`ggplot2::facet_wrap()`](https://ggplot2.tidyverse.org/reference/facet_wrap.html).
+  Not used if diff_contour is TRUE since patchwork is used for layout
+  instead.
 
 - return_dataframe:
 
@@ -244,4 +246,12 @@ gg_bubbles_pq(lpq, rank_color = "Class")
 gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE,
   show_labels = FALSE, diff_border_width = 1) & no_legend()
 
+
+gg_bubbles_pq(
+physeq = data_fungi_mini,
+rank_color = "Class",
+facet_by="Height",
+ncol_facet=2,
+layout="square",
+ show_title=FALSE)
 ```

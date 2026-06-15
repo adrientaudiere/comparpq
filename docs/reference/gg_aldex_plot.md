@@ -121,6 +121,7 @@ four plot types correspond to the original ALDEx2 types:
 ## Examples
 
 ``` r
+
 data_fungi_high <- multiply_counts_pq(data_fungi, "Height", "High",
   4,
   prop_taxa = 0.1, seed = 42
@@ -193,96 +194,12 @@ gingival_pq <-
     dryrun = FALSE
   )[[1]] |>
   mia::convertToPhyloseq()
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "atomicVector" in cache; using the first, from namespace 'Matrix'
-#> Also defined by ‘Rmpfr’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 #> Finished HMP_2012_16S_gingival_V35_subset.
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 aldex_res <- aldex_pq(gingival_pq,
   bifactor = "body_subsite",
   modalities = c("supragingival_plaque", "subgingival_plaque")
 )
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 #> aldex.clr: generating Monte-Carlo instances and clr values
 #> conditions vector supplied
 #> operating in serial mode

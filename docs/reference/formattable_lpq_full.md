@@ -36,3 +36,18 @@ single formattable if only one is requested.
 ## Details
 
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
+## Examples
+
+``` r
+# \donttest{
+lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+  verbose = FALSE
+)
+formattable_lpq_full(lpq)
+#> $summary
+#> 
+#> $comparison
+#> 
+# }
+```

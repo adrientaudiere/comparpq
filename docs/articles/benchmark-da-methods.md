@@ -28,6 +28,7 @@ The benchmark evaluates:
 ## Setup
 
 ``` r
+
 library(comparpq)
 library(phyloseq)
 library(ggplot2)
@@ -50,6 +51,7 @@ library(BiocParallel)
 We define wrapper functions to standardize output across methods.
 
 ``` r
+
 #' Run DESeq2 on phyloseq object
 #' @param physeq A phyloseq object
 #' @param formula Formula for the design (e.g., "~ condition")
@@ -511,6 +513,7 @@ have larger library sizes, and DA methods would normalize this away,
 washing out the signal.
 
 ``` r
+
 data("data_fungi", package = "MiscMetabar")
 
 # Subset to binary comparison
@@ -554,6 +557,7 @@ function guarantees exact library size preservation (except for
 rounding) by redistributing counts within each sample.
 
 ``` r
+
 data_spike_perm <- permute_da_pq(
   data_fungi_hl,
   fact = "Height",
@@ -579,6 +583,7 @@ cat("- Library size preserved:",
 ### Approach C: `midasim_pq` (realistic simulation)
 
 ``` r
+
 data_spike_mida <- midasim_pq(
   data_fungi_hl,
   fact = "Height",
@@ -604,6 +609,7 @@ For the main benchmark, we use the `multiply_counts_pq` approach with
 compensation, as it modifies actual data while preserving library sizes.
 
 ``` r
+
 # Use the compensated multiply approach
 data_spike <- clean_pq(data_spike_mult)
 spike_taxa <- spike_taxa_mult
@@ -624,6 +630,7 @@ cat("- Groups:", table(sample_data(data_spike)$Height), "\n")
 ## Run All Methods
 
 ``` r
+
 results_spike <- run_all_methods(
   subset_taxa_pq(data_spike, taxa_sums(data_spike) > 100),
   group_var = "Height",
@@ -634,6 +641,7 @@ results_spike <- run_all_methods(
 ```
 
 ``` r
+
 # Summary of results
 results_spike |>
   group_by(method) |>
@@ -653,13 +661,14 @@ results_spike |>
 | MaAsLin3    |    333 |             0 |            0.000 |
 | radEmu_wald |    468 |           292 |            0.624 |
 
-Summary of DA results by method
+Summary of DA results by method {.table}
 
 ## Concordance Analysis
 
 ### Number of Significant Taxa
 
 ``` r
+
 sig_summary <- results_spike |>
   mutate(significant = qvalue < 0.05) |>
   group_by(method) |>
@@ -687,6 +696,7 @@ ggplot(sig_summary, aes(x = reorder(method, n_significant), y = n_significant)) 
 ### Overlap Between Methods (UpSet Plot)
 
 ``` r
+
 # Create presence/absence matrix for significant taxa
 sig_taxa_list <- results_spike |>
   filter(qvalue < 0.05) |>
@@ -730,6 +740,7 @@ if (nrow(sig_matrix) > 0) {
 ### Pairwise Method Agreement
 
 ``` r
+
 # Calculate Jaccard similarity between methods
 methods <- unique(results_spike$method)
 jaccard_matrix <- matrix(NA, length(methods), length(methods),
@@ -773,6 +784,7 @@ ggplot(jaccard_df, aes(x = Method1, y = Method2, fill = Jaccard)) +
 ### Effect Size Correlation
 
 ``` r
+
 # Wide format for effect sizes
 effects_wide <- results_spike |>
   dplyr::select(taxon, method, effect) |>
@@ -808,6 +820,7 @@ if (ncol(effects_wide) > 2) {
 ### Effect Size Distribution
 
 ``` r
+
 ggplot(results_spike, aes(x = effect, fill = method)) +
   geom_density(alpha = 0.5) +
   facet_wrap(~method, scales = "free_y") +
@@ -829,6 +842,7 @@ Using our spike-in data, we can evaluate how well each method controls
 FDR.
 
 ``` r
+
 # Get the actual spiked taxa (those with multiplied counts)
 # We need to identify them from the multiply_counts_pq function
 # For this, we'll use the taxa that were selected (stored during creation)
@@ -874,9 +888,10 @@ knitr::kable(
 | MaAsLin3    |   0 |   0 |  32 |       0.000 |   NaN |   NaN |
 | radEmu_wald |  23 | 269 |   9 |       0.719 | 0.921 | 0.142 |
 
-Performance metrics based on spike-in ground truth
+Performance metrics based on spike-in ground truth {.table}
 
 ``` r
+
 performance_long <- performance |>
   dplyr::select(method, Sensitivity, Specificity, FDR, F1) |>
   pivot_longer(-method, names_to = "Metric", values_to = "Value")
@@ -901,6 +916,7 @@ ggplot(performance_long, aes(x = method, y = Value, fill = Metric)) +
 ## Volcano Plots Comparison
 
 ``` r
+
 results_spike <- results_spike |>
   mutate(
     neg_log10_q = -log10(qvalue),
@@ -942,6 +958,7 @@ ggplot(results_spike, aes(x = effect, y = neg_log10_q, color = category)) +
 Now we apply the methods to real data without known ground truth.
 
 ``` r
+
 # Load HMP2 data
 taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
 taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
@@ -979,6 +996,7 @@ cat("- Samples:", nsamples(physeq_hmp2), "\n")
 ```
 
 ``` r
+
 results_hmp2 <- run_all_methods(
   physeq_hmp2,
   methods = c("ALDEx2", "ANCOM-BC2", "MaAsLin3", "radEmu"),
@@ -990,6 +1008,7 @@ results_hmp2 <- run_all_methods(
 ```
 
 ``` r
+
 # Concordance plot
 sig_hmp2 <- results_hmp2 |>
   filter(qvalue < 0.05) |>
@@ -1036,6 +1055,7 @@ consensus_hmp2 |>
 | Alistipes_SGB2313 | 2 | MaAsLin3, radEmu_wald | -5.65 |
 
 ``` r
+
 results_hmp2 |>
   mutate(significant = qvalue < 0.05) |>
   ggplot(aes(x = effect, y = -log10(qvalue), color = significant)) +
@@ -1057,6 +1077,7 @@ results_hmp2 |>
 ## Session Info
 
 ``` r
+
 sessionInfo()
 #> R version 4.5.2 (2025-10-31)
 #> Platform: x86_64-pc-linux-gnu

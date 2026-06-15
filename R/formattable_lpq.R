@@ -51,6 +51,9 @@ color_bar_formatter <- function(
 }
 #' Format factor columns with funky colored backgrounds
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param x A factor or character vector
 #' @return A formattable formatter function that applies colored backgrounds
 #'   based on unique factor levels.

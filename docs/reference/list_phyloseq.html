@@ -17,7 +17,7 @@ A summary table with computed characteristics for each phyloseq
 A list of comparison characteristics between phyloseq objects
 
 
-An S7 class to store and compare multiple phyloseq objects."></head><body>
+An S7 class to store and compare multiple phyloseq objects."><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -54,8 +54,7 @@ An S7 class to store and compare multiple phyloseq objects."></head><body>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>S7 class for comparing phyloseq objects</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>S7 class for comparing phyloseq objects</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/list_phyloseq.R" class="external-link"><code>R/list_phyloseq.R</code></a></small>
       <div class="d-none name"><code>list_phyloseq.Rd</code></div>
     </div>
@@ -76,7 +75,9 @@ An S7 class to store and compare multiple phyloseq objects."></head><body>
 <span>  <span class="va">physeq_list</span>,</span>
 <span>  names <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  same_primer_seq_tech <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  same_bioinfo_pipeline <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  same_bioinfo_pipeline <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  compute_dist <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -106,7 +107,24 @@ bioinformatics pipeline was used across all phyloseq objects. Set to FALSE
 when comparing different clustering methods, taxonomic databases, or
 analysis parameters.</p></dd>
 
+
+<dt id="arg-compute-dist">compute_dist<a class="anchor" aria-label="anchor" href="#arg-compute-dist"></a></dt>
+<dd><p>(logical, default TRUE) Whether to compute pairwise
+k-mer distances between refseq slots. Set to FALSE to skip this
+potentially slow computation, especially when phyloseq objects have many
+taxa or very different sequence sets.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>(logical, default TRUE) Whether to print progress messages
+via <code><a href="https://cli.r-lib.org/reference/cli_alert.html" class="external-link">cli::cli_alert_info()</a></code>.</p></dd>
+
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>A <code>list_phyloseq</code> S7 object with slots <code>phyloseq_list</code>,
+<code>summary_table</code>, and <code>comparison</code>.</p>
+    </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle" class="external-link">

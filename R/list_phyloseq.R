@@ -778,6 +778,9 @@ S7::method(print, list_phyloseq) <- function(x, ...) {
 
 #' Number of phyloseq objects in a `list_phyloseq`
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param x A `list_phyloseq` object.
 #' @return An integer: the number of phyloseq objects stored.
 #' @examples
@@ -789,6 +792,9 @@ length.list_phyloseq <- function(x) {
 }
 
 #' Names of phyloseq objects in a `list_phyloseq`
+#'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
 #' @param x A `list_phyloseq` object.
 #' @return A character vector of names.
@@ -885,6 +891,9 @@ update_list_phyloseq <- function(
 
 #' Add a phyloseq object to a list_phyloseq
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param x (required) A list_phyloseq object.
 #' @param physeq (required) A phyloseq object to add.
 #' @param name (character, default NULL) Optional name for the new phyloseq object.
@@ -916,6 +925,9 @@ add_phyloseq <- function(x, physeq, name = NULL, verbose = TRUE) {
 }
 
 #' Remove a phyloseq object from a list_phyloseq
+#'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
 #' @param x (required) A list_phyloseq object.
 #' @param name (character or integer) Name or index of the phyloseq object to remove.

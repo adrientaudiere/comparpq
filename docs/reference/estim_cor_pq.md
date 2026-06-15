@@ -10,7 +10,7 @@ confidence intervals for correlation coefficients and regression slopes.
 estim_cor_pq(
   physeq,
   variable,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   custom_fn = NULL,
   method = "pearson",
   resamples = 5000,
@@ -29,7 +29,7 @@ estim_cor_pq(
 
   (character, required) The name of a numeric column in `sample_data`.
 
-- hill_scales:
+- q:
 
   (numeric vector, default `c(0, 1, 2)`) The q values for Hill number
   computation.

@@ -773,6 +773,9 @@ permute_da_pq <- function(
 
 #'   case samples. Positive values increase abundance; negative decrease.
 #'   Typical values: 0.5-2 for moderate effects.
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param da_taxa_idx (integer vector, default NULL) Specific taxon indices
 #'   to make DA. If NULL, randomly selects `n_da_taxa` from prevalent taxa.
 #' @param min_prevalence (numeric, default 0.1) Minimum prevalence for a

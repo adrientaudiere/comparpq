@@ -55,7 +55,7 @@ tc_bar(
 
   (character, default NULL) A vector to determine which samples to merge
   using
-  [`MiscMetabar::merge_samples2()`](https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html)
+  [`merge_samples2()`](https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html)
   function. Need to be in `physeq@sam_data`.
 
 - log10trans:
@@ -73,6 +73,7 @@ Adrien Taudière
 ## Examples
 
 ``` r
+
 tc_bar(subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000), rank_1 = 5, rank_2 = 13, color_rank = 3)
 #> Cleaning suppress 0 taxa (  ) and 1 sample(s) ( samp_Blanc-PCR-racines ).
 #> Number of non-matching ASV 0

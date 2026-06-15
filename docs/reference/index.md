@@ -7,12 +7,49 @@ S7 class for storing and comparing multiple phyloseq objects
 - [`list_phyloseq()`](https://adrientaudiere.github.io/comparpq/reference/list_phyloseq.md)
   : S7 class for comparing phyloseq objects
 
+- [`` `[`( ``*`<list_phyloseq>`*`)`](https://adrientaudiere.github.io/comparpq/reference/sub-.list_phyloseq.md)
+  :
+
+  Subset a `list_phyloseq` object
+
+- [`` `[[`( ``*`<list_phyloseq>`*`)`](https://adrientaudiere.github.io/comparpq/reference/sub-sub-.list_phyloseq.md)
+  :
+
+  Extract a single phyloseq object from a `list_phyloseq`
+
+- [`length(`*`<list_phyloseq>`*`)`](https://adrientaudiere.github.io/comparpq/reference/length.list_phyloseq.md)
+  :
+
+  Number of phyloseq objects in a `list_phyloseq`
+
+- [`names(`*`<list_phyloseq>`*`)`](https://adrientaudiere.github.io/comparpq/reference/names.list_phyloseq.md)
+  :
+
+  Names of phyloseq objects in a `list_phyloseq`
+
 ## Phyloseq Comparison
 
 Functions for comparing phyloseq objects at a fine-grained level
 
 - [`compare_refseq()`](https://adrientaudiere.github.io/comparpq/reference/compare_refseq.md)
   : Compare refseq slots between two phyloseq objects
+
+- [`print(`*`<compare_refseq>`*`)`](https://adrientaudiere.github.io/comparpq/reference/print.compare_refseq.md)
+  :
+
+  [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
+- [`find_primers_pq()`](https://adrientaudiere.github.io/comparpq/reference/find_primers_pq.md)
+  : Find taxa whose reference sequences match primer sequences
+
+- [`refseq_comp_lpq()`](https://adrientaudiere.github.io/comparpq/reference/refseq_comp_lpq.md)
+  : Compare refseq sequences across all objects in a list_phyloseq
+
+- [`print(`*`<refseq_comp_lpq_result>`*`)`](https://adrientaudiere.github.io/comparpq/reference/print.refseq_comp_lpq_result.md)
+  :
+
+  [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
 - [`simple_venn_pq()`](https://adrientaudiere.github.io/comparpq/reference/simple_venn_pq.md)
   : Venn diagram of shared taxa across sample groups
 
@@ -57,29 +94,60 @@ Statistical analysis functions for list_phyloseq objects
 
 - [`adonis_lpq()`](https://adrientaudiere.github.io/comparpq/reference/adonis_lpq.md)
   : PERMANOVA analysis on each phyloseq object in a list_phyloseq
+
 - [`aldex_lpq()`](https://adrientaudiere.github.io/comparpq/reference/aldex_lpq.md)
   : ALDEx2 analysis on each phyloseq object in a list_phyloseq
+
 - [`ancombc_lpq()`](https://adrientaudiere.github.io/comparpq/reference/ancombc_lpq.md)
   : ANCOM-BC analysis on each phyloseq object in a list_phyloseq
+
 - [`estim_cor_lpq()`](https://adrientaudiere.github.io/comparpq/reference/estim_cor_lpq.md)
   : Estimation statistics for numeric correlation on a list_phyloseq
+
+- [`print(`*`<estim_cor_lpq_result>`*`)`](https://adrientaudiere.github.io/comparpq/reference/print.estim_cor_lpq_result.md)
+  :
+
+  [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
 - [`estim_cor_pq()`](https://adrientaudiere.github.io/comparpq/reference/estim_cor_pq.md)
   : Estimation statistics for numeric variable correlation on a phyloseq
   object
+
+- [`print(`*`<estim_cor_pq_result>`*`)`](https://adrientaudiere.github.io/comparpq/reference/print.estim_cor_pq_result.md)
+  :
+
+  [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
 - [`estim_diff_lpq()`](https://adrientaudiere.github.io/comparpq/reference/estim_diff_lpq.md)
   : Estimation statistics for categorical comparisons on a list_phyloseq
+
+- [`print(`*`<estim_diff_lpq_result>`*`)`](https://adrientaudiere.github.io/comparpq/reference/print.estim_diff_lpq_result.md)
+  :
+
+  [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
 - [`estim_diff_pq()`](https://adrientaudiere.github.io/comparpq/reference/estim_diff_pq.md)
   : Estimation statistics for categorical comparisons on a phyloseq
   object
+
+- [`print(`*`<estim_diff_pq_result>`*`)`](https://adrientaudiere.github.io/comparpq/reference/print.estim_diff_pq_result.md)
+  :
+
+  [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
 - [`gg_aldex_plot()`](https://adrientaudiere.github.io/comparpq/reference/gg_aldex_plot.md)
   : ggplot2 version of ALDEx2 diagnostic plots
+
 - [`gg_maaslin3_plot()`](https://adrientaudiere.github.io/comparpq/reference/gg_maaslin3_plot.md)
   : Plot MaAsLin3 results
+
 - [`glmulti_lpq()`](https://adrientaudiere.github.io/comparpq/reference/glmulti_lpq.md)
   : Automated model selection for Hill diversity on each phyloseq in a
   list_phyloseq
+
 - [`maaslin3_pq()`](https://adrientaudiere.github.io/comparpq/reference/maaslin3_pq.md)
   : Run MaAsLin3 differential abundance analysis on a phyloseq object
+
 - [`multipatt_lpq()`](https://adrientaudiere.github.io/comparpq/reference/multipatt_lpq.md)
   : Indicator species analysis on each phyloseq object in a
   list_phyloseq
@@ -114,6 +182,8 @@ Visualization functions for comparing taxonomic assignments
   : Barchart of ratio to compare 2 taxonomic ranks
 - [`tc_circle()`](https://adrientaudiere.github.io/comparpq/reference/tc_circle.md)
   : Circle of correspondence between two taxonomic levels
+- [`tc_heatmap()`](https://adrientaudiere.github.io/comparpq/reference/tc_heatmap.md)
+  : Heatmap of correspondence between two taxonomic ranks
 - [`tc_points_matrix()`](https://adrientaudiere.github.io/comparpq/reference/tc_points_matrix.md)
   : Matrix of point to compare two taxonomic ranks
 - [`rainplot_taxo_na()`](https://adrientaudiere.github.io/comparpq/reference/rainplot_taxo_na.md)
@@ -135,6 +205,28 @@ Interactive plotting functions for phyloseq objects
 
 - [`gg_bubbles_pq()`](https://adrientaudiere.github.io/comparpq/reference/gg_bubbles_pq.md)
   : Circle-packed bubble plot of a phyloseq object using ggplot2
+
+- [`community_sharing_pq()`](https://adrientaudiere.github.io/comparpq/reference/community_sharing_pq.md)
+  : Community sharing plot: modalities as pie nodes with multi-metric
+  links
+
+- [`community_sharing_barplot_pq()`](https://adrientaudiere.github.io/comparpq/reference/community_sharing_barplot_pq.md)
+  :
+
+  Companion bar chart for
+  [`community_sharing_pq()`](https://adrientaudiere.github.io/comparpq/reference/community_sharing_pq.md)
+
+- [`make_sharing_metric()`](https://adrientaudiere.github.io/comparpq/reference/make_sharing_metric.md)
+  :
+
+  Build a single metric definition for
+  [`community_sharing_pq()`](https://adrientaudiere.github.io/comparpq/reference/community_sharing_pq.md)
+
+- [`default_sharing_metrics()`](https://adrientaudiere.github.io/comparpq/reference/default_sharing_metrics.md)
+  :
+
+  Default metrics for
+  [`community_sharing_pq()`](https://adrientaudiere.github.io/comparpq/reference/community_sharing_pq.md)
 
 ## Fake Taxa Creation
 

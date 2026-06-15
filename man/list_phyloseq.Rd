@@ -35,7 +35,7 @@ potentially slow computation, especially when phyloseq objects have many
 taxa or very different sequence sets.}
 
 \item{verbose}{(logical, default TRUE) Whether to print progress messages
-via \code{\link[cli:cli_alert]{cli::cli_alert_info()}}.}
+via \code{\link[cli:cli_alert_info]{cli::cli_alert_info()}}.}
 }
 \value{
 A \code{list_phyloseq} S7 object with slots \code{phyloseq_list},
