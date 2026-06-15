@@ -153,17 +153,17 @@ lpq <- list_phyloseq(
 #> Partitioning sequences by 6-mer similarity:
 #> ================================================================================
 #> 
-#> Time difference of 0.28 secs
+#> Time difference of 0.29 secs
 #> 
 #> Sorting by relatedness within 779 groups:
 #> iteration 4 of up to 15 (100.0% stability) 
 #> 
-#> Time difference of 0.2 secs
+#> Time difference of 0.19 secs
 #> 
 #> Clustering sequences by 9-mer similarity:
 #> ================================================================================
 #> 
-#> Time difference of 2.74 secs
+#> Time difference of 2.56 secs
 #> 
 #> Clusters via relatedness sorting: 100% (0% exclusively)
 #> Clusters via rare 6-mers: 100% (0% exclusively)
