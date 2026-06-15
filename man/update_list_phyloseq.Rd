@@ -7,7 +7,9 @@
 update_list_phyloseq(
   x,
   same_primer_seq_tech = NULL,
-  same_bioinfo_pipeline = NULL
+  same_bioinfo_pipeline = NULL,
+  compute_dist = TRUE,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -18,6 +20,9 @@ and sequencing technology was used. If NULL, preserves the original value.}
 
 \item{same_bioinfo_pipeline}{(logical, default NULL) Whether the same
 bioinformatics pipeline was used. If NULL, preserves the original value.}
+
+\item{compute_dist}{(logical, default TRUE) Whether to compute pairwise
+k-mer distances between refseq slots.}
 }
 \value{
 An updated list_phyloseq object
@@ -32,4 +37,10 @@ parameters.
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}
+}
+\examples{
+lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+  verbose = FALSE
+)
+lpq2 <- update_list_phyloseq(lpq, compute_dist = FALSE, verbose = FALSE)
 }

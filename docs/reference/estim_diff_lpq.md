@@ -72,19 +72,19 @@ lpq <- list_phyloseq(
   same_bioinfo_pipeline = FALSE
 )
 #> Partitioning sequences by 6-mer similarity:
-#>   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   1%  |                                                                              |=                                                                     |   2%  |                                                                              |==                                                                    |   3%  |                                                                              |===                                                                   |   4%  |                                                                              |====                                                                  |   5%  |                                                                              |====                                                                  |   6%  |                                                                              |=====                                                                 |   7%  |                                                                              |======                                                                |   8%  |                                                                              |======                                                                |   9%  |                                                                              |=======                                                               |  10%  |                                                                              |========                                                              |  11%  |                                                                              |========                                                              |  12%  |                                                                              |=========                                                             |  13%  |                                                                              |==========                                                            |  14%  |                                                                              |==========                                                            |  15%  |                                                                              |===========                                                           |  16%  |                                                                              |============                                                          |  17%  |                                                                              |=============                                                         |  18%  |                                                                              |=============                                                         |  19%  |                                                                              |==============                                                        |  20%  |                                                                              |===============                                                       |  21%  |                                                                              |===============                                                       |  22%  |                                                                              |================                                                      |  23%  |                                                                              |=================                                                     |  24%  |                                                                              |==================                                                    |  25%  |                                                                              |==================                                                    |  26%  |                                                                              |===================                                                   |  27%  |                                                                              |====================                                                  |  28%  |                                                                              |====================                                                  |  29%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  31%  |                                                                              |======================                                                |  32%  |                                                                              |=======================                                               |  33%  |                                                                              |========================                                              |  34%  |                                                                              |========================                                              |  35%  |                                                                              |=========================                                             |  36%  |                                                                              |==========================                                            |  37%  |                                                                              |===========================                                           |  38%  |                                                                              |===========================                                           |  39%  |                                                                              |============================                                          |  40%  |                                                                              |=============================                                         |  41%  |                                                                              |=============================                                         |  42%  |                                                                              |==============================                                        |  43%  |                                                                              |===============================                                       |  44%  |                                                                              |================================                                      |  45%  |                                                                              |================================                                      |  46%  |                                                                              |=================================                                     |  47%  |                                                                              |==================================                                    |  48%  |                                                                              |==================================                                    |  49%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================                                  |  51%  |                                                                              |====================================                                  |  52%  |                                                                              |=====================================                                 |  53%  |                                                                              |======================================                                |  54%  |                                                                              |======================================                                |  55%  |                                                                              |=======================================                               |  56%  |                                                                              |========================================                              |  57%  |                                                                              |=========================================                             |  58%  |                                                                              |=========================================                             |  59%  |                                                                              |==========================================                            |  60%  |                                                                              |===========================================                           |  61%  |                                                                              |===========================================                           |  62%  |                                                                              |============================================                          |  63%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  65%  |                                                                              |==============================================                        |  66%  |                                                                              |===============================================                       |  67%  |                                                                              |================================================                      |  68%  |                                                                              |================================================                      |  69%  |                                                                              |=================================================                     |  70%  |                                                                              |==================================================                    |  71%  |                                                                              |==================================================                    |  72%  |                                                                              |===================================================                   |  73%  |                                                                              |====================================================                  |  74%  |                                                                              |====================================================                  |  75%  |                                                                              |=====================================================                 |  76%  |                                                                              |======================================================                |  77%  |                                                                              |=======================================================               |  78%  |                                                                              |=======================================================               |  79%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  81%  |                                                                              |=========================================================             |  82%  |                                                                              |==========================================================            |  83%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  85%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |==============================================================        |  88%  |                                                                              |==============================================================        |  89%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  91%  |                                                                              |================================================================      |  92%  |                                                                              |=================================================================     |  93%  |                                                                              |==================================================================    |  94%  |                                                                              |==================================================================    |  95%  |                                                                              |===================================================================   |  96%  |                                                                              |====================================================================  |  97%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%  |                                                                              |======================================================================| 100%
+#> ================================================================================
 #> 
-#> Time difference of 0.38 secs
+#> Time difference of 0.32 secs
 #> 
 #> Sorting by relatedness within 779 groups:
-#> iteration 1 of up to 15 (100.0% stability) iteration 2 of up to 15 (100.0% stability) iteration 3 of up to 15 (100.0% stability) iteration 4 of up to 15 (100.0% stability) iteration 4 of up to 15 (100.0% stability) 
+#> iteration 4 of up to 15 (100.0% stability) 
 #> 
-#> Time difference of 0.3 secs
+#> Time difference of 0.22 secs
 #> 
 #> Clustering sequences by 9-mer similarity:
-#>   |                                                                              |                                                                      |   0%  |                                                                              |=                                                                     |   1%  |                                                                              |=                                                                     |   2%  |                                                                              |==                                                                    |   3%  |                                                                              |===                                                                   |   4%  |                                                                              |====                                                                  |   5%  |                                                                              |====                                                                  |   6%  |                                                                              |=====                                                                 |   7%  |                                                                              |======                                                                |   8%  |                                                                              |======                                                                |   9%  |                                                                              |=======                                                               |  10%  |                                                                              |========                                                              |  11%  |                                                                              |========                                                              |  12%  |                                                                              |=========                                                             |  13%  |                                                                              |==========                                                            |  14%  |                                                                              |==========                                                            |  15%  |                                                                              |===========                                                           |  16%  |                                                                              |============                                                          |  17%  |                                                                              |=============                                                         |  18%  |                                                                              |=============                                                         |  19%  |                                                                              |==============                                                        |  20%  |                                                                              |===============                                                       |  21%  |                                                                              |===============                                                       |  22%  |                                                                              |================                                                      |  23%  |                                                                              |=================                                                     |  24%  |                                                                              |==================                                                    |  25%  |                                                                              |==================                                                    |  26%  |                                                                              |===================                                                   |  27%  |                                                                              |====================                                                  |  28%  |                                                                              |====================                                                  |  29%  |                                                                              |=====================                                                 |  30%  |                                                                              |======================                                                |  31%  |                                                                              |======================                                                |  32%  |                                                                              |=======================                                               |  33%  |                                                                              |========================                                              |  34%  |                                                                              |========================                                              |  35%  |                                                                              |=========================                                             |  36%  |                                                                              |==========================                                            |  37%  |                                                                              |===========================                                           |  38%  |                                                                              |===========================                                           |  39%  |                                                                              |============================                                          |  40%  |                                                                              |=============================                                         |  41%  |                                                                              |=============================                                         |  42%  |                                                                              |==============================                                        |  43%  |                                                                              |===============================                                       |  44%  |                                                                              |================================                                      |  45%  |                                                                              |================================                                      |  46%  |                                                                              |=================================                                     |  47%  |                                                                              |==================================                                    |  48%  |                                                                              |==================================                                    |  49%  |                                                                              |===================================                                   |  50%  |                                                                              |====================================                                  |  51%  |                                                                              |====================================                                  |  52%  |                                                                              |=====================================                                 |  53%  |                                                                              |======================================                                |  54%  |                                                                              |======================================                                |  55%  |                                                                              |=======================================                               |  56%  |                                                                              |========================================                              |  57%  |                                                                              |=========================================                             |  58%  |                                                                              |=========================================                             |  59%  |                                                                              |==========================================                            |  60%  |                                                                              |===========================================                           |  61%  |                                                                              |===========================================                           |  62%  |                                                                              |============================================                          |  63%  |                                                                              |=============================================                         |  64%  |                                                                              |==============================================                        |  65%  |                                                                              |==============================================                        |  66%  |                                                                              |===============================================                       |  67%  |                                                                              |================================================                      |  68%  |                                                                              |================================================                      |  69%  |                                                                              |=================================================                     |  70%  |                                                                              |==================================================                    |  71%  |                                                                              |==================================================                    |  72%  |                                                                              |===================================================                   |  73%  |                                                                              |====================================================                  |  74%  |                                                                              |====================================================                  |  75%  |                                                                              |=====================================================                 |  76%  |                                                                              |======================================================                |  77%  |                                                                              |=======================================================               |  78%  |                                                                              |=======================================================               |  79%  |                                                                              |========================================================              |  80%  |                                                                              |=========================================================             |  81%  |                                                                              |=========================================================             |  82%  |                                                                              |==========================================================            |  83%  |                                                                              |===========================================================           |  84%  |                                                                              |============================================================          |  85%  |                                                                              |============================================================          |  86%  |                                                                              |=============================================================         |  87%  |                                                                              |==============================================================        |  88%  |                                                                              |==============================================================        |  89%  |                                                                              |===============================================================       |  90%  |                                                                              |================================================================      |  91%  |                                                                              |================================================================      |  92%  |                                                                              |=================================================================     |  93%  |                                                                              |==================================================================    |  94%  |                                                                              |==================================================================    |  95%  |                                                                              |===================================================================   |  96%  |                                                                              |====================================================================  |  97%  |                                                                              |===================================================================== |  98%  |                                                                              |===================================================================== |  99%  |                                                                              |======================================================================| 100%
+#> ================================================================================
 #> 
-#> Time difference of 4.57 secs
+#> Time difference of 2.75 secs
 #> 
 #> Clusters via relatedness sorting: 100% (0% exclusively)
 #> Clusters via rare 6-mers: 100% (0% exclusively)
@@ -109,32 +109,8870 @@ results <- estim_diff_lpq(lpq, fact = "Height")
 #> Running estimation statistics (categorical) on 4 phyloseq objects
 #> Factor: Height
 #> → Processing: fungi
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
 #> → Processing: fungi_clust
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
 #> → Processing: fungi_rarefy
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Sample coverage is 0, most estimators will return `NaN`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
 #> → Processing: fungi_with_less_otu_in_High
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> ! Function arguments cannot be checked because the package divent is not attached.
+#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
 #> Warning: Error processing 'fungi_with_less_otu_in_High': estimated adjustment 'w' is infinite
 results$summary
 #> # A tibble: 18 × 9
 #>    name         metric comparison  effect_size ci_lower ci_upper pvalue_permtest
 #>    <chr>        <chr>  <chr>             <dbl>    <dbl>    <dbl>           <dbl>
-#>  1 fungi        Hill_0 High vs Low    -0.120     -0.560    0.309           0.577
-#>  2 fungi        Hill_0 High vs Mi…    -0.187     -0.617    0.232           0.386
-#>  3 fungi        Hill_1 High vs Low    -0.0158    -0.434    0.418           0.942
-#>  4 fungi        Hill_1 High vs Mi…     0.163     -0.254    0.585           0.454
-#>  5 fungi        Hill_2 High vs Low    -0.0387    -0.470    0.387           0.869
-#>  6 fungi        Hill_2 High vs Mi…     0.187     -0.230    0.592           0.396
-#>  7 fungi_clust  Hill_0 High vs Low    -0.137     -0.580    0.289           0.520
-#>  8 fungi_clust  Hill_0 High vs Mi…    -0.180     -0.612    0.230           0.410
-#>  9 fungi_clust  Hill_1 High vs Low     0.0433    -0.364    0.462           0.837
-#> 10 fungi_clust  Hill_1 High vs Mi…     0.221     -0.193    0.622           0.314
-#> 11 fungi_clust  Hill_2 High vs Low     0.0353    -0.380    0.456           0.873
-#> 12 fungi_clust  Hill_2 High vs Mi…     0.239     -0.171    0.640           0.276
-#> 13 fungi_rarefy Hill_0 High vs Low    -0.0724    -0.497    0.349           0.694
-#> 14 fungi_rarefy Hill_0 High vs Mi…    -0.0217    -0.434    0.413           0.877
-#> 15 fungi_rarefy Hill_1 High vs Low    -0.0647    -0.491    0.360           0.766
-#> 16 fungi_rarefy Hill_1 High vs Mi…    -0.00864   -0.429    0.426           0.971
-#> 17 fungi_rarefy Hill_2 High vs Low    -0.0631    -0.495    0.363           0.770
-#> 18 fungi_rarefy Hill_2 High vs Mi…     0.00665   -0.418    0.435           0.976
+#>  1 fungi        Hill_0 High vs Low    -0.0581    -0.487    0.371           0.780
+#>  2 fungi        Hill_0 High vs Mi…    -0.221     -0.622    0.211           0.310
+#>  3 fungi        Hill_1 High vs Low     0.0118    -0.412    0.429           0.959
+#>  4 fungi        Hill_1 High vs Mi…     0.105     -0.316    0.529           0.624
+#>  5 fungi        Hill_2 High vs Low    -0.0334    -0.467    0.393           0.88 
+#>  6 fungi        Hill_2 High vs Mi…     0.128     -0.291    0.541           0.557
+#>  7 fungi_clust  Hill_0 High vs Low     0.103     -0.360    0.411           0.729
+#>  8 fungi_clust  Hill_0 High vs Mi…    -0.326     -0.571    0.121           0.101
+#>  9 fungi_clust  Hill_1 High vs Low     0.0408    -0.374    0.454           0.840
+#> 10 fungi_clust  Hill_1 High vs Mi…     0.157     -0.264    0.568           0.46 
+#> 11 fungi_clust  Hill_2 High vs Low     0.00841   -0.407    0.421           0.968
+#> 12 fungi_clust  Hill_2 High vs Mi…     0.184     -0.236    0.599           0.401
+#> 13 fungi_rarefy Hill_0 High vs Low    -0.0557    -0.470    0.384           0.781
+#> 14 fungi_rarefy Hill_0 High vs Mi…    -0.130     -0.557    0.306           0.552
+#> 15 fungi_rarefy Hill_1 High vs Low    -0.0561    -0.482    0.376           0.804
+#> 16 fungi_rarefy Hill_1 High vs Mi…    -0.119     -0.538    0.319           0.581
+#> 17 fungi_rarefy Hill_2 High vs Low    -0.0533    -0.480    0.379           0.808
+#> 18 fungi_rarefy Hill_2 High vs Mi…    -0.0939    -0.514    0.343           0.658
 #> # ℹ 2 more variables: pvalue_welch <dbl>, pvalue_mann_whitney <dbl>
 
 # Plot results for two phyloseq objects

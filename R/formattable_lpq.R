@@ -51,9 +51,16 @@ color_bar_formatter <- function(
 }
 #' Format factor columns with funky colored backgrounds
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param x A factor or character vector
-#' @return A formattable object with colored backgrounds
+#' @return A formattable formatter function that applies colored backgrounds
+#'   based on unique factor levels.
 #' @export
+#' @examples
+#' fmt <- factor_formatter(c("low", "medium", "high"))
+#' class(fmt)
 factor_formatter <- function(x) {
   if (!is.factor(x) && !is.character(x)) {
     return(x)
@@ -315,6 +322,13 @@ formattable_lpq <- function(
 #'   or a single formattable if only one is requested.
 #'
 #' @export
+#' @examples
+#' \donttest{
+#' lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+#'   verbose = FALSE
+#' )
+#' formattable_lpq_full(lpq)
+#' }
 formattable_lpq_full <- function(
   x,
   show_summary = TRUE,

@@ -16,7 +16,7 @@
 #' estimates are between two pipelines, runs, or primers.
 #'
 #' @param x (required) A [list_phyloseq] object.
-#' @param hill_scales (numeric vector, default `c(0, 1, 2)`) Hill number
+#' @param q (numeric vector, default `c(0, 1, 2)`) Hill number
 #'   orders to compute: 0 = richness, 1 = Shannon exponential, 2 = inverse
 #'   Simpson.
 #' @param pairs (list of integer pairs or NULL, default NULL) Which pairs of
@@ -61,14 +61,14 @@
 #' )
 #'
 #' gg_hill_lpq(lpq)
-#' gg_hill_lpq(lpq, hill_scales = c(0, 1))
+#' gg_hill_lpq(lpq, q = c(0, 1))
 #' gg_hill_lpq(lpq, add_smooth = FALSE, add_1to1 = TRUE)
 #'
 #' @seealso [estim_cor_pq()], [estim_diff_lpq()]
 #' @export
 gg_hill_lpq <- function(
   x,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   pairs = NULL,
   add_1to1 = TRUE,
   add_smooth = TRUE,
@@ -117,8 +117,8 @@ gg_hill_lpq <- function(
       phyloseq::sample_names(pq) %in% common_samps,
       pq
     )
-    hill_df <- hill_samples_pq(pq_sub, hill_scales)
-    hill_df <- hill_df[, paste0("Hill_", hill_scales), drop = FALSE]
+    hill_df <- hill_samples_pq(pq_sub, q)
+    hill_df <- hill_df[, paste0("Hill_", q), drop = FALSE]
     hill_df$sample_name <- rownames(hill_df)
     hill_df
   })
@@ -142,7 +142,7 @@ gg_hill_lpq <- function(
   }
 
   # ---- Build long data frame for plotting -------------------------------------
-  hill_cols <- paste0("Hill_", hill_scales)
+  hill_cols <- paste0("Hill_", q)
 
   plot_data <- purrr::map_dfr(pair_indices, function(idx) {
     i <- idx[1]

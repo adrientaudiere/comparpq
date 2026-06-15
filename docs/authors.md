@@ -10,12 +10,12 @@
 Source:
 [`DESCRIPTION`](https://github.com/adrientaudiere/comparpq/blob/HEAD/DESCRIPTION)
 
-Taudière A (2026). *comparpq: An extension to MiscMetabar and phyloseq
-package to compare phyloseq object*. R package version 0.1.3,
+Taudière A (2026). *comparpq: Compare and Analyse Multiple 'phyloseq'
+Objects*. R package version 0.1.3,
 <https://github.com/adrientaudiere/comparpq>.
 
     @Manual{,
-      title = {comparpq: An extension to {MiscMetabar} and {phyloseq} package to compare phyloseq object},
+      title = {comparpq: Compare and Analyse Multiple 'phyloseq' Objects},
       author = {Adrien Taudière},
       year = {2026},
       note = {R package version 0.1.3},

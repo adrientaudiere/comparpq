@@ -54,7 +54,7 @@ tc_points_matrix(
 
   (character, default NULL) A vector to determine which samples to merge
   using
-  [`MiscMetabar::merge_samples2()`](https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html)
+  [`merge_samples2()`](https://adrientaudiere.github.io/MiscMetabar/reference/merge_samples2.html)
   function. Need to be in `physeq@sam_data`.
 
 ## Value
@@ -68,6 +68,7 @@ Adrien Taudière
 ## Examples
 
 ``` r
+
 tc_points_matrix(
   subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000),
   "Order", "Order__eukaryome_Glomero"

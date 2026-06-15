@@ -49,10 +49,16 @@
 #'     comparison may not be meaningful.}
 #' }
 #'
+#' @return A `list_phyloseq` S7 object with slots `phyloseq_list`,
+#'   `summary_table`, and `comparison`.
 #' @name list_phyloseq
 #' @importFrom S7 new_class new_property class_list class_any
 #' @importFrom tibble tibble
 #' @importFrom phyloseq nsamples ntaxa sample_sums taxa_sums sample_data
+#' @importFrom purrr map map_dfr map2_dfr map_chr map_lgl map_int imap compact reduce
+#' @importFrom cli cli_alert_info cli_alert cli_alert_success col_red
+#' @importFrom ape as.DNAbin
+#' @importFrom kmer kdistance
 #' @export
 NULL
 
@@ -707,12 +713,18 @@ list_phyloseq <- S7::new_class(
       )
     }
 
-    S7::new_object(
+    obj <- S7::new_object(
       S7::S7_object(),
       phyloseq_list = physeq_list,
       summary_table = summary_table,
       comparison = comparison
     )
+    # S7 stores the class as "comparpq::list_phyloseq" (package-qualified),
+    # which blocks S3 dispatch (R looks for length.comparpq::list_phyloseq,
+    # an invalid symbol). Prepending the bare class name enables S3 methods
+    # (length, names, [, [[) to dispatch correctly.
+    attr(obj, "class") <- c("list_phyloseq", attr(obj, "class"))
+    obj
   }
 )
 
@@ -764,18 +776,46 @@ S7::method(print, list_phyloseq) <- function(x, ...) {
   invisible(x)
 }
 
-# Length method for list_phyloseq
-S7::method(length, list_phyloseq) <- function(x) {
+#' Number of phyloseq objects in a `list_phyloseq`
+#'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' @param x A `list_phyloseq` object.
+#' @return An integer: the number of phyloseq objects stored.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' length(lpq) # 2
+#' @exportS3Method base::length
+length.list_phyloseq <- function(x) {
   length(x@phyloseq_list)
 }
 
-# Names method for list_phyloseq
-S7::method(names, list_phyloseq) <- function(x) {
+#' Names of phyloseq objects in a `list_phyloseq`
+#'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' @param x A `list_phyloseq` object.
+#' @return A character vector of names.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' names(lpq) # c("a", "b")
+#' @exportS3Method base::names
+names.list_phyloseq <- function(x) {
   names(x@phyloseq_list)
 }
 
-# Subset method for list_phyloseq
-S7::method(`[`, list_phyloseq) <- function(x, i) {
+#' Subset a `list_phyloseq` object
+#'
+#' @param x A `list_phyloseq` object.
+#' @param i Index (integer or character) selecting elements.
+#' @return A new `list_phyloseq` built from the selected phyloseq objects.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' lpq[1]
+#' @rawNamespace S3method("[", list_phyloseq)
+`[.list_phyloseq` <- function(x, i) {
   list_phyloseq(
     x@phyloseq_list[i],
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
@@ -784,8 +824,16 @@ S7::method(`[`, list_phyloseq) <- function(x, i) {
   )
 }
 
-# Extract method for list_phyloseq (single element)
-S7::method(`[[`, list_phyloseq) <- function(x, i) {
+#' Extract a single phyloseq object from a `list_phyloseq`
+#'
+#' @param x A `list_phyloseq` object.
+#' @param i Index (integer or character) selecting one element.
+#' @return The selected `phyloseq` object.
+#' @examples
+#' lpq <- list_phyloseq(list(a = data_fungi, b = data_fungi))
+#' lpq[[1]]
+#' @rawNamespace S3method("[[", list_phyloseq)
+`[[.list_phyloseq` <- function(x, i) {
   x@phyloseq_list[[i]]
 }
 
@@ -810,6 +858,11 @@ S7::method(`[[`, list_phyloseq) <- function(x, i) {
 #'   k-mer distances between refseq slots.
 #' @return An updated list_phyloseq object
 #' @export
+#' @examples
+#' lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+#'   verbose = FALSE
+#' )
+#' lpq2 <- update_list_phyloseq(lpq, compute_dist = FALSE, verbose = FALSE)
 update_list_phyloseq <- function(
   x,
   same_primer_seq_tech = NULL,
@@ -838,12 +891,19 @@ update_list_phyloseq <- function(
 
 #' Add a phyloseq object to a list_phyloseq
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param x (required) A list_phyloseq object.
 #' @param physeq (required) A phyloseq object to add.
 #' @param name (character, default NULL) Optional name for the new phyloseq object.
 #'   If NULL, a name is generated automatically.
 #' @return A new list_phyloseq object with the added phyloseq
 #' @export
+#' @examples
+#' lpq <- list_phyloseq(list(run1 = data_fungi), verbose = FALSE)
+#' lpq2 <- add_phyloseq(lpq, data_fungi_mini, name = "run2", verbose = FALSE)
+#' length(lpq2)
 add_phyloseq <- function(x, physeq, name = NULL, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
   stopifnot(inherits(physeq, "phyloseq"))
@@ -866,10 +926,19 @@ add_phyloseq <- function(x, physeq, name = NULL, verbose = TRUE) {
 
 #' Remove a phyloseq object from a list_phyloseq
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param x (required) A list_phyloseq object.
 #' @param name (character or integer) Name or index of the phyloseq object to remove.
 #' @return A new list_phyloseq object without the removed phyloseq
 #' @export
+#' @examples
+#' lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+#'   verbose = FALSE
+#' )
+#' lpq2 <- remove_phyloseq(lpq, "run2", verbose = FALSE)
+#' length(lpq2)
 remove_phyloseq <- function(x, name, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
@@ -1174,6 +1243,11 @@ n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
 #'   The function must take a phyloseq object as its first argument and return
 #'   a phyloseq object.
 #' @param ... Additional arguments passed to `.f`.
+#' @param compute_dist (logical, default NULL) Whether to compute pairwise
+#'   k-mer distances in the rebuilt list_phyloseq. When NULL (default),
+#'   automatically inherits the setting from `x`: distances are recomputed only
+#'   if they were computed in the original object (i.e.
+#'   `x@comparison$refseq_comparison` is not NULL).
 #' @param verbose (logical, default TRUE) If TRUE, print information about the
 #'   transformation applied to each phyloseq object.
 #'
@@ -1220,11 +1294,15 @@ n_levels_lpq <- function(x, taxonomic_ranks, na.rm = TRUE) {
 #' lpq_processed <- lpq |>
 #'   apply_to_lpq(MiscMetabar::clean_pq) |>
 #'   apply_to_lpq(MiscMetabar::taxa_as_rows)
-apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
+apply_to_lpq <- function(x, .f, ..., compute_dist = NULL, verbose = TRUE) {
   stopifnot(inherits(x, "comparpq::list_phyloseq"))
 
   if (!is.function(.f)) {
     stop("`.f` must be a function")
+  }
+
+  if (is.null(compute_dist)) {
+    compute_dist <- !is.null(x@comparison$refseq_comparison)
   }
 
   func_name <- deparse(substitute(.f))
@@ -1283,6 +1361,7 @@ apply_to_lpq <- function(x, .f, ..., verbose = TRUE) {
     transformed_list,
     same_primer_seq_tech = x@comparison$same_primer_seq_tech,
     same_bioinfo_pipeline = x@comparison$same_bioinfo_pipeline,
+    compute_dist = compute_dist,
     verbose = verbose
   )
 }

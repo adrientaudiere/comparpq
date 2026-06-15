@@ -15,7 +15,7 @@ test_that("gg_hill_lpq returns a ggplot", {
 
 test_that("gg_hill_lpq works with a single hill scale", {
   lpq <- create_test_lpq()
-  p <- gg_hill_lpq(lpq, hill_scales = 0, verbose = FALSE)
+  p <- gg_hill_lpq(lpq, q = 0, verbose = FALSE)
   expect_s3_class(p, "gg")
 })
 

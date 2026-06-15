@@ -29,3 +29,11 @@ characteristics from a list_phyloseq object.
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}
 }
+\examples{
+\donttest{
+lpq <- list_phyloseq(list(run1 = data_fungi, run2 = data_fungi_mini),
+  verbose = FALSE
+)
+formattable_lpq_full(lpq)
+}
+}

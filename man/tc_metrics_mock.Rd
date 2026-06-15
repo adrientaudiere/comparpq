@@ -53,6 +53,17 @@ taxa (by shuffling sequences and/or by adding external sequences). The user
 must fake taxa using functions \code{\link[=add_external_seq_pq]{add_external_seq_pq()}},
 \code{\link[=add_shuffle_seq_pq]{add_shuffle_seq_pq()}}) before taxonomic assignation.
 }
+\examples{
+ranks_df <- data.frame(
+  silva = c("Phylum", "Class"),
+  unite = c("Phylum", "Class")
+)
+true_values_df <- data.frame(
+  Phylum = c("Basidiomycota", "Ascomycota"),
+  Class  = c("Agaricomycetes", "Sordariomycetes")
+)
+tc_metrics_mock(data_fungi_mini, ranks_df, true_values_df)
+}
 \seealso{
 \code{\link[=tc_metrics_mock_vec]{tc_metrics_mock_vec()}}
 }

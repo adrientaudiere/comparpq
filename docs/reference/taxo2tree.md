@@ -63,18 +63,14 @@ data_fungi_mini@phy_tree <-
       "Family", "Genus", "Genus_species"
     )
   ))
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 library(ggtree)
-#> ggtree v4.0.4 Learn more at https://yulab-smu.top/contribution-tree-data/
+#> ggtree v4.2.0 Learn more at https://yulab-smu.top/contribution-tree-data/
 #> 
 #> Please cite:
 #> 
-#> S Xu, Z Dai, P Guo, X Fu, S Liu, L Zhou, W Tang, T Feng, M Chen, L
-#> Zhan, T Wu, E Hu, Y Jiang, X Bo, G Yu. ggtreeExtra: Compact
-#> visualization of richly annotated phylogenetic data. Molecular Biology
-#> and Evolution. 2021, 38(9):4039-4042. doi: 10.1093/molbev/msab166
+#> Guangchuang Yu. Using ggtree to visualize data on tree-like structures.
+#> Current Protocols in Bioinformatics. 2020, 69:e96. doi:10.1002/cpbi.96
 #> 
 #> Attaching package: ‘ggtree’
 #> The following object is masked from ‘package:MiscMetabar’:
@@ -84,8 +80,6 @@ library(ggtree)
 ggtree(data_fungi_mini@phy_tree) +
   geom_nodelab(size = 2, nudge_x = -0.2, nudge_y = 0.6) +
   geom_tiplab()
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 
 psm <- psmelt(data_fungi_mini) |>
@@ -106,8 +100,6 @@ ggtree(data_fungi_mini@phy_tree) %<+% psm +
   )) +
   geom_nodelab(nudge_x = -0.2, nudge_y = 0.6) +
   scale_color_viridis_c()
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 
 
@@ -120,14 +112,10 @@ tree_wo_singletons <-
     ),
     internal_node_singletons = FALSE
   ))
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 ggtree::ggtree(tree_wo_singletons) +
   ggtree::geom_nodelab(size = 2, nudge_x = -0.2, nudge_y = 0.6) +
   ggtree::geom_tiplab()
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 
 # Without taxa names (collapse identical paths)
@@ -135,12 +123,8 @@ tree_no_taxa <- taxo2tree(data_fungi_mini,
   ranks = c("Domain", "Phylum", "Class", "Order", "Family", "Genus"),
   use_taxa_names = FALSE
 )
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 
 ggtree::ggtree(tree_no_taxa) +
   ggtree::geom_nodelab(size = 2, nudge_x = -0.2, nudge_y = 0.6) +
   ggtree::geom_tiplab()
-#> Found more than one class "phylo" in cache; using the first, from namespace 'phyloseq'
-#> Also defined by ‘tidytree’
 ```

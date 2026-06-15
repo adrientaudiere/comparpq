@@ -23,7 +23,7 @@ simple_venn_pq(
   min_nb_seq = 0,
   taxonomic_rank = c("Class", "Order", "Family", "Genus", "Species"),
   na_remove = TRUE,
-  count_type = c("rank", "taxa", "sequences", "rank_taxa"),
+  count_type = c("rank_taxa", "rank", "taxa", "sequences"),
   add_nb_samples = TRUE,
   fill_alpha = 0.3,
   border_size = 0.8,
@@ -32,12 +32,12 @@ simple_venn_pq(
   hide_zero = TRUE,
   label_size = 4.5,
   colors = NULL,
+  labels = NULL,
   show_na_count = FALSE,
   count_taxa = TRUE,
   match_by = c("refseq", "names"),
   combine = TRUE,
-  verbose = TRUE,
-  .lpq_n_samples = NULL
+  verbose = TRUE
 )
 ```
 
@@ -80,8 +80,8 @@ simple_venn_pq(
 
 - count_type:
 
-  (character, default `"rank"`) What to count in each Venn region. One
-  of:
+  (character, default `"rank_taxa"`) What to count in each Venn region.
+  One of:
 
   - `"rank"`: number of unique taxonomic levels (e.g. number of shared
     Classes). This is the default.
@@ -131,6 +131,14 @@ simple_venn_pq(
 
   (character or NULL) Vector of colors, one per group. Defaults to a
   4-color qualitative palette.
+
+- labels:
+
+  (character or NULL, default NULL) Custom labels for the groups, in the
+  same order as the levels of `fact` (or the list_phyloseq names). Must
+  have the same length as the number of groups. When `NULL`, the
+  original level names are used. Not that the order is the one of the
+  levels in `fact`.
 
 - show_na_count:
 
@@ -218,6 +226,12 @@ lpq <- list_phyloseq(list(
 #> ℹ Detected comparison type: NESTED_ROBUSTNESS
 #> ℹ 137 common samples, 45 common taxa
 #> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
-simple_venn_pq(lpq, taxonomic_rank = "Genus", count_taxa)
+simple_venn_pq(lpq, taxonomic_rank = "Genus")
 #> Merging 2 phyloseq objects by refseq: 45 + 1420 taxa -> 1420 unique sequences.
+
+
+ simple_venn_pq(data_fungi_mini, "Height",
+   taxonomic_rank = NULL,
+   labels = c("Low alt.", "Mid alt.", "High alt.")
+ )
 ```

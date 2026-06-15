@@ -62,6 +62,7 @@ midasim_pq(
   (numeric, default 1) Log-fold change for DA taxa in case samples.
   Positive values increase abundance; negative decrease. Typical values:
   0.5-2 for moderate effects.
+  [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 - da_taxa_idx:
 
@@ -208,12 +209,12 @@ res_height <- ancombc_pq(
 #> The multi-group comparisons (global/pairwise/dunnet/trend) will be deactivated
 #> The sample size per group is: Low = 69, High = 68
 #> PASS
-#> Warning: The number of taxa used for estimating sample-specific biases is: 10
+#> Warning: The number of taxa used for estimating sample-specific biases is: 12
 #> A large number of taxa (>50) is required for the consistent estimation of biases
 #> Obtaining initial estimates ...
 #> Estimating sample-specific biases ...
 #> Warning: Estimation of sampling fractions failed for the following samples:
-#> sim_sample_5, sim_sample_21, sim_sample_24, sim_sample_26, sim_sample_34, sim_sample_38, sim_sample_44, sim_sample_48, sim_sample_54, sim_sample_68, sim_sample_72, sim_sample_81, sim_sample_100, sim_sample_101, sim_sample_106, sim_sample_112, sim_sample_117, sim_sample_130
+#> sim_sample_21, sim_sample_24, sim_sample_31, sim_sample_34, sim_sample_38, sim_sample_44, sim_sample_48, sim_sample_68, sim_sample_72, sim_sample_74, sim_sample_83, sim_sample_88, sim_sample_101, sim_sample_106, sim_sample_107, sim_sample_110, sim_sample_112, sim_sample_117, sim_sample_130
 #> These samples may have an excessive number of zero values
 #> ANCOM-BC2 primary results ...
 #> Conducting sensitivity analysis for pseudo-count addition to 0s ...

@@ -33,11 +33,19 @@ reference:
   desc: "S7 class for storing and comparing multiple phyloseq objects"
   contents:
   - list_phyloseq
+  - "[.list_phyloseq"
+  - "[[.list_phyloseq"
+  - length.list_phyloseq
+  - names.list_phyloseq
 
 - title: "Phyloseq Comparison"
   desc: "Functions for comparing phyloseq objects at a fine-grained level"
   contents:
   - compare_refseq
+  - print.compare_refseq
+  - find_primers_pq
+  - refseq_comp_lpq
+  - print.refseq_comp_lpq_result
   - simple_venn_pq
 
 - title: "list_phyloseq Utilities"
@@ -67,9 +75,13 @@ reference:
   - aldex_lpq
   - ancombc_lpq
   - estim_cor_lpq
+  - print.estim_cor_lpq_result
   - estim_cor_pq
+  - print.estim_cor_pq_result
   - estim_diff_lpq
+  - print.estim_diff_lpq_result
   - estim_diff_pq
+  - print.estim_diff_pq_result
   - gg_aldex_plot
   - gg_maaslin3_plot
   - glmulti_lpq
@@ -95,6 +107,7 @@ reference:
   - tc_df_pq
   - tc_bar
   - tc_circle
+  - tc_heatmap
   - tc_points_matrix
   - rainplot_taxo_na
   - tc_linked_trees
@@ -105,6 +118,10 @@ reference:
   contents:
   - bubbles_pq
   - gg_bubbles_pq
+  - community_sharing_pq
+  - community_sharing_barplot_pq
+  - make_sharing_metric
+  - default_sharing_metrics
 
 - title: "Fake Taxa Creation"
   desc: "Functions for adding fake taxa to test taxonomic assignment accuracy"

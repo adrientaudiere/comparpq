@@ -20,7 +20,7 @@ adonis_lpq(
 \item{x}{(required) A list_phyloseq object.}
 
 \item{formula}{(character, required) The right part of a formula for
-\code{\link[vegan:adonis]{vegan::adonis2()}}. Variables must be present in the \code{sample_data} slot
+\code{\link[vegan:adonis2]{vegan::adonis2()}}. Variables must be present in the \code{sample_data} slot
 of \strong{all} phyloseq objects. The formula should contain variables that
 are in the shared modalities.}
 
@@ -37,7 +37,7 @@ library size to the formula following Weiss et al. 2017 recommendations.}
 before computing distances.}
 
 \item{by}{(character, default "margin") The \code{by} argument passed to
-\code{\link[vegan:adonis]{vegan::adonis2()}}. Options are "terms", "margin", or NULL.}
+\code{\link[vegan:adonis2]{vegan::adonis2()}}. Options are "terms", "margin", or NULL.}
 
 \item{verbose}{(logical, default TRUE) If TRUE, print progress messages.}
 
@@ -73,7 +73,7 @@ as the formula must contain variables that are common across all phyloseq
 objects.
 
 The function is a wrapper around \code{\link[MiscMetabar:adonis_pq]{MiscMetabar::adonis_pq()}}, which itself
-wraps \code{\link[vegan:adonis]{vegan::adonis2()}}.
+wraps \code{\link[vegan:adonis2]{vegan::adonis2()}}.
 }
 \examples{
 \dontrun{
@@ -95,5 +95,5 @@ results_jaccard <- adonis_lpq(lpq, formula = "Height", dist_method = "jaccard")
 
 }
 \seealso{
-\code{\link[MiscMetabar:adonis_pq]{MiscMetabar::adonis_pq()}}, \code{\link[vegan:adonis]{vegan::adonis2()}}
+\code{\link[MiscMetabar:adonis_pq]{MiscMetabar::adonis_pq()}}, \code{\link[vegan:adonis2]{vegan::adonis2()}}
 }

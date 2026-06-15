@@ -35,9 +35,9 @@ names or defaults to \code{"physeq2"}.}
 \item{k}{(integer, default 5) k-mer size for nearest-neighbor distance
 computation on unique sequences.}
 
-\item{max_seqs}{(integer, default 500) Maximum number of unique sequences
-per object to use for distance computation. If there are more, a random
-sample is drawn. Set to \code{Inf} to use all (may be slow).}
+\item{max_seqs}{(integer, default 500) Maximum number of query and target
+sequences to use for k-mer distance computation. If there are more, a
+random sample is drawn. Set to \code{Inf} to use all (may be slow).}
 
 \item{seed}{(integer, default NULL) Random seed for reproducible sampling
 when \code{max_seqs} is exceeded.}

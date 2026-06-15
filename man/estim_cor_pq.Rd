@@ -8,7 +8,7 @@ object}
 estim_cor_pq(
   physeq,
   variable,
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   custom_fn = NULL,
   method = "pearson",
   resamples = 5000,
@@ -22,7 +22,7 @@ estim_cor_pq(
 \item{variable}{(character, required) The name of a numeric column in
 \code{sample_data}.}
 
-\item{hill_scales}{(numeric vector, default \code{c(0, 1, 2)}) The q
+\item{q}{(numeric vector, default \code{c(0, 1, 2)}) The q
 values for Hill number computation.}
 
 \item{custom_fn}{(function, default NULL) An optional custom diversity

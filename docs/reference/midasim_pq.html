@@ -7,7 +7,7 @@ taxa."><meta property="og:description" content="Uses the MIDASim package to gene
 data with known differential abundance effects. The function learns the
 structure (taxon correlations, sparsity patterns, library size distribution)
 from a template phyloseq object and generates new data with specified DA
-taxa."></head><body>
+taxa."><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -44,8 +44,7 @@ taxa."></head><body>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Simulate microbiome data with differential abundance using MIDASim</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>Simulate microbiome data with differential abundance using MIDASim</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/fake_creation.R" class="external-link"><code>R/fake_creation.R</code></a></small>
       <div class="d-none name"><code>midasim_pq.Rd</code></div>
     </div>
@@ -114,7 +113,9 @@ differentially abundant.</p></dd>
 <dt id="arg-effect-size">effect_size<a class="anchor" aria-label="anchor" href="#arg-effect-size"></a></dt>
 <dd><p>(numeric, default 1) Log-fold change for DA taxa in
 case samples. Positive values increase abundance; negative decrease.
-Typical values: 0.5-2 for moderate effects.</p></dd>
+Typical values: 0.5-2 for moderate effects.
+<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle" class="external-link">
+<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a></p></dd>
 
 
 <dt id="arg-da-taxa-idx">da_taxa_idx<a class="anchor" aria-label="anchor" href="#arg-da-taxa-idx"></a></dt>
@@ -247,12 +248,12 @@ microbiome data. Microbiome. doi:10.1186/s40168-024-01822-z</p>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> The multi-group comparisons (global/pairwise/dunnet/trend) will be deactivated</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> The sample size per group is: Low = 69, High = 68</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> PASS</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The number of taxa used for estimating sample-specific biases is: 10</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>The number of taxa used for estimating sample-specific biases is: 12</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> A large number of taxa (&gt;50) is required for the consistent estimation of biases</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Obtaining initial estimates ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Estimating sample-specific biases ...</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Estimation of sampling fractions failed for the following samples:</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> sim_sample_5, sim_sample_21, sim_sample_24, sim_sample_26, sim_sample_34, sim_sample_38, sim_sample_44, sim_sample_48, sim_sample_54, sim_sample_68, sim_sample_72, sim_sample_81, sim_sample_100, sim_sample_101, sim_sample_106, sim_sample_112, sim_sample_117, sim_sample_130</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> sim_sample_21, sim_sample_24, sim_sample_31, sim_sample_34, sim_sample_38, sim_sample_44, sim_sample_48, sim_sample_68, sim_sample_72, sim_sample_74, sim_sample_83, sim_sample_88, sim_sample_101, sim_sample_106, sim_sample_107, sim_sample_110, sim_sample_112, sim_sample_117, sim_sample_130</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> These samples may have an excessive number of zero values</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ANCOM-BC2 primary results ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Conducting sensitivity analysis for pseudo-count addition to 0s ...</span>

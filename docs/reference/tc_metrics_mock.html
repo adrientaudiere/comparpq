@@ -15,7 +15,7 @@ true assignation.
 Note that to compute all metrics, one need to insert fake
 taxa (by shuffling sequences and/or by adding external sequences). The user
 must fake taxa using functions add_external_seq_pq(),
-add_shuffle_seq_pq()) before taxonomic assignation."></head><body>
+add_shuffle_seq_pq()) before taxonomic assignation."><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -52,8 +52,7 @@ add_shuffle_seq_pq()) before taxonomic assignation."></head><body>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Compute accuracy metrics of multiple taxonomic assignations method using mock for multi-rank and multi assignation methods</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>Compute accuracy metrics of multiple taxonomic assignations method using mock for multi-rank and multi assignation methods</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/compare_taxo.R" class="external-link"><code>R/compare_taxo.R</code></a></small>
       <div class="d-none name"><code>tc_metrics_mock.Rd</code></div>
     </div>
@@ -129,6 +128,22 @@ in their name.</p></dd>
     <p>Adrien Taudière</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ranks_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  silva <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Phylum"</span>, <span class="st">"Class"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  unite <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Phylum"</span>, <span class="st">"Class"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">true_values_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  Phylum <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Basidiomycota"</span>, <span class="st">"Ascomycota"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  Class  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Agaricomycetes"</span>, <span class="st">"Sordariomycetes"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">tc_metrics_mock</span><span class="op">(</span><span class="va">data_fungi_mini</span>, <span class="va">ranks_df</span>, <span class="va">true_values_df</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 0fake taxa were found using pattern^fake_|^external_.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in validObject(.Object):</span> invalid class “otu_table” object: </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>  OTU abundance data must have non-zero dimensions.</span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

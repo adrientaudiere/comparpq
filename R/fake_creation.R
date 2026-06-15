@@ -31,6 +31,9 @@ add_shuffle_seq_pq <- function(
   prop_fake = NULL,
   prefix = "fake_"
 ) {
+  if (is.null(phyloseq::refseq(physeq, errorIfNULL = FALSE))) {
+    stop("add_shuffle_seq_pq requires a refseq slot.")
+  }
   taxasrow <- taxa_are_rows(physeq)
   if (taxasrow) {
     physeq <- MiscMetabar::taxa_as_columns(physeq)
@@ -53,6 +56,22 @@ add_shuffle_seq_pq <- function(
   subset_physeq@refseq <- refseq(fake_refseq)
 
   taxa_names(subset_physeq) <- paste0(prefix, 1:n_fake)
+
+  # Strip phy_tree before merge to avoid tip count mismatch, then restore
+  if (!is.null(phyloseq::phy_tree(physeq, errorIfNULL = FALSE))) {
+    physeq <- phyloseq::phyloseq(
+      phyloseq::otu_table(physeq),
+      phyloseq::tax_table(physeq),
+      phyloseq::sample_data(physeq),
+      phyloseq::refseq(physeq)
+    )
+
+    cli::cli_alert_info(
+      "phy_tree slot was stripped.
+      The resulting phyloseq object will not have a phy_tree."
+    )
+  }
+
   new_physeq <- merge_phyloseq(physeq, subset_physeq)
 
   new_tax_tab <- as.matrix(unclass(new_physeq@tax_table))
@@ -98,6 +117,9 @@ add_shuffle_seq_pq <- function(
 #' )
 #'
 add_external_seq_pq <- function(physeq, ext_seqs, prefix = "external_") {
+  if (is.null(phyloseq::refseq(physeq, errorIfNULL = FALSE))) {
+    stop("add_external_seq_pq requires a refseq slot.")
+  }
   refseq <- physeq@refseq
   names(ext_seqs) <- paste0(prefix, names(ext_seqs))
   external_samtab <- physeq@sam_data
@@ -123,6 +145,21 @@ add_external_seq_pq <- function(physeq, ext_seqs, prefix = "external_") {
     sample_data(external_samtab),
     tax_table(fake_tax_tab)
   )
+
+  # Strip phy_tree before merge to avoid tip count mismatch, then restore
+  if (!is.null(phyloseq::phy_tree(physeq, errorIfNULL = FALSE))) {
+    physeq <- phyloseq::phyloseq(
+      phyloseq::otu_table(physeq),
+      phyloseq::tax_table(physeq),
+      phyloseq::sample_data(physeq),
+      phyloseq::refseq(physeq)
+    )
+
+    cli::cli_alert_info(
+      "phy_tree slot was stripped.
+     The resulting phyloseq object will not have a phy_tree."
+    )
+  }
 
   new_physeq <- merge_phyloseq(physeq, fake_pq)
   new_tax_tab <- as.matrix(unclass(new_physeq@tax_table))
@@ -736,6 +773,9 @@ permute_da_pq <- function(
 
 #'   case samples. Positive values increase abundance; negative decrease.
 #'   Typical values: 0.5-2 for moderate effects.
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param da_taxa_idx (integer vector, default NULL) Specific taxon indices
 #'   to make DA. If NULL, randomly selects `n_da_taxa` from prevalent taxa.
 #' @param min_prevalence (numeric, default 0.1) Minimum prevalence for a
@@ -772,6 +812,7 @@ permute_da_pq <- function(
 #' - Library sizes follow realistic distributions
 #' - The DA signal is embedded in the data generation process
 #'
+#' @importFrom MIDASim MIDASim.setup MIDASim.modify MIDASim
 #' @export
 #' @author Adrien Taudière
 #'

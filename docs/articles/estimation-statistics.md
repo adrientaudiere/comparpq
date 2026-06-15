@@ -82,6 +82,7 @@ objects:
 ## Setup
 
 ``` r
+
 library(comparpq)
 library(phyloseq)
 library(ggplot2)
@@ -89,6 +90,7 @@ library(dplyr)
 ```
 
 ``` r
+
 data("data_fungi", package = "MiscMetabar")
 
 # Clean data: remove samples with NA in Height
@@ -106,6 +108,7 @@ produces Gardner-Altman plots where the raw data and the effect size are
 displayed side by side:
 
 ``` r
+
 res <- estim_diff_pq(pq, fact = "Height")
 
 # View summary table
@@ -120,6 +123,7 @@ res$plots$Hill_0
 You can choose among several effect size measures:
 
 ``` r
+
 # Cohen's d (standardized mean difference)
 res_d <- estim_diff_pq(pq, fact = "Height", effect_type = "cohens_d")
 res_d$summary
@@ -139,6 +143,7 @@ When the factor has 3+ levels, a Cumming estimation plot is produced
 automatically:
 
 ``` r
+
 # If your factor has 3+ levels
 pq_time <- subset_samples(data_fungi, !is.na(Time))
 pq_time <- clean_pq(pq_time)
@@ -155,6 +160,7 @@ computes bootstrap confidence intervals for both correlation
 coefficients and regression slopes:
 
 ``` r
+
 # Add library size as a numeric variable
 sam <- sample_data(pq)
 sam$lib_size <- sample_sums(pq)
@@ -175,6 +181,7 @@ res_cor$plots$Hill_0
 ### Spearman correlation
 
 ``` r
+
 res_spearman <- estim_cor_pq(pq, variable = "lib_size", method = "spearman")
 res_spearman$correlations
 ```
@@ -187,6 +194,7 @@ Apply estimation statistics across multiple phyloseq objects in a
 `list_phyloseq`:
 
 ``` r
+
 lpq <- list_phyloseq(
   list(
     fungi = pq,
@@ -207,6 +215,7 @@ res_lpq$results$fungi$plots$Hill_0
 ### Numeric: `estim_cor_lpq()`
 
 ``` r
+
 # Assuming lib_size is in sample_data of all phyloseq objects
 res_cor_lpq <- estim_cor_lpq(lpq, variable = "lib_size")
 
@@ -226,6 +235,7 @@ The function must take a phyloseq object and return either:
 - A data.frame with one row per sample
 
 ``` r
+
 # Example: use Pielou's evenness
 my_evenness <- function(physeq) {
   otu <- as.data.frame(otu_table(physeq))

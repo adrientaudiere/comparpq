@@ -26,7 +26,7 @@ ranks are modified.}
 \item{progress_bar}{(logical, default FALSE) If TRUE, print progress during
 the calculation.}
 
-\item{...}{Additional arguments passed to \code{\link[base:grep]{base::gsub()}}.}
+\item{...}{Additional arguments passed to \code{\link[base:gsub]{base::gsub()}}.}
 }
 \value{
 A phyloseq object
@@ -38,7 +38,7 @@ A phyloseq object
 }}
 
 
-Use \code{\link[base:grep]{base::gsub()}} for substitution.
+Use \code{\link[base:gsub]{base::gsub()}} for substitution.
 }
 \examples{
 data_fungi@tax_table["ASV85", "Family"]

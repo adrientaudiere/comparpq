@@ -99,3 +99,37 @@ computed:
 ## Author
 
 Adrien Taudière
+
+## Examples
+
+``` r
+true_vals <- c("Basidiomycota", "Ascomycota", "Mucoromycota")
+tc_metrics_mock_vec(
+  data_fungi_mini,
+  taxonomic_rank = "Phylum",
+  true_values = true_vals,
+  fake_taxa = FALSE,
+  verbose = FALSE
+)
+#> $TP
+#> [1] 45
+#> 
+#> $FP
+#> [1] 0
+#> 
+#> $FN
+#> [1] 2
+#> 
+#> $FDR
+#> [1] 0
+#> 
+#> $TPR
+#> [1] 0.9574468
+#> 
+#> $PPV
+#> [1] 1
+#> 
+#> $F1_score
+#> [1] 0.9782609
+#> 
+```

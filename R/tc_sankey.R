@@ -19,6 +19,7 @@
 #'   color. Either "rank_1" or "rank_2".
 #'
 #' @return A ggplot2 object that can be further customized.
+#' @importFrom ggalluvial geom_alluvium geom_stratum
 #' @export
 #' @author Adrien Taudière
 #'

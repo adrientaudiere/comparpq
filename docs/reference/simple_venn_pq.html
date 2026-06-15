@@ -21,7 +21,7 @@ default), all ranks are displayed in a single combined figure using
 the patchwork package (must be installed). Set combine = FALSE to
 get a named list of individual plots instead.
 For 2 and 3 groups, circles are used. For 4 groups, ellipses are
-used to ensure all intersection regions are representable."></head><body>
+used to ensure all intersection regions are representable."><meta property="og:image" content="https://adrientaudiere.github.io/comparpq/logo.svg"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -58,8 +58,7 @@ used to ensure all intersection regions are representable."></head><body>
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Venn diagram of shared taxa across sample groups</h1>
+      <img src="../logo.svg" class="logo" alt=""><h1>Venn diagram of shared taxa across sample groups</h1>
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/R/simple_venn_pq.R" class="external-link"><code>R/simple_venn_pq.R</code></a></small>
       <div class="d-none name"><code>simple_venn_pq.Rd</code></div>
     </div>
@@ -87,7 +86,7 @@ used to ensure all intersection regions are representable.</p>
 <span>  min_nb_seq <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  taxonomic_rank <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Class"</span>, <span class="st">"Order"</span>, <span class="st">"Family"</span>, <span class="st">"Genus"</span>, <span class="st">"Species"</span><span class="op">)</span>,</span>
 <span>  na_remove <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  count_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rank"</span>, <span class="st">"taxa"</span>, <span class="st">"sequences"</span>, <span class="st">"rank_taxa"</span><span class="op">)</span>,</span>
+<span>  count_type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rank_taxa"</span>, <span class="st">"rank"</span>, <span class="st">"taxa"</span>, <span class="st">"sequences"</span><span class="op">)</span>,</span>
 <span>  add_nb_samples <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  fill_alpha <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>  border_size <span class="op">=</span> <span class="fl">0.8</span>,</span>
@@ -96,12 +95,12 @@ used to ensure all intersection regions are representable.</p>
 <span>  hide_zero <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  label_size <span class="op">=</span> <span class="fl">4.5</span>,</span>
 <span>  colors <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  labels <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  show_na_count <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  count_taxa <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  match_by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"refseq"</span>, <span class="st">"names"</span><span class="op">)</span>,</span>
 <span>  combine <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  .lpq_n_samples <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -143,7 +142,7 @@ level.</p></dd>
 
 
 <dt id="arg-count-type">count_type<a class="anchor" aria-label="anchor" href="#arg-count-type"></a></dt>
-<dd><p>(character, default <code>"rank"</code>) What to count in
+<dd><p>(character, default <code>"rank_taxa"</code>) What to count in
 each Venn region. One of:</p><ul><li><p><code>"rank"</code>: number of unique taxonomic levels (e.g. number of
 shared Classes). This is the default.</p></li>
 <li><p><code>"taxa"</code>: number of ASVs/OTUs assigned to the shared
@@ -194,6 +193,14 @@ labels that are zero (or <code>"0 (0)"</code> when <code>count_type = "rank_taxa
 <dt id="arg-colors">colors<a class="anchor" aria-label="anchor" href="#arg-colors"></a></dt>
 <dd><p>(character or NULL) Vector of colors, one per group.
 Defaults to a 4-color qualitative palette.</p></dd>
+
+
+<dt id="arg-labels">labels<a class="anchor" aria-label="anchor" href="#arg-labels"></a></dt>
+<dd><p>(character or NULL, default NULL) Custom labels for
+the groups, in the same order as the levels of <code>fact</code> (or the
+list_phyloseq names). Must have the same length as the number of
+groups. When <code>NULL</code>, the original level names are used. Not that
+the order is the one of the levels in <code>fact</code>.</p></dd>
 
 
 <dt id="arg-show-na-count">show_na_count<a class="anchor" aria-label="anchor" href="#arg-show-na-count"></a></dt>
@@ -284,9 +291,15 @@ ranks with <code>combine = TRUE</code>), or a named list of ggplot2 objects
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: NESTED_ROBUSTNESS</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 137 common samples, 45 common taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
-<span class="r-in"><span><span class="fu">simple_venn_pq</span><span class="op">(</span><span class="va">lpq</span>, taxonomic_rank <span class="op">=</span> <span class="st">"Genus"</span>, <span class="va">count_taxa</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">simple_venn_pq</span><span class="op">(</span><span class="va">lpq</span>, taxonomic_rank <span class="op">=</span> <span class="st">"Genus"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Merging 2 phyloseq objects by refseq: 45 + 1420 taxa -&gt; 1420 unique sequences.</span>
 <span class="r-plt img"><img src="simple_venn_pq-6.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span> <span class="fu">simple_venn_pq</span><span class="op">(</span><span class="va">data_fungi_mini</span>, <span class="st">"Height"</span>,</span></span>
+<span class="r-in"><span>   taxonomic_rank <span class="op">=</span> <span class="cn">NULL</span>,</span></span>
+<span class="r-in"><span>   labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Low alt."</span>, <span class="st">"Mid alt."</span>, <span class="st">"High alt."</span><span class="op">)</span></span></span>
+<span class="r-in"><span> <span class="op">)</span></span></span>
+<span class="r-plt img"><img src="simple_venn_pq-7.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

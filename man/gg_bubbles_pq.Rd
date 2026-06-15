@@ -78,7 +78,8 @@ inside circles. Only circles large enough to fit text are labeled.}
 each circle polygon. Higher values produce smoother circles.}
 
 \item{ncol_facet}{(integer, default NULL) Number of columns for facet layout.
-Passed to \code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}}.}
+Passed to \code{\link[ggplot2:facet_wrap]{ggplot2::facet_wrap()}}. Not used if diff_contour is TRUE since
+patchwork is used for layout instead.}
 
 \item{return_dataframe}{(logical, default FALSE) If TRUE, the plot is not
 returned, but the resulting dataframe to plot is returned. Ignored when
@@ -171,6 +172,13 @@ gg_bubbles_pq(lpq, rank_color = "Class")
 gg_bubbles_pq(lpq, rank_color = "Class", diff_contour = TRUE,
   show_labels = FALSE, diff_border_width = 1) & no_legend()
 
+gg_bubbles_pq(
+physeq = data_fungi_mini,
+rank_color = "Class",
+facet_by="Height",
+ncol_facet=2,
+layout="square",
+ show_title=FALSE)
 }
 \author{
 Adrien Taudière

@@ -48,6 +48,7 @@
 #'     and category}
 #' }
 #'
+#' @importFrom ggtree ggtree geom_tree
 #' @export
 #' @author Adrien Taudière
 #'

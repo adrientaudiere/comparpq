@@ -8,7 +8,7 @@ glmulti_lpq(
   x,
   formula,
   fitfunction = "lm",
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   aic_step = 2,
   confsetsize = 100,
   plotty = FALSE,
@@ -31,7 +31,7 @@ available.}
 use. Options include "lm" for linear models or "glm" for generalized
 linear models.}
 
-\item{hill_scales}{(numeric vector, default c(0, 1, 2)) The q values for
+\item{q}{(numeric vector, default c(0, 1, 2)) The q values for
 Hill number computation. Defaults to Hill numbers 0 (richness), 1
 (Shannon exponential), and 2 (inverse Simpson).}
 

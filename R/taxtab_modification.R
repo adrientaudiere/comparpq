@@ -1,6 +1,9 @@
 ################################################################################
 #' Resolve taxonomic conflict in the tax_table of a phyloseq object
 #'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
 #' @param physeq (required) A phyloseq object.
 #' @param pattern_tax_ranks (character vector, default NULL) A vector of patterns
 #'   to aggregate taxonomic ranks. For example "^Genus" stands for all taxonomic
@@ -327,8 +330,8 @@ taxtab_replace_pattern_by_NA <- function(
         pb_val <- pb_val + 1
         setTxtProgressBar(pb, pb_val)
       }
-      taxtab[, taxonomic_ranks] <-
-        gsub(pat, NA, taxtab[, taxonomic_ranks], ...)
+      taxtab[, taxrank] <-
+        gsub(pat, NA, taxtab[, taxrank], ...)
     }
   }
 

@@ -254,7 +254,7 @@ adonis_lpq <- function(
 #' @param fitfunction (character, default "lm") The model fitting function to
 #'   use. Options include "lm" for linear models or "glm" for generalized
 #'   linear models.
-#' @param hill_scales (numeric vector, default c(0, 1, 2)) The q values for
+#' @param q (numeric vector, default c(0, 1, 2)) The q values for
 #'   Hill number computation. Defaults to Hill numbers 0 (richness), 1
 #'   (Shannon exponential), and 2 (inverse Simpson).
 #' @param aic_step (numeric, default 2) The AIC score threshold for model
@@ -318,7 +318,7 @@ glmulti_lpq <- function(
   x,
   formula,
   fitfunction = "lm",
-  hill_scales = c(0, 1, 2),
+  q = c(0, 1, 2),
   aic_step = 2,
   confsetsize = 100,
   plotty = FALSE,
@@ -349,7 +349,7 @@ glmulti_lpq <- function(
   if (verbose) {
     message("Running glmulti on ", length(x@phyloseq_list), " phyloseq objects")
     message("Formula: ", formula)
-    message("Hill scales: ", paste(hill_scales, collapse = ", "))
+    message("Hill scales: ", paste(q, collapse = ", "))
   }
 
   # Run glmutli_pq on each phyloseq object
@@ -364,7 +364,7 @@ glmulti_lpq <- function(
           physeq = pq,
           formula = formula,
           fitfunction = fitfunction,
-          hill_scales = hill_scales,
+          q = q,
           aic_step = aic_step,
           confsetsize = confsetsize,
           plotty = plotty,
