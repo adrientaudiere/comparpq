@@ -2379,7 +2379,7 @@ res
 #> ==================
 #> 
 #> Good evening!
-#> The current time is 21:06 PM on Monday June 15, 2026.
+#> The current time is 22:26 PM on Monday June 15, 2026.
 #> 
 #> The character(0) Cohen's d between Low and High is -0.058 [95%CI -0.487, 0.371].
 #> The p-value of the two-sided permutation t-test is 0.7902, calculated for legacy purposes only.
@@ -2398,7 +2398,7 @@ res
 #> ==================
 #> 
 #> Good evening!
-#> The current time is 21:06 PM on Monday June 15, 2026.
+#> The current time is 22:26 PM on Monday June 15, 2026.
 #> 
 #> The character(0) Cohen's d between Low and High is 0.012 [95%CI -0.412, 0.429].
 #> The p-value of the two-sided permutation t-test is 0.9566, calculated for legacy purposes only.
@@ -2417,7 +2417,7 @@ res
 #> ==================
 #> 
 #> Good evening!
-#> The current time is 21:06 PM on Monday June 15, 2026.
+#> The current time is 22:26 PM on Monday June 15, 2026.
 #> 
 #> The character(0) Cohen's d between Low and High is -0.033 [95%CI -0.467, 0.393].
 #> The p-value of the two-sided permutation t-test is 0.8770, calculated for legacy purposes only.
