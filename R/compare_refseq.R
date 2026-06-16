@@ -282,9 +282,15 @@ compare_refseq <- function(
 }
 
 
+#' Print a reference-sequence comparison
+#'
+#' @description
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
+#' @param x A `compare_refseq` object.
+#' @param ... Additional arguments (ignored).
+#' @return `x`, invisibly.
 #' @export
 print.compare_refseq <- function(x, ...) {
   cat("== Reference Sequence Comparison ==\n")

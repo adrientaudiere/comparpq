@@ -230,9 +230,15 @@ refseq_comp_lpq <- function(
 }
 
 
+#' Print a reference-sequence similarity comparison across phyloseq objects
+#'
+#' @description
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
+#' @param x A `refseq_comp_lpq_result` object.
+#' @param ... Additional arguments (ignored).
+#' @return `x`, invisibly.
 #' @export
 print.refseq_comp_lpq_result <- function(x, ...) {
   cat(

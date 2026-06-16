@@ -218,9 +218,15 @@ estim_cor_lpq <- function(x, variable, ..., verbose = TRUE) {
 # Print methods
 # ==============================================================================
 
+#' Print categorical estimation statistics for a list of phyloseq objects
+#'
+#' @description
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
+#' @param x An `estim_diff_lpq_result` object.
+#' @param ... Additional arguments (ignored).
+#' @return `x`, invisibly.
 #' @export
 print.estim_diff_lpq_result <- function(x, ...) {
   cat("Estimation statistics: categorical comparison (list_phyloseq)\n")
@@ -235,9 +241,15 @@ print.estim_diff_lpq_result <- function(x, ...) {
   invisible(x)
 }
 
+#' Print correlation estimation statistics for a list of phyloseq objects
+#'
+#' @description
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
+#' @param x An `estim_cor_lpq_result` object.
+#' @param ... Additional arguments (ignored).
+#' @return `x`, invisibly.
 #' @export
 print.estim_cor_lpq_result <- function(x, ...) {
   cat("Estimation statistics: numeric correlation (list_phyloseq)\n")

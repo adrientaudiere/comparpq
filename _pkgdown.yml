@@ -175,4 +175,4 @@ articles:
 - title: "Advanced Tutorials"
   desc: "In-depth examples and advanced usage"
   contents:
-  - OJS_visualization
+  - articles/OJS_visualization

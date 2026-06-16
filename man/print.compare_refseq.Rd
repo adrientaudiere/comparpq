@@ -2,12 +2,17 @@
 % Please edit documentation in R/compare_refseq.R
 \name{print.compare_refseq}
 \alias{print.compare_refseq}
-\title{\if{html}{\out{
-<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-}}}
+\title{Print a reference-sequence comparison}
 \usage{
 \method{print}{compare_refseq}(x, ...)
+}
+\arguments{
+\item{x}{A \code{compare_refseq} object.}
+
+\item{...}{Additional arguments (ignored).}
+}
+\value{
+\code{x}, invisibly.
 }
 \description{
 \if{html}{\out{

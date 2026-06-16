@@ -2,12 +2,17 @@
 % Please edit documentation in R/refseq_comp_lpq.R
 \name{print.refseq_comp_lpq_result}
 \alias{print.refseq_comp_lpq_result}
-\title{\if{html}{\out{
-<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-}}}
+\title{Print a reference-sequence similarity comparison across phyloseq objects}
 \usage{
 \method{print}{refseq_comp_lpq_result}(x, ...)
+}
+\arguments{
+\item{x}{A \code{refseq_comp_lpq_result} object.}
+
+\item{...}{Additional arguments (ignored).}
+}
+\value{
+\code{x}, invisibly.
 }
 \description{
 \if{html}{\out{

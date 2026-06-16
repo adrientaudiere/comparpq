@@ -2,12 +2,17 @@
 % Please edit documentation in R/estim_pq.R
 \name{print.estim_diff_pq_result}
 \alias{print.estim_diff_pq_result}
-\title{\if{html}{\out{
-<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
-<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
-}}}
+\title{Print categorical estimation statistics for a phyloseq object}
 \usage{
 \method{print}{estim_diff_pq_result}(x, ...)
+}
+\arguments{
+\item{x}{An \code{estim_diff_pq_result} object.}
+
+\item{...}{Additional arguments (ignored).}
+}
+\value{
+\code{x}, invisibly.
 }
 \description{
 \if{html}{\out{
