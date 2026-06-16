@@ -1,5 +1,7 @@
 # Tests for gg_hill_lpq.R
 
+library("divent")
+
 create_test_lpq <- function() {
   list_phyloseq(
     list(run1 = data_fungi, run2 = data_fungi),
