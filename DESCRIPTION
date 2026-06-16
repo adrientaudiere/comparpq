@@ -9,7 +9,7 @@ Description: Compare and analyse multiple 'phyloseq' objects from the 'R'
   metrics computation (confusion matrix approach with FDR, TPR, F1 score,
   and MCC), and visualizations including bubble plots, Venn diagrams, and
   diversity estimation across groups of microbiome datasets.
-License: GPL (>= 3)
+License: AGPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 Depends:
