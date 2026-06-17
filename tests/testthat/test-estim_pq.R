@@ -1,6 +1,7 @@
 # Tests for estim_pq.R and estim_lpq.R
 # Tests for estimation statistics functions
 
+library("divent")
 # ==============================================================================
 # Helper to create clean test data
 # ==============================================================================

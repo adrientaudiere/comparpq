@@ -1,6 +1,8 @@
 # Tests for analysis_lpq.R
 # Tests for statistical analysis functions for list_phyloseq objects
 
+library("divent")
+
 # ==============================================================================
 # Helper function to create test data without NA in key variables
 # ==============================================================================
