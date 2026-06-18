@@ -357,12 +357,12 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV53  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV54  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV58  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
-#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
+#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV62  "Fungi" "Basidiomycota" "Agaricomycetes"  "Sebacinales"   
 #> ASV63  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV64  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV68  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV71  "Fungi" "Basidiomycota" "Tremellomycetes" "Tremellales"   
 #> ASV72  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
@@ -373,7 +373,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV85  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV91  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV93  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV99  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV100 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV101 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
@@ -392,9 +392,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV29  NA                               NA                              
 #> ASV32  "Hydnaceae"                      "Sistotrema"                    
 #> ASV34  NA                               NA                              
-#> ASV35  "Tricholomataceae"               NA                              
+#> ASV35  NA                               NA                              
 #> ASV41  "Mycenaceae"                     "Mycena"                        
-#> ASV42  "Tricholomataceae"               "Tricholoma"                    
+#> ASV42  NA                               NA                              
 #> ASV46  NA                               NA                              
 #> ASV47  NA                               NA                              
 #> ASV48  NA                               NA                              
@@ -404,7 +404,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                               NA                              
 #> ASV58  NA                               NA                              
 #> ASV59  NA                               NA                              
-#> ASV61  NA                               NA                              
+#> ASV61  "Hyphodermataceae"               "Hyphoderma"                    
 #> ASV62  "Serendipitaceae"                "Serendipita"                   
 #> ASV63  NA                               NA                              
 #> ASV64  NA                               NA                              
@@ -440,7 +440,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV34  NA                  "Entocybe"                                    
 #> ASV35  NA                  "Fomes"                                       
 #> ASV41  "Mycena_sp"         "Mycena"                                      
-#> ASV42  NA                  "Ossicaulis/Tricholoma"                       
+#> ASV42  NA                  "Ossicaulis"                                  
 #> ASV46  NA                  "Helicogloea"                                 
 #> ASV47  NA                  "Radulomyces"                                 
 #> ASV48  NA                  "Elmerina"                                    
@@ -450,16 +450,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                  "Auricularia"                                 
 #> ASV58  NA                  "Fomes"                                       
 #> ASV59  NA                  "Hyphoderma"                                  
-#> ASV61  NA                  "Hyphoderma"                                  
+#> ASV61  "Hyphoderma_sp"     "Hyphoderma"                                  
 #> ASV62  "Serendipita_sp"    "Serendipita"                                 
 #> ASV63  NA                  NA                                            
 #> ASV64  NA                  "Trametes"                                    
 #> ASV67  NA                  "Xylodon"                                     
-#> ASV68  NA                  "Ossicaulis/Tricholoma"                       
+#> ASV68  "Tricholoma_sp"     "Ossicaulis/Tricholoma"                       
 #> ASV71  "Tremellales_sp"    "Tremellales_gen_Incertae_sedis"              
 #> ASV72  NA                  NA                                            
 #> ASV75  "Peniophora_reidii" "Peniophora"                                  
-#> ASV77  "Tricholoma_sp"     "Ossicaulis/Tricholoma"                       
+#> ASV77  NA                  "Ossicaulis/Tricholoma"                       
 #> ASV82  NA                  "Exidia"                                      
 #> ASV83  NA                  NA                                            
 #> ASV85  "Polyporales_sp"    "Peniophorella/Polyporales_gen_Incertae_sedis"
@@ -727,12 +727,12 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV53  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV54  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV58  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
-#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
+#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV62  "Fungi" "Basidiomycota" "Agaricomycetes"  "Sebacinales"   
 #> ASV63  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV64  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV68  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV71  "Fungi" "Basidiomycota" "Tremellomycetes" "Tremellales"   
 #> ASV72  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
@@ -743,7 +743,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV85  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV91  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV93  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV99  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV100 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV101 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
@@ -762,9 +762,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV29  NA                               NA                              
 #> ASV32  "Hydnaceae"                      "Sistotrema"                    
 #> ASV34  NA                               NA                              
-#> ASV35  "Tricholomataceae"               NA                              
+#> ASV35  NA                               NA                              
 #> ASV41  "Mycenaceae"                     "Mycena"                        
-#> ASV42  "Tricholomataceae"               "Tricholoma"                    
+#> ASV42  NA                               NA                              
 #> ASV46  NA                               NA                              
 #> ASV47  NA                               NA                              
 #> ASV48  NA                               NA                              
@@ -774,7 +774,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                               NA                              
 #> ASV58  NA                               NA                              
 #> ASV59  NA                               NA                              
-#> ASV61  NA                               NA                              
+#> ASV61  "Hyphodermataceae"               "Hyphoderma"                    
 #> ASV62  "Serendipitaceae"                "Serendipita"                   
 #> ASV63  NA                               NA                              
 #> ASV64  NA                               NA                              
@@ -810,7 +810,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV34  NA                  "Entocybe"                      
 #> ASV35  NA                  "Fomes"                         
 #> ASV41  "Mycena_sp"         "Mycena"                        
-#> ASV42  NA                  NA                              
+#> ASV42  NA                  "Ossicaulis"                    
 #> ASV46  NA                  "Helicogloea"                   
 #> ASV47  NA                  "Radulomyces"                   
 #> ASV48  NA                  "Elmerina"                      
@@ -820,16 +820,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                  "Auricularia"                   
 #> ASV58  NA                  "Fomes"                         
 #> ASV59  NA                  "Hyphoderma"                    
-#> ASV61  NA                  "Hyphoderma"                    
+#> ASV61  "Hyphoderma_sp"     "Hyphoderma"                    
 #> ASV62  "Serendipita_sp"    "Serendipita"                   
 #> ASV63  NA                  NA                              
 #> ASV64  NA                  "Trametes"                      
 #> ASV67  NA                  "Xylodon"                       
-#> ASV68  NA                  NA                              
+#> ASV68  "Tricholoma_sp"     NA                              
 #> ASV71  "Tremellales_sp"    "Tremellales_gen_Incertae_sedis"
 #> ASV72  NA                  NA                              
 #> ASV75  "Peniophora_reidii" "Peniophora"                    
-#> ASV77  "Tricholoma_sp"     NA                              
+#> ASV77  NA                  NA                              
 #> ASV82  NA                  "Exidia"                        
 #> ASV83  NA                  NA                              
 #> ASV85  "Polyporales_sp"    NA                              
@@ -1098,12 +1098,12 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV53  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV54  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV58  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
-#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
+#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV62  "Fungi" "Basidiomycota" "Agaricomycetes"  "Sebacinales"   
 #> ASV63  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV64  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV68  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV71  "Fungi" "Basidiomycota" "Tremellomycetes" "Tremellales"   
 #> ASV72  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
@@ -1114,7 +1114,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV85  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV91  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV93  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV99  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV100 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV101 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
@@ -1133,9 +1133,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV29  NA                               NA                              
 #> ASV32  "Hydnaceae"                      "Sistotrema"                    
 #> ASV34  NA                               NA                              
-#> ASV35  "Tricholomataceae"               NA                              
+#> ASV35  NA                               NA                              
 #> ASV41  "Mycenaceae"                     "Mycena"                        
-#> ASV42  "Tricholomataceae"               "Tricholoma"                    
+#> ASV42  NA                               NA                              
 #> ASV46  NA                               NA                              
 #> ASV47  NA                               NA                              
 #> ASV48  NA                               NA                              
@@ -1145,7 +1145,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                               NA                              
 #> ASV58  NA                               NA                              
 #> ASV59  NA                               NA                              
-#> ASV61  NA                               NA                              
+#> ASV61  "Hyphodermataceae"               "Hyphoderma"                    
 #> ASV62  "Serendipitaceae"                "Serendipita"                   
 #> ASV63  NA                               NA                              
 #> ASV64  NA                               NA                              
@@ -1191,16 +1191,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                  "Auricularia"                   
 #> ASV58  NA                  "Fomes"                         
 #> ASV59  NA                  "Hyphoderma"                    
-#> ASV61  NA                  "Hyphoderma"                    
+#> ASV61  "Hyphoderma_sp"     "Hyphoderma"                    
 #> ASV62  "Serendipita_sp"    "Serendipita"                   
 #> ASV63  NA                  NA                              
 #> ASV64  NA                  "Trametes"                      
 #> ASV67  NA                  "Xylodon"                       
-#> ASV68  NA                  "Ossicaulis"                    
+#> ASV68  "Tricholoma_sp"     "Ossicaulis"                    
 #> ASV71  "Tremellales_sp"    "Tremellales_gen_Incertae_sedis"
 #> ASV72  NA                  NA                              
 #> ASV75  "Peniophora_reidii" "Peniophora"                    
-#> ASV77  "Tricholoma_sp"     "Ossicaulis"                    
+#> ASV77  NA                  "Ossicaulis"                    
 #> ASV82  NA                  "Exidia"                        
 #> ASV83  NA                  NA                              
 #> ASV85  "Polyporales_sp"    "Peniophorella"                 
@@ -1468,12 +1468,12 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV53  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV54  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV58  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
-#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
+#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV62  "Fungi" "Basidiomycota" "Agaricomycetes"  "Sebacinales"   
 #> ASV63  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV64  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV68  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV71  "Fungi" "Basidiomycota" "Tremellomycetes" "Tremellales"   
 #> ASV72  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
@@ -1484,7 +1484,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV85  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV91  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV93  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV99  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV100 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV101 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
@@ -1503,9 +1503,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV29  NA                               NA                              
 #> ASV32  "Hydnaceae"                      "Sistotrema"                    
 #> ASV34  NA                               NA                              
-#> ASV35  "Tricholomataceae"               NA                              
+#> ASV35  NA                               NA                              
 #> ASV41  "Mycenaceae"                     "Mycena"                        
-#> ASV42  "Tricholomataceae"               "Tricholoma"                    
+#> ASV42  NA                               NA                              
 #> ASV46  NA                               NA                              
 #> ASV47  NA                               NA                              
 #> ASV48  NA                               NA                              
@@ -1515,7 +1515,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                               NA                              
 #> ASV58  NA                               NA                              
 #> ASV59  NA                               NA                              
-#> ASV61  NA                               NA                              
+#> ASV61  "Hyphodermataceae"               "Hyphoderma"                    
 #> ASV62  "Serendipitaceae"                "Serendipita"                   
 #> ASV63  NA                               NA                              
 #> ASV64  NA                               NA                              
@@ -1551,7 +1551,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV34  NA                  "Entocybe"                      
 #> ASV35  NA                  "Fomes"                         
 #> ASV41  "Mycena_sp"         "Mycena"                        
-#> ASV42  NA                  NA                              
+#> ASV42  NA                  "Ossicaulis"                    
 #> ASV46  NA                  "Helicogloea"                   
 #> ASV47  NA                  "Radulomyces"                   
 #> ASV48  NA                  "Elmerina"                      
@@ -1561,16 +1561,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                  "Auricularia"                   
 #> ASV58  NA                  "Fomes"                         
 #> ASV59  NA                  "Hyphoderma"                    
-#> ASV61  NA                  "Hyphoderma"                    
+#> ASV61  "Hyphoderma_sp"     "Hyphoderma"                    
 #> ASV62  "Serendipita_sp"    "Serendipita"                   
 #> ASV63  NA                  NA                              
 #> ASV64  NA                  "Trametes"                      
 #> ASV67  NA                  "Xylodon"                       
-#> ASV68  NA                  NA                              
+#> ASV68  "Tricholoma_sp"     NA                              
 #> ASV71  "Tremellales_sp"    "Tremellales_gen_Incertae_sedis"
 #> ASV72  NA                  NA                              
 #> ASV75  "Peniophora_reidii" "Peniophora"                    
-#> ASV77  "Tricholoma_sp"     NA                              
+#> ASV77  NA                  NA                              
 #> ASV82  NA                  "Exidia"                        
 #> ASV83  NA                  NA                              
 #> ASV85  "Polyporales_sp"    NA                              
@@ -1838,12 +1838,12 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV53  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV54  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV58  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
-#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
+#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV62  "Fungi" "Basidiomycota" "Agaricomycetes"  "Sebacinales"   
 #> ASV63  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV64  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV68  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV71  "Fungi" "Basidiomycota" "Tremellomycetes" "Tremellales"   
 #> ASV72  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
@@ -1854,7 +1854,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV85  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV91  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV93  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV99  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV100 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV101 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
@@ -1873,9 +1873,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV29  NA                               NA                              
 #> ASV32  "Hydnaceae"                      "Sistotrema"                    
 #> ASV34  NA                               NA                              
-#> ASV35  "Tricholomataceae"               NA                              
+#> ASV35  NA                               NA                              
 #> ASV41  "Mycenaceae"                     "Mycena"                        
-#> ASV42  "Tricholomataceae"               "Tricholoma"                    
+#> ASV42  NA                               NA                              
 #> ASV46  NA                               NA                              
 #> ASV47  NA                               NA                              
 #> ASV48  NA                               NA                              
@@ -1885,7 +1885,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                               NA                              
 #> ASV58  NA                               NA                              
 #> ASV59  NA                               NA                              
-#> ASV61  NA                               NA                              
+#> ASV61  "Hyphodermataceae"               "Hyphoderma"                    
 #> ASV62  "Serendipitaceae"                "Serendipita"                   
 #> ASV63  NA                               NA                              
 #> ASV64  NA                               NA                              
@@ -1921,7 +1921,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV34  NA                  "Entocybe"                                    
 #> ASV35  NA                  "Fomes"                                       
 #> ASV41  "Mycena_sp"         "Mycena"                                      
-#> ASV42  NA                  "Ossicaulis/Tricholoma"                       
+#> ASV42  NA                  "Ossicaulis"                                  
 #> ASV46  NA                  "Helicogloea"                                 
 #> ASV47  NA                  "Radulomyces"                                 
 #> ASV48  NA                  "Elmerina"                                    
@@ -1931,16 +1931,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                  "Auricularia"                                 
 #> ASV58  NA                  "Fomes"                                       
 #> ASV59  NA                  "Hyphoderma"                                  
-#> ASV61  NA                  "Hyphoderma"                                  
+#> ASV61  "Hyphoderma_sp"     "Hyphoderma"                                  
 #> ASV62  "Serendipita_sp"    "Serendipita"                                 
 #> ASV63  NA                  NA                                            
 #> ASV64  NA                  "Trametes"                                    
 #> ASV67  NA                  "Xylodon"                                     
-#> ASV68  NA                  "Ossicaulis/Tricholoma"                       
+#> ASV68  "Tricholoma_sp"     "Ossicaulis/Tricholoma"                       
 #> ASV71  "Tremellales_sp"    "Tremellales_gen_Incertae_sedis"              
 #> ASV72  NA                  NA                                            
 #> ASV75  "Peniophora_reidii" "Peniophora"                                  
-#> ASV77  "Tricholoma_sp"     "Ossicaulis/Tricholoma"                       
+#> ASV77  NA                  "Ossicaulis/Tricholoma"                       
 #> ASV82  NA                  "Exidia"                                      
 #> ASV83  NA                  NA                                            
 #> ASV85  "Polyporales_sp"    "Peniophorella/Polyporales_gen_Incertae_sedis"
@@ -2208,12 +2208,12 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV53  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV54  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV58  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
-#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
+#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV62  "Fungi" "Basidiomycota" "Agaricomycetes"  "Sebacinales"   
 #> ASV63  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV64  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV68  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV71  "Fungi" "Basidiomycota" "Tremellomycetes" "Tremellales"   
 #> ASV72  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
@@ -2224,7 +2224,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV85  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV91  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV93  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV99  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV100 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV101 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
@@ -2243,9 +2243,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV29  NA                               NA                              
 #> ASV32  "Hydnaceae"                      "Sistotrema"                    
 #> ASV34  NA                               NA                              
-#> ASV35  "Tricholomataceae"               NA                              
+#> ASV35  NA                               NA                              
 #> ASV41  "Mycenaceae"                     "Mycena"                        
-#> ASV42  "Tricholomataceae"               "Tricholoma"                    
+#> ASV42  NA                               NA                              
 #> ASV46  NA                               NA                              
 #> ASV47  NA                               NA                              
 #> ASV48  NA                               NA                              
@@ -2255,7 +2255,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                               NA                              
 #> ASV58  NA                               NA                              
 #> ASV59  NA                               NA                              
-#> ASV61  NA                               NA                              
+#> ASV61  "Hyphodermataceae"               "Hyphoderma"                    
 #> ASV62  "Serendipitaceae"                "Serendipita"                   
 #> ASV63  NA                               NA                              
 #> ASV64  NA                               NA                              
@@ -2291,7 +2291,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV34  NA                  "Entocybe"                      
 #> ASV35  NA                  "Fomes"                         
 #> ASV41  "Mycena_sp"         "Mycena"                        
-#> ASV42  NA                  NA                              
+#> ASV42  NA                  "Ossicaulis"                    
 #> ASV46  NA                  "Helicogloea"                   
 #> ASV47  NA                  "Radulomyces"                   
 #> ASV48  NA                  "Elmerina"                      
@@ -2301,16 +2301,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\."), m
 #> ASV54  NA                  "Auricularia"                   
 #> ASV58  NA                  "Fomes"                         
 #> ASV59  NA                  "Hyphoderma"                    
-#> ASV61  NA                  "Hyphoderma"                    
+#> ASV61  "Hyphoderma_sp"     "Hyphoderma"                    
 #> ASV62  "Serendipita_sp"    "Serendipita"                   
 #> ASV63  NA                  NA                              
 #> ASV64  NA                  "Trametes"                      
 #> ASV67  NA                  "Xylodon"                       
-#> ASV68  NA                  NA                              
+#> ASV68  "Tricholoma_sp"     NA                              
 #> ASV71  "Tremellales_sp"    "Tremellales_gen_Incertae_sedis"
 #> ASV72  NA                  NA                              
 #> ASV75  "Peniophora_reidii" "Peniophora"                    
-#> ASV77  "Tricholoma_sp"     NA                              
+#> ASV77  NA                  NA                              
 #> ASV82  NA                  "Exidia"                        
 #> ASV83  NA                  NA                              
 #> ASV85  "Polyporales_sp"    NA                              
@@ -2579,12 +2579,12 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV53  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV54  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV58  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
-#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
+#> ASV59  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV61  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV62  "Fungi" "Basidiomycota" "Agaricomycetes"  "Sebacinales"   
 #> ASV63  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV64  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV67  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV68  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV71  "Fungi" "Basidiomycota" "Tremellomycetes" "Tremellales"   
 #> ASV72  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
@@ -2595,7 +2595,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV85  "Fungi" "Basidiomycota" "Agaricomycetes"  "Polyporales"   
 #> ASV91  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV93  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
-#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
+#> ASV94  "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV99  "Fungi" "Basidiomycota" "Agaricomycetes"  "Agaricales"    
 #> ASV100 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
 #> ASV101 "Fungi" "Basidiomycota" "Agaricomycetes"  NA              
@@ -2614,9 +2614,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV29  NA                               NA                              
 #> ASV32  "Hydnaceae"                      "Sistotrema"                    
 #> ASV34  NA                               NA                              
-#> ASV35  "Tricholomataceae"               NA                              
+#> ASV35  NA                               NA                              
 #> ASV41  "Mycenaceae"                     "Mycena"                        
-#> ASV42  "Tricholomataceae"               "Tricholoma"                    
+#> ASV42  NA                               NA                              
 #> ASV46  NA                               NA                              
 #> ASV47  NA                               NA                              
 #> ASV48  NA                               NA                              
@@ -2626,7 +2626,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV54  NA                               NA                              
 #> ASV58  NA                               NA                              
 #> ASV59  NA                               NA                              
-#> ASV61  NA                               NA                              
+#> ASV61  "Hyphodermataceae"               "Hyphoderma"                    
 #> ASV62  "Serendipitaceae"                "Serendipita"                   
 #> ASV63  NA                               NA                              
 #> ASV64  NA                               NA                              
@@ -2662,7 +2662,7 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV34  NA                  "Entocybe"                                    
 #> ASV35  NA                  "Fomes"                                       
 #> ASV41  "Mycena_sp"         "Mycena"                                      
-#> ASV42  NA                  "Ossicaulis/Tricholoma"                       
+#> ASV42  NA                  "Ossicaulis"                                  
 #> ASV46  NA                  "Helicogloea"                                 
 #> ASV47  NA                  "Radulomyces"                                 
 #> ASV48  NA                  "Elmerina"                                    
@@ -2672,16 +2672,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV54  NA                  "Auricularia"                                 
 #> ASV58  NA                  "Fomes"                                       
 #> ASV59  NA                  "Hyphoderma"                                  
-#> ASV61  NA                  "Hyphoderma"                                  
+#> ASV61  "Hyphoderma_sp"     "Hyphoderma"                                  
 #> ASV62  "Serendipita_sp"    "Serendipita"                                 
 #> ASV63  NA                  NA                                            
 #> ASV64  NA                  "Trametes"                                    
 #> ASV67  NA                  "Xylodon"                                     
-#> ASV68  NA                  "Ossicaulis/Tricholoma"                       
+#> ASV68  "Tricholoma_sp"     "Ossicaulis/Tricholoma"                       
 #> ASV71  "Tremellales_sp"    "Tremellales_gen_Incertae_sedis"              
 #> ASV72  NA                  NA                                            
 #> ASV75  "Peniophora_reidii" "Peniophora"                                  
-#> ASV77  "Tricholoma_sp"     "Ossicaulis/Tricholoma"                       
+#> ASV77  NA                  "Ossicaulis/Tricholoma"                       
 #> ASV82  NA                  "Exidia"                                      
 #> ASV83  NA                  NA                                            
 #> ASV85  "Polyporales_sp"    "Peniophorella/Polyporales_gen_Incertae_sedis"
@@ -2706,9 +2706,9 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV29  "Exidiaceae"                                                       
 #> ASV32  "Cantharellales_fam_Incertae_sedis/Hydnaceae"                      
 #> ASV34  "Entolomataceae"                                                   
-#> ASV35  "Polyporaceae/Tricholomataceae"                                    
+#> ASV35  "Polyporaceae"                                                     
 #> ASV41  "Tricholomataceae/Mycenaceae"                                      
-#> ASV42  "Lyophyllaceae/Tricholomataceae"                                   
+#> ASV42  "Lyophyllaceae"                                                    
 #> ASV46  "Atractiellales_fam_Incertae_sedis"                                
 #> ASV47  "Pterulaceae"                                                      
 #> ASV48  "Aporpiaceae"                                                      
@@ -2764,16 +2764,16 @@ resolve_taxo_conflict(data_fungi_mini_new, pattern_tax_ranks = c("^Genus\\.", "^
 #> ASV54  NA                             
 #> ASV58  "fomentarius"                  
 #> ASV59  "roseocremeum"                 
-#> ASV61  "setigerum"                    
+#> ASV61  "setigerum/Hyphoderma_sp"      
 #> ASV62  "Serendipita_sp"               
 #> ASV63  NA                             
 #> ASV64  "versicolor"                   
 #> ASV67  "raduloides"                   
-#> ASV68  "lachnopus"                    
+#> ASV68  "lachnopus/Tricholoma_sp"      
 #> ASV71  "Tremellales_sp"               
 #> ASV72  NA                             
 #> ASV75  "versiformis/Peniophora_reidii"
-#> ASV77  "lachnopus/Tricholoma_sp"      
+#> ASV77  "lachnopus"                    
 #> ASV82  "glandulosa"                   
 #> ASV83  NA                             
 #> ASV85  "pubera/Polyporales_sp"        
