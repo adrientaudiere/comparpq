@@ -1,7 +1,7 @@
 ---
 title: "Benchmarking Differential Abundance Methods"
 author: "Adrien Taudière"
-date: "`r Sys.Date()`"
+date: "2026-06-18"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Benchmarking Differential Abundance Methods}
@@ -9,16 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(
- collapse = TRUE,
-  comment = "#>",
-  warning = FALSE,
-  message = FALSE,
-  fig.width = 10,
-  fig.height = 7
-)
-```
+
 
 ## Introduction
 
@@ -46,7 +37,8 @@ The benchmark evaluates:
 
 ## Setup
 
-```{r load_packages}
+
+``` r
 library(comparpq)
 library(phyloseq)
 library(ggplot2)
@@ -69,7 +61,8 @@ library(BiocParallel)
 
 We define wrapper functions to standardize output across methods.
 
-```{r helper_functions}
+
+``` r
 #' Run DESeq2 on phyloseq object
 #' @param physeq A phyloseq object
 #' @param formula Formula for the design (e.g., "~ condition")
@@ -528,7 +521,8 @@ compositional shift that DA methods can detect. Without compensation, the
 multiplied samples would have larger library sizes, and DA methods would
 normalize this away, washing out the signal.
 
-```{r create_spike_data_mult}
+
+``` r
 data("data_fungi", package = "MiscMetabar")
 
 # Subset to binary comparison
@@ -552,11 +546,16 @@ data_spike_mult <- multiply_counts_pq(
 spike_taxa_mult <- attr(data_spike_mult, "taxa_modified")
 
 cat("Approach A - multiply_counts_pq with compensation:\n")
+#> Approach A - multiply_counts_pq with compensation:
 cat("- Total taxa:", ntaxa(data_spike_mult), "\n")
+#> - Total taxa: 953
 cat("- Spiked taxa:", length(spike_taxa_mult), "\n")
+#> - Spiked taxa: 35
 cat("- Samples:", nsamples(data_spike_mult), "\n")
+#> - Samples: 86
 cat("- Library size preserved:",
     all.equal(sample_sums(data_fungi_hl), sample_sums(data_spike_mult)), "\n")
+#> - Library size preserved: Mean relative difference: 0.000395983
 ```
 
 ### Approach B: `permute_da_pq` (strict library size preservation)
@@ -564,7 +563,8 @@ cat("- Library size preserved:",
 The `permute_da_pq()` function guarantees exact library size preservation
 (except for rounding) by redistributing counts within each sample.
 
-```{r create_spike_data_perm}
+
+``` r
 data_spike_perm <- permute_da_pq(
   data_fungi_hl,
   fact = "Height",
@@ -578,13 +578,18 @@ data_spike_perm <- permute_da_pq(
 spike_taxa_perm <- attr(data_spike_perm, "da_taxa")
 
 cat("\nApproach B - permute_da_pq:\n")
+#> 
+#> Approach B - permute_da_pq:
 cat("- Spiked taxa:", length(spike_taxa_perm), "\n")
+#> - Spiked taxa: 18
 cat("- Library size preserved:",
     all.equal(sample_sums(data_fungi_hl), sample_sums(data_spike_perm)), "\n")
+#> - Library size preserved: Mean relative difference: 0.0003427415
 ```
 
 ### Approach C: `midasim_pq` (realistic simulation)
-```{r create_spike_data_mida, eval=requireNamespace("MIDASim", quietly = TRUE)}
+
+``` r
 data_spike_mida <- midasim_pq(
   data_fungi_hl,
   fact = "Height",
@@ -598,7 +603,10 @@ data_spike_mida <- midasim_pq(
 spike_taxa_mida <- attr(data_spike_mida, "da_taxa_names")
 
 cat("\nApproach C - midasim_pq:\n")
+#> 
+#> Approach C - midasim_pq:
 cat("- Spiked taxa:", length(spike_taxa_mida), "\n")
+#> - Spiked taxa: 95
 ```
 
 ### Use Approach A for benchmark
@@ -606,21 +614,29 @@ cat("- Spiked taxa:", length(spike_taxa_mida), "\n")
 For the main benchmark, we use the `multiply_counts_pq` approach with
 compensation, as it modifies actual data while preserving library sizes.
 
-```{r set_spike_data}
+
+``` r
 # Use the compensated multiply approach
 data_spike <- clean_pq(data_spike_mult)
 spike_taxa <- spike_taxa_mult
 
 cat("\nDataset used for benchmark:\n")
+#> 
+#> Dataset used for benchmark:
 cat("- Total taxa:", ntaxa(data_spike), "\n")
+#> - Total taxa: 939
 cat("- Spiked taxa:", length(spike_taxa), "\n")
+#> - Spiked taxa: 35
 cat("- Samples:", nsamples(data_spike), "\n")
+#> - Samples: 86
 cat("- Groups:", table(sample_data(data_spike)$Height), "\n")
+#> - Groups: 41 45
 ```
 
 ## Run All Methods
 
-```{r run_all_methods, results='hide'}
+
+``` r
 results_spike <- run_all_methods(
   subset_taxa_pq(data_spike, taxa_sums(data_spike) > 100),
   group_var = "Height",
@@ -630,7 +646,8 @@ results_spike <- run_all_methods(
 )
 ```
 
-```{r show_results}
+
+``` r
 # Summary of results
 results_spike |>
   group_by(method) |>
@@ -642,11 +659,26 @@ results_spike |>
   knitr::kable(caption = "Summary of DA results by method", digits = 3)
 ```
 
+
+
+Table: Summary of DA results by method
+
+|method      | n_taxa| n_significant| prop_significant|
+|:-----------|------:|-------------:|----------------:|
+|ALDEx2      |    468|             0|            0.000|
+|ANCOM-BC2   |    110|            51|            0.464|
+|DESeq2      |    468|             0|            0.000|
+|MaAsLin3    |    333|             0|            0.000|
+|radEmu_wald |    468|           292|            0.624|
+
+
+
 ## Concordance Analysis
 
 ### Number of Significant Taxa
 
-```{r concordance_barplot, fig.height=5}
+
+``` r
 sig_summary <- results_spike |>
   mutate(significant = qvalue < 0.05) |>
   group_by(method) |>
@@ -669,9 +701,12 @@ ggplot(sig_summary, aes(x = reorder(method, n_significant), y = n_significant)) 
   expand_limits(y = max(sig_summary$n_significant) * 1.1)
 ```
 
+![plot of chunk concordance_barplot](figure/benchmark-concordance_barplot-1.png)
+
 ### Overlap Between Methods (UpSet Plot)
 
-```{r upset_plot, fig.height=6, fig.width=10}
+
+``` r
 # Create presence/absence matrix for significant taxa
 sig_taxa_list <- results_spike |>
   filter(qvalue < 0.05) |>
@@ -710,9 +745,12 @@ if (nrow(sig_matrix) > 0) {
 }
 ```
 
+![plot of chunk upset_plot](figure/benchmark-upset_plot-1.png)
+
 ### Pairwise Method Agreement
 
-```{r pairwise_agreement, fig.height=7, fig.width=8}
+
+``` r
 # Calculate Jaccard similarity between methods
 methods <- unique(results_spike$method)
 jaccard_matrix <- matrix(NA, length(methods), length(methods),
@@ -749,11 +787,14 @@ ggplot(jaccard_df, aes(x = Method1, y = Method2, fill = Jaccard)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
+![plot of chunk pairwise_agreement](figure/benchmark-pairwise_agreement-1.png)
+
 ## Effect Size Comparison
 
 ### Effect Size Correlation
 
-```{r effect_correlation, fig.height=8, fig.width=10}
+
+``` r
 # Wide format for effect sizes
 effects_wide <- results_spike |>
   dplyr::select(taxon, method, effect) |>
@@ -784,9 +825,12 @@ if (ncol(effects_wide) > 2) {
 }
 ```
 
+![plot of chunk effect_correlation](figure/benchmark-effect_correlation-1.png)
+
 ### Effect Size Distribution
 
-```{r effect_distribution, fig.height=6}
+
+``` r
 ggplot(results_spike, aes(x = effect, fill = method)) +
   geom_density(alpha = 0.5) +
   facet_wrap(~method, scales = "free_y") +
@@ -800,11 +844,14 @@ ggplot(results_spike, aes(x = effect, fill = method)) +
   theme(legend.position = "none")
 ```
 
+![plot of chunk effect_distribution](figure/benchmark-effect_distribution-1.png)
+
 ## FDR Control Assessment
 
 Using our spike-in data, we can evaluate how well each method controls FDR.
 
-```{r fdr_assessment}
+
+``` r
 # Get the actual spiked taxa (those with multiplied counts)
 # We need to identify them from the multiply_counts_pq function
 # For this, we'll use the taxa that were selected (stored during creation)
@@ -842,7 +889,22 @@ knitr::kable(
 )
 ```
 
-```{r performance_plot, fig.height=5, fig.width=9}
+
+
+Table: Performance metrics based on spike-in ground truth
+
+|method      | TP|  FP| FN| Sensitivity|   FDR|    F1|
+|:-----------|--:|---:|--:|-----------:|-----:|-----:|
+|ALDEx2      |  0|   0| 32|       0.000|   NaN|   NaN|
+|ANCOM-BC2   |  9|  42| 13|       0.409| 0.824| 0.247|
+|DESeq2      |  0|   0|  3|       0.000|   NaN|   NaN|
+|MaAsLin3    |  0|   0| 32|       0.000|   NaN|   NaN|
+|radEmu_wald | 23| 269|  9|       0.719| 0.921| 0.142|
+
+
+
+
+``` r
 performance_long <- performance |>
   dplyr::select(method, Sensitivity, Specificity, FDR, F1) |>
   pivot_longer(-method, names_to = "Metric", values_to = "Value")
@@ -862,9 +924,12 @@ ggplot(performance_long, aes(x = method, y = Value, fill = Metric)) +
         legend.position = "none")
 ```
 
+![plot of chunk performance_plot](figure/benchmark-performance_plot-1.png)
+
 ## Volcano Plots Comparison
 
-```{r volcano_comparison, fig.height=10, fig.width=12}
+
+``` r
 results_spike <- results_spike |>
   mutate(
     neg_log10_q = -log10(qvalue),
@@ -899,11 +964,14 @@ ggplot(results_spike, aes(x = effect, y = neg_log10_q, color = category)) +
   theme(legend.position = "bottom")
 ```
 
+![plot of chunk volcano_comparison](figure/benchmark-volcano_comparison-1.png)
+
 ## Real Data: HMP2 Antibiotics
 
 Now we apply the methods to real data without known ground truth.
 
-```{r hmp2_data}
+
+``` r
 # Load HMP2 data
 taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
 taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
@@ -933,11 +1001,15 @@ otu_table(physeq_hmp2) <- otu_table(
 )
 
 cat("HMP2 Dataset:\n")
+#> HMP2 Dataset:
 cat("- Taxa:", ntaxa(physeq_hmp2), "\n")
+#> - Taxa: 151
 cat("- Samples:", nsamples(physeq_hmp2), "\n")
+#> - Samples: 1527
 ```
 
-```{r run_hmp2, results='hide'}
+
+``` r
 results_hmp2 <- run_all_methods(
   physeq_hmp2,
   methods = c("ALDEx2", "ANCOM-BC2", "MaAsLin3", "radEmu"),
@@ -948,7 +1020,8 @@ results_hmp2 <- run_all_methods(
 )
 ```
 
-```{r hmp2_summary, fig.height=8, fig.width=10}
+
+``` r
 # Concordance plot
 sig_hmp2 <- results_hmp2 |>
   filter(qvalue < 0.05) |>
@@ -968,13 +1041,38 @@ consensus_hmp2 <- results_hmp2 |>
   arrange(desc(n_methods), desc(abs(mean_effect)))
 
 cat("\nTop consensus taxa (found by 4+ methods):\n")
+#> 
+#> Top consensus taxa (found by 4+ methods):
 consensus_hmp2 |>
   filter(n_methods >= 2) |>
   head(15) |>
   knitr::kable(digits = 2)
 ```
 
-```{r hmp2_volcano, fig.height=8}
+
+
+|taxon                        | n_methods|methods                                  | mean_effect|
+|:----------------------------|---------:|:----------------------------------------|-----------:|
+|Bacteroides_finegoldii       |         4|ALDEx2, ANCOM-BC2, MaAsLin3, radEmu_wald |        1.27|
+|Roseburia_intestinalis       |         4|ALDEx2, ANCOM-BC2, MaAsLin3, radEmu_wald |       -1.14|
+|GGB1680_SGB2312              |         3|ALDEx2, MaAsLin3, radEmu_wald            |       -9.09|
+|Alistipes_dispar             |         3|ALDEx2, MaAsLin3, radEmu_wald            |        3.78|
+|GGB3478_SGB14857             |         3|ALDEx2, MaAsLin3, radEmu_wald            |        3.19|
+|Bifidobacterium_adolescentis |         3|ANCOM-BC2, MaAsLin3, radEmu_wald         |       -2.24|
+|Escherichia_coli             |         3|ANCOM-BC2, MaAsLin3, radEmu_wald         |        1.93|
+|Klebsiella_pneumoniae        |         3|ALDEx2, MaAsLin3, radEmu_wald            |        1.78|
+|Lachnospira_pectinoschiza    |         3|ANCOM-BC2, MaAsLin3, radEmu_wald         |       -1.26|
+|Bacteroides_intestinalis     |         3|ALDEx2, ANCOM-BC2, radEmu_wald           |        0.92|
+|Faecalibacterium_SGB15315    |         3|ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.90|
+|Roseburia_faecis             |         3|ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.73|
+|GGB3746_SGB5089              |         3|ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.67|
+|Clostridium_sp_AF36_4        |         3|ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.56|
+|Alistipes_SGB2313            |         2|MaAsLin3, radEmu_wald                    |       -5.65|
+
+
+
+
+``` r
 results_hmp2 |>
   mutate(significant = qvalue < 0.05) |>
   ggplot(aes(x = effect, y = -log10(qvalue), color = significant)) +
@@ -991,8 +1089,155 @@ results_hmp2 |>
   theme(legend.position = "bottom")
 ```
 
+![plot of chunk hmp2_volcano](figure/benchmark-hmp2_volcano-1.png)
+
 ## Session Info
 
-```{r session_info}
+
+``` r
 sessionInfo()
+#> R version 4.6.0 (2026-04-24)
+#> Platform: x86_64-pc-linux-gnu
+#> Running under: Pop!_OS 24.04 LTS
+#> 
+#> Matrix products: default
+#> BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 
+#> LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0
+#> 
+#> locale:
+#>  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+#>  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+#>  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+#>  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+#>  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+#> [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+#> 
+#> time zone: Europe/Paris
+#> tzcode source: system (glibc)
+#> 
+#> attached base packages:
+#> [1] stats4    stats     graphics  grDevices utils     datasets  methods  
+#> [8] base     
+#> 
+#> other attached packages:
+#>  [1] BiocParallel_1.46.0         radEmu_2.3.2.0             
+#>  [3] rlang_1.2.0                 magrittr_2.0.5             
+#>  [5] Matrix_1.7-5                edgeR_4.10.1               
+#>  [7] limma_3.68.4                DESeq2_1.52.0              
+#>  [9] SummarizedExperiment_1.42.0 Biobase_2.72.0             
+#> [11] MatrixGenerics_1.24.0       matrixStats_1.5.0          
+#> [13] GenomicRanges_1.64.0        Seqinfo_1.2.0              
+#> [15] IRanges_2.46.0              S4Vectors_0.50.1           
+#> [17] BiocGenerics_0.58.1         generics_0.1.4             
+#> [19] tibble_3.3.1                tidyr_1.3.2                
+#> [21] ALDEx2_1.44.0               latticeExtra_0.6-31        
+#> [23] lattice_0.22-9              zCompositions_1.6.1        
+#> [25] survival_3.8-6              truncnorm_1.0-9            
+#> [27] MASS_7.3-65                 doRNG_1.8.6.3              
+#> [29] rngtools_1.5.2              foreach_1.5.2              
+#> [31] patchwork_1.3.2             comparpq_0.1.3             
+#> [33] S7_0.2.2                    MiscMetabar_0.16.8         
+#> [35] dplyr_1.2.1                 ggplot2_4.0.3              
+#> [37] phyloseq_1.56.0             knitr_1.51                 
+#> 
+#> loaded via a namespace (and not attached):
+#>   [1] gld_2.6.8                       nnet_7.3-20                    
+#>   [3] Biostrings_2.80.1               TH.data_1.1-5                  
+#>   [5] vctrs_0.7.3                     maaslin3_1.4.0                 
+#>   [7] energy_1.7-12                   digest_0.6.39                  
+#>   [9] png_0.1-9                       shape_1.4.6.1                  
+#>  [11] proxy_0.4-29                    Exact_3.3                      
+#>  [13] ggrepel_0.9.8                   deldir_2.0-4                   
+#>  [15] permute_0.9-10                  fontLiberation_0.1.0           
+#>  [17] reshape2_1.4.5                  withr_3.0.2                    
+#>  [19] psych_2.6.5                     ecodive_2.2.6                  
+#>  [21] xfun_0.58                       ggfun_0.2.0                    
+#>  [23] memoise_2.0.1                   ggbeeswarm_0.7.3               
+#>  [25] emmeans_2.0.3                   systemfonts_1.3.2              
+#>  [27] ragg_1.5.2                      tidytree_0.4.7                 
+#>  [29] zoo_1.8-15                      GlobalOptions_0.1.4            
+#>  [31] gtools_3.9.5                    logging_0.10-111               
+#>  [33] Formula_1.2-5                   otel_0.2.0                     
+#>  [35] httr_1.4.8                      nanonext_1.9.1                 
+#>  [37] kmer_1.1.3                      rstudioapi_0.19.0              
+#>  [39] ggalluvial_0.12.6               base64enc_0.1-6                
+#>  [41] curl_7.1.0                      ScaledMatrix_1.20.0            
+#>  [43] quadprog_1.5-8                  SparseArray_1.12.2             
+#>  [45] pracma_2.4.6                    xtable_1.8-8                   
+#>  [47] stringr_1.6.0                   ade4_1.7-24                    
+#>  [49] doParallel_1.0.17               evaluate_1.0.5                 
+#>  [51] S4Arrays_1.12.0                 Rfast_2.1.5.2                  
+#>  [53] BiocFileCache_3.2.0             hms_1.1.4                      
+#>  [55] irlba_2.3.7                     colorspace_2.1-2               
+#>  [57] filelock_1.0.3                  readxl_1.5.0                   
+#>  [59] readr_2.2.0                     viridis_0.6.5                  
+#>  [61] ggtree_4.2.0                    DECIPHER_3.8.0                 
+#>  [63] scuttle_1.22.0                  class_7.3-23                   
+#>  [65] Hmisc_5.2-5                     pillar_1.11.1                  
+#>  [67] nlme_3.1-169                    iterators_1.0.14               
+#>  [69] decontam_1.32.0                 compiler_4.6.0                 
+#>  [71] beachmat_2.28.0                 stringi_1.8.7                  
+#>  [73] biomformat_1.40.0               DescTools_0.99.60              
+#>  [75] minqa_1.2.8                     plyr_1.8.9                     
+#>  [77] crayon_1.5.3                    abind_1.4-8                    
+#>  [79] scater_1.40.1                   gridGraphics_0.5-1             
+#>  [81] locfit_1.5-9.12                 haven_2.5.5                    
+#>  [83] bit_4.6.0                       mia_1.20.0                     
+#>  [85] rootSolve_1.8.2.4               sandwich_3.1-1                 
+#>  [87] divent_0.5-4                    codetools_0.2-20               
+#>  [89] multcomp_1.4-30                 textshaping_1.0.5              
+#>  [91] directlabels_2026.4.23          BiocSingular_1.28.0            
+#>  [93] e1071_1.7-17                    lmom_3.3                       
+#>  [95] multtest_2.68.0                 MultiAssayExperiment_1.38.0    
+#>  [97] splines_4.6.0                   circlize_0.4.18                
+#>  [99] Rcpp_1.1.1-1.1                  dbplyr_2.5.2                   
+#> [101] sparseMatrixStats_1.24.0        cellranger_1.1.0               
+#> [103] interp_1.1-6                    blob_1.3.0                     
+#> [105] utf8_1.2.6                      lme4_2.0-1                     
+#> [107] fs_2.1.0                        checkmate_2.3.4                
+#> [109] DelayedMatrixStats_1.34.0       Rdpack_2.6.6                   
+#> [111] expm_1.0-0                      gsl_2.1-9                      
+#> [113] ggplotify_0.1.3                 estimability_1.5.1             
+#> [115] scam_1.2-22                     statmod_1.5.2                  
+#> [117] tzdb_0.5.0                      pkgconfig_2.0.3                
+#> [119] tools_4.6.0                     cachem_1.1.0                   
+#> [121] rbibutils_2.4.1                 RSQLite_3.53.1                 
+#> [123] viridisLite_0.4.3               DBI_1.3.0                      
+#> [125] numDeriv_2016.8-1.1             phylogram_2.1.0                
+#> [127] zigg_0.0.2                      fastmap_1.2.0                  
+#> [129] rmarkdown_2.31                  scales_1.4.0                   
+#> [131] grid_4.6.0                      coda_0.19-4.1                  
+#> [133] rpart_4.1.27                    farver_2.1.2                   
+#> [135] reformulas_0.4.4                mgcv_1.9-4                     
+#> [137] foreign_0.8-91                  cli_3.6.6                      
+#> [139] purrr_1.2.2                     lifecycle_1.0.5                
+#> [141] mvtnorm_1.4-1                   bluster_1.22.0                 
+#> [143] backports_1.5.1                 mirai_2.7.1                    
+#> [145] gtable_0.3.6                    ANCOMBC_2.14.0                 
+#> [147] parallel_4.6.0                  ape_5.8-1                      
+#> [149] jsonlite_2.0.0                  multcompView_0.1-11            
+#> [151] bit64_4.8.2                     Rtsne_0.17                     
+#> [153] yulab.utils_0.2.4               vegan_2.7-5                    
+#> [155] MIDASim_2.0                     BiocNeighbors_2.6.0            
+#> [157] TreeSummarizedExperiment_2.20.0 RcppParallel_5.1.11-2          
+#> [159] formattable_0.2.1               lazyeval_0.2.3                 
+#> [161] htmltools_0.5.9                 collapse_2.1.7                 
+#> [163] rappdirs_0.3.4                  glue_1.8.1                     
+#> [165] optparse_1.8.2                  httr2_1.2.2                    
+#> [167] XVector_0.52.0                  gdtools_0.5.1                  
+#> [169] treeio_1.36.1                   mnormt_2.1.2                   
+#> [171] jpeg_0.1-11                     gridExtra_2.3                  
+#> [173] boot_1.3-32                     igraph_2.3.2                   
+#> [175] R6_2.6.1                        MicrobiomeBenchmarkData_1.14.0 
+#> [177] SingleCellExperiment_1.34.0     ggiraph_0.9.6                  
+#> [179] forcats_1.0.1                   labeling_0.4.3                 
+#> [181] cluster_2.1.8.2                 aplot_0.2.9                    
+#> [183] nloptr_2.2.1                    DirichletMultinomial_1.54.0    
+#> [185] DelayedArray_0.38.2             tidyselect_1.2.1               
+#> [187] vipor_0.4.7                     htmlTable_2.5.0                
+#> [189] microbiome_1.34.0               fontBitstreamVera_0.1.1        
+#> [191] rsvd_1.0.5                      fontquiver_0.2.1               
+#> [193] data.table_1.18.4               htmlwidgets_1.6.4              
+#> [195] RColorBrewer_1.1-3              lmerTest_3.2-1                 
+#> [197] ggnewscale_0.5.2                beeswarm_0.4.0
 ```
