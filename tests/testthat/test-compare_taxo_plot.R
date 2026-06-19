@@ -8,7 +8,12 @@
 test_that("tc_bar creates ggplot object", {
   pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
 
-  result <- tc_bar(pq, rank_1 = 5, rank_2 = 13, color_rank = 3)
+  result <- suppressWarnings(tc_bar(
+    pq,
+    rank_1 = 5,
+    rank_2 = 13,
+    color_rank = 3
+  ))
 
   expect_s3_class(result, "ggplot")
 })
@@ -16,12 +21,12 @@ test_that("tc_bar creates ggplot object", {
 test_that("tc_bar works with character rank names", {
   pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
 
-  result <- tc_bar(
+  result <- suppressWarnings(tc_bar(
     pq,
     rank_1 = "Genus",
     rank_2 = "Genus__eukaryome_Glomero",
     color_rank = "Family"
-  )
+  ))
 
   expect_s3_class(result, "ggplot")
 })
@@ -29,20 +34,20 @@ test_that("tc_bar works with character rank names", {
 test_that("tc_bar respects log10trans parameter", {
   pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
 
-  result_log <- tc_bar(
+  result_log <- suppressWarnings(tc_bar(
     pq,
     rank_1 = 5,
     rank_2 = 13,
     color_rank = 3,
     log10trans = TRUE
-  )
-  result_nolog <- tc_bar(
+  ))
+  result_nolog <- suppressWarnings(tc_bar(
     pq,
     rank_1 = 5,
     rank_2 = 13,
     color_rank = 3,
     log10trans = FALSE
-  )
+  ))
 
   expect_s3_class(result_log, "ggplot")
   expect_s3_class(result_nolog, "ggplot")
@@ -51,14 +56,14 @@ test_that("tc_bar respects log10trans parameter", {
 test_that("tc_bar respects point_size and point_alpha", {
   pq <- subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000)
 
-  result <- tc_bar(
+  result <- suppressWarnings(tc_bar(
     pq,
     rank_1 = 5,
     rank_2 = 13,
     color_rank = 3,
     point_size = 0.5,
     point_alpha = 0.5
-  )
+  ))
 
   expect_s3_class(result, "ggplot")
 })

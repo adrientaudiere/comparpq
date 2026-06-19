@@ -112,8 +112,16 @@ div_pq <- function(
               x <- x[x > 0]
               switch(
                 idx,
-                "shannon" = divent::ent_shannon(x, as_numeric = TRUE, check_arguments = FALSE),
-                "simpson" = divent::ent_simpson(x, as_numeric = TRUE, check_arguments = FALSE)
+                "shannon" = divent::ent_shannon(
+                  x,
+                  as_numeric = TRUE,
+                  check_arguments = FALSE
+                ),
+                "simpson" = divent::ent_simpson(
+                  x,
+                  as_numeric = TRUE,
+                  check_arguments = FALSE
+                )
               )
             },
             numeric(1)

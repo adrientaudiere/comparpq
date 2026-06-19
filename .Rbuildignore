@@ -13,5 +13,7 @@
 ^.vscode$
 ^citation.cff$
 ^vignettes/articles$
+^vignettes/precompile\.R$
+^vignettes/.*\.Rmd\.orig$
 ^cran-comments\.md$
 ^.lintr

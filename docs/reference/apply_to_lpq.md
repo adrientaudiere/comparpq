@@ -141,176 +141,37 @@ lpq_rar <- apply_to_lpq(lpq, rarefy_even_depth, rngseed = 21)
 #> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
 
 lpq_rar
-#> <list_phyloseq>
-#>  @ phyloseq_list:List of 2
-#>  .. $ fungi     :Formal class 'phyloseq' [package "phyloseq"] with 5 slots
-#>  ..  .. ..@ otu_table:Formal class 'otu_table' [package "phyloseq"] with 2 slots
-#>  ..  .. .. .. ..@ .Data        : num [1:185, 1:420] 0 0 0 0 1 0 0 0 0 0 ...
-#>  ..  .. .. .. .. ..- attr(*, "dimnames")=List of 2
-#>  ..  .. .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. .. .. .. .. ..$ : chr [1:420] "ASV2" "ASV6" "ASV7" "ASV8" ...
-#>  ..  .. .. .. ..@ taxa_are_rows: logi FALSE
-#>  ..  .. .. .. ..$ dim     : int [1:2] 185 420
-#>  ..  .. .. .. ..$ dimnames:List of 2
-#>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. .. .. .. ..$ : chr [1:420] "ASV2" "ASV6" "ASV7" "ASV8" ...
-#>  ..  .. ..@ tax_table:Formal class 'taxonomyTable' [package "phyloseq"] with 1 slot
-#>  ..  .. .. .. ..@ .Data: chr [1:420, 1:12] "Fungi" "Fungi" "Fungi" "Fungi" ...
-#>  ..  .. .. .. .. ..- attr(*, "dimnames")=List of 2
-#>  ..  .. .. .. .. .. ..$ : chr [1:420] "ASV2" "ASV6" "ASV7" "ASV8" ...
-#>  ..  .. .. .. .. .. ..$ : chr [1:12] "Domain" "Phylum" "Class" "Order" ...
-#>  ..  .. .. .. ..$ dim     : int [1:2] 420 12
-#>  ..  .. .. .. ..$ dimnames:List of 2
-#>  ..  .. .. .. .. ..$ : chr [1:420] "ASV2" "ASV6" "ASV7" "ASV8" ...
-#>  ..  .. .. .. .. ..$ : chr [1:12] "Domain" "Phylum" "Class" "Order" ...
-#>  ..  .. ..@ sam_data :'data.frame':  185 obs. of  7 variables:
-#> Formal class 'sample_data' [package "phyloseq"] with 4 slots
-#>  ..  .. .. .. ..@ .Data    :List of 7
-#>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188" "A10-005-H_S189" "A10-005-M_S190" "A12-007_S191" ...
-#>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005" "A10-005" "A10-005" "A12-007" ...
-#>  ..  .. .. .. .. ..$ : int [1:185] 188 189 190 191 2 3 4 5 6 7 ...
-#>  ..  .. .. .. .. ..$ : chr [1:185] "Low" "High" "Middle" NA ...
-#>  ..  .. .. .. .. ..$ : chr [1:185] "52" "52" "52" "28,4" ...
-#>  ..  .. .. .. .. ..$ : int [1:185] 15 15 15 0 0 0 0 0 5 15 ...
-#>  ..  .. .. .. ..@ names    : chr [1:7] "X" "Sample_names" "Tree_name" "Sample_id" ...
-#>  ..  .. .. .. ..@ row.names: chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. .. .. ..@ .S3Class : chr "data.frame"
-#>  ..  .. ..@ phy_tree : NULL
-#>  ..  .. ..@ refseq   :Formal class 'DNAStringSet' [package "Biostrings"] with 5 slots
-#>  ..  .. .. .. ..@ pool           :Formal class 'SharedRaw_Pool' [package "XVector"] with 2 slots
-#>  ..  .. .. .. .. .. ..@ xp_list                    :List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<pointer: (nil)> 
-#>  ..  .. .. .. .. .. ..@ .link_to_cached_object_list:List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<environment: 0x62f5511b2dc8> 
-#>  ..  .. .. .. ..@ ranges         :Formal class 'GroupedIRanges' [package "XVector"] with 7 slots
-#>  ..  .. .. .. .. .. ..@ group          : int [1:420] 1 1 1 1 1 1 1 1 1 1 ...
-#>  ..  .. .. .. .. .. ..@ start          : int [1:420] 1 313 614 963 1320 1620 1950 2241 2599 2939 ...
-#>  ..  .. .. .. .. .. ..@ width          : int [1:420] 312 301 349 357 300 330 291 358 340 305 ...
-#>  ..  .. .. .. .. .. ..@ NAMES          : chr [1:420] "ASV2" "ASV6" "ASV7" "ASV8" ...
-#>  ..  .. .. .. .. .. ..@ elementType    : chr "ANY"
-#>  ..  .. .. .. .. .. ..@ elementMetadata: NULL
-#>  ..  .. .. .. .. .. ..@ metadata       : list()
-#>  ..  .. .. .. ..@ elementType    : chr "DNAString"
-#>  ..  .. .. .. ..@ elementMetadata: NULL
-#>  ..  .. .. .. ..@ metadata       : list()
-#>  .. $ fungi_mini:Formal class 'phyloseq' [package "phyloseq"] with 5 slots
-#>  ..  .. ..@ otu_table:Formal class 'otu_table' [package "phyloseq"] with 2 slots
-#>  ..  .. .. .. ..@ .Data        : num [1:38, 1:137] 0 0 0 0 0 1 0 0 0 0 ...
-#>  ..  .. .. .. .. ..- attr(*, "dimnames")=List of 2
-#>  ..  .. .. .. .. .. ..$ : chr [1:38] "ASV7" "ASV8" "ASV12" "ASV18" ...
-#>  ..  .. .. .. .. .. ..$ : chr [1:137] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. .. .. ..@ taxa_are_rows: logi TRUE
-#>  ..  .. .. .. ..$ dim     : int [1:2] 38 137
-#>  ..  .. .. .. ..$ dimnames:List of 2
-#>  ..  .. .. .. .. ..$ : chr [1:38] "ASV7" "ASV8" "ASV12" "ASV18" ...
-#>  ..  .. .. .. .. ..$ : chr [1:137] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. ..@ tax_table:Formal class 'taxonomyTable' [package "phyloseq"] with 1 slot
-#>  ..  .. .. .. ..@ .Data: chr [1:38, 1:12] "Fungi" "Fungi" "Fungi" "Fungi" ...
-#>  ..  .. .. .. .. ..- attr(*, "dimnames")=List of 2
-#>  ..  .. .. .. .. .. ..$ : chr [1:38] "ASV7" "ASV8" "ASV12" "ASV18" ...
-#>  ..  .. .. .. .. .. ..$ : chr [1:12] "Domain" "Phylum" "Class" "Order" ...
-#>  ..  .. .. .. ..$ dim     : int [1:2] 38 12
-#>  ..  .. .. .. ..$ dimnames:List of 2
-#>  ..  .. .. .. .. ..$ : chr [1:38] "ASV7" "ASV8" "ASV12" "ASV18" ...
-#>  ..  .. .. .. .. ..$ : chr [1:12] "Domain" "Phylum" "Class" "Order" ...
-#>  ..  .. ..@ sam_data :'data.frame':  137 obs. of  7 variables:
-#> Formal class 'sample_data' [package "phyloseq"] with 4 slots
-#>  ..  .. .. .. ..@ .Data    :List of 7
-#>  ..  .. .. .. .. ..$ : chr [1:137] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. .. .. .. ..$ : chr [1:137] "A10-005-B_S188" "A10-005-H_S189" "A10-005-M_S190" "A12-007_S191" ...
-#>  ..  .. .. .. .. ..$ : chr [1:137] "A10-005" "A10-005" "A10-005" "A12-007" ...
-#>  ..  .. .. .. .. ..$ : int [1:137] 188 189 190 191 2 3 4 6 7 8 ...
-#>  ..  .. .. .. .. ..$ : chr [1:137] "Low" "High" "Middle" NA ...
-#>  ..  .. .. .. .. ..$ : chr [1:137] "52" "52" "52" "28,4" ...
-#>  ..  .. .. .. .. ..$ : int [1:137] 15 15 15 0 0 0 0 5 15 15 ...
-#>  ..  .. .. .. ..@ names    : chr [1:7] "X" "Sample_names" "Tree_name" "Sample_id" ...
-#>  ..  .. .. .. ..@ row.names: chr [1:137] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  .. .. .. ..@ .S3Class : chr "data.frame"
-#>  ..  .. ..@ phy_tree : NULL
-#>  ..  .. ..@ refseq   :Formal class 'DNAStringSet' [package "Biostrings"] with 5 slots
-#>  ..  .. .. .. ..@ pool           :Formal class 'SharedRaw_Pool' [package "XVector"] with 2 slots
-#>  ..  .. .. .. .. .. ..@ xp_list                    :List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<pointer: (nil)> 
-#>  ..  .. .. .. .. .. ..@ .link_to_cached_object_list:List of 1
-#>  ..  .. .. .. .. .. .. ..$ :<environment: 0x62f55998f2f0> 
-#>  ..  .. .. .. ..@ ranges         :Formal class 'GroupedIRanges' [package "XVector"] with 7 slots
-#>  ..  .. .. .. .. .. ..@ group          : int [1:38] 1 1 1 1 1 1 1 1 1 1 ...
-#>  ..  .. .. .. .. .. ..@ start          : int [1:38] 614 963 1620 2241 3898 4248 4595 5297 5903 6589 ...
-#>  ..  .. .. .. .. .. ..@ width          : int [1:38] 349 357 330 358 350 347 345 303 383 358 ...
-#>  ..  .. .. .. .. .. ..@ NAMES          : chr [1:38] "ASV7" "ASV8" "ASV12" "ASV18" ...
-#>  ..  .. .. .. .. .. ..@ elementType    : chr "ANY"
-#>  ..  .. .. .. .. .. ..@ elementMetadata: NULL
-#>  ..  .. .. .. .. .. ..@ metadata       : list()
-#>  ..  .. .. .. ..@ elementType    : chr "DNAString"
-#>  ..  .. .. .. ..@ elementMetadata: NULL
-#>  ..  .. .. .. ..@ metadata       : list()
-#>  @ summary_table: tibble [2 × 17] (S3: tbl_df/tbl/data.frame)
-#>  $ name               : chr [1:2] "fungi" "fungi_mini"
-#>  $ n_samples          : int [1:2] 185 137
-#>  $ n_taxa             : int [1:2] 420 38
-#>  $ n_sequences        : num [1:2] 1110 137
-#>  $ n_occurence        : int [1:2] 695 137
-#>  $ mean_seq_length    : num [1:2] 323 344
-#>  $ min_seq_length     : int [1:2] 255 303
-#>  $ mean_seq_per_sample: num [1:2] 6 1
-#>  $ sd_seq_per_sample  : num [1:2] 0 0
-#>  $ min_seq_per_sample : num [1:2] 6 1
-#>  $ max_seq_per_sample : num [1:2] 6 1
-#>  $ mean_seq_per_taxon : num [1:2] 2.64 3.61
-#>  $ sd_seq_per_taxon   : num [1:2] 3.62 4.02
-#>  $ has_sam_data       : logi [1:2] TRUE TRUE
-#>  $ has_tax_table      : logi [1:2] TRUE TRUE
-#>  $ has_refseq         : logi [1:2] TRUE TRUE
-#>  $ has_phy_tree       : logi [1:2] FALSE FALSE
-#>  @ comparison   :List of 19
-#>  .. $ type_of_comparison        : chr "NESTED_ROBUSTNESS"
-#>  .. $ type_description          : chr "Nested samples detected (one phyloseq derived from another).\n  Nesting: fungi_mini (137 samples) is nested in "| __truncated__
-#>  .. $ same_primer_seq_tech      : logi TRUE
-#>  .. $ same_bioinfo_pipeline     : logi TRUE
-#>  .. $ same_sam_data_structure   : logi TRUE
-#>  .. $ same_samples              : logi FALSE
-#>  .. $ nested_samples            : logi TRUE
-#>  .. $ nesting_structure         : chr "fungi_mini (137 samples) is nested in fungi (185 samples)"
-#>  .. $ same_taxa                 : logi FALSE
-#>  .. $ n_common_samples          : int 137
-#>  .. $ common_samples            : chr [1:137] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  .. $ n_common_taxa             : int 35
-#>  .. $ common_taxa               : chr [1:35] "ASV7" "ASV8" "ASV12" "ASV18" ...
-#>  .. $ shared_sam_data_modalities:List of 5
-#>  ..  ..$ X           : chr [1:137] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...
-#>  ..  ..$ Sample_names: chr [1:137] "A10-005-B_S188" "A10-005-H_S189" "A10-005-M_S190" "A12-007_S191" ...
-#>  ..  ..$ Tree_name   : chr [1:100] "A10-005" "A12-007" "A15-004" "A8-005" ...
-#>  ..  ..$ Height      : chr [1:4] "Low" "High" "Middle" NA
-#>  ..  ..$ Diameter    : chr [1:70] "52" "28,4" "30,7" "32,8" ...
-#>  .. $ all_have_sam_data         : logi TRUE
-#>  .. $ all_have_tax_table        : logi TRUE
-#>  .. $ all_have_refseq           : logi TRUE
-#>  .. $ all_have_phy_tree         : logi FALSE
-#>  .. $ refseq_comparison         :List of 1
-#>  ..  ..$ fungi_vs_fungi_mini:List of 14
-#>  ..  .. ..$ name1              : chr "fungi"
-#>  ..  .. ..$ name2              : chr "fungi_mini"
-#>  ..  .. ..$ k                  : num 5
-#>  ..  .. ..$ n_taxa             : Named int [1:2] 420 38
-#>  ..  .. .. ..- attr(*, "names")= chr [1:2] "fungi" "fungi_mini"
-#>  ..  .. ..$ shared_names       : chr [1:35] "ASV7" "ASV8" "ASV12" "ASV18" ...
-#>  ..  .. ..$ unique_names_1     : chr [1:385] "ASV2" "ASV6" "ASV10" "ASV13" ...
-#>  ..  .. ..$ unique_names_2     : chr [1:3] "ASV68" "ASV83" "ASV93"
-#>  ..  .. ..$ shared_seqs        : chr [1:35] "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACCTTGCGCCCTTTGGTATTCCGAAGGGCACACCTGTTTGAGTGTCGTGAAATT"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACCTTGCGCCCTTTGGTATTCCGAAGGGCACACCTGTTTGAGTGTCGTGAAATT"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACCTTGCGCTCCTTGGTATTCCGAGGAGCATGCCTGTTTGAGTGTCGTGAAATT"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACCTTGCGCCCTTTGGTATTCCGAAGGGCACACCTGTTTGAGTGTCGTGAAATT"| __truncated__ ...
-#>  ..  .. ..$ unique_seqs_1      : chr [1:385] "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCATTAGTATTCTAGTGGGCATGCCTGTTCGAGCGTCATTTTCAA"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCATTAGTATTCTAGTGGGCATGCCTGTTCGAGCGTCATTTCAAC"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCGCTAGTACTCTAGCGGGCATGCCTGTTCGAGCGTCATTTCAAC"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACATTGCGCCCTCTGGTATTCCGGGGGGCATGCCTGTTCGAGCGTCATTACAAC"| __truncated__ ...
-#>  ..  .. ..$ unique_seqs_2      : chr [1:3] "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCATCGAATCTTTGAACGCACCTTGCGCTCCTTGGTATTCCGAGGAGCATGCCTGTTTGAGTGTCATTAAATT"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGTATTCAGTGAATCATCGAATCTTTGAACGCATCTTGCGCCCTTTGGTATTCCGAAGGGCATGCCTGTTTGAGTGTCATGAAAAT"| __truncated__ "AAATGCGATAAGTAATGTGAATTGCAGAATTCAGTGAATCGTCGAATCTTTGAACGCACCTTGCGCCCTTTGGTGTTCCGAAGGGCACACCTGTTTGAGTGTCGTGAAATT"| __truncated__
-#>  ..  .. ..$ same_name_diff_seq :'data.frame':    0 obs. of  3 variables:
-#>  ..  .. .. ..$ taxa_name  : chr(0) 
-#>  ..  .. .. ..$ seq_physeq1: chr(0) 
-#>  ..  .. .. ..$ seq_physeq2: chr(0) 
-#>  ..  .. ..$ same_seq_diff_name :'data.frame':    0 obs. of  3 variables:
-#>  ..  .. .. ..$ sequence    : chr(0) 
-#>  ..  .. .. ..$ name_physeq1: chr(0) 
-#>  ..  .. .. ..$ name_physeq2: chr(0) 
-#>  ..  .. ..$ mean_nn_kmer_dist_1: num 0.241
-#>  ..  .. ..$ mean_nn_kmer_dist_2: num 0.00391
-#>  ..  .. ..- attr(*, "class")= chr "compare_refseq"
+#> list_phyloseq object with 2 phyloseq objects
+#> 
+#> --- Summary ---
+#> # A tibble: 2 × 17
+#>   name   n_samples n_taxa n_sequences n_occurence mean_seq_length min_seq_length
+#>   <chr>      <int>  <int>       <dbl>       <int>           <dbl>          <int>
+#> 1 fungi        185    420        1110         695            323.            255
+#> 2 fungi…       137     38         137         137            344.            303
+#> # ℹ 10 more variables: mean_seq_per_sample <dbl>, sd_seq_per_sample <dbl>,
+#> #   min_seq_per_sample <dbl>, max_seq_per_sample <dbl>,
+#> #   mean_seq_per_taxon <dbl>, sd_seq_per_taxon <dbl>, has_sam_data <lgl>,
+#> #   has_tax_table <lgl>, has_refseq <lgl>, has_phy_tree <lgl>
+#> 
+#> --- Comparison characteristics ---
+#> Type of comparison: NESTED_ROBUSTNESS 
+#> Nested samples detected (one phyloseq derived from another).
+#>   Nesting: fungi_mini (137 samples) is nested in fungi (185 samples)
+#>   Useful to test robustness to data processing (e.g., rarefaction).
+#>   Comparisons should focus on the common (nested) samples. 
+#> 
+#> Same primer/seq tech: TRUE 
+#> Same bioinfo pipeline: TRUE 
+#> Same sample_data structure: TRUE 
+#> Same samples: FALSE 
+#> Nested samples: TRUE 
+#> Same taxa: FALSE 
+#> Common samples: 137 
+#> Common taxa: 35 
+#> 
+#> --- Reference sequence comparison ---
+#> fungi_vs_fungi_mini: 35 shared seqs, 385 unique in fungi, 3 unique in fungi_mini
 
 # Transform to relative abundance
 lpq_rel <- apply_to_lpq(

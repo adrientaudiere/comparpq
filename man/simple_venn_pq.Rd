@@ -171,9 +171,18 @@ simple_venn_pq(data_fungi_mini, "Height",
 )
 
 # From a list_phyloseq object
+# Subset to the 80 most abundant taxa to keep the example fast
+# (the full data_fungi has 1420 taxa).
+data_fungi_small <- prune_taxa(
+  names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+  data_fungi
+)
+data_fungi_small <- clean_pq(prune_samples(
+  sample_sums(data_fungi_small) >= 500, data_fungi_small
+))
 lpq <- list_phyloseq(list(
   fungi = data_fungi_mini,
-  fungi2 = data_fungi
+  fungi2 = data_fungi_small
 ))
 simple_venn_pq(lpq, taxonomic_rank = "Genus")
 

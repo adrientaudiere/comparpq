@@ -433,7 +433,16 @@ formattable_lpq_full <- function(
 #'
 #' @export
 #' @examples
-#' lpq <- list_phyloseq(list(data1 = data_fungi, data2 = data_fungi_mini))
+#' # Subset to the 80 most abundant taxa to keep the example fast
+#' # (the full data_fungi has 1420 taxa).
+#' data_fungi_small <- prune_taxa(
+#'   names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+#'   data_fungi
+#' )
+#' data_fungi_small <- clean_pq(prune_samples(
+#'   sample_sums(data_fungi_small) >= 500, data_fungi_small
+#' ))
+#' lpq <- list_phyloseq(list(data1 = data_fungi_small, data2 = data_fungi_mini))
 #'
 #' shared_mod_lpq(lpq)
 #' shared_mod_lpq(lpq, 10)
@@ -502,15 +511,24 @@ shared_mod_lpq <- function(x, max_modalities = NULL) {
 #'
 #' @examples
 #' data("enterotype", package = "phyloseq")
+#' # Subset to the 80 most abundant taxa to keep the example fast
+#' # (the full data_fungi has 1420 taxa).
+#' data_fungi_small <- prune_taxa(
+#'   names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+#'   data_fungi
+#' )
+#' data_fungi_small <- clean_pq(prune_samples(
+#'   sample_sums(data_fungi_small) >= 500, data_fungi_small
+#' ))
 #' lpq <- list_phyloseq(list(
-#'   fung = data_fungi,
+#'   fung = data_fungi_small,
 #'   fung_mini = data_fungi_mini,
-#'   fung_rarefy = rarefy_even_depth(data_fungi),
+#'   fung_rarefy = rarefy_even_depth(data_fungi_small),
 #'   enterotype = enterotype
 #' ))
 #' upset_lpq(lpq, plot_type = "upset")
 #' lpq2 <- list_phyloseq(list(
-#'   fung = data_fungi,
+#'   fung = data_fungi_small,
 #'   fung_mini = data_fungi_mini
 #' ))
 #' upset_lpq(lpq2, tax_rank = "Family")

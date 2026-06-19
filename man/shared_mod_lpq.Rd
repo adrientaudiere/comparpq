@@ -38,7 +38,16 @@ are shared across phyloseq objects in a list_phyloseq.
 }}
 }
 \examples{
-lpq <- list_phyloseq(list(data1 = data_fungi, data2 = data_fungi_mini))
+# Subset to the 80 most abundant taxa to keep the example fast
+# (the full data_fungi has 1420 taxa).
+data_fungi_small <- prune_taxa(
+  names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+  data_fungi
+)
+data_fungi_small <- clean_pq(prune_samples(
+  sample_sums(data_fungi_small) >= 500, data_fungi_small
+))
+lpq <- list_phyloseq(list(data1 = data_fungi_small, data2 = data_fungi_mini))
 
 shared_mod_lpq(lpq)
 shared_mod_lpq(lpq, 10)

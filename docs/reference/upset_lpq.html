@@ -109,26 +109,32 @@ for 2-4 sets.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"enterotype"</span>, package <span class="op">=</span> <span class="st">"phyloseq"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Subset to the 80 most abundant taxa to keep the example fast</span></span></span>
+<span class="r-in"><span><span class="co"># (the full data_fungi has 1420 taxa).</span></span></span>
+<span class="r-in"><span><span class="va">data_fungi_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/prune_taxa-methods.html" class="external-link">prune_taxa</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_sums.html" class="external-link">taxa_sums</a></span><span class="op">(</span><span class="va">data_fungi</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">80</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>  <span class="va">data_fungi</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_fungi_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://adrientaudiere.github.io/MiscMetabar/reference/clean_pq.html" class="external-link">clean_pq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/prune_samples-methods.html" class="external-link">prune_samples</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html" class="external-link">sample_sums</a></span><span class="op">(</span><span class="va">data_fungi_small</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">500</span>, <span class="va">data_fungi_small</span></span></span>
+<span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">lpq</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_phyloseq.html">list_phyloseq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  fung <span class="op">=</span> <span class="va">data_fungi</span>,</span></span>
+<span class="r-in"><span>  fung <span class="op">=</span> <span class="va">data_fungi_small</span>,</span></span>
 <span class="r-in"><span>  fung_mini <span class="op">=</span> <span class="va">data_fungi_mini</span>,</span></span>
-<span class="r-in"><span>  fung_rarefy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/rarefy_even_depth.html" class="external-link">rarefy_even_depth</a></span><span class="op">(</span><span class="va">data_fungi</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  fung_rarefy <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/rarefy_even_depth.html" class="external-link">rarefy_even_depth</a></span><span class="op">(</span><span class="va">data_fungi_small</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  enterotype <span class="op">=</span> <span class="va">enterotype</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> You set `rngseed` to FALSE. Make sure you've set &amp; recorded</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  the random seed of your session for reproducibility.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See `?set.seed`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 1024OTUs were removed because they are no longer </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> present in any sample after random subsampling</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 4 phyloseq objects...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: NESTED_ROBUSTNESS</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: SEPARATE_ANALYSIS</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 0 common samples, 0 common taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Skipping refseq comparison (not all objects have refseq)</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (SEPARATE_ANALYSIS)</span>
 <span class="r-in"><span><span class="fu">upset_lpq</span><span class="op">(</span><span class="va">lpq</span>, plot_type <span class="op">=</span> <span class="st">"upset"</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use `linewidth` instead.</span>
@@ -137,15 +143,15 @@ for 2-4 sets.</p>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>   <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/krassowski/complex-upset/issues&gt;</span>.</span>
 <span class="r-plt img"><img src="upset_lpq-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="va">lpq2</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_phyloseq.html">list_phyloseq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  fung <span class="op">=</span> <span class="va">data_fungi</span>,</span></span>
+<span class="r-in"><span>  fung <span class="op">=</span> <span class="va">data_fungi_small</span>,</span></span>
 <span class="r-in"><span>  fung_mini <span class="op">=</span> <span class="va">data_fungi_mini</span></span></span>
 <span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 2 phyloseq objects...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: NESTED_ROBUSTNESS</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 137 common samples, 45 common taxa</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: EXPLORATION</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 118 common samples, 43 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (EXPLORATION)</span>
 <span class="r-in"><span><span class="fu">upset_lpq</span><span class="op">(</span><span class="va">lpq2</span>, tax_rank <span class="op">=</span> <span class="st">"Family"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="upset_lpq-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>

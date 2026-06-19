@@ -26,12 +26,21 @@
 #'   }
 #'
 #' @examples
+#' # Subset to the 80 most abundant taxa to keep the example fast
+#' data_fungi_small <- prune_taxa(
+#'   names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+#'   data_fungi
+#' )
+#' data_fungi_small <- clean_pq(prune_samples(
+#'   sample_sums(data_fungi_small) >= 500, data_fungi_small
+#' ))
+#'
 #' lpq <- list_phyloseq(
 #'   list(
-#'     fungi = data_fungi,
-#'     fungi_clust = postcluster_pq(data_fungi),
-#'     fungi_rarefy = rarefy_even_depth(data_fungi),
-#'     fungi_with_less_otu_in_High =  multiply_counts_pq(data_fungi,
+#'     fungi = data_fungi_small,
+#'     fungi_clust = postcluster_pq(data_fungi_small),
+#'     fungi_rarefy = rarefy_even_depth(data_fungi_small),
+#'     fungi_with_less_otu_in_High =  multiply_counts_pq(data_fungi_small,
 #'       fact = "Height", prop=0.8,
 #'       conditions = "High",
 #'       multipliers = 0)
@@ -39,7 +48,9 @@
 #'   same_bioinfo_pipeline = FALSE
 #' )
 #'
-#' results <- estim_diff_lpq(lpq, fact = "Height")
+#' # 1000 resamples for speed you must increase it
+#' results <- estim_diff_lpq(lpq, fact = "Height", resamples=1000)
+#'
 #' results$summary
 #'
 #' # Plot results for two phyloseq objects

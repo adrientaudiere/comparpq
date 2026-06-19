@@ -95,6 +95,7 @@ object, Hill diversity indices are computed and used as response variables
 in the model selection process.
 }
 \examples{
+\dontrun{
 lpq <- list_phyloseq(
   list(
     fungi = data_fungi,
@@ -108,7 +109,7 @@ results
 
 # With interactions
 results_int <- glmulti_lpq(lpq, formula = "Hill_1 ~ Height * Time", level = 2)
-
+}
 }
 \seealso{
 \code{\link[MiscMetabar:glmutli_pq]{MiscMetabar::glmutli_pq()}}, \code{\link[MiscMetabar:hill_pq]{MiscMetabar::hill_pq()}}

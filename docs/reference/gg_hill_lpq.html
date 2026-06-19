@@ -174,139 +174,28 @@ primer or technology differences.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">lpq</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_phyloseq.html">list_phyloseq</a></span><span class="op">(</span></span></span>
-<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>run1 <span class="op">=</span> <span class="va">data_fungi</span>, run2 <span class="op">=</span> <span class="va">data_fungi_mini</span><span class="op">)</span>,</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Subset to the 80 most abundant taxa to keep the example fast</span></span></span>
+<span class="r-in"><span><span class="co"># (the full data_fungi has 1420 taxa).</span></span></span>
+<span class="r-in"><span><span class="va">data_fungi_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/prune_taxa-methods.html" class="external-link">prune_taxa</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/taxa_sums.html" class="external-link">taxa_sums</a></span><span class="op">(</span><span class="va">data_fungi</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">80</span><span class="op">]</span>,</span></span>
+<span class="r-in"><span>  <span class="va">data_fungi</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">data_fungi_small</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://adrientaudiere.github.io/MiscMetabar/reference/clean_pq.html" class="external-link">clean_pq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/prune_samples-methods.html" class="external-link">prune_samples</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/pkg/phyloseq/man/sample_sums.html" class="external-link">sample_sums</a></span><span class="op">(</span><span class="va">data_fungi_small</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">500</span>, <span class="va">data_fungi_small</span></span></span>
+<span class="r-in"><span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">lpq</span> <span class="op">&lt;-</span> <span class="fu"><a href="list_phyloseq.html">list_phyloseq</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>run1 <span class="op">=</span> <span class="va">data_fungi_small</span>, run2 <span class="op">=</span> <span class="va">data_fungi_mini</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  same_bioinfo_pipeline <span class="op">=</span> <span class="cn">FALSE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 2 phyloseq objects...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: NESTED_ROBUSTNESS</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 137 common samples, 45 common taxa</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: EXPLORATION</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 118 common samples, 43 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (EXPLORATION)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">gg_hill_lpq</span><span class="op">(</span><span class="va">lpq</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Samples differ across phyloseq objects. Using 137 common samples.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Samples differ across phyloseq objects. Using 118 common samples.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
@@ -1556,12 +1445,6 @@ primer or technology differences.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
@@ -1569,57 +1452,6 @@ primer or technology differences.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
@@ -1684,87 +1516,7 @@ primer or technology differences.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-plt img"><img src="gg_hill_lpq-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">gg_hill_lpq</span><span class="op">(</span><span class="va">lpq</span>, q <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Samples differ across phyloseq objects. Using 137 common samples.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Samples differ across phyloseq objects. Using 118 common samples.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
@@ -2598,48 +2350,10 @@ primer or technology differences.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
@@ -2684,127 +2398,7 @@ primer or technology differences.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-plt img"><img src="gg_hill_lpq-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span><span class="fu">gg_hill_lpq</span><span class="op">(</span><span class="va">lpq</span>, add_smooth <span class="op">=</span> <span class="cn">FALSE</span>, add_1to1 <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Samples differ across phyloseq objects. Using 137 common samples.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Samples differ across phyloseq objects. Using 118 common samples.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
@@ -4054,12 +3648,6 @@ primer or technology differences.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
@@ -4067,57 +3655,6 @@ primer or technology differences.</p></dd>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Sample coverage is 0, most estimators will return `NaN`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> Function arguments cannot be checked because the package <span style="color: #0000BB;">divent</span> is not attached.</span>

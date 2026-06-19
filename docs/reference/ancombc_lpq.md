@@ -67,12 +67,21 @@ suffixed with the phyloseq object name to make them distinguishable.
 ## Examples
 
 ``` r
-data_fungi_high <- multiply_counts_pq(data_fungi, "Height", "High", 2)
-#> Modified 710 taxa in 41 matched samples
+# Subset to the 80 most abundant taxa to keep the example fast
+# (the full data_fungi has 1420 taxa, which is slow for ANCOMBC).
+data_fungi_small <- prune_taxa(
+  names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+  data_fungi
+)
+data_fungi_small <- clean_pq(prune_samples(
+  sample_sums(data_fungi_small) >= 500, data_fungi_small
+))
+data_fungi_high <- multiply_counts_pq(data_fungi_small, "Height", "High", 2)
+#> Modified 40 taxa in 28 matched samples
 
 lpq <- list_phyloseq(
   list(
-    fungi = data_fungi,
+    fungi = data_fungi_small,
     fungi_height = data_fungi_high
   )
 )
@@ -80,7 +89,7 @@ lpq <- list_phyloseq(
 #> ℹ Computing comparison characteristics...
 #> ℹ Checking sample and taxa overlap...
 #> ℹ Detected comparison type: REPRODUCIBILITY
-#> ℹ 185 common samples, 1420 common taxa
+#> ℹ 127 common samples, 80 common taxa
 #> ✔ list_phyloseq created (REPRODUCIBILITY)
 
 results <- ancombc_lpq(lpq, fact = "Height")
@@ -96,8 +105,10 @@ results <- ancombc_lpq(lpq, fact = "Height")
 #> PASS
 #> Checking other arguments ...
 #> The number of groups of interest is: 3
-#> The sample size per group is: High = 41, Low = 45, Middle = 45
+#> The sample size per group is: High = 28, Low = 26, Middle = 27
 #> PASS
+#> Warning: The number of taxa used for estimating sample-specific biases is: 33
+#> A large number of taxa (>50) is required for the consistent estimation of biases
 #> Obtaining initial estimates ...
 #> Estimating sample-specific biases ...
 #> Loading required package: foreach
@@ -117,8 +128,10 @@ results <- ancombc_lpq(lpq, fact = "Height")
 #> PASS
 #> Checking other arguments ...
 #> The number of groups of interest is: 3
-#> The sample size per group is: High = 41, Low = 45, Middle = 45
+#> The sample size per group is: High = 28, Low = 26, Middle = 27
 #> PASS
+#> Warning: The number of taxa used for estimating sample-specific biases is: 33
+#> A large number of taxa (>50) is required for the consistent estimation of biases
 #> Obtaining initial estimates ...
 #> Estimating sample-specific biases ...
 #> ANCOM-BC2 primary results ...
@@ -127,20 +140,20 @@ results <- ancombc_lpq(lpq, fact = "Height")
 #> they are marked in the 'passed_ss' column and will be treated as non-significant in the 'diff_robust' column.
 #> For detailed instructions on performing sensitivity analysis, please refer to the package vignette.
 results
-#> # A tibble: 336 × 26
+#> # A tibble: 66 × 26
 #>    name  taxon `lfc_(Intercept)` lfc_HeightLow lfc_HeightMiddle `se_(Intercept)`
 #>    <chr> <chr>             <dbl>         <dbl>            <dbl>            <dbl>
-#>  1 fungi ASV2             0.811          0.205          -0.894             0.471
-#>  2 fungi ASV6             1.78          -1.98           -1.49              0.359
-#>  3 fungi ASV7             0.645         -1.27           -0.840             0.357
-#>  4 fungi ASV8             0.0677        -0.188           1.36              0.501
-#>  5 fungi ASV10            0.887         -1.51           -1.32              0.360
-#>  6 fungi ASV12            0.0790        -0.121          -0.553             0.469
-#>  7 fungi ASV13           -0.431          0.404          -0.0182            0.366
-#>  8 fungi ASV18            0.238         -1.53           -0.555             0.320
-#>  9 fungi ASV19            0.0601         1.86            0.691             0.313
-#> 10 fungi ASV24           -1.84           2.74           -0.198             0.341
-#> # ℹ 326 more rows
+#>  1 fungi ASV2             0.596        -0.105            -0.185            0.686
+#>  2 fungi ASV6             1.56         -1.69             -1.12             0.518
+#>  3 fungi ASV7             0.633        -0.709            -0.383            0.529
+#>  4 fungi ASV8             0.0438       -0.148             1.87             0.728
+#>  5 fungi ASV10            0.462        -0.936            -0.164            0.539
+#>  6 fungi ASV12            0.0906       -0.0560           -0.240            0.647
+#>  7 fungi ASV13           -0.544         0.497             0.708            0.601
+#>  8 fungi ASV18           -0.108        -0.972            -0.200            0.524
+#>  9 fungi ASV19            0.0388        1.46              1.28             0.470
+#> 10 fungi ASV24           -2.89          3.76              0.458            0.516
+#> # ℹ 56 more rows
 #> # ℹ 20 more variables: se_HeightLow <dbl>, se_HeightMiddle <dbl>,
 #> #   `W_(Intercept)` <dbl>, W_HeightLow <dbl>, W_HeightMiddle <dbl>,
 #> #   `p_(Intercept)` <dbl>, p_HeightLow <dbl>, p_HeightMiddle <dbl>,
@@ -169,8 +182,10 @@ results_Genus <- ancombc_lpq(lpq, fact = "Height", tax_level = "Genus")
 #> PASS
 #> Checking other arguments ...
 #> The number of groups of interest is: 3
-#> The sample size per group is: High = 41, Low = 45, Middle = 45
+#> The sample size per group is: High = 28, Low = 26, Middle = 27
 #> PASS
+#> Warning: The number of taxa used for estimating sample-specific biases is: 33
+#> A large number of taxa (>50) is required for the consistent estimation of biases
 #> Obtaining initial estimates ...
 #> Estimating sample-specific biases ...
 #> ANCOM-BC2 primary results ...
@@ -188,8 +203,10 @@ results_Genus <- ancombc_lpq(lpq, fact = "Height", tax_level = "Genus")
 #> PASS
 #> Checking other arguments ...
 #> The number of groups of interest is: 3
-#> The sample size per group is: High = 41, Low = 45, Middle = 45
+#> The sample size per group is: High = 28, Low = 26, Middle = 27
 #> PASS
+#> Warning: The number of taxa used for estimating sample-specific biases is: 33
+#> A large number of taxa (>50) is required for the consistent estimation of biases
 #> Obtaining initial estimates ...
 #> Estimating sample-specific biases ...
 #> ANCOM-BC2 primary results ...

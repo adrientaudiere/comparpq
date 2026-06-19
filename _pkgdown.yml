@@ -59,6 +59,7 @@ reference:
   - remove_phyloseq
   - shared_mod_lpq
   - update_list_phyloseq
+  - print.list_phyloseq
 
 - title: "list_phyloseq Visualization"
   desc: "Visualization functions for list_phyloseq objects"

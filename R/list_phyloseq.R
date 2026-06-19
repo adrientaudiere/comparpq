@@ -730,8 +730,14 @@ list_phyloseq <- S7::new_class(
 
 # Methods ----------------------------------------------------------------------
 
-# Print method for list_phyloseq
-S7::method(print, list_phyloseq) <- function(x, ...) {
+#' Print a `list_phyloseq` object
+#'
+#' @param x A `list_phyloseq` object.
+#' @param ... Additional arguments (ignored).
+#' @return `x`, invisibly.
+#' @method print list_phyloseq
+#' @export
+print.list_phyloseq <- function(x, ...) {
   cat(
     "list_phyloseq object with",
     length(x@phyloseq_list),

@@ -216,18 +216,27 @@ simple_venn_pq(data_fungi_mini, "Height",
 
 
 # From a list_phyloseq object
+# Subset to the 80 most abundant taxa to keep the example fast
+# (the full data_fungi has 1420 taxa).
+data_fungi_small <- prune_taxa(
+  names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+  data_fungi
+)
+data_fungi_small <- clean_pq(prune_samples(
+  sample_sums(data_fungi_small) >= 500, data_fungi_small
+))
 lpq <- list_phyloseq(list(
   fungi = data_fungi_mini,
-  fungi2 = data_fungi
+  fungi2 = data_fungi_small
 ))
 #> ℹ Building summary table for 2 phyloseq objects...
 #> ℹ Computing comparison characteristics...
 #> ℹ Checking sample and taxa overlap...
-#> ℹ Detected comparison type: NESTED_ROBUSTNESS
-#> ℹ 137 common samples, 45 common taxa
-#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
+#> ℹ Detected comparison type: EXPLORATION
+#> ℹ 118 common samples, 43 common taxa
+#> ✔ list_phyloseq created (EXPLORATION)
 simple_venn_pq(lpq, taxonomic_rank = "Genus")
-#> Merging 2 phyloseq objects by refseq: 45 + 1420 taxa -> 1420 unique sequences.
+#> Merging 2 phyloseq objects by refseq: 45 + 80 taxa -> 82 unique sequences.
 
 
  simple_venn_pq(data_fungi_mini, "Height",

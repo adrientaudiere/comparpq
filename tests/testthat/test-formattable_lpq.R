@@ -173,7 +173,11 @@ test_that("upset_lpq creates upset plot when plot_type='upset'", {
 
   lpq <- list_phyloseq(list(fungi = data_fungi, mini = data_fungi_mini))
 
-  result <- upset_lpq(lpq, tax_rank = "Family", plot_type = "upset")
+  result <- suppressWarnings(upset_lpq(
+    lpq,
+    tax_rank = "Family",
+    plot_type = "upset"
+  ))
 
   # ComplexUpset returns a patchwork object
   expect_true(inherits(result, "patchwork") || inherits(result, "ggplot"))
@@ -246,8 +250,8 @@ test_that("upset_lpq warns for venn with >7 sets", {
   }
   lpq <- list_phyloseq(pq_list)
 
-  expect_warning(
+  suppressWarnings(expect_warning(
     upset_lpq(lpq, tax_rank = "Family", plot_type = "venn"),
     "more than 7 sets"
-  )
+  ))
 })

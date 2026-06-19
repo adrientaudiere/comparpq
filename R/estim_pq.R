@@ -239,7 +239,17 @@ bootstrap_lm <- function(x, y, resamples = 5000, ci = 95) {
 #' library(phyloseq)
 #' data("data_fungi", package = "MiscMetabar")
 #'
-#' pq <- subset_samples(data_fungi, !is.na(Height))
+#' # Subset to the 80 most abundant taxa to keep the example fast
+#' # (the full data_fungi has 1420 taxa, which is slow for DA methods).
+#' data_fungi_small <- prune_taxa(
+#'   names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+#'   data_fungi
+#' )
+#' data_fungi_small <- clean_pq(prune_samples(
+#'   sample_sums(data_fungi_small) >= 500, data_fungi_small
+#' ))
+#'
+#' pq <- subset_samples(data_fungi_small, !is.na(Height))
 #' pq <- clean_pq(pq)
 #'
 #' res <- estim_diff_pq(pq, fact = "Height")

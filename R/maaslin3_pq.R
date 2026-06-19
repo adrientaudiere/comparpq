@@ -50,13 +50,10 @@
 #' multivariable linear models for meta-omic association discovery. bioRxiv.
 #'
 #' @examples
-#' # Basic usage with a binary factor
-#' data_fungi_high_low <- subset_samples(
-#' data_fungi, Height %in% c("High", "Low")
-#' )
-#' res <- maaslin3_pq(data_fungi_high_low, formula = "~ Height")
+#' # Basic usage with a binary factor (45 taxa, fast)
+#' res <- maaslin3_pq(data_fungi_mini, formula = "~ Height")
 #' res$results
-#'
+#' \dontrun{
 #' # Specify reference level for multi-level factor
 #' res <- maaslin3_pq(
 #'   data_fungi,
@@ -82,26 +79,27 @@
 #' gg_maaslin3_plot(res, type = "volcano")
 #'
 #' # Full example with GlobalPatterns dataset
-#'  data("GlobalPatterns")
+#' data("GlobalPatterns")
 #'
-#'  # Subset to two very different environments: Feces vs Soil
-#'  gp_subset <- subset_samples(GlobalPatterns, SampleType %in% c("Feces", "Soil"))
+#' # Subset to two very different environments: Feces vs Soil
+#' gp_subset <- subset_samples(GlobalPatterns, SampleType %in% c("Feces", "Soil"))
 #'
-#'  # Agglomerate at Phylum level for clearer results
-#'  gp_phylum <- tax_glom(gp_subset, taxrank = "Phylum", NArm = FALSE)
+#' # Agglomerate at Phylum level for clearer results
+#' gp_phylum <- tax_glom(gp_subset, taxrank = "Phylum", NArm = FALSE)
 #'
-#'  # Run MaAsLin3 with Soil as reference
-#'  res <- maaslin3_pq(
-#'    gp_phylum,
-#'    formula = "~ SampleType",
-#'    reference = list(SampleType = "Soil"),
-#'    output = "output/maaslin3_example"  ,
+#' # Run MaAsLin3 with Soil as reference
+#' res <- maaslin3_pq(
+#'   gp_phylum,
+#'   formula = "~ SampleType",
+#'   reference = list(SampleType = "Soil"),
+#'   output = "output/maaslin3_example",
 #'   correction_for_sample_size = FALSE
-#'  )
+#' )
 #'
-#'  # Plot results
-#'  gg_maaslin3_plot(res, type = "volcano", signif_threshold = 0.1)
-#'  gg_maaslin3_plot(res, type = "forest", top_n = 15)
+#' # Plot results
+#' gg_maaslin3_plot(res, type = "volcano", signif_threshold = 0.1)
+#' gg_maaslin3_plot(res, type = "forest", top_n = 15)
+#' }
 maaslin3_pq <- function(
   physeq,
   formula,

@@ -1,6 +1,8 @@
 # Tests for estim_pq.R and estim_lpq.R
 # Tests for estimation statistics functions
 
+set.seed(42)
+
 library("divent")
 # ==============================================================================
 # Helper to create clean test data
@@ -157,7 +159,7 @@ test_that("estim_diff_pq returns correct result structure", {
   skip_if_not_installed("dabestr")
   pq <- create_test_pq()
 
-  res <- estim_diff_pq(pq, fact = "Height", resamples = 100)
+  suppressWarnings(res <- estim_diff_pq(pq, fact = "Height", resamples = 100))
 
   expect_s3_class(res, "estim_diff_pq_result")
   expect_true(all(
@@ -183,11 +185,13 @@ test_that("estim_diff_pq summary has rows for each metric", {
   skip_if_not_installed("dabestr")
   pq <- create_test_pq()
 
-  res <- estim_diff_pq(
-    pq,
-    fact = "Height",
-    q = c(0, 1),
-    resamples = 100
+  suppressWarnings(
+    res <- estim_diff_pq(
+      pq,
+      fact = "Height",
+      q = c(0, 1),
+      resamples = 100
+    )
   )
 
   metrics <- unique(res$summary$metric)
@@ -200,12 +204,14 @@ test_that("estim_diff_pq supports different effect types", {
   pq <- create_test_pq()
 
   for (etype in c("mean_diff", "cohens_d")) {
-    res <- estim_diff_pq(
-      pq,
-      fact = "Height",
-      q = c(0),
-      effect_type = etype,
-      resamples = 100
+    suppressWarnings(
+      res <- estim_diff_pq(
+        pq,
+        fact = "Height",
+        q = c(0),
+        effect_type = etype,
+        resamples = 100
+      )
     )
     expect_s3_class(res, "estim_diff_pq_result")
   }
@@ -215,12 +221,14 @@ test_that("estim_diff_pq handles NA removal", {
   skip_if_not_installed("dabestr")
   pq <- data_fungi # Has NAs in Height
 
-  res <- estim_diff_pq(
-    pq,
-    fact = "Height",
-    q = c(0),
-    na_remove = TRUE,
-    resamples = 100
+  suppressWarnings(
+    res <- estim_diff_pq(
+      pq,
+      fact = "Height",
+      q = c(0),
+      na_remove = TRUE,
+      resamples = 100
+    )
   )
   expect_s3_class(res, "estim_diff_pq_result")
 })
@@ -245,7 +253,14 @@ test_that("estim_diff_pq works with custom function", {
     stats::setNames(sample_sums(physeq), sample_names(physeq))
   }
 
-  res <- estim_diff_pq(pq, fact = "Height", custom_fn = custom, resamples = 100)
+  suppressWarnings(
+    res <- estim_diff_pq(
+      pq,
+      fact = "Height",
+      custom_fn = custom,
+      resamples = 100
+    )
+  )
   expect_s3_class(res, "estim_diff_pq_result")
   expect_true("custom_metric" %in% unique(res$summary$metric))
 })
@@ -254,7 +269,9 @@ test_that("print works for estim_diff_pq_result", {
   skip_if_not_installed("dabestr")
   pq <- create_test_pq()
 
-  res <- estim_diff_pq(pq, fact = "Height", q = c(0), resamples = 100)
+  suppressWarnings(
+    res <- estim_diff_pq(pq, fact = "Height", q = c(0), resamples = 100)
+  )
   expect_output(print(res), "categorical comparison")
   expect_output(print(res), "legacy purposes")
 })
@@ -271,8 +288,9 @@ test_that("estim_cor_pq returns correct result structure", {
   sam$lib_size <- sample_sums(pq)
   sample_data(pq) <- sam
 
-  set.seed(42)
-  res <- estim_cor_pq(pq, variable = "lib_size", resamples = 100)
+  suppressWarnings(
+    res <- estim_cor_pq(pq, variable = "lib_size", resamples = 100)
+  )
 
   expect_s3_class(res, "estim_cor_pq_result")
   expect_true(all(
@@ -329,13 +347,13 @@ test_that("estim_cor_pq supports spearman method", {
   sample_data(pq) <- sam
 
   set.seed(42)
-  res <- estim_cor_pq(
+  res <- suppressWarnings(estim_cor_pq(
     pq,
     variable = "lib_size",
     q = c(0),
     method = "spearman",
     resamples = 100
-  )
+  ))
 
   expect_equal(res$correlations$method[1], "spearman")
 })
@@ -375,12 +393,16 @@ test_that("estim_diff_lpq returns combined summary with name column", {
   skip_if_not_installed("dabestr")
   lpq <- create_test_lpq()
 
-  res <- estim_diff_lpq(
-    lpq,
-    fact = "Height",
-    q = c(0),
-    resamples = 100,
-    verbose = FALSE
+  suppressWarnings(
+    suppressWarnings(
+      res <- estim_diff_lpq(
+        lpq,
+        fact = "Height",
+        q = c(0),
+        resamples = 100,
+        verbose = FALSE
+      )
+    )
   )
 
   expect_s3_class(res, "estim_diff_lpq_result")
@@ -424,13 +446,15 @@ test_that("print works for estim_diff_lpq_result", {
   skip_if_not_installed("dabestr")
   lpq <- create_test_lpq()
 
-  res <- estim_diff_lpq(
-    lpq,
-    fact = "Height",
-    q = c(0),
-    resamples = 100,
-    verbose = FALSE
-  )
+  suppressWarnings(suppressWarnings(
+    res <- estim_diff_lpq(
+      lpq,
+      fact = "Height",
+      q = c(0),
+      resamples = 100,
+      verbose = FALSE
+    )
+  ))
   expect_output(print(res), "list_phyloseq")
 })
 

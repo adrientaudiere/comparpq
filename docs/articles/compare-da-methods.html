@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Comparing Differential Abundance Methods • comparpq</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Comparing Differential Abundance Methods">
 </head>
@@ -64,7 +64,7 @@
                         <h4 data-toc-skip class="author">Adrien
 Taudière</h4>
             
-            <h4 data-toc-skip class="date">2026-06-15</h4>
+            <h4 data-toc-skip class="date">2026-06-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/adrientaudiere/comparpq/blob/HEAD/vignettes/compare-da-methods.Rmd" class="external-link"><code>vignettes/compare-da-methods.Rmd</code></a></small>
       <div class="d-none name"><code>compare-da-methods.Rmd</code></div>
@@ -236,7 +236,9 @@ High height positions.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p_volcano_fungi</span><span class="op">)</span></span></code></pre></div>
-<p><img src="compare-da-methods_files/figure-html/fungi_compare-1.png" class="r-plt" alt="" width="864"></p>
+<div class="float">
+<img src="figure/compare-fungi_compare-1.png" alt="plot of chunk fungi_compare"><div class="figcaption">plot of chunk fungi_compare</div>
+</div>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Find overlapping significant taxa</span></span>
 <span><span class="va">sig_ancombc</span> <span class="op">&lt;-</span> <span class="va">ancombc_df_fungi</span><span class="op">$</span><span class="va">taxon</span><span class="op">[</span><span class="va">ancombc_df_fungi</span><span class="op">$</span><span class="va">significant</span><span class="op">]</span></span>
@@ -409,7 +411,9 @@ without antibiotic usage.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p_volcano_hmp2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="compare-da-methods_files/figure-html/hmp2_compare-1.png" class="r-plt" alt="" width="864"></p>
+<div class="float">
+<img src="figure/compare-hmp2_compare-1.png" alt="plot of chunk hmp2_compare"><div class="figcaption">plot of chunk hmp2_compare</div>
+</div>
 </div>
 <div class="section level3">
 <h3 id="maaslin3-summary-plot">MaAsLin3 Summary Plot<a class="anchor" aria-label="anchor" href="#maaslin3-summary-plot"></a>
@@ -417,10 +421,12 @@ without antibiotic usage.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Use the default summary plot from gg_maaslin3_plot</span></span>
 <span><span class="va">p_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gg_maaslin3_plot.html">gg_maaslin3_plot</a></span><span class="op">(</span><span class="va">res_maaslin3_hmp2</span>, type <span class="op">=</span> <span class="st">"summary"</span>, top_n <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 2026-06-15 19:26:46.96 INFO::Writing summary plot of significant</span></span>
-<span><span class="co">#&gt;                         results to file: /tmp/Rtmp2REam1/maaslin3_plot_a149a4f401c14/figures/summary_plot.pdf</span></span>
+<span><span class="co">#&gt; 2026-06-18 14:00:23.37 INFO::Writing summary plot of significant</span></span>
+<span><span class="co">#&gt;                         results to file: /tmp/Rtmp09ymqj/maaslin3_plot_8cc1263c2fb0a/figures/summary_plot.pdf</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p_summary</span><span class="op">)</span></span></code></pre></div>
-<p><img src="compare-da-methods_files/figure-html/hmp2_summary-1.png" class="r-plt" alt="" width="960"></p>
+<div class="float">
+<img src="figure/compare-hmp2_summary-1.png" alt="plot of chunk hmp2_summary"><div class="figcaption">plot of chunk hmp2_summary</div>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -570,7 +576,9 @@ plaque.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p_volcano_ging</span><span class="op">)</span></span></code></pre></div>
-<p><img src="compare-da-methods_files/figure-html/gingival_compare-1.png" class="r-plt" alt="" width="864"></p>
+<div class="float">
+<img src="figure/compare-gingival_compare-1.png" alt="plot of chunk gingival_compare"><div class="figcaption">plot of chunk gingival_compare</div>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -689,26 +697,28 @@ plaque.</p>
 <span>  <span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">p_volcano_selex</span><span class="op">)</span></span></code></pre></div>
-<p><img src="compare-da-methods_files/figure-html/selex_compare-1.png" class="r-plt" alt="" width="864"></p>
+<div class="float">
+<img src="figure/compare-selex_compare-1.png" alt="plot of chunk selex_compare"><div class="figcaption">plot of chunk selex_compare</div>
+</div>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">combined_selex</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">significant</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">taxon</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarise</a></span><span class="op">(</span>method_signif<span class="op">=</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>, method<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="va">method</span>, collapse<span class="op">=</span><span class="st">"; "</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">method_signif</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 10 × 3</span></span></span>
+<span><span class="co">#&gt; # A tibble: 10 × 3</span></span>
 <span><span class="co">#&gt;    taxon   method_signif method                    </span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> S:D:E:D             1 ANCOM-BC                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> S:D:G:E             1 ALDEx2                    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> S:D:L:D             1 ANCOM-BC                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> S:D:L:E             1 ANCOM-BC                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> S:E:P:D             1 ANCOM-BC                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> S:E:R:E             1 ANCOM-BC                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> T:D:A:E             1 ALDEx2                    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> S:E:A:E             2 ANCOM-BC; ALDEx2          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> S:E:G:E             2 ANCOM-BC; ALDEx2          </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> S:E:G:D             3 ANCOM-BC; ALDEx2; MaAsLin3</span></span></code></pre></div>
+<span><span class="co">#&gt;    &lt;chr&gt;           &lt;int&gt; &lt;chr&gt;                     </span></span>
+<span><span class="co">#&gt;  1 S:D:E:D             1 ANCOM-BC                  </span></span>
+<span><span class="co">#&gt;  2 S:D:G:E             1 ALDEx2                    </span></span>
+<span><span class="co">#&gt;  3 S:D:L:D             1 ANCOM-BC                  </span></span>
+<span><span class="co">#&gt;  4 S:D:L:E             1 ANCOM-BC                  </span></span>
+<span><span class="co">#&gt;  5 S:E:P:D             1 ANCOM-BC                  </span></span>
+<span><span class="co">#&gt;  6 S:E:R:E             1 ANCOM-BC                  </span></span>
+<span><span class="co">#&gt;  7 T:D:A:E             1 ALDEx2                    </span></span>
+<span><span class="co">#&gt;  8 S:E:A:E             2 ANCOM-BC; ALDEx2          </span></span>
+<span><span class="co">#&gt;  9 S:E:G:E             2 ANCOM-BC; ALDEx2          </span></span>
+<span><span class="co">#&gt; 10 S:E:G:D             3 ANCOM-BC; ALDEx2; MaAsLin3</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
@@ -806,7 +816,9 @@ plaque.</p>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">45</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="compare-da-methods_files/figure-html/summary_plot-1.png" class="r-plt" alt="" width="768"></p>
+<div class="float">
+<img src="figure/compare-summary_plot-1.png" alt="plot of chunk summary_plot"><div class="figcaption">plot of chunk summary_plot</div>
+</div>
 </div>
 <div class="section level2">
 <h2 id="discussion">Discussion<a class="anchor" aria-label="anchor" href="#discussion"></a>
@@ -859,7 +871,7 @@ transformation and normalization settings used.</p></li>
 <span><span class="co">#&gt;  [7] MASS_7.3-65         doRNG_1.8.6.3       rngtools_1.5.2     </span></span>
 <span><span class="co">#&gt; [10] foreach_1.5.2       patchwork_1.3.2     comparpq_0.1.3     </span></span>
 <span><span class="co">#&gt; [13] S7_0.2.2            MiscMetabar_0.16.8  dplyr_1.2.1        </span></span>
-<span><span class="co">#&gt; [16] ggplot2_4.0.3       phyloseq_1.56.0    </span></span>
+<span><span class="co">#&gt; [16] ggplot2_4.0.3       phyloseq_1.56.0     knitr_1.51         </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
 <span><span class="co">#&gt;   [1] fs_2.1.0                        matrixStats_1.5.0              </span></span>
@@ -870,107 +882,103 @@ transformation and normalization settings used.</p></li>
 <span><span class="co">#&gt;  [11] R6_2.6.1                        vegan_2.7-5                    </span></span>
 <span><span class="co">#&gt;  [13] lazyeval_0.2.3                  mgcv_1.9-4                     </span></span>
 <span><span class="co">#&gt;  [15] permute_0.9-10                  withr_3.0.2                    </span></span>
-<span><span class="co">#&gt;  [17] gridExtra_2.3                   cli_3.6.6                      </span></span>
-<span><span class="co">#&gt;  [19] Biobase_2.72.0                  textshaping_1.0.5              </span></span>
+<span><span class="co">#&gt;  [17] gridExtra_2.3                   textshaping_1.0.5              </span></span>
+<span><span class="co">#&gt;  [19] cli_3.6.6                       Biobase_2.72.0                 </span></span>
 <span><span class="co">#&gt;  [21] logging_0.10-111                sandwich_3.1-1                 </span></span>
-<span><span class="co">#&gt;  [23] labeling_0.4.3                  sass_0.4.10                    </span></span>
-<span><span class="co">#&gt;  [25] mvtnorm_1.4-0                   readr_2.2.0                    </span></span>
-<span><span class="co">#&gt;  [27] proxy_0.4-29                    maaslin3_1.4.0                 </span></span>
-<span><span class="co">#&gt;  [29] pkgdown_2.2.0                   systemfonts_1.3.2              </span></span>
-<span><span class="co">#&gt;  [31] yulab.utils_0.2.4               foreign_0.8-91                 </span></span>
-<span><span class="co">#&gt;  [33] scater_1.40.1                   decontam_1.32.0                </span></span>
-<span><span class="co">#&gt;  [35] collapse_2.1.7                  readxl_1.5.0                   </span></span>
-<span><span class="co">#&gt;  [37] RSQLite_3.53.1                  rstudioapi_0.18.0              </span></span>
-<span><span class="co">#&gt;  [39] generics_0.1.4                  gridGraphics_0.5-1             </span></span>
-<span><span class="co">#&gt;  [41] shape_1.4.6.1                   gtools_3.9.5                   </span></span>
-<span><span class="co">#&gt;  [43] scam_1.2-22                     interp_1.1-6                   </span></span>
-<span><span class="co">#&gt;  [45] Matrix_1.7-5                    biomformat_1.40.0              </span></span>
-<span><span class="co">#&gt;  [47] ggbeeswarm_0.7.3                DescTools_0.99.60              </span></span>
-<span><span class="co">#&gt;  [49] S4Vectors_0.50.1                DECIPHER_3.8.0                 </span></span>
-<span><span class="co">#&gt;  [51] abind_1.4-8                     lifecycle_1.0.5                </span></span>
-<span><span class="co">#&gt;  [53] multcomp_1.4-30                 yaml_2.3.12                    </span></span>
-<span><span class="co">#&gt;  [55] SummarizedExperiment_1.42.0     BiocFileCache_3.2.0            </span></span>
-<span><span class="co">#&gt;  [57] Rtsne_0.17                      SparseArray_1.12.2             </span></span>
-<span><span class="co">#&gt;  [59] blob_1.3.0                      grid_4.6.0                     </span></span>
-<span><span class="co">#&gt;  [61] crayon_1.5.3                    haven_2.5.5                    </span></span>
-<span><span class="co">#&gt;  [63] beachmat_2.28.0                 pillar_1.11.1                  </span></span>
-<span><span class="co">#&gt;  [65] knitr_1.51                      optparse_1.8.2                 </span></span>
-<span><span class="co">#&gt;  [67] GenomicRanges_1.64.0            boot_1.3-32                    </span></span>
-<span><span class="co">#&gt;  [69] gld_2.6.8                       estimability_1.5.1             </span></span>
-<span><span class="co">#&gt;  [71] codetools_0.2-20                glue_1.8.1                     </span></span>
-<span><span class="co">#&gt;  [73] ggiraph_0.9.6                   ggfun_0.2.0                    </span></span>
-<span><span class="co">#&gt;  [75] fontLiberation_0.1.0            data.table_1.18.4              </span></span>
-<span><span class="co">#&gt;  [77] MultiAssayExperiment_1.38.0     png_0.1-9                      </span></span>
-<span><span class="co">#&gt;  [79] vctrs_0.7.3                     treeio_1.36.1                  </span></span>
-<span><span class="co">#&gt;  [81] Rdpack_2.6.6                    cellranger_1.1.0               </span></span>
-<span><span class="co">#&gt;  [83] gtable_0.3.6                    zigg_0.0.2                     </span></span>
-<span><span class="co">#&gt;  [85] cachem_1.1.0                    xfun_0.58                      </span></span>
-<span><span class="co">#&gt;  [87] rbibutils_2.4.1                 S4Arrays_1.12.0                </span></span>
-<span><span class="co">#&gt;  [89] Rfast_2.1.5.2                   Seqinfo_1.2.0                  </span></span>
-<span><span class="co">#&gt;  [91] reformulas_0.4.4                coda_0.19-4.1                  </span></span>
-<span><span class="co">#&gt;  [93] SingleCellExperiment_1.34.0     iterators_1.0.14               </span></span>
-<span><span class="co">#&gt;  [95] MicrobiomeBenchmarkData_1.14.0  bluster_1.22.0                 </span></span>
-<span><span class="co">#&gt;  [97] directlabels_2026.4.23          TH.data_1.1-5                  </span></span>
-<span><span class="co">#&gt;  [99] nlme_3.1-169                    ANCOMBC_2.14.0                 </span></span>
-<span><span class="co">#&gt; [101] ggtree_4.2.0                    bit64_4.8.2                    </span></span>
-<span><span class="co">#&gt; [103] fontquiver_0.2.1                filelock_1.0.3                 </span></span>
-<span><span class="co">#&gt; [105] bslib_0.11.0                    irlba_2.3.7                    </span></span>
-<span><span class="co">#&gt; [107] vipor_0.4.7                     otel_0.2.0                     </span></span>
-<span><span class="co">#&gt; [109] rpart_4.1.27                    colorspace_2.1-2               </span></span>
-<span><span class="co">#&gt; [111] BiocGenerics_0.58.1             DBI_1.3.0                      </span></span>
-<span><span class="co">#&gt; [113] Hmisc_5.2-5                     nnet_7.3-20                    </span></span>
-<span><span class="co">#&gt; [115] ade4_1.7-24                     Exact_3.3                      </span></span>
-<span><span class="co">#&gt; [117] tidyselect_1.2.1                emmeans_2.0.3                  </span></span>
-<span><span class="co">#&gt; [119] curl_7.1.0                      bit_4.6.0                      </span></span>
-<span><span class="co">#&gt; [121] compiler_4.6.0                  microbiome_1.34.0              </span></span>
-<span><span class="co">#&gt; [123] httr2_1.2.2                     htmlTable_2.5.0                </span></span>
-<span><span class="co">#&gt; [125] BiocNeighbors_2.6.0             expm_1.0-0                     </span></span>
-<span><span class="co">#&gt; [127] desc_1.4.3                      fontBitstreamVera_0.1.1        </span></span>
-<span><span class="co">#&gt; [129] DelayedArray_0.38.2             checkmate_2.3.4                </span></span>
-<span><span class="co">#&gt; [131] scales_1.4.0                    phylogram_2.1.0                </span></span>
-<span><span class="co">#&gt; [133] quadprog_1.5-8                  multcompView_0.1-11            </span></span>
-<span><span class="co">#&gt; [135] rappdirs_0.3.4                  stringr_1.6.0                  </span></span>
-<span><span class="co">#&gt; [137] digest_0.6.39                   mirai_2.7.1                    </span></span>
-<span><span class="co">#&gt; [139] minqa_1.2.8                     rmarkdown_2.31                 </span></span>
-<span><span class="co">#&gt; [141] XVector_0.52.0                  jpeg_0.1-11                    </span></span>
-<span><span class="co">#&gt; [143] htmltools_0.5.9                 pkgconfig_2.0.3                </span></span>
-<span><span class="co">#&gt; [145] base64enc_0.1-6                 lme4_2.0-1                     </span></span>
-<span><span class="co">#&gt; [147] sparseMatrixStats_1.24.0        MatrixGenerics_1.24.0          </span></span>
-<span><span class="co">#&gt; [149] dbplyr_2.5.2                    fastmap_1.2.0                  </span></span>
-<span><span class="co">#&gt; [151] rlang_1.2.0                     GlobalOptions_0.1.4            </span></span>
-<span><span class="co">#&gt; [153] htmlwidgets_1.6.4               DelayedMatrixStats_1.34.0      </span></span>
-<span><span class="co">#&gt; [155] farver_2.1.2                    jquerylib_0.1.4                </span></span>
-<span><span class="co">#&gt; [157] zoo_1.8-15                      jsonlite_2.0.0                 </span></span>
-<span><span class="co">#&gt; [159] energy_1.7-12                   BiocParallel_1.46.0            </span></span>
-<span><span class="co">#&gt; [161] BiocSingular_1.28.0             magrittr_2.0.5                 </span></span>
-<span><span class="co">#&gt; [163] Formula_1.2-5                   scuttle_1.22.0                 </span></span>
-<span><span class="co">#&gt; [165] ggplotify_0.1.3                 Rcpp_1.1.1-1.1                 </span></span>
-<span><span class="co">#&gt; [167] ggnewscale_0.5.2                ape_5.8-1                      </span></span>
-<span><span class="co">#&gt; [169] viridis_0.6.5                   gdtools_0.5.1                  </span></span>
-<span><span class="co">#&gt; [171] stringi_1.8.7                   ggalluvial_0.12.6              </span></span>
-<span><span class="co">#&gt; [173] rootSolve_1.8.2.4               plyr_1.8.9                     </span></span>
-<span><span class="co">#&gt; [175] parallel_4.6.0                  ggrepel_0.9.8                  </span></span>
-<span><span class="co">#&gt; [177] forcats_1.0.1                   lmom_3.3                       </span></span>
-<span><span class="co">#&gt; [179] deldir_2.0-4                    Biostrings_2.80.1              </span></span>
-<span><span class="co">#&gt; [181] splines_4.6.0                   multtest_2.68.0                </span></span>
-<span><span class="co">#&gt; [183] hms_1.1.4                       circlize_0.4.18                </span></span>
-<span><span class="co">#&gt; [185] igraph_2.3.2                    reshape2_1.4.5                 </span></span>
-<span><span class="co">#&gt; [187] stats4_4.6.0                    ScaledMatrix_1.20.0            </span></span>
-<span><span class="co">#&gt; [189] MIDASim_2.0                     evaluate_1.0.5                 </span></span>
-<span><span class="co">#&gt; [191] RcppParallel_5.1.11-2           kmer_1.1.3                     </span></span>
-<span><span class="co">#&gt; [193] nanonext_1.9.1                  nloptr_2.2.1                   </span></span>
-<span><span class="co">#&gt; [195] tzdb_0.5.0                      tidyr_1.3.2                    </span></span>
-<span><span class="co">#&gt; [197] purrr_1.2.2                     ecodive_2.2.6                  </span></span>
-<span><span class="co">#&gt; [199] formattable_0.2.1               rsvd_1.0.5                     </span></span>
-<span><span class="co">#&gt; [201] xtable_1.8-8                    divent_0.5-4                   </span></span>
-<span><span class="co">#&gt; [203] e1071_1.7-17                    tidytree_0.4.7                 </span></span>
-<span><span class="co">#&gt; [205] viridisLite_0.4.3               class_7.3-23                   </span></span>
-<span><span class="co">#&gt; [207] ragg_1.5.2                      gsl_2.1-9                      </span></span>
-<span><span class="co">#&gt; [209] tibble_3.3.1                    lmerTest_3.2-1                 </span></span>
-<span><span class="co">#&gt; [211] aplot_0.2.9                     memoise_2.0.1                  </span></span>
-<span><span class="co">#&gt; [213] beeswarm_0.4.0                  IRanges_2.46.0                 </span></span>
-<span><span class="co">#&gt; [215] cluster_2.1.8.2                 TreeSummarizedExperiment_2.20.0</span></span>
-<span><span class="co">#&gt; [217] mia_1.20.0</span></span></code></pre></div>
+<span><span class="co">#&gt;  [23] labeling_0.4.3                  mvtnorm_1.4-1                  </span></span>
+<span><span class="co">#&gt;  [25] readr_2.2.0                     proxy_0.4-29                   </span></span>
+<span><span class="co">#&gt;  [27] maaslin3_1.4.0                  systemfonts_1.3.2              </span></span>
+<span><span class="co">#&gt;  [29] yulab.utils_0.2.4               foreign_0.8-91                 </span></span>
+<span><span class="co">#&gt;  [31] scater_1.40.1                   decontam_1.32.0                </span></span>
+<span><span class="co">#&gt;  [33] collapse_2.1.7                  readxl_1.5.0                   </span></span>
+<span><span class="co">#&gt;  [35] RSQLite_3.53.1                  rstudioapi_0.19.0              </span></span>
+<span><span class="co">#&gt;  [37] generics_0.1.4                  gridGraphics_0.5-1             </span></span>
+<span><span class="co">#&gt;  [39] shape_1.4.6.1                   gtools_3.9.5                   </span></span>
+<span><span class="co">#&gt;  [41] scam_1.2-22                     interp_1.1-6                   </span></span>
+<span><span class="co">#&gt;  [43] Matrix_1.7-5                    biomformat_1.40.0              </span></span>
+<span><span class="co">#&gt;  [45] ggbeeswarm_0.7.3                DescTools_0.99.60              </span></span>
+<span><span class="co">#&gt;  [47] S4Vectors_0.50.1                DECIPHER_3.8.0                 </span></span>
+<span><span class="co">#&gt;  [49] abind_1.4-8                     lifecycle_1.0.5                </span></span>
+<span><span class="co">#&gt;  [51] multcomp_1.4-30                 SummarizedExperiment_1.42.0    </span></span>
+<span><span class="co">#&gt;  [53] BiocFileCache_3.2.0             Rtsne_0.17                     </span></span>
+<span><span class="co">#&gt;  [55] SparseArray_1.12.2              blob_1.3.0                     </span></span>
+<span><span class="co">#&gt;  [57] grid_4.6.0                      crayon_1.5.3                   </span></span>
+<span><span class="co">#&gt;  [59] haven_2.5.5                     beachmat_2.28.0                </span></span>
+<span><span class="co">#&gt;  [61] pillar_1.11.1                   optparse_1.8.2                 </span></span>
+<span><span class="co">#&gt;  [63] GenomicRanges_1.64.0            boot_1.3-32                    </span></span>
+<span><span class="co">#&gt;  [65] gld_2.6.8                       estimability_1.5.1             </span></span>
+<span><span class="co">#&gt;  [67] codetools_0.2-20                glue_1.8.1                     </span></span>
+<span><span class="co">#&gt;  [69] ggiraph_0.9.6                   ggfun_0.2.0                    </span></span>
+<span><span class="co">#&gt;  [71] fontLiberation_0.1.0            data.table_1.18.4              </span></span>
+<span><span class="co">#&gt;  [73] MultiAssayExperiment_1.38.0     png_0.1-9                      </span></span>
+<span><span class="co">#&gt;  [75] vctrs_0.7.3                     treeio_1.36.1                  </span></span>
+<span><span class="co">#&gt;  [77] Rdpack_2.6.6                    cellranger_1.1.0               </span></span>
+<span><span class="co">#&gt;  [79] gtable_0.3.6                    cachem_1.1.0                   </span></span>
+<span><span class="co">#&gt;  [81] zigg_0.0.2                      xfun_0.58                      </span></span>
+<span><span class="co">#&gt;  [83] rbibutils_2.4.1                 S4Arrays_1.12.0                </span></span>
+<span><span class="co">#&gt;  [85] Rfast_2.1.5.2                   Seqinfo_1.2.0                  </span></span>
+<span><span class="co">#&gt;  [87] reformulas_0.4.4                coda_0.19-4.1                  </span></span>
+<span><span class="co">#&gt;  [89] SingleCellExperiment_1.34.0     iterators_1.0.14               </span></span>
+<span><span class="co">#&gt;  [91] MicrobiomeBenchmarkData_1.14.0  bluster_1.22.0                 </span></span>
+<span><span class="co">#&gt;  [93] directlabels_2026.4.23          TH.data_1.1-5                  </span></span>
+<span><span class="co">#&gt;  [95] nlme_3.1-169                    ANCOMBC_2.14.0                 </span></span>
+<span><span class="co">#&gt;  [97] ggtree_4.2.0                    bit64_4.8.2                    </span></span>
+<span><span class="co">#&gt;  [99] fontquiver_0.2.1                filelock_1.0.3                 </span></span>
+<span><span class="co">#&gt; [101] irlba_2.3.7                     vipor_0.4.7                    </span></span>
+<span><span class="co">#&gt; [103] otel_0.2.0                      rpart_4.1.27                   </span></span>
+<span><span class="co">#&gt; [105] colorspace_2.1-2                BiocGenerics_0.58.1            </span></span>
+<span><span class="co">#&gt; [107] DBI_1.3.0                       Hmisc_5.2-5                    </span></span>
+<span><span class="co">#&gt; [109] nnet_7.3-20                     ade4_1.7-24                    </span></span>
+<span><span class="co">#&gt; [111] Exact_3.3                       tidyselect_1.2.1               </span></span>
+<span><span class="co">#&gt; [113] emmeans_2.0.3                   curl_7.1.0                     </span></span>
+<span><span class="co">#&gt; [115] bit_4.6.0                       compiler_4.6.0                 </span></span>
+<span><span class="co">#&gt; [117] microbiome_1.34.0               httr2_1.2.2                    </span></span>
+<span><span class="co">#&gt; [119] htmlTable_2.5.0                 BiocNeighbors_2.6.0            </span></span>
+<span><span class="co">#&gt; [121] expm_1.0-0                      fontBitstreamVera_0.1.1        </span></span>
+<span><span class="co">#&gt; [123] DelayedArray_0.38.2             checkmate_2.3.4                </span></span>
+<span><span class="co">#&gt; [125] scales_1.4.0                    phylogram_2.1.0                </span></span>
+<span><span class="co">#&gt; [127] quadprog_1.5-8                  multcompView_0.1-11            </span></span>
+<span><span class="co">#&gt; [129] rappdirs_0.3.4                  stringr_1.6.0                  </span></span>
+<span><span class="co">#&gt; [131] digest_0.6.39                   mirai_2.7.1                    </span></span>
+<span><span class="co">#&gt; [133] minqa_1.2.8                     rmarkdown_2.31                 </span></span>
+<span><span class="co">#&gt; [135] XVector_0.52.0                  jpeg_0.1-11                    </span></span>
+<span><span class="co">#&gt; [137] htmltools_0.5.9                 pkgconfig_2.0.3                </span></span>
+<span><span class="co">#&gt; [139] base64enc_0.1-6                 lme4_2.0-1                     </span></span>
+<span><span class="co">#&gt; [141] sparseMatrixStats_1.24.0        MatrixGenerics_1.24.0          </span></span>
+<span><span class="co">#&gt; [143] dbplyr_2.5.2                    fastmap_1.2.0                  </span></span>
+<span><span class="co">#&gt; [145] rlang_1.2.0                     GlobalOptions_0.1.4            </span></span>
+<span><span class="co">#&gt; [147] htmlwidgets_1.6.4               DelayedMatrixStats_1.34.0      </span></span>
+<span><span class="co">#&gt; [149] farver_2.1.2                    zoo_1.8-15                     </span></span>
+<span><span class="co">#&gt; [151] jsonlite_2.0.0                  energy_1.7-12                  </span></span>
+<span><span class="co">#&gt; [153] BiocParallel_1.46.0             BiocSingular_1.28.0            </span></span>
+<span><span class="co">#&gt; [155] magrittr_2.0.5                  Formula_1.2-5                  </span></span>
+<span><span class="co">#&gt; [157] scuttle_1.22.0                  ggplotify_0.1.3                </span></span>
+<span><span class="co">#&gt; [159] Rcpp_1.1.1-1.1                  ggnewscale_0.5.2               </span></span>
+<span><span class="co">#&gt; [161] ape_5.8-1                       viridis_0.6.5                  </span></span>
+<span><span class="co">#&gt; [163] gdtools_0.5.1                   stringi_1.8.7                  </span></span>
+<span><span class="co">#&gt; [165] ggalluvial_0.12.6               rootSolve_1.8.2.4              </span></span>
+<span><span class="co">#&gt; [167] plyr_1.8.9                      parallel_4.6.0                 </span></span>
+<span><span class="co">#&gt; [169] ggrepel_0.9.8                   forcats_1.0.1                  </span></span>
+<span><span class="co">#&gt; [171] lmom_3.3                        deldir_2.0-4                   </span></span>
+<span><span class="co">#&gt; [173] Biostrings_2.80.1               splines_4.6.0                  </span></span>
+<span><span class="co">#&gt; [175] multtest_2.68.0                 hms_1.1.4                      </span></span>
+<span><span class="co">#&gt; [177] circlize_0.4.18                 igraph_2.3.2                   </span></span>
+<span><span class="co">#&gt; [179] reshape2_1.4.5                  stats4_4.6.0                   </span></span>
+<span><span class="co">#&gt; [181] ScaledMatrix_1.20.0             MIDASim_2.0                    </span></span>
+<span><span class="co">#&gt; [183] evaluate_1.0.5                  RcppParallel_5.1.11-2          </span></span>
+<span><span class="co">#&gt; [185] kmer_1.1.3                      nanonext_1.9.1                 </span></span>
+<span><span class="co">#&gt; [187] nloptr_2.2.1                    tzdb_0.5.0                     </span></span>
+<span><span class="co">#&gt; [189] tidyr_1.3.2                     purrr_1.2.2                    </span></span>
+<span><span class="co">#&gt; [191] ecodive_2.2.6                   formattable_0.2.1              </span></span>
+<span><span class="co">#&gt; [193] rsvd_1.0.5                      xtable_1.8-8                   </span></span>
+<span><span class="co">#&gt; [195] divent_0.5-4                    e1071_1.7-17                   </span></span>
+<span><span class="co">#&gt; [197] tidytree_0.4.7                  ragg_1.5.2                     </span></span>
+<span><span class="co">#&gt; [199] viridisLite_0.4.3               class_7.3-23                   </span></span>
+<span><span class="co">#&gt; [201] gsl_2.1-9                       tibble_3.3.1                   </span></span>
+<span><span class="co">#&gt; [203] lmerTest_3.2-1                  aplot_0.2.9                    </span></span>
+<span><span class="co">#&gt; [205] memoise_2.0.1                   beeswarm_0.4.0                 </span></span>
+<span><span class="co">#&gt; [207] IRanges_2.46.0                  cluster_2.1.8.2                </span></span>
+<span><span class="co">#&gt; [209] TreeSummarizedExperiment_2.20.0 mia_1.20.0</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

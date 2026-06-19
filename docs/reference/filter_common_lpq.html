@@ -118,14 +118,14 @@ same samples or taxa</p></li>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  the random seed of your session for reproducibility.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See `?set.seed`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> 1007OTUs were removed because they are no longer </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> 1014OTUs were removed because they are no longer </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> present in any sample after random subsampling</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> ...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 3 phyloseq objects...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: NESTED_ROBUSTNESS</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 137 common samples, 42 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 137 common samples, 43 common taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Filter to keep only common samples (useful for nested comparisons)</span></span></span>
@@ -135,32 +135,32 @@ same samples or taxa</p></li>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Filter to keep only common taxa</span></span></span>
 <span class="r-in"><span><span class="va">lpq_filtered</span> <span class="op">&lt;-</span> <span class="fu">filter_common_lpq</span><span class="op">(</span><span class="va">lpq</span>, filter_samples <span class="op">=</span> <span class="cn">FALSE</span>, filter_taxa <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Filtering to 42 common taxa.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Filtering to 43 common taxa.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Cleaning suppress 0 taxa and 48 samples.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   original: 185 -&gt; 137 samples, 1420 -&gt; 42 taxa</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   mini: 137 -&gt; 137 samples, 45 -&gt; 42 taxa</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Cleaning suppress 0 taxa and 115 samples.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   rarefied: 185 -&gt; 70 samples, 413 -&gt; 42 taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   original: 185 -&gt; 137 samples, 1420 -&gt; 43 taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   mini: 137 -&gt; 137 samples, 45 -&gt; 43 taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Cleaning suppress 0 taxa and 104 samples.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   rarefied: 185 -&gt; 81 samples, 406 -&gt; 43 taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 3 phyloseq objects...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: NESTED_ROBUSTNESS</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 70 common samples, 42 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 81 common samples, 43 common taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Filter both samples and taxa</span></span></span>
 <span class="r-in"><span><span class="va">lpq_filtered</span> <span class="op">&lt;-</span> <span class="fu">filter_common_lpq</span><span class="op">(</span><span class="va">lpq</span>, filter_samples <span class="op">=</span> <span class="cn">TRUE</span>, filter_taxa <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Filtering to 137 common samples.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Filtering to 42 common taxa.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   original: 185 -&gt; 137 samples, 1420 -&gt; 42 taxa</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   mini: 137 -&gt; 137 samples, 45 -&gt; 42 taxa</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Cleaning suppress 0 taxa and 67 samples.</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   rarefied: 185 -&gt; 70 samples, 413 -&gt; 42 taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Filtering to 43 common taxa.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   original: 185 -&gt; 137 samples, 1420 -&gt; 43 taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   mini: 137 -&gt; 137 samples, 45 -&gt; 43 taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Cleaning suppress 0 taxa and 56 samples.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>   rarefied: 185 -&gt; 81 samples, 406 -&gt; 43 taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Building summary table for 3 phyloseq objects...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Computing comparison characteristics...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Checking sample and taxa overlap...</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Detected comparison type: NESTED_ROBUSTNESS</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 70 common samples, 42 common taxa</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 81 common samples, 43 common taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (NESTED_ROBUSTNESS)</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

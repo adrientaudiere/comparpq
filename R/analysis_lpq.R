@@ -298,6 +298,7 @@ adonis_lpq <- function(
 #' in the model selection process.
 #'
 #' @examples
+#' \dontrun{
 #' lpq <- list_phyloseq(
 #'   list(
 #'     fungi = data_fungi,
@@ -311,7 +312,7 @@ adonis_lpq <- function(
 #'
 #' # With interactions
 #' results_int <- glmulti_lpq(lpq, formula = "Hill_1 ~ Height * Time", level = 2)
-#'
+#' }
 #' @seealso [MiscMetabar::glmutli_pq()], [MiscMetabar::hill_pq()]
 #' @export
 glmulti_lpq <- function(
@@ -496,11 +497,20 @@ validate_fact_column <- function(x, fact, func_name) {
 #' suffixed with the phyloseq object name to make them distinguishable.
 #'
 #' @examples
-#' data_fungi_high <- multiply_counts_pq(data_fungi, "Height", "High", 2)
+#' # Subset to the 80 most abundant taxa to keep the example fast
+#' # (the full data_fungi has 1420 taxa, which is slow for ANCOMBC).
+#' data_fungi_small <- prune_taxa(
+#'   names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+#'   data_fungi
+#' )
+#' data_fungi_small <- clean_pq(prune_samples(
+#'   sample_sums(data_fungi_small) >= 500, data_fungi_small
+#' ))
+#' data_fungi_high <- multiply_counts_pq(data_fungi_small, "Height", "High", 2)
 #'
 #' lpq <- list_phyloseq(
 #'   list(
-#'     fungi = data_fungi,
+#'     fungi = data_fungi_small,
 #'     fungi_height = data_fungi_high
 #'   )
 #' )

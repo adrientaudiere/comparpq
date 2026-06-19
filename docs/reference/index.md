@@ -51,20 +51,32 @@ Functions for manipulating list_phyloseq objects
 
 - [`add_phyloseq()`](https://adrientaudiere.github.io/comparpq/reference/add_phyloseq.md)
   : Add a phyloseq object to a list_phyloseq
+
 - [`apply_to_lpq()`](https://adrientaudiere.github.io/comparpq/reference/apply_to_lpq.md)
   : Apply a function to all phyloseq objects in a list_phyloseq
+
 - [`filter_common_lpq()`](https://adrientaudiere.github.io/comparpq/reference/filter_common_lpq.md)
   : Filter phyloseq objects to keep only shared samples and/or taxa
+
 - [`merge_lpq()`](https://adrientaudiere.github.io/comparpq/reference/merge_lpq.md)
   : Merge a list_phyloseq into a single phyloseq object
+
 - [`n_levels_lpq()`](https://adrientaudiere.github.io/comparpq/reference/n_levels_lpq.md)
   : Count unique taxonomic levels across phyloseq objects
+
 - [`remove_phyloseq()`](https://adrientaudiere.github.io/comparpq/reference/remove_phyloseq.md)
   : Remove a phyloseq object from a list_phyloseq
+
 - [`shared_mod_lpq()`](https://adrientaudiere.github.io/comparpq/reference/shared_mod_lpq.md)
   : Display shared sample_data modalities
+
 - [`update_list_phyloseq()`](https://adrientaudiere.github.io/comparpq/reference/update_list_phyloseq.md)
   : Update the summary table and comparison characteristics
+
+- [`print(`*`<list_phyloseq>`*`)`](https://adrientaudiere.github.io/comparpq/reference/print.list_phyloseq.md)
+  :
+
+  Print a `list_phyloseq` object
 
 ## list_phyloseq Visualization
 

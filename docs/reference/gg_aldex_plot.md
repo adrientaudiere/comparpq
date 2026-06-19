@@ -122,11 +122,21 @@ four plot types correspond to the original ALDEx2 types:
 
 ``` r
 
-data_fungi_high <- multiply_counts_pq(data_fungi, "Height", "High",
+# Subset to the 80 most abundant taxa to keep the example fast
+# (the full data_fungi has 1420 taxa, which is slow for ALDEx2).
+data_fungi_small <- prune_taxa(
+  names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+  data_fungi
+)
+data_fungi_small <- clean_pq(prune_samples(
+  sample_sums(data_fungi_small) >= 500, data_fungi_small
+))
+
+data_fungi_high <- multiply_counts_pq(data_fungi_small, "Height", "High",
   4,
   prop_taxa = 0.1, seed = 42
 )
-#> Modified 142 taxa in 41 matched samples
+#> Modified 8 taxa in 28 matched samples
 
 aldex_pq(data_fungi_high,
   bifactor = "Height",
@@ -144,7 +154,7 @@ aldex_pq(data_fungi_high,
 
 lpq <- list_phyloseq(
   list(
-    fungi = data_fungi,
+    fungi = data_fungi_small,
     fungi_height = data_fungi_high
   ),
   same_bioinfo_pipeline = FALSE
@@ -153,7 +163,7 @@ lpq <- list_phyloseq(
 #> ℹ Computing comparison characteristics...
 #> ℹ Checking sample and taxa overlap...
 #> ℹ Detected comparison type: ROBUSTNESS
-#> ℹ 185 common samples, 1420 common taxa
+#> ℹ 127 common samples, 80 common taxa
 #> ✔ list_phyloseq created (ROBUSTNESS)
 # From aldex_lpq (faceted by name)
 lpq_res <- aldex_lpq(lpq,
@@ -188,18 +198,12 @@ gg_aldex_plot(lpq_res, type = "volcano")
 gg_aldex_plot(lpq_res, type = "volcano.var")
 
 
-
-gingival_pq <-
-  MicrobiomeBenchmarkData::getBenchmarkData("HMP_2012_16S_gingival_V35_subset",
-    dryrun = FALSE
-  )[[1]] |>
-  mia::convertToPhyloseq()
-#> Finished HMP_2012_16S_gingival_V35_subset.
-
-aldex_res <- aldex_pq(gingival_pq,
-  bifactor = "body_subsite",
-  modalities = c("supragingival_plaque", "subgingival_plaque")
+# Volcano plot from a single phyloseq object
+aldex_res <- aldex_pq(data_fungi_high,
+  bifactor = "Height",
+  modalities = c("Low", "High")
 )
+#> Taxa are now in rows.
 #> aldex.clr: generating Monte-Carlo instances and clr values
 #> conditions vector supplied
 #> operating in serial mode

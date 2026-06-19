@@ -62,26 +62,32 @@ diagrams work well for 2-4 sets.
 
 ``` r
 data("enterotype", package = "phyloseq")
+# Subset to the 80 most abundant taxa to keep the example fast
+# (the full data_fungi has 1420 taxa).
+data_fungi_small <- prune_taxa(
+  names(sort(taxa_sums(data_fungi), decreasing = TRUE))[1:80],
+  data_fungi
+)
+data_fungi_small <- clean_pq(prune_samples(
+  sample_sums(data_fungi_small) >= 500, data_fungi_small
+))
 lpq <- list_phyloseq(list(
-  fung = data_fungi,
+  fung = data_fungi_small,
   fung_mini = data_fungi_mini,
-  fung_rarefy = rarefy_even_depth(data_fungi),
+  fung_rarefy = rarefy_even_depth(data_fungi_small),
   enterotype = enterotype
 ))
 #> You set `rngseed` to FALSE. Make sure you've set & recorded
 #>  the random seed of your session for reproducibility.
 #> See `?set.seed`
 #> ...
-#> 1024OTUs were removed because they are no longer 
-#> present in any sample after random subsampling
-#> ...
 #> ℹ Building summary table for 4 phyloseq objects...
 #> ℹ Computing comparison characteristics...
 #> ℹ Checking sample and taxa overlap...
-#> ℹ Detected comparison type: NESTED_ROBUSTNESS
+#> ℹ Detected comparison type: SEPARATE_ANALYSIS
 #> ℹ 0 common samples, 0 common taxa
 #> ℹ Skipping refseq comparison (not all objects have refseq)
-#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
+#> ✔ list_phyloseq created (SEPARATE_ANALYSIS)
 upset_lpq(lpq, plot_type = "upset")
 #> Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
 #> ℹ Please use `linewidth` instead.
@@ -90,15 +96,15 @@ upset_lpq(lpq, plot_type = "upset")
 #>   <https://github.com/krassowski/complex-upset/issues>.
 
 lpq2 <- list_phyloseq(list(
-  fung = data_fungi,
+  fung = data_fungi_small,
   fung_mini = data_fungi_mini
 ))
 #> ℹ Building summary table for 2 phyloseq objects...
 #> ℹ Computing comparison characteristics...
 #> ℹ Checking sample and taxa overlap...
-#> ℹ Detected comparison type: NESTED_ROBUSTNESS
-#> ℹ 137 common samples, 45 common taxa
-#> ✔ list_phyloseq created (NESTED_ROBUSTNESS)
+#> ℹ Detected comparison type: EXPLORATION
+#> ℹ 118 common samples, 43 common taxa
+#> ✔ list_phyloseq created (EXPLORATION)
 upset_lpq(lpq2, tax_rank = "Family")
 
 ```

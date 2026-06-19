@@ -78,97 +78,32 @@
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> 185 common samples, 1420 common taxa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> list_phyloseq created (REPRODUCIBILITY)</span>
 <span class="r-in"><span><span class="va">lpq</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;list_phyloseq&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ phyloseq_list:List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ a:Formal class 'phyloseq' [package "phyloseq"] with 5 slots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ otu_table:Formal class 'otu_table' [package "phyloseq"] with 2 slots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ .Data        : num [1:185, 1:1420] 1 23 1 281 260 0 5 1 5 5 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..- attr(*, "dimnames")=List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..$ : chr [1:1420] "ASV2" "ASV6" "ASV7" "ASV8" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ taxa_are_rows: logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..$ dim     : int [1:2] 185 1420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..$ dimnames:List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:1420] "ASV2" "ASV6" "ASV7" "ASV8" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ tax_table:Formal class 'taxonomyTable' [package "phyloseq"] with 1 slot</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ .Data: chr [1:1420, 1:12] "Fungi" "Fungi" "Fungi" "Fungi" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..- attr(*, "dimnames")=List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..$ : chr [1:1420] "ASV2" "ASV6" "ASV7" "ASV8" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..$ : chr [1:12] "Domain" "Phylum" "Class" "Order" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..$ dim     : int [1:2] 1420 12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..$ dimnames:List of 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:1420] "ASV2" "ASV6" "ASV7" "ASV8" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:12] "Domain" "Phylum" "Class" "Order" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ sam_data :'data.frame':	185 obs. of  7 variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Formal class 'sample_data' [package "phyloseq"] with 4 slots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ .Data    :List of 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005-B_S188" "A10-005-H_S189" "A10-005-M_S190" "A12-007_S191" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:185] "A10-005" "A10-005" "A10-005" "A12-007" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : int [1:185] 188 189 190 191 2 3 4 5 6 7 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:185] "Low" "High" "Middle" NA ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : chr [1:185] "52" "52" "52" "28,4" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. ..$ : int [1:185] 15 15 15 0 0 0 0 0 5 15 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ names    : chr [1:7] "X" "Sample_names" "Tree_name" "Sample_id" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ row.names: chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ .S3Class : chr "data.frame"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ phy_tree : NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. ..@ refseq   :Formal class 'DNAStringSet' [package "Biostrings"] with 5 slots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ pool           :Formal class 'SharedRaw_Pool' [package "XVector"] with 2 slots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ xp_list                    :List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;pointer: (nil)&gt; </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ .link_to_cached_object_list:List of 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. .. ..$ :&lt;environment: 0x5b461c794a28&gt; </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ ranges         :Formal class 'GroupedIRanges' [package "XVector"] with 7 slots</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ group          : int [1:1420] 1 1 1 1 1 1 1 1 1 1 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ start          : int [1:1420] 1 313 614 963 1320 1620 1950 2241 2599 2939 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ width          : int [1:1420] 312 301 349 357 300 330 291 358 340 305 ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ NAMES          : chr [1:1420] "ASV2" "ASV6" "ASV7" "ASV8" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ elementType    : chr "ANY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ elementMetadata: NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. .. .. ..@ metadata       : list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ elementType    : chr "DNAString"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ elementMetadata: NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  ..  .. .. .. ..@ metadata       : list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ summary_table: tibble [1 × 17] (S3: tbl_df/tbl/data.frame)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ name               : chr "a"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ n_samples          : int 185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ n_taxa             : int 1420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ n_sequences        : num 1839124</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ n_occurence        : int 12499</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ mean_seq_length    : num 318</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ min_seq_length     : int 251</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ mean_seq_per_sample: num 9941</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sd_seq_per_sample  : num 9678</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ min_seq_per_sample : num 6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ max_seq_per_sample : num 39593</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ mean_seq_per_taxon : num 1295</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ sd_seq_per_taxon   : num 4581</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ has_sam_data       : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ has_tax_table      : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ has_refseq         : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  $ has_phy_tree       : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  @ comparison   :List of 19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ type_of_comparison        : chr "REPRODUCIBILITY"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ type_description          : chr "Same samples, same primer/technology, same bioinformatics pipeline.\n  Used to test reproducibility of results "| __truncated__</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ same_primer_seq_tech      : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ same_bioinfo_pipeline     : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ same_sam_data_structure   : logi NA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ same_samples              : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ nested_samples            : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ nesting_structure         : NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ same_taxa                 : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ n_common_samples          : int 185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ common_samples            : chr [1:185] "A10-005-B_S188_MERGED.fastq.gz" "A10-005-H_S189_MERGED.fastq.gz" "A10-005-M_S190_MERGED.fastq.gz" "A12-007_S191_MERGED.fastq.gz" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ n_common_taxa             : int 1420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ common_taxa               : chr [1:1420] "ASV2" "ASV6" "ASV7" "ASV8" ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ shared_sam_data_modalities: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ all_have_sam_data         : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ all_have_tax_table        : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ all_have_refseq           : logi TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ all_have_phy_tree         : logi FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  .. $ refseq_comparison         : NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> list_phyloseq object with 1 phyloseq objects</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> --- Summary ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 17</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   name  n_samples n_taxa n_sequences n_occurence mean_seq_length min_seq_length</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> a           185   <span style="text-decoration: underline;">1</span>420     1<span style="text-decoration: underline;">839</span>124       <span style="text-decoration: underline;">12</span>499            318.            251</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: mean_seq_per_sample &lt;dbl&gt;, sd_seq_per_sample &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   min_seq_per_sample &lt;dbl&gt;, max_seq_per_sample &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   mean_seq_per_taxon &lt;dbl&gt;, sd_seq_per_taxon &lt;dbl&gt;, has_sam_data &lt;lgl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   has_tax_table &lt;lgl&gt;, has_refseq &lt;lgl&gt;, has_phy_tree &lt;lgl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> --- Comparison characteristics ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Type of comparison: REPRODUCIBILITY </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Same samples, same primer/technology, same bioinformatics pipeline.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Used to test reproducibility of results when running</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   the exact same analysis multiple times. </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Same primer/seq tech: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Same bioinfo pipeline: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Same sample_data structure: NA </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Same samples: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Nested samples: FALSE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Same taxa: TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Common samples: 185 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Common taxa: 1420 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

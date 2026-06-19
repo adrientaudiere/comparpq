@@ -69,8 +69,10 @@ library(ggtree)
 #> 
 #> Please cite:
 #> 
-#> Guangchuang Yu. Using ggtree to visualize data on tree-like structures.
-#> Current Protocols in Bioinformatics. 2020, 69:e96. doi:10.1002/cpbi.96
+#> Shuangbin Xu, Lin Li, Xiao Luo, Meijun Chen, Wenli Tang, Li Zhan, Zehan
+#> Dai, Tommy T. Lam, Yi Guan, Guangchuang Yu. Ggtree: A serialized data
+#> object for visualization of a phylogenetic tree and annotation data.
+#> iMeta 2022, 1(4):e56. doi:10.1002/imt2.56
 #> 
 #> Attaching package: ‘ggtree’
 #> The following object is masked from ‘package:MiscMetabar’:
