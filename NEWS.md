@@ -1,3 +1,5 @@
+# comparpq 0.3.0 (Development version)
+
 # comparpq 0.2.1
 * `refseq_comp_lpq()` new function to compare `@refseq` sequences across all phyloseq objects in a `list_phyloseq` using k-mer Jaccard similarity and union-find connected components. Returns per-threshold Venn diagrams and shared-cluster counts. No igraph dependency.
 * `find_primers_pq()` new function to detect taxa whose reference sequences match primer sequences (IUPAC-aware, forward and reverse complement). Returns a data frame suitable for use with `tidypq::filter_taxa_pq()` to prune contaminated taxa.

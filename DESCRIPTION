@@ -1,7 +1,7 @@
 Package: comparpq
 Type: Package
 Title: Compare and Analyse Multiple 'phyloseq' Objects
-Version: 0.2.1
+Version: 0.3.0.9000
 Authors@R: person("Adrien", "Taudière", email = "adrien.taudiere@zaclys.net",
   role = c("aut", "cre", "cph"), comment = c(ORCID = "0000-0003-1088-1182"))
 Description: Compare and analyse multiple 'phyloseq' objects from the 'R'
