@@ -17,3 +17,12 @@
 ^vignettes/.*\.Rmd\.orig$
 ^cran-comments\.md$
 ^.lintr
+^CONTEXT\.md$
+^CLAUDE\.md$
+^\.claude$
+^README\.html$
+^Rplots\.pdf$
+^audits$
+^dev$
+^vignettes/\.quarto$
+^vignettes/figure$
