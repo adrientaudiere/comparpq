@@ -24,7 +24,7 @@ Create an extended formattable table that also displays comparison
 characteristics from a list_phyloseq object.
 }
 \details{
-\if{html}{\out{
+Extended formattable for list_phyloseq with comparison info.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}

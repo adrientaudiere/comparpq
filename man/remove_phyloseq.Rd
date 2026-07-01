@@ -10,12 +10,16 @@ remove_phyloseq(x, name, verbose = TRUE)
 \item{x}{(required) A list_phyloseq object.}
 
 \item{name}{(character or integer) Name or index of the phyloseq object to remove.}
+
+\item{verbose}{(logical, default TRUE) If TRUE, print progress messages.}
 }
 \value{
 A new list_phyloseq object without the removed phyloseq
 }
 \description{
-\if{html}{\out{
+Drop a phyloseq object from an existing \code{list_phyloseq} by name or index,
+returning a new object without that element (and its recomputed comparison
+characteristics).\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}

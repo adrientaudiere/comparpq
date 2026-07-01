@@ -33,7 +33,7 @@ and combines the results. This allows comparing estimation statistics
 across different bioinformatic pipelines or parameter settings.
 }
 \details{
-\if{html}{\out{
+Estimation statistics for categorical comparisons on a list_phyloseq.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 alt="lifecycle-experimental"></a>

@@ -14,7 +14,7 @@ A formattable formatter function that applies colored backgrounds
 based on unique factor levels.
 }
 \description{
-\if{html}{\out{
+Format factor columns with funky colored backgrounds.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}

@@ -13,7 +13,7 @@
 An integer: the number of phyloseq objects stored.
 }
 \description{
-\if{html}{\out{
+Number of phyloseq objects in a \code{list_phyloseq}.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}

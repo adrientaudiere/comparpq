@@ -27,7 +27,7 @@ Create a table showing which sample_data variable modalities
 are shared across phyloseq objects in a list_phyloseq.
 }
 \details{
-\if{html}{\out{
+Display shared sample_data modalities.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}

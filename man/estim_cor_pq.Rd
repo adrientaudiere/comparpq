@@ -52,17 +52,17 @@ regression line and bootstrap CI ribbon (one per metric)}
 }
 }
 \description{
-Computes diversity metrics (Hill numbers by default) per sample and
-assesses their relationship with a numeric variable using bootstrap
-confidence intervals for correlation coefficients and regression
-slopes.
-}
-\details{
 \if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 alt="lifecycle-experimental"></a>
 }}
+
+
+Computes diversity metrics (Hill numbers by default) per sample and
+assesses their relationship with a numeric variable using bootstrap
+confidence intervals for correlation coefficients and regression
+slopes.
 }
 \examples{
 \dontrun{

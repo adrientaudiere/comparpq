@@ -31,17 +31,17 @@ filtering process.}
 A new list_phyloseq object with filtered phyloseq objects
 }
 \description{
-Filters each phyloseq object in a list_phyloseq to retain only the samples
-and/or taxa that are common across all objects. This is useful for making
-direct comparisons on a common basis.
-}
-\details{
 \if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}
 
 
+Filters each phyloseq object in a list_phyloseq to retain only the samples
+and/or taxa that are common across all objects. This is useful for making
+direct comparisons on a common basis.
+}
+\details{
 This function is particularly useful for:
 \itemize{
 \item \strong{NESTED_ROBUSTNESS} comparisons: filter to common samples when comparing

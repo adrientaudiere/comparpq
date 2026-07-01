@@ -48,7 +48,7 @@ approximation is accurate within ~2 percentage points for identities in the
 90–100\% range.
 }
 \details{
-\if{html}{\out{
+Compare refseq sequences across all objects in a list_phyloseq.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
   alt="lifecycle-experimental"></a>

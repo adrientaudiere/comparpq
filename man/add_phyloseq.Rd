@@ -13,12 +13,16 @@ add_phyloseq(x, physeq, name = NULL, verbose = TRUE)
 
 \item{name}{(character, default NULL) Optional name for the new phyloseq object.
 If NULL, a name is generated automatically.}
+
+\item{verbose}{(logical, default TRUE) If TRUE, print progress messages.}
 }
 \value{
 A new list_phyloseq object with the added phyloseq
 }
 \description{
-\if{html}{\out{
+Append a phyloseq object to an existing \code{list_phyloseq}, returning a new
+object that includes the added element (and its recomputed comparison
+characteristics).\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 }}

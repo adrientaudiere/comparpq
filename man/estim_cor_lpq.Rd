@@ -33,7 +33,7 @@ Applies \code{\link[=estim_cor_pq]{estim_cor_pq()}} to each phyloseq object in a
 and combines the results.
 }
 \details{
-\if{html}{\out{
+Estimation statistics for numeric correlation on a list_phyloseq.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 alt="lifecycle-experimental"></a>

@@ -84,7 +84,7 @@ silently dropped. When \code{modality = NULL} all samples are analysed
 together and no grouping column is added to the result.
 }
 \details{
-\if{html}{\out{
+Diversity indices per sample, optionally grouped by a modality.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 alt="lifecycle-experimental"></a>

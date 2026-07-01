@@ -37,6 +37,8 @@ Creates a phylo object from a taxonomy
 table with hierarchical taxonomic ranks as columns.
 }
 \details{
+Convert taxonomy dataframe to phylogenetic tree.
+
 \if{html}{\out{<a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">}} \if{html}{\out{<img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental">}}\if{html}{\out{</a>}}
 }
 \examples{

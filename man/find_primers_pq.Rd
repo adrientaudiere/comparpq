@@ -33,7 +33,7 @@ least one primer, which can be passed directly to
 \code{tidypq::filter_taxa_pq()} to prune them from the phyloseq object.
 }
 \details{
-\if{html}{\out{
+Find taxa whose reference sequences match primer sequences.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
   alt="lifecycle-experimental"></a>
