@@ -783,6 +783,9 @@ print.list_phyloseq <- function(x, ...) {
 }
 
 #' Number of phyloseq objects in a `list_phyloseq`
+#' @description
+#'
+#' Number of phyloseq objects in a `list_phyloseq`.
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
@@ -798,6 +801,9 @@ length.list_phyloseq <- function(x) {
 }
 
 #' Names of phyloseq objects in a `list_phyloseq`
+#' @description
+#'
+#' Names of phyloseq objects in a `list_phyloseq`.
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
@@ -896,6 +902,11 @@ update_list_phyloseq <- function(
 }
 
 #' Add a phyloseq object to a list_phyloseq
+#' @description
+#'
+#' Append a phyloseq object to an existing `list_phyloseq`, returning a new
+#' object that includes the added element (and its recomputed comparison
+#' characteristics).
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
@@ -904,6 +915,7 @@ update_list_phyloseq <- function(
 #' @param physeq (required) A phyloseq object to add.
 #' @param name (character, default NULL) Optional name for the new phyloseq object.
 #'   If NULL, a name is generated automatically.
+#' @param verbose (logical, default TRUE) If TRUE, print progress messages.
 #' @return A new list_phyloseq object with the added phyloseq
 #' @export
 #' @examples
@@ -931,12 +943,18 @@ add_phyloseq <- function(x, physeq, name = NULL, verbose = TRUE) {
 }
 
 #' Remove a phyloseq object from a list_phyloseq
+#' @description
+#'
+#' Drop a phyloseq object from an existing `list_phyloseq` by name or index,
+#' returning a new object without that element (and its recomputed comparison
+#' characteristics).
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
 #' @param x (required) A list_phyloseq object.
 #' @param name (character or integer) Name or index of the phyloseq object to remove.
+#' @param verbose (logical, default TRUE) If TRUE, print progress messages.
 #' @return A new list_phyloseq object without the removed phyloseq
 #' @export
 #' @examples
@@ -969,10 +987,10 @@ remove_phyloseq <- function(x, name, verbose = TRUE) {
 
 #' Filter phyloseq objects to keep only shared samples and/or taxa
 #'
+#' @description
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
-#' @description
 #' Filters each phyloseq object in a list_phyloseq to retain only the samples
 #' and/or taxa that are common across all objects. This is useful for making
 #' direct comparisons on a common basis.

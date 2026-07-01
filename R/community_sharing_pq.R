@@ -30,7 +30,10 @@
 
 #' Build a single metric definition for `community_sharing_pq()`
 #'
+#' Build a single metric definition for `community_sharing_pq()`.
+#'
 #' @description
+#' Build a single metric definition for `community_sharing_pq()`.
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'

@@ -1,5 +1,7 @@
 #' Diversity indices per sample, optionally grouped by a modality
 #'
+#' Diversity indices per sample, optionally grouped by a modality.
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 #' alt="lifecycle-experimental"></a>

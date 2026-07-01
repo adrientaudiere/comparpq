@@ -435,11 +435,11 @@ estim_diff_pq <- function(
 #' Estimation statistics for numeric variable correlation on a phyloseq
 #' object
 #'
+#' @description
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 #' alt="lifecycle-experimental"></a>
 #'
-#' @description
 #' Computes diversity metrics (Hill numbers by default) per sample and
 #' assesses their relationship with a numeric variable using bootstrap
 #' confidence intervals for correlation coefficients and regression
@@ -671,7 +671,10 @@ estim_cor_pq <- function(
 
 #' Print categorical estimation statistics for a phyloseq object
 #'
+#' Print categorical estimation statistics for a phyloseq object.
+#'
 #' @description
+#' Print categorical estimation statistics for a phyloseq object.
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
@@ -696,7 +699,10 @@ print.estim_diff_pq_result <- function(x, ...) {
 
 #' Print correlation estimation statistics for a phyloseq object
 #'
+#' Print correlation estimation statistics for a phyloseq object.
+#'
 #' @description
+#' Print correlation estimation statistics for a phyloseq object.
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'

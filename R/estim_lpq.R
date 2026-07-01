@@ -1,5 +1,7 @@
 #' Estimation statistics for categorical comparisons on a list_phyloseq
 #'
+#' Estimation statistics for categorical comparisons on a list_phyloseq.
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 #' alt="lifecycle-experimental"></a>
@@ -117,6 +119,8 @@ estim_diff_lpq <- function(x, fact, ..., verbose = TRUE) {
 
 #' Estimation statistics for numeric correlation on a list_phyloseq
 #'
+#' Estimation statistics for numeric correlation on a list_phyloseq.
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 #' alt="lifecycle-experimental"></a>
@@ -231,7 +235,10 @@ estim_cor_lpq <- function(x, variable, ..., verbose = TRUE) {
 
 #' Print categorical estimation statistics for a list of phyloseq objects
 #'
+#' Print categorical estimation statistics for a list of phyloseq objects.
+#'
 #' @description
+#' Print categorical estimation statistics for a list of phyloseq objects.
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
@@ -254,7 +261,10 @@ print.estim_diff_lpq_result <- function(x, ...) {
 
 #' Print correlation estimation statistics for a list of phyloseq objects
 #'
+#' Print correlation estimation statistics for a list of phyloseq objects.
+#'
 #' @description
+#' Print correlation estimation statistics for a list of phyloseq objects.
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'

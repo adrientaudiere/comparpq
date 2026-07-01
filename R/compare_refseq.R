@@ -284,7 +284,10 @@ compare_refseq <- function(
 
 #' Print a reference-sequence comparison
 #'
+#' Print a reference-sequence comparison.
+#'
 #' @description
+#' Print a reference-sequence comparison.
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'

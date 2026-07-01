@@ -24,6 +24,8 @@ uf_components <- function(n_nodes, edges) {
 
 #' Compare refseq sequences across all objects in a list_phyloseq
 #'
+#' Compare refseq sequences across all objects in a list_phyloseq.
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 #'   alt="lifecycle-experimental"></a>
@@ -232,7 +234,10 @@ refseq_comp_lpq <- function(
 
 #' Print a reference-sequence similarity comparison across phyloseq objects
 #'
+#' Print a reference-sequence similarity comparison across phyloseq objects.
+#'
 #' @description
+#' Print a reference-sequence similarity comparison across phyloseq objects.
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'

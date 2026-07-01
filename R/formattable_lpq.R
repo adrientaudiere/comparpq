@@ -50,6 +50,9 @@ color_bar_formatter <- function(
   )
 }
 #' Format factor columns with funky colored backgrounds
+#' @description
+#'
+#' Format factor columns with funky colored backgrounds.
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
@@ -118,7 +121,7 @@ logical_formatter <- function(
       ),
       `font-weight` = "bold"
     ),
-    x ~ ifelse(is.na(x), "NA", ifelse(x, "✓", "✗"))
+    x ~ ifelse(is.na(x), "NA", ifelse(x, "\u2713", "\u2717"))
   )
 }
 
@@ -306,6 +309,8 @@ formattable_lpq <- function(
 
 #' Extended formattable for list_phyloseq with comparison info
 #'
+#' Extended formattable for list_phyloseq with comparison info.
+#'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
 #'
@@ -417,6 +422,8 @@ formattable_lpq_full <- function(
 }
 
 #' Display shared sample_data modalities
+#'
+#' Display shared sample_data modalities.
 #'
 #' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 #' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
