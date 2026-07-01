@@ -12,7 +12,6 @@ for microbiome data analysis.
 You can install the released version of comparpq from CRAN with:
 
 ``` r
-
 install.packages("comparpq")
 ```
 
@@ -20,7 +19,6 @@ You can install the development version of comparpq from
 [GitHub](https://github.com/adrientaudiere/comparpq) with:
 
 ``` r
-
 # install.packages("devtools")
 devtools::install_github("adrientaudiere/comparpq")
 ```
@@ -65,7 +63,6 @@ devtools::install_github("adrientaudiere/comparpq")
 ## Quick Start
 
 ``` r
-
 library(comparpq)
 
 # Load example data
@@ -107,7 +104,6 @@ of high-throughput microbiome census data
 If you use comparpq in your research, please cite:
 
 ``` r
-
 citation("comparpq")
 ```
 

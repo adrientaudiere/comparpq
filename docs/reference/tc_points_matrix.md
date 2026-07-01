@@ -68,7 +68,6 @@ Adrien Taudière
 ## Examples
 
 ``` r
-
 tc_points_matrix(
   subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000),
   "Order", "Order__eukaryome_Glomero"

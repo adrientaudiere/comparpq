@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="index.html">comparpq</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,23 +87,23 @@
 </ul></div>
 <div class="section level3">
 <h3 id="key-modules">Key Modules<a class="anchor" aria-label="anchor" href="#key-modules"></a></h3>
-<table class="table"><colgroup><col width="47%"><col width="52%"></colgroup><thead><tr><th>Module</th>
+<table class="table"><colgroup><col width="47%"><col width="52%"></colgroup><thead><tr class="header"><th>Module</th>
 <th>Purpose</th>
-</tr></thead><tbody><tr><td><code>list_phyloseq.R</code></td>
+</tr></thead><tbody><tr class="odd"><td><code>list_phyloseq.R</code></td>
 <td>S7 class for storing/comparing multiple phyloseq objects (6 comparison types: REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS)</td>
-</tr><tr><td><code>compare_taxo.R</code></td>
+</tr><tr class="even"><td><code>compare_taxo.R</code></td>
 <td>Taxonomic accuracy metrics using confusion matrix approach (TP/FP/FN/TN, FDR, TPR, PPV, F1_score, MCC, ACC)</td>
-</tr><tr><td><code>compare_taxo_plot.R</code></td>
+</tr><tr class="odd"><td><code>compare_taxo_plot.R</code></td>
 <td>Visualization for taxonomic comparisons (<code>tc_bar</code>, <code>tc_circle</code>)</td>
-</tr><tr><td><code>bubbles_pq.R</code></td>
+</tr><tr class="even"><td><code>bubbles_pq.R</code></td>
 <td>Interactive bubble plots using Observable HQ notebooks</td>
-</tr><tr><td><code>fake_creation.R</code></td>
+</tr><tr class="odd"><td><code>fake_creation.R</code></td>
 <td>Mock community preparation (<code>add_shuffle_seq_pq</code>, <code>add_external_seq_pq</code>)</td>
-</tr><tr><td><code>taxtab_modification.R</code></td>
+</tr><tr class="even"><td><code>taxtab_modification.R</code></td>
 <td>Tax table utilities (rename, select, resolve conflicts)</td>
-</tr><tr><td><code>analysis_lpq.R</code></td>
+</tr><tr class="odd"><td><code>analysis_lpq.R</code></td>
 <td>Statistical analysis (PERMANOVA/ADONIS) for list_phyloseq</td>
-</tr><tr><td><code>formattable_lpq.R</code></td>
+</tr><tr class="even"><td><code>formattable_lpq.R</code></td>
 <td>Formatted table visualizations with color bars</td>
 </tr></tbody></table></div>
 </div>
@@ -143,6 +143,21 @@
 <div class="section level2">
 <h2 id="commit-convention">Commit Convention<a class="anchor" aria-label="anchor" href="#commit-convention"></a></h2>
 <p>Follow Conventional Commits: <code>&lt;type&gt;[optional scope]: &lt;description&gt;</code> - Types: feat, fix, docs, style, refactor, test, chore - Lowercase type and description, imperative mood</p>
+</div>
+<div class="section level2">
+<h2 id="agent-skills">Agent skills<a class="anchor" aria-label="anchor" href="#agent-skills"></a></h2>
+<div class="section level3">
+<h3 id="issue-tracker">Issue tracker<a class="anchor" aria-label="anchor" href="#issue-tracker"></a></h3>
+<p>Issues and PRDs are tracked as GitHub issues via the <code>gh</code> CLI; external PRs are not a triage surface. See <code>docs/agents/issue-tracker.md</code>.</p>
+</div>
+<div class="section level3">
+<h3 id="triage-labels">Triage labels<a class="anchor" aria-label="anchor" href="#triage-labels"></a></h3>
+<p>Uses the five canonical triage labels (<code>needs-triage</code>, <code>needs-info</code>, <code>ready-for-agent</code>, <code>ready-for-human</code>, <code>wontfix</code>). See <code>docs/agents/triage-labels.md</code>.</p>
+</div>
+<div class="section level3">
+<h3 id="domain-docs">Domain docs<a class="anchor" aria-label="anchor" href="#domain-docs"></a></h3>
+<p>Single-context workspace: one shared <code>CONTEXT.md</code> + <code>docs/adr/</code> at the <strong>pqverse workspace root</strong> (<code>../../CONTEXT.md</code>, <code>../../docs/adr/</code>), not per-package. comparpq’s <code>CONTEXT.md</code> is a symlink to the workspace root. ADR-0001 records the views-axis identity. See <code>docs/agents/domain.md</code>.</p>
+</div>
 </div>
 </div>
 

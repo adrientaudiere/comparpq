@@ -121,7 +121,6 @@ four plot types correspond to the original ALDEx2 types:
 ## Examples
 
 ``` r
-
 # Subset to the 80 most abundant taxa to keep the example fast
 # (the full data_fungi has 1420 taxa, which is slow for ALDEx2).
 data_fungi_small <- prune_taxa(

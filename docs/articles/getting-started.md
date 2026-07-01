@@ -17,7 +17,6 @@ phyloseq objects. This package is particularly useful for:
 You can install comparpq from GitHub:
 
 ``` r
-
 # Install from GitHub
 if (!requireNamespace("devtools", quietly = TRUE)) {
   install.packages("devtools")
@@ -28,7 +27,6 @@ devtools::install_github("adrientaudiere/comparpq")
 ## Loading Required Libraries
 
 ``` r
-
 library(comparpq)
 
 # The package automatically loads dependencies including:
@@ -42,7 +40,6 @@ The package includes the `Glom_otu` dataset, which contains glomalean
 (arbuscular mycorrhizal fungi) OTU data:
 
 ``` r
-
 Glom_otu
 #> phyloseq-class experiment-level object
 #> otu_table()   OTU Table:         [ 1147 taxa and 444 samples ]
@@ -52,7 +49,6 @@ Glom_otu
 ```
 
 ``` r
-
 # Basic information about the dataset
 cat("Number of taxa:", phyloseq::ntaxa(Glom_otu), "\n")
 #> Number of taxa: 1147
@@ -70,13 +66,11 @@ One of the key features of comparpq is the ability to create interactive
 bubble plots using Observable HQ:
 
 ``` r
-
 # Basic bubble plot
 bubbles_pq(Glom_otu)
 ```
 
 ``` r
-
 # Bubble plot colored by Family
 bubbles_pq(Glom_otu,
   rank_color = "Family",
@@ -85,7 +79,6 @@ bubbles_pq(Glom_otu,
 ```
 
 ``` r
-
 # Customized bubble plot with different color scheme
 bubbles_pq(Glom_otu,
   rank_color = "Class",
@@ -100,7 +93,6 @@ bubbles_pq(Glom_otu,
 For non-interactive visualizations, you can use:
 
 ``` r
-
 # Create comparison matrices for visualization
 matrix_data <- tc_points_matrix(Glom_otu)
 
@@ -116,7 +108,6 @@ matrix_data <- tc_points_matrix(Glom_otu)
 ### Working with Taxonomic Tables
 
 ``` r
-
 # Select specific taxonomic ranks
 Glom_otu_subset <- select_ranks_pq(Glom_otu, Kingdom, Genus)
 cat("Original ranks:", paste(phyloseq::rank_names(Glom_otu), collapse = ", "), "\n")
@@ -126,7 +117,6 @@ cat("Selected ranks:", paste(phyloseq::rank_names(Glom_otu_subset), collapse = "
 ```
 
 ``` r
-
 # Rename taxonomic ranks
 renamed_physeq <- rename_ranks_pq(Glom_otu,
   new_names = c(
@@ -141,7 +131,6 @@ cat("Renamed ranks:", paste(phyloseq::rank_names(renamed_physeq), collapse = ", 
 ### Pattern Replacement and Data Cleaning
 
 ``` r
-
 # Replace unwanted patterns with NA
 # This is useful for cleaning taxonomic assignments
 cleaned_physeq <- taxtab_replace_pattern_by_NA(Glom_otu,
@@ -167,7 +156,6 @@ To evaluate taxonomic assignment accuracy, you can add fake taxa to your
 dataset:
 
 ``` r
-
 # Add shuffled sequences (creates fake taxa from existing sequences)
 physeq_with_shuffled <- add_shuffle_seq_pq(Glom_otu, n_fake = 10)
 cat("Original taxa count:", phyloseq::ntaxa(Glom_otu), "\n")
@@ -187,7 +175,6 @@ cat("With external sequences added:", phyloseq::ntaxa(physeq_with_external), "\n
 ### Accuracy Metrics Computation
 
 ``` r
-
 # Example of computing accuracy metrics
 # This requires properly formatted comparison data
 
@@ -219,7 +206,6 @@ The package includes specialized visualization for understanding missing
 taxonomic data:
 
 ``` r
-
 # Visualize NA patterns in taxonomic assignments
 rainplot_taxo_na(Glom_otu)
 ```
@@ -229,7 +215,6 @@ rainplot_taxo_na(Glom_otu)
 When working with multiple taxonomic databases, conflicts may arise:
 
 ``` r
-
 # Resolve taxonomic conflicts between different assignment methods
 # This function helps when you have conflicting taxonomic assignments
 resolved_physeq <- resolve_taxo_conflict(Glom_otu,
@@ -263,7 +248,6 @@ resolved_physeq <- resolve_taxo_conflict(Glom_otu,
 ### Data Quality Control
 
 ``` r
-
 # Example quality control workflow
 qc_physeq <- Glom_otu
 

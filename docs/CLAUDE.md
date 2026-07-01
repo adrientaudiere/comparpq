@@ -53,16 +53,16 @@ Rscript -e "devtools::check()"
 
 ### Key Modules
 
-| Module | Purpose |
-|----|----|
-| `list_phyloseq.R` | S7 class for storing/comparing multiple phyloseq objects (6 comparison types: REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS) |
-| `compare_taxo.R` | Taxonomic accuracy metrics using confusion matrix approach (TP/FP/FN/TN, FDR, TPR, PPV, F1_score, MCC, ACC) |
-| `compare_taxo_plot.R` | Visualization for taxonomic comparisons (`tc_bar`, `tc_circle`) |
-| `bubbles_pq.R` | Interactive bubble plots using Observable HQ notebooks |
-| `fake_creation.R` | Mock community preparation (`add_shuffle_seq_pq`, `add_external_seq_pq`) |
-| `taxtab_modification.R` | Tax table utilities (rename, select, resolve conflicts) |
-| `analysis_lpq.R` | Statistical analysis (PERMANOVA/ADONIS) for list_phyloseq |
-| `formattable_lpq.R` | Formatted table visualizations with color bars |
+| Module                  | Purpose                                                                                                                                                                      |
+|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `list_phyloseq.R`       | S7 class for storing/comparing multiple phyloseq objects (6 comparison types: REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS) |
+| `compare_taxo.R`        | Taxonomic accuracy metrics using confusion matrix approach (TP/FP/FN/TN, FDR, TPR, PPV, F1_score, MCC, ACC)                                                                  |
+| `compare_taxo_plot.R`   | Visualization for taxonomic comparisons (`tc_bar`, `tc_circle`)                                                                                                              |
+| `bubbles_pq.R`          | Interactive bubble plots using Observable HQ notebooks                                                                                                                       |
+| `fake_creation.R`       | Mock community preparation (`add_shuffle_seq_pq`, `add_external_seq_pq`)                                                                                                     |
+| `taxtab_modification.R` | Tax table utilities (rename, select, resolve conflicts)                                                                                                                      |
+| `analysis_lpq.R`        | Statistical analysis (PERMANOVA/ADONIS) for list_phyloseq                                                                                                                    |
+| `formattable_lpq.R`     | Formatted table visualizations with color bars                                                                                                                               |
 
 ## Coding Conventions
 
@@ -104,3 +104,23 @@ Rscript -e "devtools::check()"
 Follow Conventional Commits: `<type>[optional scope]: <description>` -
 Types: feat, fix, docs, style, refactor, test, chore - Lowercase type
 and description, imperative mood
+
+## Agent skills
+
+### Issue tracker
+
+Issues and PRDs are tracked as GitHub issues via the `gh` CLI; external
+PRs are not a triage surface. See `docs/agents/issue-tracker.md`.
+
+### Triage labels
+
+Uses the five canonical triage labels (`needs-triage`, `needs-info`,
+`ready-for-agent`, `ready-for-human`, `wontfix`). See
+`docs/agents/triage-labels.md`.
+
+### Domain docs
+
+Single-context workspace: one shared `CONTEXT.md` + `docs/adr/` at the
+**pqverse workspace root** (`../../CONTEXT.md`, `../../docs/adr/`), not
+per-package. comparpq’s `CONTEXT.md` is a symlink to the workspace root.
+ADR-0001 records the views-axis identity. See `docs/agents/domain.md`.

@@ -1,6 +1,8 @@
 # Changelog
 
-## comparpq 0.2.1 (Development version)
+## comparpq 0.3.0 (Development version)
+
+## comparpq 0.2.1
 
 - [`refseq_comp_lpq()`](https://adrientaudiere.github.io/comparpq/reference/refseq_comp_lpq.md)
   new function to compare `@refseq` sequences across all phyloseq

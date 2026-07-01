@@ -95,7 +95,6 @@ Adrien Taudière
 ## Examples
 
 ``` r
-
 data_fungi_mini_new <- assign_sintax(data_fungi_mini,
   ref_fasta = system.file("extdata", "mini_UNITE_fungi.fasta.gz",
     package = "MiscMetabar"
