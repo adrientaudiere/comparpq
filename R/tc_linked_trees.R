@@ -345,11 +345,11 @@ tc_congruence_metrics <- function(
 #'   1.5x), deeper nodes get smaller text (down to 0.6x). All labels are
 #'   positioned above their branch to avoid overlap.
 #' @param internal_node_singletons (logical, default FALSE) Whether to create
-#'   internal nodes for singletons. Passed to \code{\link{taxo2tree}}.
+#'   internal nodes for singletons. Passed to \code{\link[phylopq]{taxo2tree}}.
 #' @param use_taxa_names (logical, default FALSE) Whether to use taxa names
 #'   (e.g., ASV_1, ASV_2) as terminal leaves. If FALSE (default), collapses
 #'   identical taxonomy paths and uses the lowest rank value as tip labels.
-#'   Passed to \code{\link{taxo2tree}}.
+#'   Passed to \code{\link[phylopq]{taxo2tree}}.
 #'
 #' @return A ggplot2 object that can be further customized.
 #' @export
@@ -440,13 +440,13 @@ tc_linked_trees <- function(
     verify_pq(physeq_2)
   }
 
-  tree_1 <- taxo2tree(
+  tree_1 <- phylopq::taxo2tree(
     physeq_1,
     ranks = ranks_1,
     internal_node_singletons = internal_node_singletons,
     use_taxa_names = use_taxa_names
   )
-  tree_2 <- taxo2tree(
+  tree_2 <- phylopq::taxo2tree(
     physeq_2,
     ranks = ranks_2,
     internal_node_singletons = internal_node_singletons,

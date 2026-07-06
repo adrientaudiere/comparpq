@@ -59,12 +59,12 @@ scaled by depth: shallower nodes (closer to root) get larger text (up to
 positioned above their branch to avoid overlap.}
 
 \item{internal_node_singletons}{(logical, default FALSE) Whether to create
-internal nodes for singletons. Passed to \code{\link{taxo2tree}}.}
+internal nodes for singletons. Passed to \code{\link[phylopq]{taxo2tree}}.}
 
 \item{use_taxa_names}{(logical, default FALSE) Whether to use taxa names
 (e.g., ASV_1, ASV_2) as terminal leaves. If FALSE (default), collapses
 identical taxonomy paths and uses the lowest rank value as tip labels.
-Passed to \code{\link{taxo2tree}}.}
+Passed to \code{\link[phylopq]{taxo2tree}}.}
 }
 \value{
 A ggplot2 object that can be further customized.

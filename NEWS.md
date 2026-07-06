@@ -1,5 +1,13 @@
 # comparpq 0.3.0 (Development version)
 
+## Breaking changes
+
+* `taxo2tree()` is removed from comparpq and relocated to the `phylopq` package, its natural home for phylogenetic tree construction from taxonomy tables. Calls to `comparpq::taxo2tree()` now fail with `could not find function`; use `phylopq::taxo2tree()` instead (the interface is unchanged).
+
+## New features
+
+* `merge_clust_lpq()` new function to merge a `list_phyloseq` into a single phyloseq object while keeping every sample separate, unifying taxa across objects by clustering their reference sequences (vsearch by default, via `MiscMetabar::postcluster_pq()`). Sample names are suffixed with the parent object name on collision, and a `source_name` column records the parent object of each sample. It complements `merge_lpq()`, which instead collapses each object into a single sample using exact sequence matching.
+
 # comparpq 0.2.1
 * `refseq_comp_lpq()` new function to compare `@refseq` sequences across all phyloseq objects in a `list_phyloseq` using k-mer Jaccard similarity and union-find connected components. Returns per-threshold Venn diagrams and shared-cluster counts. No igraph dependency.
 * `find_primers_pq()` new function to detect taxa whose reference sequences match primer sequences (IUPAC-aware, forward and reverse complement). Returns a data frame suitable for use with `tidypq::filter_taxa_pq()` to prune contaminated taxa.

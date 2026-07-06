@@ -31,6 +31,7 @@ Imports:
     maaslin3,
     MIDASim,
     multcompView,
+    phylopq,
     purrr,
     rlang,
     scales,
