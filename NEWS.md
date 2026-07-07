@@ -1,5 +1,4 @@
-# comparpq 0.3.0 (Development version)
-
+# comparpq 0.3.0
 ## Breaking changes
 
 * `taxo2tree()` is removed from comparpq and relocated to the `phylopq` package, its natural home for phylogenetic tree construction from taxonomy tables. Calls to `comparpq::taxo2tree()` now fail with `could not find function`; use `phylopq::taxo2tree()` instead (the interface is unchanged).
