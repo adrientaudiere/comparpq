@@ -150,6 +150,11 @@ reference:
   contents:
   - div_pq
 
+- title: "Datasets"
+  desc: "Example data shipped with comparpq"
+  contents:
+  - Glom_otu
+
 articles:
 - title: "Getting Started"
   desc: "Learn the basics of using comparpq"

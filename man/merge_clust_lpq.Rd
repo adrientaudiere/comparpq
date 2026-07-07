@@ -78,12 +78,12 @@ more than one object, the parent object name is appended as a suffix
 }
 \examples{
 \dontrun{
-# Requires vsearch to be installed (MiscMetabar::is_vsearch_installed())
+# Requires vsearch to be installed by default (MiscMetabar::install_vsearch())
 library(MiscMetabar)
-data(data_fungi_mini)
-pq <- prune_samples(sample_names(data_fungi_mini)[1:4], data_fungi_mini)
+pq1 <- postcluster_pq(data_fungi_mini, method = "vsearch", id = 0.97)
+pq2 <- clean_pq(prune_samples(sample_names(pq1)[1:4], pq1))
 
-lpq <- list_phyloseq(list(run_a = pq, run_b = pq))
+lpq <- list_phyloseq(list(run_a = pq2, run_b = pq1))
 
 merged <- merge_clust_lpq(lpq, id = 0.97)
 merged
