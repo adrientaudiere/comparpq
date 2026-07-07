@@ -1,3 +1,5 @@
+# comparpq 0.4.0 (Development version)
+
 # comparpq 0.3.0
 ## Breaking changes
 
