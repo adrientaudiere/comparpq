@@ -65,7 +65,7 @@
 #' library(MiscMetabar)
 #' pq1 <- postcluster_pq(data_fungi_mini, method = "vsearch", id = 0.97)
 #' pq2 <- clean_pq(prune_samples(sample_names(pq1)[1:4], pq1))
-#' 
+#'
 #' lpq <- list_phyloseq(list(run_a = pq2, run_b = pq1))
 #'
 #' merged <- merge_clust_lpq(lpq, id = 0.97)
