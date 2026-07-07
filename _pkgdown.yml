@@ -6,6 +6,9 @@ template:
     fg: "#3b3b3b"
     primary: "#324629"
     secondary: "#5a1413"
+    base_font: "Fira Mono, monospace"
+    heading_font: "Fira Sans, sans-serif"
+    code_font: "Fira Code, monospace"
 
 navbar:
   structure:
