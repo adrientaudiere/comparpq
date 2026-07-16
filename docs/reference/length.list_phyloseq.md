@@ -1,5 +1,6 @@
 # Number of phyloseq objects in a `list_phyloseq`
 
+Number of phyloseq objects in a `list_phyloseq`.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Usage

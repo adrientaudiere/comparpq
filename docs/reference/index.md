@@ -61,6 +61,10 @@ Functions for manipulating list_phyloseq objects
 - [`merge_lpq()`](https://adrientaudiere.github.io/comparpq/reference/merge_lpq.md)
   : Merge a list_phyloseq into a single phyloseq object
 
+- [`merge_clust_lpq()`](https://adrientaudiere.github.io/comparpq/reference/merge_clust_lpq.md)
+  : Merge a list_phyloseq into one phyloseq by clustering reference
+  sequences
+
 - [`n_levels_lpq()`](https://adrientaudiere.github.io/comparpq/reference/n_levels_lpq.md)
   : Count unique taxonomic levels across phyloseq objects
 
@@ -135,13 +139,6 @@ Statistical analysis functions for list_phyloseq objects
   : Indicator species analysis on each phyloseq object in a
   list_phyloseq
 
-## Taxonomic Utilities
-
-Functions for utilities on taxonomic data
-
-- [`taxo2tree()`](https://adrientaudiere.github.io/comparpq/reference/taxo2tree.md)
-  : Convert taxonomy dataframe to phylogenetic tree
-
 ## Taxonomic Comparison Metrics
 
 Functions for computing accuracy metrics comparing taxonomic assignments
@@ -154,6 +151,10 @@ Functions for computing accuracy metrics comparing taxonomic assignments
 - [`tc_metrics_mock_vec()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_mock_vec.md)
   : Compute accuracy metrics of taxonomic assignation using a mock
   (known) community for one rank
+- [`count_taxo_congruence()`](https://adrientaudiere.github.io/comparpq/reference/count_taxo_congruence.md)
+  : Count taxa and sequences by congruence of two taxonomic assignments
+- [`compare_taxo_db()`](https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.md)
+  : Compare two taxonomic assignments of a phyloseq in one call
 
 ## Taxonomic Comparison Plots
 
@@ -175,6 +176,8 @@ Visualization functions for comparing taxonomic assignments
   : Plot two taxonomy trees with linked correspondences
 - [`tc_sankey()`](https://adrientaudiere.github.io/comparpq/reference/tc_sankey.md)
   : Sankey diagram to compare two taxonomic ranks
+- [`plot_congruence_counts()`](https://adrientaudiere.github.io/comparpq/reference/plot_congruence_counts.md)
+  : Stacked barplot of taxonomic-assignment congruence across ranks
 
 ## Phyloseq Visualization
 
@@ -232,12 +235,23 @@ Functions for modifying the tax_table slot of phyloseq objects
 
 - [`resolve_taxo_conflict()`](https://adrientaudiere.github.io/comparpq/reference/resolve_taxo_conflict.md)
   : Resolve taxonomic conflict in the tax_table of a phyloseq object
+
 - [`select_ranks_pq()`](https://adrientaudiere.github.io/comparpq/reference/select_ranks_pq.md)
   : Select taxonomic ranks in a phyloseq object
+
 - [`rename_ranks_pq()`](https://adrientaudiere.github.io/comparpq/reference/rename_ranks_pq.md)
   : Rename names of ranks in the tax_table slot of a phyloseq object
+
 - [`taxtab_replace_pattern_by_NA()`](https://adrientaudiere.github.io/comparpq/reference/taxtab_replace_pattern_by_NA.md)
   : Replace taxonomic value with a given pattern by NA
+
+- [`harmonize_sp_names_pq()`](https://adrientaudiere.github.io/comparpq/reference/harmonize_sp_names_pq.md)
+  :
+
+  Harmonize Species\_ columns and verify names via GNA Verifier
+
+- [`extract_species_epithet()`](https://adrientaudiere.github.io/comparpq/reference/extract_species_epithet.md)
+  : Extract the species epithet from a Species value
 
 ## Formatting Utilities
 
@@ -252,3 +266,10 @@ Helper functions for miscellaneous tasks
 
 - [`div_pq()`](https://adrientaudiere.github.io/comparpq/reference/div_pq.md)
   : Diversity indices per sample, optionally grouped by a modality
+
+## Datasets
+
+Example data shipped with comparpq
+
+- [`Glom_otu`](https://adrientaudiere.github.io/comparpq/reference/Glom_otu.md)
+  : Glomeromycota OTU phyloseq dataset

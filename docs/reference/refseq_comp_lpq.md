@@ -72,6 +72,7 @@ A list of class `"refseq_comp_lpq_result"` with:
 
 ## Details
 
+Compare refseq sequences across all objects in a list_phyloseq.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Author

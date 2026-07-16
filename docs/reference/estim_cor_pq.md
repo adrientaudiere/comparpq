@@ -1,5 +1,7 @@
 # Estimation statistics for numeric variable correlation on a phyloseq object
 
+[![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
 Computes diversity metrics (Hill numbers by default) per sample and
 assesses their relationship with a numeric variable using bootstrap
 confidence intervals for correlation coefficients and regression slopes.
@@ -80,10 +82,6 @@ A list of class `"estim_cor_pq_result"` with components:
 
   A named list of ggplot2 scatter plots with regression line and
   bootstrap CI ribbon (one per metric)
-
-## Details
-
-[![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## See also
 

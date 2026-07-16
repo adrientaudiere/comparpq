@@ -35,6 +35,7 @@ single formattable if only one is requested.
 
 ## Details
 
+Extended formattable for list_phyloseq with comparison info.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Examples

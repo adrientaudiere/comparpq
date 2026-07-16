@@ -53,16 +53,16 @@ Rscript -e "devtools::check()"
 
 ### Key Modules
 
-| Module                  | Purpose                                                                                                                                                                      |
-|-------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `list_phyloseq.R`       | S7 class for storing/comparing multiple phyloseq objects (6 comparison types: REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS) |
-| `compare_taxo.R`        | Taxonomic accuracy metrics using confusion matrix approach (TP/FP/FN/TN, FDR, TPR, PPV, F1_score, MCC, ACC)                                                                  |
-| `compare_taxo_plot.R`   | Visualization for taxonomic comparisons (`tc_bar`, `tc_circle`)                                                                                                              |
-| `bubbles_pq.R`          | Interactive bubble plots using Observable HQ notebooks                                                                                                                       |
-| `fake_creation.R`       | Mock community preparation (`add_shuffle_seq_pq`, `add_external_seq_pq`)                                                                                                     |
-| `taxtab_modification.R` | Tax table utilities (rename, select, resolve conflicts)                                                                                                                      |
-| `analysis_lpq.R`        | Statistical analysis (PERMANOVA/ADONIS) for list_phyloseq                                                                                                                    |
-| `formattable_lpq.R`     | Formatted table visualizations with color bars                                                                                                                               |
+| Module | Purpose |
+|----|----|
+| `list_phyloseq.R` | S7 class for storing/comparing multiple phyloseq objects (6 comparison types: REPRODUCIBILITY, ROBUSTNESS, NESTED_ROBUSTNESS, REPLICABILITY, EXPLORATION, SEPARATE_ANALYSIS) |
+| `compare_taxo.R` | Taxonomic accuracy metrics using confusion matrix approach (TP/FP/FN/TN, FDR, TPR, PPV, F1_score, MCC, ACC) |
+| `compare_taxo_plot.R` | Visualization for taxonomic comparisons (`tc_bar`, `tc_circle`) |
+| `bubbles_pq.R` | Interactive bubble plots using Observable HQ notebooks |
+| `fake_creation.R` | Mock community preparation (`add_shuffle_seq_pq`, `add_external_seq_pq`) |
+| `taxtab_modification.R` | Tax table utilities (rename, select, resolve conflicts) |
+| `analysis_lpq.R` | Statistical analysis (PERMANOVA/ADONIS) for list_phyloseq |
+| `formattable_lpq.R` | Formatted table visualizations with color bars |
 
 ## Coding Conventions
 

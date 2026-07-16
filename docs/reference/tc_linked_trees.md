@@ -93,14 +93,14 @@ tc_linked_trees(
 
   (logical, default FALSE) Whether to create internal nodes for
   singletons. Passed to
-  [`taxo2tree`](https://adrientaudiere.github.io/comparpq/reference/taxo2tree.md).
+  [`taxo2tree`](https://adrientaudiere.github.io/phylopq/reference/taxo2tree.html).
 
 - use_taxa_names:
 
   (logical, default FALSE) Whether to use taxa names (e.g., ASV_1,
   ASV_2) as terminal leaves. If FALSE (default), collapses identical
   taxonomy paths and uses the lowest rank value as tip labels. Passed to
-  [`taxo2tree`](https://adrientaudiere.github.io/comparpq/reference/taxo2tree.md).
+  [`taxo2tree`](https://adrientaudiere.github.io/phylopq/reference/taxo2tree.html).
 
 ## Value
 
@@ -123,6 +123,8 @@ tc_linked_trees(
     "Order__eukaryome_Glomero", "Family__eukaryome_Glomero"
   )
 )
+#> ℹ invalid tbl_tree object. Missing column: parent,node.
+#> ℹ invalid tbl_tree object. Missing column: parent,node.
 
 
 if (FALSE) { # \dontrun{

@@ -100,6 +100,8 @@ reference:
   - tc_congruence_metrics
   - tc_metrics_mock
   - tc_metrics_mock_vec
+  - count_taxo_congruence
+  - compare_taxo_db
 
 - title: "Taxonomic Comparison Plots"
   desc: "Visualization functions for comparing taxonomic assignments"
@@ -112,6 +114,7 @@ reference:
   - rainplot_taxo_na
   - tc_linked_trees
   - tc_sankey
+  - plot_congruence_counts
 
 - title: "Phyloseq Visualization"
   desc: "Interactive plotting functions for phyloseq objects"
@@ -139,6 +142,8 @@ reference:
   - select_ranks_pq
   - rename_ranks_pq
   - taxtab_replace_pattern_by_NA
+  - harmonize_sp_names_pq
+  - extract_species_epithet
 
 - title: "Formatting Utilities"
   desc: "Helper functions for formatting tables"

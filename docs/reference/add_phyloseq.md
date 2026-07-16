@@ -1,5 +1,8 @@
 # Add a phyloseq object to a list_phyloseq
 
+Append a phyloseq object to an existing `list_phyloseq`, returning a new
+object that includes the added element (and its recomputed comparison
+characteristics).
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Usage
@@ -22,6 +25,10 @@ add_phyloseq(x, physeq, name = NULL, verbose = TRUE)
 
   (character, default NULL) Optional name for the new phyloseq object.
   If NULL, a name is generated automatically.
+
+- verbose:
+
+  (logical, default TRUE) If TRUE, print progress messages.
 
 ## Value
 

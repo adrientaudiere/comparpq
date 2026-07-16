@@ -16,6 +16,7 @@
 <url><loc>https://adrientaudiere.github.io/comparpq/copilot-instruction.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/index.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/news/index.html</loc></url>
+<url><loc>https://adrientaudiere.github.io/comparpq/reference/Glom_otu.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/add_external_seq_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/add_phyloseq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/add_shuffle_seq_pq.html</loc></url>
@@ -27,12 +28,15 @@
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/community_sharing_barplot_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/community_sharing_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/compare_refseq.html</loc></url>
+<url><loc>https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.html</loc></url>
+<url><loc>https://adrientaudiere.github.io/comparpq/reference/count_taxo_congruence.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/default_sharing_metrics.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/div_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/estim_cor_lpq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/estim_cor_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/estim_diff_lpq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/estim_diff_pq.html</loc></url>
+<url><loc>https://adrientaudiere.github.io/comparpq/reference/extract_species_epithet.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/factor_formatter.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/filter_common_lpq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/find_primers_pq.html</loc></url>
@@ -43,11 +47,13 @@
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/gg_hill_lpq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/gg_maaslin3_plot.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/glmulti_lpq.html</loc></url>
+<url><loc>https://adrientaudiere.github.io/comparpq/reference/harmonize_sp_names_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/index.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/length.list_phyloseq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/list_phyloseq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/maaslin3_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/make_sharing_metric.html</loc></url>
+<url><loc>https://adrientaudiere.github.io/comparpq/reference/merge_clust_lpq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/merge_lpq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/midasim_pq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/multipatt_lpq.html</loc></url>
@@ -55,6 +61,7 @@
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/n_levels_lpq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/names.list_phyloseq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/permute_da_pq.html</loc></url>
+<url><loc>https://adrientaudiere.github.io/comparpq/reference/plot_congruence_counts.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/print.compare_refseq.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/print.estim_cor_lpq_result.html</loc></url>
 <url><loc>https://adrientaudiere.github.io/comparpq/reference/print.estim_cor_pq_result.html</loc></url>

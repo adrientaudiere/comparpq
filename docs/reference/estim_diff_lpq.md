@@ -48,6 +48,7 @@ A list of class `"estim_diff_lpq_result"` with components:
 
 ## Details
 
+Estimation statistics for categorical comparisons on a list_phyloseq.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## See also
@@ -83,13 +84,13 @@ lpq <- list_phyloseq(
 #> Partitioning sequences by 4-mer similarity:
 #> ================================================================================
 #> 
-#> Time difference of 0.04 secs
+#> Time difference of 0.03 secs
 #> 
 #> Sorting by relatedness within 80 groups:
 #> Clustering sequences by 9-mer similarity:
 #> ================================================================================
 #> 
-#> Time difference of 0.28 secs
+#> Time difference of 0.21 secs
 #> 
 #> Clusters via relatedness sorting: 100% (0% exclusively)
 #> Clusters via rare 4-mers: 100% (0% exclusively)
@@ -2980,18 +2981,7 @@ results <- estim_diff_lpq(lpq, fact = "Height", resamples=1000)
 #> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
 #> ! Function arguments cannot be checked because the package divent is not attached.
 #> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
-#> ! Function arguments cannot be checked because the package divent is not attached.
-#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
-#> ! Function arguments cannot be checked because the package divent is not attached.
-#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
-#> ! Function arguments cannot be checked because the package divent is not attached.
-#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
-#> ! Function arguments cannot be checked because the package divent is not attached.
-#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
-#> ! Function arguments cannot be checked because the package divent is not attached.
-#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
-#> ! Function arguments cannot be checked because the package divent is not attached.
-#> → Add `CheckArguments=FALSE` to suppress this warning or run `library('divent')`.
+#> Warning: extreme order statistics used as endpoints
 #> Warning: extreme order statistics used as endpoints
 #> Warning: Error processing 'fungi_with_less_otu_in_High': missing value where TRUE/FALSE needed
 
@@ -3011,12 +3001,12 @@ results$summary
 #> 10 fungi_clust  Hill_1 High vs Mi…      0.112        NA       NA           0.678
 #> 11 fungi_clust  Hill_2 High vs Low     -0.218        NA       NA           0.434
 #> 12 fungi_clust  Hill_2 High vs Mi…      0.197        NA       NA           0.467
-#> 13 fungi_rarefy Hill_0 High vs Low      0.202        NA       NA           0.724
+#> 13 fungi_rarefy Hill_0 High vs Low      0.207        NA       NA           0.711
 #> 14 fungi_rarefy Hill_0 High vs Mi…      0.112        NA       NA           0.670
-#> 15 fungi_rarefy Hill_1 High vs Low     -0.318        NA       NA           0.247
-#> 16 fungi_rarefy Hill_1 High vs Mi…      0.0166       NA       NA           0.947
-#> 17 fungi_rarefy Hill_2 High vs Low     -0.302        NA       NA           0.267
-#> 18 fungi_rarefy Hill_2 High vs Mi…      0.0744       NA       NA           0.775
+#> 15 fungi_rarefy Hill_1 High vs Low     -0.313        NA       NA           0.255
+#> 16 fungi_rarefy Hill_1 High vs Mi…      0.0197       NA       NA           0.937
+#> 17 fungi_rarefy Hill_2 High vs Low     -0.298        NA       NA           0.274
+#> 18 fungi_rarefy Hill_2 High vs Mi…      0.0772       NA       NA           0.764
 #> # ℹ 2 more variables: pvalue_welch <dbl>, pvalue_mann_whitney <dbl>
 
 # Plot results for two phyloseq objects

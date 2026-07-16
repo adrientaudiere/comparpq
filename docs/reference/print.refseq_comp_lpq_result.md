@@ -1,5 +1,7 @@
 # Print a reference-sequence similarity comparison across phyloseq objects
 
+Print a reference-sequence similarity comparison across phyloseq
+objects.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Usage
@@ -22,3 +24,8 @@ print(x, ...)
 ## Value
 
 `x`, invisibly.
+
+## Details
+
+Print a reference-sequence similarity comparison across phyloseq
+objects.

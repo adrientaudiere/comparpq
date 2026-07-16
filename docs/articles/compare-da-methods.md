@@ -21,6 +21,7 @@ behavior across different experimental designs and data characteristics.
 ## Setup
 
 ``` r
+
 library(comparpq)
 library(phyloseq)
 library(ggplot2)
@@ -37,6 +38,7 @@ positions.
 ### Data Preparation
 
 ``` r
+
 data("data_fungi", package = "MiscMetabar")
 
 # Subset to Low and High only for a clear binary comparison
@@ -56,6 +58,7 @@ cat("Groups:", table(sample_data(data_fungi_hl)$Height), "\n")
 ### Run ANCOM-BC
 
 ``` r
+
 res_ancombc_fungi <- MiscMetabar::ancombc_pq(
   data_fungi_hl,
   fact = "Height",
@@ -65,6 +68,7 @@ res_ancombc_fungi <- MiscMetabar::ancombc_pq(
 ```
 
 ``` r
+
 # Extract results
 ancombc_df_fungi <- res_ancombc_fungi$res |>
   filter(!is.na(lfc_HeightHigh)) |>
@@ -83,6 +87,7 @@ cat("ANCOM-BC significant taxa:", sum(ancombc_df_fungi$significant), "\n")
 ### Run ALDEx2
 
 ``` r
+
 res_aldex_fungi <- MiscMetabar::aldex_pq(
   data_fungi_hl,
   bifactor = "Height",
@@ -91,6 +96,7 @@ res_aldex_fungi <- MiscMetabar::aldex_pq(
 ```
 
 ``` r
+
 aldex_df_fungi <- res_aldex_fungi |>
   tibble::rownames_to_column("taxon") |>
   mutate(
@@ -108,6 +114,7 @@ cat("ALDEx2 significant taxa:", sum(aldex_df_fungi$significant), "\n")
 ### Run MaAsLin3
 
 ``` r
+
 res_maaslin3_fungi <- maaslin3_pq(
   data_fungi_hl,
   formula = "~ Height",
@@ -120,6 +127,7 @@ res_maaslin3_fungi <- maaslin3_pq(
 ```
 
 ``` r
+
 maaslin3_df_fungi <- res_maaslin3_fungi$fit_data_abundance$results |>
   filter(metadata == "Height") |>
   mutate(
@@ -138,6 +146,7 @@ cat("MaAsLin3 significant taxa:", sum(maaslin3_df_fungi$significant, na.rm = TRU
 ### Compare Results
 
 ``` r
+
 # Combine results
 combined_fungi <- bind_rows(ancombc_df_fungi, aldex_df_fungi, maaslin3_df_fungi)
 
@@ -171,6 +180,7 @@ print(p_volcano_fungi)
 plot of chunk fungi_compare
 
 ``` r
+
 # Find overlapping significant taxa
 sig_ancombc <- ancombc_df_fungi$taxon[ancombc_df_fungi$significant]
 sig_aldex <- aldex_df_fungi$taxon[aldex_df_fungi$significant]
@@ -199,6 +209,7 @@ antibiotic usage.
 ### Data Preparation
 
 ``` r
+
 # Read the HMP2 default dataset from maaslin3 package
 taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
 taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
@@ -234,6 +245,7 @@ cat("Groups:", table(sample_data(physeq_hmp2)$antibiotics), "\n")
 ### Run ANCOM-BC
 
 ``` r
+
 res_ancombc_hmp2 <- MiscMetabar::ancombc_pq(
   physeq_hmp2,
   fact = "antibiotics",
@@ -243,6 +255,7 @@ res_ancombc_hmp2 <- MiscMetabar::ancombc_pq(
 ```
 
 ``` r
+
 ancombc_df_hmp2 <- res_ancombc_hmp2$res |>
   filter(!is.na(lfc_antibioticsYes)) |>
   mutate(
@@ -260,6 +273,7 @@ cat("ANCOM-BC significant taxa:", sum(ancombc_df_hmp2$significant), "\n")
 ### Run ALDEx2
 
 ``` r
+
 physeq_hmp2@sam_data$antibiotics <- as.character(physeq_hmp2@sam_data$antibiotics)
 physeq_hmp2@otu_table <- otu_table(
   round(as.matrix(physeq_hmp2@otu_table))*1000,
@@ -275,6 +289,7 @@ res_aldex_hmp2 <- MiscMetabar::aldex_pq(
 ```
 
 ``` r
+
 aldex_df_hmp2 <- res_aldex_hmp2 |>
   tibble::rownames_to_column("taxon") |>
   mutate(
@@ -292,6 +307,7 @@ cat("ALDEx2 significant taxa:", sum(aldex_df_hmp2$significant), "\n")
 ### Run MaAsLin3
 
 ``` r
+
 otu_maaslin <- otu_table(as.matrix(taxa_table), taxa_are_rows = FALSE)
 sam_maaslin <- sample_data(metadata)
 physeq_hmp2_maaslin <- phyloseq(otu_maaslin, sam_maaslin, tax)
@@ -305,6 +321,7 @@ res_maaslin3_hmp2 <- maaslin3_pq(
 ```
 
 ``` r
+
 maaslin3_df_hmp2 <- res_maaslin3_hmp2$fit_data_abundance$results |>
   filter(metadata == "antibiotics") |>
   mutate(
@@ -323,6 +340,7 @@ cat("MaAsLin3 significant taxa:", sum(maaslin3_df_hmp2$significant, na.rm = TRUE
 ### Compare Results
 
 ``` r
+
 combined_hmp2 <- bind_rows(ancombc_df_hmp2, aldex_df_hmp2, maaslin3_df_hmp2)
 
 p_volcano_hmp2 <- ggplot(
@@ -356,6 +374,7 @@ plot of chunk hmp2_compare
 ### MaAsLin3 Summary Plot
 
 ``` r
+
 # Use the default summary plot from gg_maaslin3_plot
 p_summary <- gg_maaslin3_plot(res_maaslin3_hmp2, type = "summary", top_n = 20)
 #> 2026-06-18 14:00:23.37 INFO::Writing summary plot of significant
@@ -376,6 +395,7 @@ plaque.
 ### Data Preparation
 
 ``` r
+
 # Get the dataset
 gingival_data <- MicrobiomeBenchmarkData::getBenchmarkData(
   "HMP_2012_16S_gingival_V13",
@@ -409,6 +429,7 @@ cat("Groups:", table(sample_data(gingival_pq)$body_subsite), "\n")
 ### Run ANCOM-BC
 
 ``` r
+
 res_ancombc_ging <- MiscMetabar::ancombc_pq(
   gingival_pq,
   fact = "body_subsite",
@@ -418,6 +439,7 @@ res_ancombc_ging <- MiscMetabar::ancombc_pq(
 ```
 
 ``` r
+
 # Column name varies based on factor level
 lfc_col <- grep("^lfc_", colnames(res_ancombc_ging$res), value = TRUE)[1]
 q_col <- grep("^q_", colnames(res_ancombc_ging$res), value = TRUE)[1]
@@ -440,6 +462,7 @@ cat("ANCOM-BC significant taxa:", sum(ancombc_df_ging$significant), "\n")
 ### Run ALDEx2
 
 ``` r
+
 res_aldex_ging <- MiscMetabar::aldex_pq(
   gingival_pq,
   bifactor = "body_subsite",
@@ -448,6 +471,7 @@ res_aldex_ging <- MiscMetabar::aldex_pq(
 ```
 
 ``` r
+
 aldex_df_ging <- res_aldex_ging |>
   tibble::rownames_to_column("taxon") |>
   mutate(
@@ -465,6 +489,7 @@ cat("ALDEx2 significant taxa:", sum(aldex_df_ging$significant), "\n")
 ### Run MaAsLin3
 
 ``` r
+
 res_maaslin3_ging <- maaslin3_pq(
   gingival_pq,
   formula = "~ body_subsite",
@@ -477,6 +502,7 @@ res_maaslin3_ging <- maaslin3_pq(
 ```
 
 ``` r
+
 maaslin3_df_ging <- res_maaslin3_ging$fit_data_abundance$results |>
   filter(grepl("body_subsite", metadata)) |>
   mutate(
@@ -495,6 +521,7 @@ cat("MaAsLin3 significant taxa:", sum(maaslin3_df_ging$significant, na.rm = TRUE
 ### Compare Results
 
 ``` r
+
 combined_ging <- bind_rows(ancombc_df_ging, aldex_df_ging, maaslin3_df_ging)
 
 p_volcano_ging <- ggplot(
@@ -528,6 +555,7 @@ plot of chunk gingival_compare
 ## Dataset 4: selex
 
 ``` r
+
 library(ALDEx2)
 data(selex)
 selex <- selex[1201:1300,] # subset for efficiency
@@ -544,6 +572,7 @@ taxa_names(physeq_selex) <- rownames(selex)
 ### Run ANCOM-BC
 
 ``` r
+
 res_ancombc_selex <- MiscMetabar::ancombc_pq(
   physeq_selex,
   fact = "condition",
@@ -553,6 +582,7 @@ res_ancombc_selex <- MiscMetabar::ancombc_pq(
 ```
 
 ``` r
+
 ancombc_df_selex <- res_ancombc_selex$res |>
   filter(!is.na(lfc_conditionNS)) |>
   mutate(
@@ -570,6 +600,7 @@ cat("ANCOM-BC significant taxa:", sum(ancombc_df_selex$significant), "\n")
 ### Run ALDEx2
 
 ``` r
+
 res_aldex_selex <- MiscMetabar::aldex_pq(
   physeq_selex,
   test="t",
@@ -579,6 +610,7 @@ res_aldex_selex <- MiscMetabar::aldex_pq(
 ```
 
 ``` r
+
 aldex_df_selex <- res_aldex_selex |>
   tibble::rownames_to_column("taxon") |>
   mutate(
@@ -596,6 +628,7 @@ cat("ALDEx2 significant taxa:", sum(aldex_df_selex$significant), "\n")
 ### Run MaAsLin3
 
 ``` r
+
 res_maaslin3_selex <- maaslin3_pq(
   physeq_selex,
   formula = "~ condition",
@@ -605,6 +638,7 @@ res_maaslin3_selex <- maaslin3_pq(
 ```
 
 ``` r
+
 maaslin3_df_selex <- res_maaslin3_selex$fit_data_abundance$results |>
   filter(metadata == "condition") |>
   mutate(
@@ -623,6 +657,7 @@ cat("MaAsLin3 significant taxa:", sum(maaslin3_df_selex$significant, na.rm = TRU
 ### Compare Results
 
 ``` r
+
 combined_selex <- bind_rows(ancombc_df_selex, aldex_df_selex, maaslin3_df_selex)
 
 p_volcano_selex <- ggplot(
@@ -654,6 +689,7 @@ print(p_volcano_selex)
 plot of chunk selex_compare
 
 ``` r
+
 combined_selex |>
   filter(significant) |>
   group_by(taxon) |> 
@@ -677,6 +713,7 @@ combined_selex |>
 ## Summary Across Datasets
 
 ``` r
+
 # Create summary table
 summary_df <- tibble::tribble(
   ~Dataset, ~Method, ~`Total Taxa`, ~`Significant Taxa`,
@@ -706,9 +743,10 @@ knitr::kable(summary_df, caption = "Summary of Differential Abundance Results")
 | Gingival (Body Site) | ALDEx2   |        389 |                0 |
 | Gingival (Body Site) | MaAsLin3 |        317 |                1 |
 
-Summary of Differential Abundance Results
+Summary of Differential Abundance Results {.table}
 
 ``` r
+
 summary_df |>
   mutate(Proportion = `Significant Taxa` / `Total Taxa`) |>
   ggplot(aes(x = Method, y = `Significant Taxa`, fill = Dataset)) +
@@ -745,6 +783,7 @@ The three methods show different sensitivities across datasets:
 ## Session Info
 
 ``` r
+
 sessionInfo()
 #> R version 4.6.0 (2026-04-24)
 #> Platform: x86_64-pc-linux-gnu

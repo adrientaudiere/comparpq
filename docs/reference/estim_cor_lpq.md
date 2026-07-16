@@ -48,6 +48,7 @@ A list of class `"estim_cor_lpq_result"` with components:
 
 ## Details
 
+Estimation statistics for numeric correlation on a list_phyloseq.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## See also

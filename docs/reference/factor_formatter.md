@@ -1,5 +1,6 @@
 # Format factor columns with funky colored backgrounds
 
+Format factor columns with funky colored backgrounds.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Usage

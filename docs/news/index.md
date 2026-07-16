@@ -1,6 +1,59 @@
 # Changelog
 
-## comparpq 0.3.0 (Development version)
+## comparpq 0.4.0 (Development version)
+
+- [`compare_taxo_db()`](https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.md)
+  new function to assemble, in a single call, the congruence metrics, a
+  filtered contingency table, and the
+  [`tc_bar()`](https://adrientaudiere.github.io/comparpq/reference/tc_bar.md),
+  [`tc_sankey()`](https://adrientaudiere.github.io/comparpq/reference/tc_sankey.md),
+  [`tc_heatmap()`](https://adrientaudiere.github.io/comparpq/reference/tc_heatmap.md)
+  and
+  [`tc_circle()`](https://adrientaudiere.github.io/comparpq/reference/tc_circle.md)
+  views comparing two taxonomic-assignment columns of a `phyloseq`
+  object.
+- [`count_taxo_congruence()`](https://adrientaudiere.github.io/comparpq/reference/count_taxo_congruence.md)
+  new function to classify each taxon into a congruence category
+  (`both_equal`, `both_na`, `only_<db1>`, `only_<db2>`, `different`)
+  when comparing two `tax_table` columns, and to count both taxa and
+  sequences (with percentages) per category.
+- [`extract_species_epithet()`](https://adrientaudiere.github.io/comparpq/reference/extract_species_epithet.md)
+  new function to extract the specific epithet from a `Species` value,
+  handling binomials, underscores and infraspecific parts.
+- [`harmonize_sp_names_pq()`](https://adrientaudiere.github.io/comparpq/reference/harmonize_sp_names_pq.md)
+  new function to rewrite `Species_<db>` columns to their epithet and
+  optionally verify names via
+  [`taxinfo::gna_verifier_pq()`](https://adrientaudiere.github.io/taxinfo/reference/gna_verifier_pq.html)
+  (offline epithet-only mode with `verify = FALSE`).
+- [`plot_congruence_counts()`](https://adrientaudiere.github.io/comparpq/reference/plot_congruence_counts.md)
+  new function to draw a stacked barplot of taxonomic-assignment
+  congruence across several ranks, keeping each database’s color
+  consistent across ranks.
+
+## comparpq 0.3.0
+
+### Breaking changes
+
+- `taxo2tree()` is removed from comparpq and relocated to the `phylopq`
+  package, its natural home for phylogenetic tree construction from
+  taxonomy tables. Calls to `comparpq::taxo2tree()` now fail with
+  `could not find function`; use
+  [`phylopq::taxo2tree()`](https://adrientaudiere.github.io/phylopq/reference/taxo2tree.html)
+  instead (the interface is unchanged).
+
+### New features
+
+- [`merge_clust_lpq()`](https://adrientaudiere.github.io/comparpq/reference/merge_clust_lpq.md)
+  new function to merge a `list_phyloseq` into a single phyloseq object
+  while keeping every sample separate, unifying taxa across objects by
+  clustering their reference sequences (vsearch by default, via
+  [`MiscMetabar::postcluster_pq()`](https://adrientaudiere.github.io/MiscMetabar/reference/postcluster_pq.html)).
+  Sample names are suffixed with the parent object name on collision,
+  and a `source_name` column records the parent object of each sample.
+  It complements
+  [`merge_lpq()`](https://adrientaudiere.github.io/comparpq/reference/merge_lpq.md),
+  which instead collapses each object into a single sample using exact
+  sequence matching.
 
 ## comparpq 0.2.1
 

@@ -7,15 +7,15 @@ abundance (DA) methods for microbiome data, inspired by the
 [benchdamic](https://bioconductor.org/packages/benchdamic/) package
 approach. We compare seven methods:
 
-| Method         | Package  | Approach                                                 |
-|----------------|----------|----------------------------------------------------------|
-| **ALDEx2**     | ALDEx2   | CLR transformation + Monte Carlo sampling from Dirichlet |
-| **ANCOM-BC2**  | ANCOMBC  | Linear regression with bias correction                   |
-| **MaAsLin3**   | maaslin3 | Generalized linear models (abundance + prevalence)       |
-| **DESeq2**     | DESeq2   | Negative binomial GLM with size factor normalization     |
-| **edgeR**      | edgeR    | Negative binomial GLM with TMM normalization             |
-| **limma-voom** | limma    | Linear models on voom-transformed counts                 |
-| **radEmu**     | radEmu   | Robust estimation for relative abundance data            |
+| Method | Package | Approach |
+|----|----|----|
+| **ALDEx2** | ALDEx2 | CLR transformation + Monte Carlo sampling from Dirichlet |
+| **ANCOM-BC2** | ANCOMBC | Linear regression with bias correction |
+| **MaAsLin3** | maaslin3 | Generalized linear models (abundance + prevalence) |
+| **DESeq2** | DESeq2 | Negative binomial GLM with size factor normalization |
+| **edgeR** | edgeR | Negative binomial GLM with TMM normalization |
+| **limma-voom** | limma | Linear models on voom-transformed counts |
+| **radEmu** | radEmu | Robust estimation for relative abundance data |
 
 The benchmark evaluates:
 
@@ -28,6 +28,7 @@ The benchmark evaluates:
 ## Setup
 
 ``` r
+
 library(comparpq)
 library(phyloseq)
 library(ggplot2)
@@ -50,6 +51,7 @@ library(BiocParallel)
 We define wrapper functions to standardize output across methods.
 
 ``` r
+
 #' Run DESeq2 on phyloseq object
 #' @param physeq A phyloseq object
 #' @param formula Formula for the design (e.g., "~ condition")
@@ -495,11 +497,11 @@ To properly evaluate FDR control and sensitivity, we create datasets
 with known differentially abundant taxa. There are three approaches
 available in comparpq, each with different characteristics:
 
-| Approach                       | Function                                                                                            | Key Feature                                                                   |
-|--------------------------------|-----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
+| Approach | Function | Key Feature |
+|----|----|----|
 | **Multiply with compensation** | [`multiply_counts_pq()`](https://adrientaudiere.github.io/comparpq/reference/multiply_counts_pq.md) | Multiplies counts then scales down non-selected taxa to preserve library size |
-| **Permutation-based**          | [`permute_da_pq()`](https://adrientaudiere.github.io/comparpq/reference/permute_da_pq.md)           | Strictly preserves library sizes by redistributing counts                     |
-| **MIDASim simulation**         | [`midasim_pq()`](https://adrientaudiere.github.io/comparpq/reference/midasim_pq.md)                 | Generates realistic simulated data preserving taxon correlations              |
+| **Permutation-based** | [`permute_da_pq()`](https://adrientaudiere.github.io/comparpq/reference/permute_da_pq.md) | Strictly preserves library sizes by redistributing counts |
+| **MIDASim simulation** | [`midasim_pq()`](https://adrientaudiere.github.io/comparpq/reference/midasim_pq.md) | Generates realistic simulated data preserving taxon correlations |
 
 ### Approach A: `multiply_counts_pq` with compensation
 
@@ -511,6 +513,7 @@ have larger library sizes, and DA methods would normalize this away,
 washing out the signal.
 
 ``` r
+
 data("data_fungi", package = "MiscMetabar")
 
 # Subset to binary comparison
@@ -554,6 +557,7 @@ function guarantees exact library size preservation (except for
 rounding) by redistributing counts within each sample.
 
 ``` r
+
 data_spike_perm <- permute_da_pq(
   data_fungi_hl,
   fact = "Height",
@@ -579,6 +583,7 @@ cat("- Library size preserved:",
 ### Approach C: `midasim_pq` (realistic simulation)
 
 ``` r
+
 data_spike_mida <- midasim_pq(
   data_fungi_hl,
   fact = "Height",
@@ -604,6 +609,7 @@ For the main benchmark, we use the `multiply_counts_pq` approach with
 compensation, as it modifies actual data while preserving library sizes.
 
 ``` r
+
 # Use the compensated multiply approach
 data_spike <- clean_pq(data_spike_mult)
 spike_taxa <- spike_taxa_mult
@@ -624,6 +630,7 @@ cat("- Groups:", table(sample_data(data_spike)$Height), "\n")
 ## Run All Methods
 
 ``` r
+
 results_spike <- run_all_methods(
   subset_taxa_pq(data_spike, taxa_sums(data_spike) > 100),
   group_var = "Height",
@@ -634,6 +641,7 @@ results_spike <- run_all_methods(
 ```
 
 ``` r
+
 # Summary of results
 results_spike |>
   group_by(method) |>
@@ -653,13 +661,14 @@ results_spike |>
 | MaAsLin3    |    333 |             0 |            0.000 |
 | radEmu_wald |    468 |           292 |            0.624 |
 
-Summary of DA results by method
+Summary of DA results by method {.table}
 
 ## Concordance Analysis
 
 ### Number of Significant Taxa
 
 ``` r
+
 sig_summary <- results_spike |>
   mutate(significant = qvalue < 0.05) |>
   group_by(method) |>
@@ -690,6 +699,7 @@ plot of chunk concordance_barplot
 ### Overlap Between Methods (UpSet Plot)
 
 ``` r
+
 # Create presence/absence matrix for significant taxa
 sig_taxa_list <- results_spike |>
   filter(qvalue < 0.05) |>
@@ -735,6 +745,7 @@ plot of chunk upset_plot
 ### Pairwise Method Agreement
 
 ``` r
+
 # Calculate Jaccard similarity between methods
 methods <- unique(results_spike$method)
 jaccard_matrix <- matrix(NA, length(methods), length(methods),
@@ -781,6 +792,7 @@ plot of chunk pairwise_agreement
 ### Effect Size Correlation
 
 ``` r
+
 # Wide format for effect sizes
 effects_wide <- results_spike |>
   dplyr::select(taxon, method, effect) |>
@@ -819,6 +831,7 @@ plot of chunk effect_correlation
 ### Effect Size Distribution
 
 ``` r
+
 ggplot(results_spike, aes(x = effect, fill = method)) +
   geom_density(alpha = 0.5) +
   facet_wrap(~method, scales = "free_y") +
@@ -843,6 +856,7 @@ Using our spike-in data, we can evaluate how well each method controls
 FDR.
 
 ``` r
+
 # Get the actual spiked taxa (those with multiplied counts)
 # We need to identify them from the multiply_counts_pq function
 # For this, we'll use the taxa that were selected (stored during creation)
@@ -888,9 +902,10 @@ knitr::kable(
 | MaAsLin3    |   0 |   0 |  32 |       0.000 |   NaN |   NaN |
 | radEmu_wald |  23 | 269 |   9 |       0.719 | 0.921 | 0.142 |
 
-Performance metrics based on spike-in ground truth
+Performance metrics based on spike-in ground truth {.table}
 
 ``` r
+
 performance_long <- performance |>
   dplyr::select(method, Sensitivity, Specificity, FDR, F1) |>
   pivot_longer(-method, names_to = "Metric", values_to = "Value")
@@ -918,6 +933,7 @@ plot of chunk performance_plot
 ## Volcano Plots Comparison
 
 ``` r
+
 results_spike <- results_spike |>
   mutate(
     neg_log10_q = -log10(qvalue),
@@ -962,6 +978,7 @@ plot of chunk volcano_comparison
 Now we apply the methods to real data without known ground truth.
 
 ``` r
+
 # Load HMP2 data
 taxa_table_name <- system.file("extdata", "HMP2_taxonomy.tsv", package = "maaslin3")
 taxa_table <- read.csv(taxa_table_name, sep = "\t", row.names = 1)
@@ -999,6 +1016,7 @@ cat("- Samples:", nsamples(physeq_hmp2), "\n")
 ```
 
 ``` r
+
 results_hmp2 <- run_all_methods(
   physeq_hmp2,
   methods = c("ALDEx2", "ANCOM-BC2", "MaAsLin3", "radEmu"),
@@ -1010,6 +1028,7 @@ results_hmp2 <- run_all_methods(
 ```
 
 ``` r
+
 # Concordance plot
 sig_hmp2 <- results_hmp2 |>
   filter(qvalue < 0.05) |>
@@ -1037,25 +1056,26 @@ consensus_hmp2 |>
   knitr::kable(digits = 2)
 ```
 
-| taxon                        | n_methods | methods                                  | mean_effect |
-|:-----------------------------|----------:|:-----------------------------------------|------------:|
-| Bacteroides_finegoldii       |         4 | ALDEx2, ANCOM-BC2, MaAsLin3, radEmu_wald |        1.27 |
-| Roseburia_intestinalis       |         4 | ALDEx2, ANCOM-BC2, MaAsLin3, radEmu_wald |       -1.14 |
-| GGB1680_SGB2312              |         3 | ALDEx2, MaAsLin3, radEmu_wald            |       -9.09 |
-| Alistipes_dispar             |         3 | ALDEx2, MaAsLin3, radEmu_wald            |        3.78 |
-| GGB3478_SGB14857             |         3 | ALDEx2, MaAsLin3, radEmu_wald            |        3.19 |
-| Bifidobacterium_adolescentis |         3 | ANCOM-BC2, MaAsLin3, radEmu_wald         |       -2.24 |
-| Escherichia_coli             |         3 | ANCOM-BC2, MaAsLin3, radEmu_wald         |        1.93 |
-| Klebsiella_pneumoniae        |         3 | ALDEx2, MaAsLin3, radEmu_wald            |        1.78 |
-| Lachnospira_pectinoschiza    |         3 | ANCOM-BC2, MaAsLin3, radEmu_wald         |       -1.26 |
-| Bacteroides_intestinalis     |         3 | ALDEx2, ANCOM-BC2, radEmu_wald           |        0.92 |
-| Faecalibacterium_SGB15315    |         3 | ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.90 |
-| Roseburia_faecis             |         3 | ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.73 |
-| GGB3746_SGB5089              |         3 | ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.67 |
-| Clostridium_sp_AF36_4        |         3 | ALDEx2, ANCOM-BC2, radEmu_wald           |       -0.56 |
-| Alistipes_SGB2313            |         2 | MaAsLin3, radEmu_wald                    |       -5.65 |
+| taxon | n_methods | methods | mean_effect |
+|:---|---:|:---|---:|
+| Bacteroides_finegoldii | 4 | ALDEx2, ANCOM-BC2, MaAsLin3, radEmu_wald | 1.27 |
+| Roseburia_intestinalis | 4 | ALDEx2, ANCOM-BC2, MaAsLin3, radEmu_wald | -1.14 |
+| GGB1680_SGB2312 | 3 | ALDEx2, MaAsLin3, radEmu_wald | -9.09 |
+| Alistipes_dispar | 3 | ALDEx2, MaAsLin3, radEmu_wald | 3.78 |
+| GGB3478_SGB14857 | 3 | ALDEx2, MaAsLin3, radEmu_wald | 3.19 |
+| Bifidobacterium_adolescentis | 3 | ANCOM-BC2, MaAsLin3, radEmu_wald | -2.24 |
+| Escherichia_coli | 3 | ANCOM-BC2, MaAsLin3, radEmu_wald | 1.93 |
+| Klebsiella_pneumoniae | 3 | ALDEx2, MaAsLin3, radEmu_wald | 1.78 |
+| Lachnospira_pectinoschiza | 3 | ANCOM-BC2, MaAsLin3, radEmu_wald | -1.26 |
+| Bacteroides_intestinalis | 3 | ALDEx2, ANCOM-BC2, radEmu_wald | 0.92 |
+| Faecalibacterium_SGB15315 | 3 | ALDEx2, ANCOM-BC2, radEmu_wald | -0.90 |
+| Roseburia_faecis | 3 | ALDEx2, ANCOM-BC2, radEmu_wald | -0.73 |
+| GGB3746_SGB5089 | 3 | ALDEx2, ANCOM-BC2, radEmu_wald | -0.67 |
+| Clostridium_sp_AF36_4 | 3 | ALDEx2, ANCOM-BC2, radEmu_wald | -0.56 |
+| Alistipes_SGB2313 | 2 | MaAsLin3, radEmu_wald | -5.65 |
 
 ``` r
+
 results_hmp2 |>
   mutate(significant = qvalue < 0.05) |>
   ggplot(aes(x = effect, y = -log10(qvalue), color = significant)) +
@@ -1079,6 +1099,7 @@ plot of chunk hmp2_volcano
 ## Session Info
 
 ``` r
+
 sessionInfo()
 #> R version 4.6.0 (2026-04-24)
 #> Platform: x86_64-pc-linux-gnu

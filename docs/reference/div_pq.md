@@ -118,6 +118,7 @@ letter display from Tukey HSD pairwise comparisons.
 
 ## Details
 
+Diversity indices per sample, optionally grouped by a modality.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## See also

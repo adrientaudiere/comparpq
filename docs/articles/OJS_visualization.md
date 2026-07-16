@@ -3,6 +3,7 @@
 ## Try OJS
 
 ``` r
+
 library(MiscMetabar)
 ```
 
@@ -11,6 +12,7 @@ library(MiscMetabar)
     Loading required package: ggplot2
 
     Loading required package: dplyr
+
 
     Attaching package: 'dplyr'
 
@@ -23,12 +25,14 @@ library(MiscMetabar)
         intersect, setdiff, setequal, union
 
 ``` r
+
 data("Glom_otu")
 ```
 
     Warning in data("Glom_otu"): data set 'Glom_otu' not found
 
 ``` r
+
 bubbles_pq <- function(physeq,
                        rank_label = "Taxa",
                        rank_color = "Family",
@@ -86,17 +90,21 @@ bubbles_pq <- function(physeq,
 ```
 
 ``` r
+
 bubbles_pq(physeq = data_fungi, rank_color = "Class", randomize = TRUE)
 ```
 
 ``` r
+
 bubbles_pq(physeq = data_fungi, min_nb_seq = 10000, categorical_scheme = "d3.schemePastel1")
 ```
 
 ``` r
+
 bubbles_pq(physeq = data_fungi, rank_color = "Order", include = c("chart"), log1ptransform = TRUE)
 ```
 
 ``` r
+
 bubbles_pq(physeq = data_fungi, rank_label = "Genus", rank_color = "Class", include = c("chart"), randomize = TRUE, seed = 3)
 ```

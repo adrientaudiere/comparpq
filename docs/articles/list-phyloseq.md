@@ -21,6 +21,7 @@ This vignette demonstrates:
 ## Setup
 
 ``` r
+
 devtools::load_all()
 # library(comparpq)
 library(phyloseq)
@@ -33,6 +34,7 @@ phyloseq objects. You can also specify the `same_primer_seq_tech` and
 `same_bioinfo_pipeline` parameters to control the comparison type:
 
 ``` r
+
 lpq <- list_phyloseq(list(
   fungi = data_fungi,
   fungi_mini = data_fungi_mini
@@ -121,6 +123,7 @@ pipeline** (`same_bioinfo_pipeline = TRUE`, both defaults), the
 comparison is classified as REPRODUCIBILITY.
 
 ``` r
+
 # REPRODUCIBILITY: Same samples, same pipeline (default parameters)
 # Example: Running the same analysis twice to test reproducibility
 lpq_repro <- list_phyloseq(list(
@@ -140,6 +143,7 @@ This can also be useful to test for effect of stochasticity in some
 function.
 
 ``` r
+
 # REPRODUCIBILITY: Same samples, same pipeline (default parameters)
 # Example: Running the same analysis twice to test reproducibility
 lpq_repro <- list_phyloseq(list(
@@ -163,6 +167,7 @@ primer/technology**, but **different pipelines**
 ROBUSTNESS.
 
 ``` r
+
 # ROBUSTNESS: Same samples, different pipeline
 # Example: Comparing different clustering methods or taxonomic databases
 lpq_robust <- list_phyloseq(
@@ -189,6 +194,7 @@ primers or technologies** (`same_primer_seq_tech = FALSE`), the
 comparison is classified as REPLICABILITY.
 
 ``` r
+
 # REPLICABILITY: Same samples, different primer/technology
 # Example: Comparing ITS1 vs ITS2, or Illumina vs PacBio
 lpq_replic <- list_phyloseq(
@@ -215,6 +221,7 @@ useful for testing robustness to data processing choices like
 rarefaction or filtering.
 
 ``` r
+
 # Create a rarefied version (samples may be lost if they don't meet depth threshold)
 set.seed(123)
 data_fungi_rarefied <- rarefy_even_depth(data_fungi, sample.size = 1000, verbose = FALSE)
@@ -246,6 +253,7 @@ comparison is classified as EXPLORATION. This type is detected
 automatically based on sample_data.
 
 ``` r
+
 # Simulate by subsetting samples from different parts of the dataset
 # In real use, these would be different sample groups with shared experimental factors
 sample_names_fungi <- sample_names(data_fungi)
@@ -279,6 +287,7 @@ comparison may not be meaningful. Separate analysis of each phyloseq
 object is recommended.
 
 ``` r
+
 # Example using completely different datasets
 data("enterotype", package = "phyloseq")
 
@@ -298,6 +307,7 @@ cat("Same samples:", lpq_separate@comparison$same_samples, "\n")
 ### Adding and Removing phyloseq Objects
 
 ``` r
+
 # Start with a single phyloseq
 lpq_single <- list_phyloseq(list(fungi = data_fungi))
 cat("Initial number of phyloseq objects:", length(lpq_single), "\n")
@@ -325,6 +335,7 @@ also use this function to change the `same_primer_seq_tech` or
 `same_bioinfo_pipeline` parameters:
 
 ``` r
+
 lpq@phyloseq_list[[1]] <- rarefy_even_depth(lpq@phyloseq_list[[1]])
 lpq_updated <- update_list_phyloseq(lpq)
 
@@ -346,6 +357,7 @@ that are common across all objects. This is particularly useful for:
   samples/taxa
 
 ``` r
+
 # Create a list_phyloseq with nested samples
 set.seed(123)
 lpq_to_filter <- list_phyloseq(list(
@@ -385,6 +397,7 @@ cat("  Same samples now:", lpq_filtered@comparison$same_samples, "\n")
 You can also filter to common taxa:
 
 ``` r
+
 # Filter both samples and taxa
 lpq_filtered_both <- filter_common_lpq(lpq_to_filter,
   filter_samples = TRUE,
@@ -400,6 +413,7 @@ function displays which sample_data variable modalities are shared
 across phyloseq objects:
 
 ``` r
+
 shared_mod_lpq(lpq)
 #> # A tibble: 5 × 3
 #>   Variable     N_shared Shared_modalities                                       
@@ -424,6 +438,7 @@ function creates a beautiful HTML table showing the summary statistics
 with colored bars and indicators:
 
 ``` r
+
 # Basic formattable visualization
 formattable_lpq(lpq)
 
@@ -440,6 +455,7 @@ formattable_lpq(lpq, bar_colors = list(
 For a more complete view including comparison characteristics:
 
 ``` r
+
 # Get both summary and comparison tables
 result <- formattable_lpq_full(lpq)
 result$summary
@@ -454,6 +470,7 @@ function creates UpSet plots or Venn diagrams showing shared taxonomic
 values across phyloseq objects:
 
 ``` r
+
 # Create a list_phyloseq with multiple objects
 lpq_multi <- list_phyloseq(list(
   fungi = data_fungi,
@@ -467,6 +484,7 @@ upset_lpq(lpq_multi, tax_rank = "Family")
 ![](list-phyloseq_files/figure-html/upset_venn-1.png)
 
 ``` r
+
 # Force UpSet plot (better for more than 4 sets or complex intersections)
 data("enterotype", package = "phyloseq")
 lpq_many <- list_phyloseq(list(
@@ -484,6 +502,7 @@ upset_lpq(lpq_many, tax_rank = "Genus", plot_type = "upset")
 The `list_phyloseq` class supports standard R subsetting operations:
 
 ``` r
+
 # Get the number of phyloseq objects
 length(lpq)
 #> [1] 2
@@ -507,6 +526,7 @@ Here’s a complete workflow for comparing the effect of rarefaction on
 your data:
 
 ``` r
+
 # Step 1: Create original and rarefied versions
 set.seed(42)
 original <- data_fungi
@@ -565,6 +585,7 @@ upset_lpq(lpq_common, tax_rank = "Family")
 ![](list-phyloseq_files/figure-html/workflow-1.png)
 
 ``` r
+
 # Step 6: View the formatted summary
 formattable_lpq(lpq_common)
 ```

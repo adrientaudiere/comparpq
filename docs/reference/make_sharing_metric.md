@@ -1,5 +1,7 @@
 # Build a single metric definition for `community_sharing_pq()`
 
+Build a single metric definition for
+[`community_sharing_pq()`](https://adrientaudiere.github.io/comparpq/reference/community_sharing_pq.md).
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Usage
@@ -58,6 +60,11 @@ make_sharing_metric(
 ## Value
 
 A list with the metric definition.
+
+## Details
+
+Build a single metric definition for
+[`community_sharing_pq()`](https://adrientaudiere.github.io/comparpq/reference/community_sharing_pq.md).
 
 ## Author
 

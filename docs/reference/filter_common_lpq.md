@@ -1,5 +1,7 @@
 # Filter phyloseq objects to keep only shared samples and/or taxa
 
+[![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
+
 Filters each phyloseq object in a list_phyloseq to retain only the
 samples and/or taxa that are common across all objects. This is useful
 for making direct comparisons on a common basis.
@@ -48,8 +50,6 @@ filter_common_lpq(
 A new list_phyloseq object with filtered phyloseq objects
 
 ## Details
-
-[![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 This function is particularly useful for:
 

@@ -1,5 +1,6 @@
 # Print correlation estimation statistics for a phyloseq object
 
+Print correlation estimation statistics for a phyloseq object.
 [![lifecycle-experimental](https://img.shields.io/badge/lifecycle-experimental-orange)](https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle)
 
 ## Usage
@@ -22,3 +23,7 @@ print(x, ...)
 ## Value
 
 `x`, invisibly.
+
+## Details
+
+Print correlation estimation statistics for a phyloseq object.
