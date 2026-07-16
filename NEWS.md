@@ -1,5 +1,12 @@
 # comparpq 0.4.0 (Development version)
 
+* `compare_taxo_db()` new function to assemble, in a single call, the congruence metrics, a filtered contingency table, and the `tc_bar()`, `tc_sankey()`, `tc_heatmap()` and `tc_circle()` views comparing two taxonomic-assignment columns of a `phyloseq` object.
+* `count_taxo_congruence()` new function to classify each taxon into a congruence category (`both_equal`, `both_na`, `only_<db1>`, `only_<db2>`, `different`) when comparing two `tax_table` columns, and to count both taxa and sequences (with percentages) per category.
+* `extract_species_epithet()` new function to extract the specific epithet from a `Species` value, handling binomials, underscores and infraspecific parts.
+* `harmonize_sp_names_pq()` new function to rewrite `Species_<db>` columns to their epithet and optionally verify names via `taxinfo::gna_verifier_pq()` (offline epithet-only mode with `verify = FALSE`).
+* `plot_congruence_counts()` new function to draw a stacked barplot of taxonomic-assignment congruence across several ranks, keeping each database's color consistent across ranks.
+* Fix missing `Remotes` field in `DESCRIPTION` so that `pak::pkg_install()` can resolve GitHub-only dependencies (`MiscMetabar`, `phylopq`, `taxinfo`) when installing comparpq as a transitive dependency of pqverse.
+
 # comparpq 0.3.0
 ## Breaking changes
 
