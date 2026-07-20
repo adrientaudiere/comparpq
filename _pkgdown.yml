@@ -102,6 +102,7 @@ reference:
   - tc_metrics_mock_vec
   - count_taxo_congruence
   - compare_taxo_db
+  - build_comparison_grid
 
 - title: "Taxonomic Comparison Plots"
   desc: "Visualization functions for comparing taxonomic assignments"
