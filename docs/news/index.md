@@ -2,6 +2,16 @@
 
 ## comparpq 0.4.0 (Development version)
 
+- [`build_comparison_grid()`](https://adrientaudiere.github.io/comparpq/reference/build_comparison_grid.md)
+  new function to enumerate, across a named list of phyloseq objects (or
+  a `list_phyloseq` object), every pairwise combination of taxonomic
+  databases per rank (`tax_table` columns named `"<Rank>_<Db>"`),
+  producing a long-format grid (one row per phyloseq x rank x database
+  pair) to drive systematic
+  [`compare_taxo_db()`](https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.md)
+  or
+  [`tc_congruence_metrics()`](https://adrientaudiere.github.io/comparpq/reference/tc_congruence_metrics.md)
+  comparisons.
 - [`compare_taxo_db()`](https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.md)
   new function to assemble, in a single call, the congruence metrics, a
   filtered contingency table, and the
@@ -29,6 +39,11 @@
   new function to draw a stacked barplot of taxonomic-assignment
   congruence across several ranks, keeping each database’s color
   consistent across ranks.
+- Fix missing `Remotes` field in `DESCRIPTION` so that
+  [`pak::pkg_install()`](https://pak.r-lib.org/reference/pkg_install.html)
+  can resolve GitHub-only dependencies (`MiscMetabar`, `phylopq`,
+  `taxinfo`) when installing comparpq as a transitive dependency of
+  pqverse.
 
 ## comparpq 0.3.0
 

@@ -155,6 +155,9 @@ Functions for computing accuracy metrics comparing taxonomic assignments
   : Count taxa and sequences by congruence of two taxonomic assignments
 - [`compare_taxo_db()`](https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.md)
   : Compare two taxonomic assignments of a phyloseq in one call
+- [`build_comparison_grid()`](https://adrientaudiere.github.io/comparpq/reference/build_comparison_grid.md)
+  : Build the grid of pairwise database comparisons across phyloseq
+  objects
 
 ## Taxonomic Comparison Plots
 
