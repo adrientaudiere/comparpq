@@ -1,6 +1,6 @@
 skip_on_cran()
 library(MiscMetabar)
-data(data_fungi_mini)
+
 
 small_pq <- function() {
   pq <- prune_samples(sample_names(data_fungi_mini)[1:4], data_fungi_mini)

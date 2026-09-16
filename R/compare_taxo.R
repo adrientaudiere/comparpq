@@ -213,8 +213,16 @@ tc_metrics_mock_vec <- function(
     # F1_score <- 2 * (TPR * PPV) / TPR + PPV
     F1_score <- 2 * TP / (2 * TP + FP + FN)
 
-    MCC <- (TP * TN - FP * FN) /
-      sqrt((TP + FP) * (TP + FN) * (FP + TN) * (TN + FN))
+    # as.numeric(): sum() returns integers and the product of the four
+    # margins overflows (NA) beyond .Machine$integer.max. A zero margin leaves
+    # the MCC undefined: 0 by convention (Chicco & Jurman 2020).
+    mcc_denominator <- as.numeric(TP + FP) * (TP + FN) * (FP + TN) * (TN + FN)
+    if (mcc_denominator == 0) {
+      MCC <- 0
+    } else {
+      MCC <- (as.numeric(TP) * TN - as.numeric(FP) * FN) /
+        sqrt(mcc_denominator)
+    }
 
     ACC <- (TP + TN) / (TP + TN + FP + FN)
 

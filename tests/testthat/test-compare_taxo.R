@@ -98,6 +98,68 @@ test_that("tc_metrics_mock_vec TP/FP/FN are non-negative integers", {
   expect_true(result$TN >= 0)
 })
 
+test_that("tc_metrics_mock_vec MCC does not overflow with large counts", {
+  n <- 300
+  genus <- c(
+    paste0("true_", seq_len(n)),
+    paste0("wrong_", seq_len(n)),
+    rep(NA, n)
+  )
+  taxa <- c(paste0("asv_", seq_len(2 * n)), paste0("fake_", seq_len(n)))
+  otu <- matrix(
+    1L,
+    nrow = 3 * n,
+    ncol = 2,
+    dimnames = list(taxa, c("s1", "s2"))
+  )
+  tax <- matrix(
+    c(rep("Fungi", 3 * n), genus),
+    ncol = 2,
+    dimnames = list(taxa, c("Kingdom", "Genus"))
+  )
+  physeq <- phyloseq(otu_table(otu, taxa_are_rows = TRUE), tax_table(tax))
+  true_values <- c(paste0("true_", seq_len(n)), paste0("missing_", seq_len(n)))
+
+  result <- expect_no_warning(tc_metrics_mock_vec(
+    physeq,
+    taxonomic_rank = "Genus",
+    true_values = true_values,
+    verbose = FALSE
+  ))
+
+  expect_equal(c(result$TP, result$FP, result$FN, result$TN), c(n, n, n, n))
+  expect_equal(result$MCC, 0)
+})
+
+test_that("tc_metrics_mock_vec MCC is 0 when a confusion-matrix margin is 0", {
+  taxa <- c("asv_1", "asv_2", "fake_1", "fake_2")
+  otu <- matrix(1L, nrow = 4, ncol = 1, dimnames = list(taxa, "s1"))
+  tax <- matrix(
+    c(rep("Fungi", 4), NA, NA, "G1", "G2"),
+    ncol = 2,
+    dimnames = list(taxa, c("Kingdom", "Genus"))
+  )
+  physeq <- phyloseq(otu_table(otu, taxa_are_rows = TRUE), tax_table(tax))
+
+  unassigned <- tc_metrics_mock_vec(
+    physeq,
+    taxonomic_rank = "Genus",
+    true_values = c("G1", "G3"),
+    verbose = FALSE
+  )
+  expect_equal(unassigned$TP + unassigned$FP, 0)
+  expect_equal(unassigned$MCC, 0)
+
+  all_controls_assigned <- tc_metrics_mock_vec(
+    physeq,
+    taxonomic_rank = "Kingdom",
+    true_values = "Fungi",
+    verbose = FALSE
+  )
+  expect_equal(all_controls_assigned$TN + all_controls_assigned$FN, 0)
+  expect_equal(all_controls_assigned$MCC, 0)
+})
+
 test_that("tc_metrics_mock_vec rates are between 0 and 1", {
   td <- setup_mock_data()
 

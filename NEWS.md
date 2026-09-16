@@ -6,6 +6,7 @@
 * `extract_species_epithet()` new function to extract the specific epithet from a `Species` value, handling binomials, underscores and infraspecific parts.
 * `harmonize_sp_names_pq()` new function to rewrite `Species_<db>` columns to their epithet and optionally verify names via `taxinfo::gna_verifier_pq()` (offline epithet-only mode with `verify = FALSE`).
 * `plot_congruence_counts()` new function to draw a stacked barplot of taxonomic-assignment congruence across several ranks, keeping each database's color consistent across ranks.
+* `tc_metrics_mock()` computes the MCC in double precision, so it is no longer `NA` (with an integer-overflow warning) when the product of the four confusion-matrix margins exceeds `.Machine$integer.max` (about 216 taxa per margin), and returns an MCC of 0 instead of `NaN` when a margin is 0 (e.g. no taxon assigned at the rank, or every negative control assigned), following Chicco & Jurman (2020).
 * Fix missing `Remotes` field in `DESCRIPTION` so that `pak::pkg_install()` can resolve GitHub-only dependencies (`MiscMetabar`, `phylopq`, `taxinfo`) when installing comparpq as a transitive dependency of pqverse.
 
 # comparpq 0.3.0
