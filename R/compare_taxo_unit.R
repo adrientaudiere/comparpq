@@ -237,7 +237,8 @@ tc_metrics_unit_vec <- function(
 #'    rank, an error on every database;
 #'
 #'  - `ext_correct`: share of the external controls given their own lineage,
-#'    which needs `external_truth`.
+#'    among those with a truth at the rank (NA in `external_truth`: left
+#'    out, as a real unit below its truth depth); needs `external_truth`.
 #'
 #' @inheritParams tc_metrics_unit_vec
 #' @param ranks_df (required) A data.frame of `tax_table` column names: one
@@ -354,7 +355,7 @@ tc_metrics_unit <- function(
         metrics[["ext_correct"]] <- sum(
           is_ext & !is.na(values) & !is.na(expected) & values == expected
         ) /
-          sum(is_ext)
+          sum(is_ext & !is.na(expected))
       }
 
       data.frame(

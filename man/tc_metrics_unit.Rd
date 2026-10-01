@@ -87,7 +87,8 @@ per-rank function cannot compute on its own:
 \item \code{ext_fungi}: share of the external controls named Fungi at the kingdom
 rank, an error on every database;
 \item \code{ext_correct}: share of the external controls given their own lineage,
-which needs \code{external_truth}.
+among those with a truth at the rank (NA in \code{external_truth}: left
+out, as a real unit below its truth depth); needs \code{external_truth}.
 }
 }
 \examples{

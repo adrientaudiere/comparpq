@@ -201,6 +201,29 @@ test_that("tc_metrics_unit adds ext_fungi and ext_correct", {
   ) # external_2 named Viridiplantae
 })
 
+test_that("tc_metrics_unit counts ext_correct over the controls with a truth", {
+  ranks_df <- data.frame(good = c("Kingdom_good", "Genus_good", "Genus_good"))
+  external_truth <- data.frame(
+    taxon = c("external_1", "external_2"),
+    Kingdom = "Viridiplantae",
+    Genus = c(NA, "Eta"),
+    Species = c(NA, "Eta_one")
+  )
+  res <- tc_metrics_unit(
+    unit_mock(),
+    ranks_df = ranks_df,
+    truth = unit_truth(),
+    truth_ranks = ranks,
+    external_truth = external_truth,
+    external_scoring = "aside"
+  )
+  # external_1 has no genus truth: left out, external_2 named Eta.
+  expect_equal(
+    res$values[res$metrics == "ext_correct" & res$tax_level == "Genus"],
+    1
+  )
+})
+
 test_that("tc_metrics_unit can restrict ext_correct to the kingdom", {
   ranks_df <- data.frame(good = c("Kingdom_good", "Genus_good", "Genus_good"))
   external_truth <- data.frame(
