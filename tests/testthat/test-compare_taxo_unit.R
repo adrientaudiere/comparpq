@@ -131,6 +131,47 @@ test_that("a unit is left out of the matrix below its truth", {
   expect_equal(res$TP + res$FP + res$FN + res$TN, 8)
 })
 
+test_that("a foreign unit leaves the matrix and is counted by foreign_named", {
+  truth <- rbind(
+    cbind(unit_truth(), foreign = FALSE),
+    data.frame(
+      taxon = "u_no_truth",
+      Kingdom = NA,
+      Genus = NA,
+      Genus_accepted = NA,
+      Species = NA,
+      truth_depth = NA,
+      foreign = TRUE
+    )
+  )
+  res <- tc_metrics_unit_vec(
+    unit_mock(),
+    taxonomic_rank = "Genus_good",
+    truth = truth,
+    rank = "Genus",
+    truth_ranks = ranks,
+    external_scoring = "matrix",
+    verbose = FALSE
+  )
+  # u_no_truth (Delta) no longer counts as FP.
+  expect_equal(res$FP, 3)
+  expect_equal(res$n_real, 4)
+  expect_equal(res$n_foreign, 1)
+  expect_equal(res$foreign_named, 1)
+  expect_equal(res$TP + res$FP + res$FN + res$TN, 8)
+
+  without <- tc_metrics_unit_vec(
+    unit_mock(),
+    taxonomic_rank = "Genus_good",
+    truth = unit_truth(),
+    rank = "Genus",
+    truth_ranks = ranks,
+    verbose = FALSE
+  )
+  expect_equal(without$n_foreign, 0)
+  expect_true(is.nan(without$foreign_named))
+})
+
 test_that("external controls stay aside when the database can hold them", {
   aside <- tc_metrics_unit_vec(
     unit_mock(),

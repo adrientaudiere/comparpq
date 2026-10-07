@@ -17,6 +17,7 @@
 #' | real, with a truth at this rank | another name | FP |
 #' | real, with a truth at this rank | NA | FN |
 #' | real, without truth | any name / NA | FP / FN |
+#' | real, foreign to the mock (`truth$foreign`) | any name / NA | left out, counted by `foreign_named` |
 #' | real, truth shallower than the rank | — | left out |
 #' | shuffled control (`fake_pattern`) | any name / NA | FP / TN |
 #' | external control (`external_pattern`) | any name / NA | FP / TN when `external_scoring = "matrix"`, left out otherwise |
@@ -36,7 +37,11 @@
 #'   the unit has none). A unit is scored down to `truth_depth` and left out of
 #'   the matrix below it. Units absent from `truth` are scored as units without
 #'   truth. Optional columns `<rank>_accepted` hold a second name that counts
-#'   as correct too (e.g. the accepted name of a synonym).
+#'   as correct too (e.g. the accepted name of a synonym). An optional logical
+#'   column `foreign` marks the units foreign to the expected community (e.g.
+#'   matching no Sanger sequence of the mock, even remotely): they leave the
+#'   matrix at every rank, and `foreign_named` reports the share a method
+#'   names.
 #' @param rank (character, default `taxonomic_rank`) Rank of `truth` this
 #'   column is compared to, when the column is named after the method rather
 #'   than the rank (e.g. `"Genus_dada2__unite"` against `"Genus"`).
@@ -75,7 +80,11 @@
 #'  - misassign_seq: share of the scored real units given a wrong name;
 #'
 #'  - n_real, n_left_out: number of real units scored, and of units left out of
-#'    the matrix at this rank (truth shallower than the rank).
+#'    the matrix at this rank (truth shallower than the rank);
+#'
+#'  - n_foreign, foreign_named: number of real units marked `foreign` in
+#'    `truth`, and the share of them given a value at this rank (NaN when there
+#'    is none).
 #'
 #' @export
 #' @seealso [tc_metrics_unit()], [tc_metrics_mock_vec()]
@@ -159,12 +168,19 @@ tc_metrics_unit_vec <- function(
     rep(NA_character_, length(units))
   }
 
+  # A unit foreign to the expected community has nothing to be right about:
+  # it is left out of the matrix at every rank and counted aside.
+  is_foreign <- if ("foreign" %in% colnames(truth)) {
+    is_real & !is.na(rows) & truth$foreign[rows] %in% TRUE
+  } else {
+    rep(FALSE, length(units))
+  }
   # A unit is left out of the matrix at the ranks below its truth (a tie
   # between strains of the same genus says nothing about the species).
   deeper_than_truth <- is_real &
     !is.na(depth) &
     match(rank, truth_ranks) > match(depth, truth_ranks)
-  scored_real <- is_real & !deeper_than_truth
+  scored_real <- is_real & !deeper_than_truth & !is_foreign
   has_truth <- scored_real & !is.na(expected)
 
   correct <- !is.na(values) &
@@ -216,7 +232,9 @@ tc_metrics_unit_vec <- function(
     "ctrl_assigned_ext" = sum(is_ext & !is.na(values)),
     "misassign_seq" = FP_real / sum(scored_real),
     "n_real" = sum(scored_real),
-    "n_left_out" = sum(deeper_than_truth)
+    "n_left_out" = sum(deeper_than_truth),
+    "n_foreign" = sum(is_foreign),
+    "foreign_named" = sum(is_foreign & !is.na(values)) / sum(is_foreign)
   )
 }
 ################################################################################

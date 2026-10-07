@@ -31,7 +31,11 @@ and a \code{truth_depth} column naming the deepest rank with a truth (\code{NA} 
 the unit has none). A unit is scored down to \code{truth_depth} and left out of
 the matrix below it. Units absent from \code{truth} are scored as units without
 truth. Optional columns \verb{<rank>_accepted} hold a second name that counts
-as correct too (e.g. the accepted name of a synonym).}
+as correct too (e.g. the accepted name of a synonym). An optional logical
+column \code{foreign} marks the units foreign to the expected community (e.g.
+matching no Sanger sequence of the mock, even remotely): they leave the
+matrix at every rank, and \code{foreign_named} reports the share a method
+names.}
 
 \item{rank}{(character, default \code{taxonomic_rank}) Rank of \code{truth} this
 column is compared to, when the column is named after the method rather
@@ -73,7 +77,10 @@ Chicco & Jurman 2020);
 \item ctrl_assigned_fake, ctrl_assigned_ext: number of controls given a value;
 \item misassign_seq: share of the scored real units given a wrong name;
 \item n_real, n_left_out: number of real units scored, and of units left out of
-the matrix at this rank (truth shallower than the rank).
+the matrix at this rank (truth shallower than the rank);
+\item n_foreign, foreign_named: number of real units marked \code{foreign} in
+\code{truth}, and the share of them given a value at this rank (NaN when there
+is none).
 }
 }
 \description{
@@ -92,6 +99,7 @@ units.\tabular{lll}{
    real, with a truth at this rank \tab another name \tab FP \cr
    real, with a truth at this rank \tab NA \tab FN \cr
    real, without truth \tab any name / NA \tab FP / FN \cr
+   real, foreign to the mock (\code{truth$foreign}) \tab any name / NA \tab left out, counted by \code{foreign_named} \cr
    real, truth shallower than the rank \tab — \tab left out \cr
    shuffled control (\code{fake_pattern}) \tab any name / NA \tab FP / TN \cr
    external control (\code{external_pattern}) \tab any name / NA \tab FP / TN when \code{external_scoring = "matrix"}, left out otherwise \cr
