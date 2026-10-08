@@ -270,3 +270,69 @@ test_that("simple_venn_pq scale_text works", {
   )
   expect_s3_class(p, "ggplot")
 })
+
+venn_text_labels <- function(p) {
+  vapply(
+    p$layers,
+    \(l) {
+      if (inherits(l$geom, "GeomText")) {
+        as.character(l$aes_params$label %||% "")
+      } else {
+        ""
+      }
+    },
+    character(1),
+    USE.NAMES = FALSE
+  )
+}
+
+test_that("simple_venn_pq orders groups and labels by factor levels", {
+  d <- data_fungi_mini
+  d@sam_data$Height <- factor(
+    d@sam_data$Height,
+    levels = c("Middle", "Low", "High")
+  )
+  n <- table(d@sam_data$Height)[c("Middle", "Low", "High")]
+
+  txt <- venn_text_labels(
+    simple_venn_pq(d, "Height", taxonomic_rank = "Genus", verbose = FALSE)
+  )
+  expect_equal(
+    txt[txt %in% c("Middle", "Low", "High")],
+    c("Middle", "Low", "High")
+  )
+  expect_equal(txt[grepl("^\\(n=", txt)], paste0("(n=", n, ")"))
+
+  txt_lab <- venn_text_labels(
+    simple_venn_pq(
+      d,
+      "Height",
+      taxonomic_rank = "Genus",
+      labels = c("M", "L", "H"),
+      verbose = FALSE
+    )
+  )
+  expect_equal(txt_lab[txt_lab %in% c("M", "L", "H")], c("M", "L", "H"))
+  expect_equal(txt_lab[grepl("^\\(n=", txt_lab)], paste0("(n=", n, ")"))
+})
+
+test_that("simple_venn_pq widens the plot area for long group names", {
+  x_range <- function(labels) {
+    p <- simple_venn_pq(
+      data_fungi_mini,
+      "Height",
+      taxonomic_rank = "Genus",
+      labels = labels,
+      verbose = FALSE
+    )
+    diff(ggplot2::ggplot_build(p)$layout$panel_params[[1]]$x.range)
+  }
+  expect_gt(
+    x_range(c(
+      "A very long group name",
+      "Another long name",
+      "Third long name"
+    )),
+    x_range(c("A", "B", "C"))
+  )
+})

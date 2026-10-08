@@ -81,10 +81,10 @@ utils::globalVariables(c("x", "y"))
 #'   with each taxon's name as its value. Ignored when
 #'   `taxonomic_rank` is `NULL`.
 #' @param labels (character or NULL, default NULL) Custom labels for
-#'   the groups, in the same order as the levels of `fact` (or the
-#'   list_phyloseq names). Must have the same length as the number of
-#'   groups. When `NULL`, the original level names are used. Not that
-#'   the order is the one of the levels in `fact`.
+#'   the groups, in the group order: the levels of `fact` when it is a
+#'   factor, otherwise the order of first appearance in `sample_data`
+#'   (or the list_phyloseq names). Must have the same length as the
+#'   number of groups. When `NULL`, the original level names are used.
 #' @param match_by (character, default `"refseq"`) Passed to
 #'   [merge_lpq()] when `physeq` is a list_phyloseq. One of
 #'   `"refseq"` or `"names"`.
@@ -281,7 +281,16 @@ simple_venn_pq <- function(
     }
   }
 
+  # Group order: factor levels when `fact` is a factor, otherwise order of
+  # first appearance in sam_data. It drives positions, colors and `labels`.
   levels_fact <- unique(groups)
+  if (is.factor(sam[[fact]])) {
+    lev <- levels(sam[[fact]])
+    levels_fact <- c(
+      intersect(lev, levels_fact),
+      setdiff(levels_fact, lev)
+    )
+  }
   n_groups <- length(levels_fact)
 
   if (n_groups < 2) {
@@ -573,12 +582,33 @@ simple_venn_pq <- function(
     },
     character(1)
   )
+  # Long group names. Names on the sides of the diagram (|x| >= 1.1) are
+  # pushed outward so that their inner edge stays where a short name ends,
+  # instead of running over the shapes. Then the plotting area is widened so
+  # that every name stays inside the figure: with clip = "off", a name wider
+  # than the margin runs over the frame, or over the next panel once
+  # combined. Half-widths, in data units, are estimated from the number of
+  # characters and `label_size`.
   label_pos <- venn_label_positions(n_groups)
+  half_width <- nchar(group_labels) * label_size * venn_char_width
+  short_half_width <- 4 * label_size * venn_char_width
+  label_x <- vapply(
+    seq_len(n_groups),
+    function(i) {
+      x <- label_pos[[i]][1]
+      if (abs(x) >= 1.1) {
+        x + sign(x) * max(0, half_width[i] - short_half_width)
+      } else {
+        x
+      }
+    },
+    numeric(1)
+  )
   for (i in seq_len(n_groups)) {
     p <- p +
       ggplot2::annotate(
         "text",
-        x = label_pos[[i]][1],
+        x = label_x[i],
         y = label_pos[[i]][2],
         label = group_labels[i],
         size = label_size,
@@ -589,7 +619,7 @@ simple_venn_pq <- function(
       p <- p +
         ggplot2::annotate(
           "text",
-          x = label_pos[[i]][1],
+          x = label_x[i],
           y = label_pos[[i]][2] - 0.22,
           label = sample_labels[i],
           size = label_size * 0.7,
@@ -597,6 +627,8 @@ simple_venn_pq <- function(
         )
     }
   }
+  p <- p +
+    ggplot2::expand_limits(x = c(label_x - half_width, label_x + half_width))
 
   # NA count annotation
   if (show_na_count && !is.null(taxonomic_rank)) {
@@ -879,6 +911,12 @@ venn_centroids <- function(shapes, n_sets, n_grid = 200) {
   centroids
 }
 
+
+#' Half-width of one character of a group name, in data units per unit of
+#' `label_size`. Calibrated on a 4-group Venn about 10 cm high: a larger
+#' figure only leaves a wider margin, a much smaller one may still clip.
+#' @noRd
+venn_char_width <- 0.016
 
 #' Fixed label positions for group names (outside the shapes)
 #' @param n Integer, number of sets.
