@@ -90,10 +90,10 @@ labels that are zero (or \code{"0 (0)"} when \code{count_type = "rank_taxa"}).}
 Defaults to a 4-color qualitative palette.}
 
 \item{labels}{(character or NULL, default NULL) Custom labels for
-the groups, in the same order as the levels of \code{fact} (or the
-list_phyloseq names). Must have the same length as the number of
-groups. When \code{NULL}, the original level names are used. Not that
-the order is the one of the levels in \code{fact}.}
+the groups, in the group order: the levels of \code{fact} when it is a
+factor, otherwise the order of first appearance in \code{sample_data}
+(or the list_phyloseq names). Must have the same length as the
+number of groups. When \code{NULL}, the original level names are used.}
 
 \item{show_na_count}{(logical, default FALSE) If \code{TRUE}, display
 the number of taxa with \code{NA} at the chosen \code{taxonomic_rank} in
