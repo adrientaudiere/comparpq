@@ -12,7 +12,6 @@ for microbiome data analysis.
 You can install the released version of comparpq from CRAN with:
 
 ``` r
-
 install.packages("comparpq")
 ```
 
@@ -20,7 +19,6 @@ You can install the development version of comparpq from
 [GitHub](https://github.com/adrientaudiere/comparpq) with:
 
 ``` r
-
 # install.packages("devtools")
 devtools::install_github("adrientaudiere/comparpq")
 ```
@@ -65,7 +63,6 @@ devtools::install_github("adrientaudiere/comparpq")
 ## Quick Start
 
 ``` r
-
 library(comparpq)
 
 # Load example data
@@ -107,7 +104,6 @@ of high-throughput microbiome census data
 If you use comparpq in your research, please cite:
 
 ``` r
-
 citation("comparpq")
 ```
 
@@ -279,6 +275,10 @@ Functions for computing accuracy metrics comparing taxonomic assignments
 - [`tc_metrics_mock_vec()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_mock_vec.md)
   : Compute accuracy metrics of taxonomic assignation using a mock
   (known) community for one rank
+- [`tc_metrics_unit()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_unit.md)
+  : Accuracy metrics of several assignations against a per-unit truth
+- [`tc_metrics_unit_vec()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_unit_vec.md)
+  : Accuracy metrics of a taxonomic assignation against a per-unit truth
 - [`count_taxo_congruence()`](https://adrientaudiere.github.io/comparpq/reference/count_taxo_congruence.md)
   : Count taxa and sequences by congruence of two taxonomic assignments
 - [`compare_taxo_db()`](https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.md)

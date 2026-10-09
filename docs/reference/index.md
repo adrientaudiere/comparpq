@@ -151,6 +151,10 @@ Functions for computing accuracy metrics comparing taxonomic assignments
 - [`tc_metrics_mock_vec()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_mock_vec.md)
   : Compute accuracy metrics of taxonomic assignation using a mock
   (known) community for one rank
+- [`tc_metrics_unit()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_unit.md)
+  : Accuracy metrics of several assignations against a per-unit truth
+- [`tc_metrics_unit_vec()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_unit_vec.md)
+  : Accuracy metrics of a taxonomic assignation against a per-unit truth
 - [`count_taxo_congruence()`](https://adrientaudiere.github.io/comparpq/reference/count_taxo_congruence.md)
   : Count taxa and sequences by congruence of two taxonomic assignments
 - [`compare_taxo_db()`](https://adrientaudiere.github.io/comparpq/reference/compare_taxo_db.md)

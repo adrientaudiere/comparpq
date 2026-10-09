@@ -75,14 +75,14 @@ and `comparison`.
 The combination of `same_primer_seq_tech` and `same_bioinfo_pipeline`
 along with detected sample overlap determines the comparison type:
 
-|  |  |  |  |
-|----|----|----|----|
-| same_samples | same_primer_seq_tech | same_bioinfo_pipeline | Type |
-| TRUE | TRUE | TRUE | REPRODUCIBILITY |
-| TRUE | TRUE | FALSE | ROBUSTNESS |
-| TRUE | FALSE | \- | REPLICABILITY |
-| nested | \- | \- | NESTED_ROBUSTNESS |
-| FALSE | \- | \- | EXPLORATION or SEPARATE_ANALYSIS |
+|              |                      |                       |                                  |
+|--------------|----------------------|-----------------------|----------------------------------|
+| same_samples | same_primer_seq_tech | same_bioinfo_pipeline | Type                             |
+| TRUE         | TRUE                 | TRUE                  | REPRODUCIBILITY                  |
+| TRUE         | TRUE                 | FALSE                 | ROBUSTNESS                       |
+| TRUE         | FALSE                | \-                    | REPLICABILITY                    |
+| nested       | \-                   | \-                    | NESTED_ROBUSTNESS                |
+| FALSE        | \-                   | \-                    | EXPLORATION or SEPARATE_ANALYSIS |
 
 ## Slots
 

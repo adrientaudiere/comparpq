@@ -73,7 +73,6 @@ Adrien Taudière
 ## Examples
 
 ``` r
-
 tc_bar(subset_taxa_pq(Glom_otu, taxa_sums(Glom_otu) > 5000), rank_1 = 5, rank_2 = 13, color_rank = 3)
 #> Cleaning suppress 0 taxa (  ) and 1 sample(s) ( samp_Blanc-PCR-racines ).
 #> Number of non-matching ASV 0

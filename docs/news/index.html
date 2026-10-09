@@ -43,6 +43,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="comparpq-040-development-version">comparpq 0.4.0 (Development version)<a class="anchor" aria-label="anchor" href="#comparpq-040-development-version"></a></h2>
 <ul><li>
+<code><a href="../reference/tc_metrics_unit.html">tc_metrics_unit()</a></code> and <code><a href="../reference/tc_metrics_unit_vec.html">tc_metrics_unit_vec()</a></code> new functions scoring a taxonomic assignation against a <strong>per-unit truth</strong> (one expected lineage per ASV or OTU) as Hleap et al. 2021 do in <code>optimize_n_score.py::score()</code>: every scored unit falls in exactly one cell of the confusion matrix, so TP + FP + FN + TN is the number of scored units. [tc_metrics_mock()] keeps its set-membership scoring for mocks that only come with a list of expected taxa. The external-control rate <code>ext_correct</code> is counted over the controls that have a truth at the rank. An optional logical <code>foreign</code> column of the truth marks the units foreign to the expected community: they leave the matrix at every rank, and <code>n_foreign</code> and <code>foreign_named</code> report how many there are and the share a method names.</li>
+<li>
 <code><a href="../reference/build_comparison_grid.html">build_comparison_grid()</a></code> new function to enumerate, across a named list of phyloseq objects (or a <code>list_phyloseq</code> object), every pairwise combination of taxonomic databases per rank (<code>tax_table</code> columns named <code>"&lt;Rank&gt;_&lt;Db&gt;"</code>), producing a long-format grid (one row per phyloseq x rank x database pair) to drive systematic <code><a href="../reference/compare_taxo_db.html">compare_taxo_db()</a></code> or <code><a href="../reference/tc_congruence_metrics.html">tc_congruence_metrics()</a></code> comparisons.</li>
 <li>
 <code><a href="../reference/compare_taxo_db.html">compare_taxo_db()</a></code> new function to assemble, in a single call, the congruence metrics, a filtered contingency table, and the <code><a href="../reference/tc_bar.html">tc_bar()</a></code>, <code><a href="../reference/tc_sankey.html">tc_sankey()</a></code>, <code><a href="../reference/tc_heatmap.html">tc_heatmap()</a></code> and <code><a href="../reference/tc_circle.html">tc_circle()</a></code> views comparing two taxonomic-assignment columns of a <code>phyloseq</code> object.</li>
@@ -54,6 +56,12 @@
 <code><a href="../reference/harmonize_sp_names_pq.html">harmonize_sp_names_pq()</a></code> new function to rewrite <code>Species_&lt;db&gt;</code> columns to their epithet and optionally verify names via <code><a href="https://adrientaudiere.github.io/taxinfo/reference/gna_verifier_pq.html" class="external-link">taxinfo::gna_verifier_pq()</a></code> (offline epithet-only mode with <code>verify = FALSE</code>).</li>
 <li>
 <code><a href="../reference/plot_congruence_counts.html">plot_congruence_counts()</a></code> new function to draw a stacked barplot of taxonomic-assignment congruence across several ranks, keeping each database’s color consistent across ranks.</li>
+<li>
+<code><a href="../reference/simple_venn_pq.html">simple_venn_pq()</a></code> now orders the groups following the levels of <code>fact</code> when it is a factor, as its documentation states, instead of their order of first appearance in <code>sam_data</code>. The custom <code>labels</code> are therefore matched to the right groups: before, a label could be printed on the ellipse and sample count of another group. Character columns keep the order of first appearance.</li>
+<li>
+<code><a href="../reference/simple_venn_pq.html">simple_venn_pq()</a></code> keeps long group names inside the figure: names on the sides of the diagram are pushed outward instead of running over the ellipses, and the plotting area is widened according to the length of the names, so they no longer cross the panel frame (or the next panel when <code>combine = TRUE</code>).</li>
+<li>
+<code><a href="../reference/tc_metrics_mock.html">tc_metrics_mock()</a></code> computes the MCC in double precision, so it is no longer <code>NA</code> (with an integer-overflow warning) when the product of the four confusion-matrix margins exceeds <code>.Machine$integer.max</code> (about 216 taxa per margin), and returns an MCC of 0 instead of <code>NaN</code> when a margin is 0 (e.g. no taxon assigned at the rank, or every negative control assigned), following Chicco &amp; Jurman (2020).</li>
 <li>Fix missing <code>Remotes</code> field in <code>DESCRIPTION</code> so that <code><a href="https://pak.r-lib.org/reference/pkg_install.html" class="external-link">pak::pkg_install()</a></code> can resolve GitHub-only dependencies (<code>MiscMetabar</code>, <code>phylopq</code>, <code>taxinfo</code>) when installing comparpq as a transitive dependency of pqverse.</li>
 </ul></div>
     <div class="section level2">
@@ -127,7 +135,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

@@ -2,6 +2,20 @@
 
 ## comparpq 0.4.0 (Development version)
 
+- [`tc_metrics_unit()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_unit.md)
+  and
+  [`tc_metrics_unit_vec()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_unit_vec.md)
+  new functions scoring a taxonomic assignation against a **per-unit
+  truth** (one expected lineage per ASV or OTU) as Hleap et al. 2021 do
+  in `optimize_n_score.py::score()`: every scored unit falls in exactly
+  one cell of the confusion matrix, so TP + FP + FN + TN is the number
+  of scored units. \[tc_metrics_mock()\] keeps its set-membership
+  scoring for mocks that only come with a list of expected taxa. The
+  external-control rate `ext_correct` is counted over the controls that
+  have a truth at the rank. An optional logical `foreign` column of the
+  truth marks the units foreign to the expected community: they leave
+  the matrix at every rank, and `n_foreign` and `foreign_named` report
+  how many there are and the share a method names.
 - [`build_comparison_grid()`](https://adrientaudiere.github.io/comparpq/reference/build_comparison_grid.md)
   new function to enumerate, across a named list of phyloseq objects (or
   a `list_phyloseq` object), every pairwise combination of taxonomic
@@ -39,6 +53,26 @@
   new function to draw a stacked barplot of taxonomic-assignment
   congruence across several ranks, keeping each database’s color
   consistent across ranks.
+- [`simple_venn_pq()`](https://adrientaudiere.github.io/comparpq/reference/simple_venn_pq.md)
+  now orders the groups following the levels of `fact` when it is a
+  factor, as its documentation states, instead of their order of first
+  appearance in `sam_data`. The custom `labels` are therefore matched to
+  the right groups: before, a label could be printed on the ellipse and
+  sample count of another group. Character columns keep the order of
+  first appearance.
+- [`simple_venn_pq()`](https://adrientaudiere.github.io/comparpq/reference/simple_venn_pq.md)
+  keeps long group names inside the figure: names on the sides of the
+  diagram are pushed outward instead of running over the ellipses, and
+  the plotting area is widened according to the length of the names, so
+  they no longer cross the panel frame (or the next panel when
+  `combine = TRUE`).
+- [`tc_metrics_mock()`](https://adrientaudiere.github.io/comparpq/reference/tc_metrics_mock.md)
+  computes the MCC in double precision, so it is no longer `NA` (with an
+  integer-overflow warning) when the product of the four
+  confusion-matrix margins exceeds `.Machine$integer.max` (about 216
+  taxa per margin), and returns an MCC of 0 instead of `NaN` when a
+  margin is 0 (e.g. no taxon assigned at the rank, or every negative
+  control assigned), following Chicco & Jurman (2020).
 - Fix missing `Remotes` field in `DESCRIPTION` so that
   [`pak::pkg_install()`](https://pak.r-lib.org/reference/pkg_install.html)
   can resolve GitHub-only dependencies (`MiscMetabar`, `phylopq`,

@@ -135,10 +135,10 @@ simple_venn_pq(
 - labels:
 
   (character or NULL, default NULL) Custom labels for the groups, in the
-  same order as the levels of `fact` (or the list_phyloseq names). Must
-  have the same length as the number of groups. When `NULL`, the
-  original level names are used. Not that the order is the one of the
-  levels in `fact`.
+  group order: the levels of `fact` when it is a factor, otherwise the
+  order of first appearance in `sample_data` (or the list_phyloseq
+  names). Must have the same length as the number of groups. When
+  `NULL`, the original level names are used.
 
 - show_na_count:
 
