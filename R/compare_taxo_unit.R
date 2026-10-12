@@ -16,7 +16,8 @@
 #' | real, with a truth at this rank | its own truth | TP |
 #' | real, with a truth at this rank | another name | FP |
 #' | real, with a truth at this rank | NA | FN |
-#' | real, without truth | any name / NA | FP / FN |
+#' | real, without truth, `no_truth = "matrix"` | any name / NA | FP / FN |
+#' | real, without truth, `no_truth = "aside"` | any name / NA | left out, counted by `no_truth_named` |
 #' | real, foreign to the mock (`truth$foreign`) | any name / NA | left out, counted by `foreign_named` |
 #' | real, truth shallower than the rank | — | left out |
 #' | shuffled control (`fake_pattern`) | any name / NA | FP / TN |
@@ -42,6 +43,14 @@
 #'   matching no Sanger sequence of the mock, even remotely): they leave the
 #'   matrix at every rank, and `foreign_named` reports the share a method
 #'   names.
+#' @param no_truth ("matrix" or "aside") Whether the real units without truth
+#'   (`truth_depth` NA, or absent from `truth`, and not `foreign`) enter the
+#'   confusion matrix. "matrix" scores them as Hleap et al. (2021) do: FP when
+#'   named, FN when left NA, an error whatever the method does. "aside" leaves
+#'   them out at every rank, as the foreign units, when the question is the
+#'   assignment step only (e.g. sequencing errors or variants missing from the
+#'   reference sequences of the mock); `no_truth_named` reports the share
+#'   named under both rules.
 #' @param rank (character, default `taxonomic_rank`) Rank of `truth` this
 #'   column is compared to, when the column is named after the method rather
 #'   than the rank (e.g. `"Genus_dada2__unite"` against `"Genus"`).
@@ -84,7 +93,11 @@
 #'
 #'  - n_foreign, foreign_named: number of real units marked `foreign` in
 #'    `truth`, and the share of them given a value at this rank (NaN when there
-#'    is none).
+#'    is none);
+#'
+#'  - n_no_truth, no_truth_named: number of real units without truth (neither
+#'    foreign nor with a `truth_depth`), and the share of them given a value
+#'    at this rank (NaN when there is none), whatever `no_truth`.
 #'
 #' @export
 #' @seealso [tc_metrics_unit()], [tc_metrics_mock_vec()]
@@ -119,12 +132,14 @@ tc_metrics_unit_vec <- function(
   ),
   accepted_suffix = "_accepted",
   external_scoring = c("matrix", "aside"),
+  no_truth = c("matrix", "aside"),
   fake_taxa = TRUE,
   fake_pattern = "^fake_",
   external_pattern = "^external_",
   verbose = TRUE
 ) {
   external_scoring <- match.arg(external_scoring)
+  no_truth <- match.arg(no_truth)
   if (!rank %in% truth_ranks) {
     stop("`rank` (", rank, ") is not one of `truth_ranks`.")
   }
@@ -180,7 +195,13 @@ tc_metrics_unit_vec <- function(
   deeper_than_truth <- is_real &
     !is.na(depth) &
     match(rank, truth_ranks) > match(depth, truth_ranks)
-  scored_real <- is_real & !deeper_than_truth & !is_foreign
+  # A unit of the mock with no truth (no member matched closely enough) has no
+  # right answer either: kept in the matrix as an error, or left out.
+  is_no_truth <- is_real & !is_foreign & (is.na(rows) | is.na(depth))
+  scored_real <- is_real &
+    !deeper_than_truth &
+    !is_foreign &
+    !(no_truth == "aside" & is_no_truth)
   has_truth <- scored_real & !is.na(expected)
 
   correct <- !is.na(values) &
@@ -234,7 +255,9 @@ tc_metrics_unit_vec <- function(
     "n_real" = sum(scored_real),
     "n_left_out" = sum(deeper_than_truth),
     "n_foreign" = sum(is_foreign),
-    "foreign_named" = sum(is_foreign & !is.na(values)) / sum(is_foreign)
+    "foreign_named" = sum(is_foreign & !is.na(values)) / sum(is_foreign),
+    "n_no_truth" = sum(is_no_truth),
+    "no_truth_named" = sum(is_no_truth & !is.na(values)) / sum(is_no_truth)
   )
 }
 ################################################################################
@@ -313,6 +336,7 @@ tc_metrics_unit <- function(
   external_correct_ranks = NULL,
   accepted_suffix = "_accepted",
   external_scoring = c("matrix", "aside"),
+  no_truth = c("matrix", "aside"),
   fake_taxa = TRUE,
   fake_pattern = "^fake_",
   external_pattern = "^external_",
@@ -321,6 +345,7 @@ tc_metrics_unit <- function(
   verbose = FALSE
 ) {
   external_scoring <- match.arg(external_scoring)
+  no_truth <- match.arg(no_truth)
   if (nrow(ranks_df) != length(truth_ranks)) {
     stop(
       "`ranks_df` must have one row per rank of `truth_ranks` (",
@@ -348,6 +373,7 @@ tc_metrics_unit <- function(
         truth_ranks = truth_ranks,
         accepted_suffix = accepted_suffix,
         external_scoring = external_scoring,
+        no_truth = no_truth,
         fake_taxa = fake_taxa,
         fake_pattern = fake_pattern,
         external_pattern = external_pattern,

@@ -12,6 +12,7 @@ tc_metrics_unit_vec(
   truth_ranks = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species"),
   accepted_suffix = "_accepted",
   external_scoring = c("matrix", "aside"),
+  no_truth = c("matrix", "aside"),
   fake_taxa = TRUE,
   fake_pattern = "^fake_",
   external_pattern = "^external_",
@@ -52,6 +53,15 @@ enter the confusion matrix. They should when the reference database cannot
 hold them (a Fungi-only database), and stay aside when it can, where
 naming them is a correct answer rather than an error.}
 
+\item{no_truth}{("matrix" or "aside") Whether the real units without truth
+(\code{truth_depth} NA, or absent from \code{truth}, and not \code{foreign}) enter the
+confusion matrix. "matrix" scores them as Hleap et al. (2021) do: FP when
+named, FN when left NA, an error whatever the method does. "aside" leaves
+them out at every rank, as the foreign units, when the question is the
+assignment step only (e.g. sequencing errors or variants missing from the
+reference sequences of the mock); \code{no_truth_named} reports the share
+named under both rules.}
+
 \item{fake_taxa}{(logical, default TRUE) If TRUE, the controls are
 identified by \code{fake_pattern} and \code{external_pattern} and scored as above.
 If FALSE, every unit is treated as a real one.}
@@ -80,7 +90,10 @@ Chicco & Jurman 2020);
 the matrix at this rank (truth shallower than the rank);
 \item n_foreign, foreign_named: number of real units marked \code{foreign} in
 \code{truth}, and the share of them given a value at this rank (NaN when there
-is none).
+is none);
+\item n_no_truth, no_truth_named: number of real units without truth (neither
+foreign nor with a \code{truth_depth}), and the share of them given a value
+at this rank (NaN when there is none), whatever \code{no_truth}.
 }
 }
 \description{
@@ -98,7 +111,8 @@ units.\tabular{lll}{
    real, with a truth at this rank \tab its own truth \tab TP \cr
    real, with a truth at this rank \tab another name \tab FP \cr
    real, with a truth at this rank \tab NA \tab FN \cr
-   real, without truth \tab any name / NA \tab FP / FN \cr
+   real, without truth, \code{no_truth = "matrix"} \tab any name / NA \tab FP / FN \cr
+   real, without truth, \code{no_truth = "aside"} \tab any name / NA \tab left out, counted by \code{no_truth_named} \cr
    real, foreign to the mock (\code{truth$foreign}) \tab any name / NA \tab left out, counted by \code{foreign_named} \cr
    real, truth shallower than the rank \tab — \tab left out \cr
    shuffled control (\code{fake_pattern}) \tab any name / NA \tab FP / TN \cr

@@ -13,6 +13,7 @@ tc_metrics_unit(
   external_correct_ranks = NULL,
   accepted_suffix = "_accepted",
   external_scoring = c("matrix", "aside"),
+  no_truth = c("matrix", "aside"),
   fake_taxa = TRUE,
   fake_pattern = "^fake_",
   external_pattern = "^external_",
@@ -50,6 +51,15 @@ optional second-name columns of \code{truth}.}
 enter the confusion matrix. They should when the reference database cannot
 hold them (a Fungi-only database), and stay aside when it can, where
 naming them is a correct answer rather than an error.}
+
+\item{no_truth}{("matrix" or "aside") Whether the real units without truth
+(\code{truth_depth} NA, or absent from \code{truth}, and not \code{foreign}) enter the
+confusion matrix. "matrix" scores them as Hleap et al. (2021) do: FP when
+named, FN when left NA, an error whatever the method does. "aside" leaves
+them out at every rank, as the foreign units, when the question is the
+assignment step only (e.g. sequencing errors or variants missing from the
+reference sequences of the mock); \code{no_truth_named} reports the share
+named under both rules.}
 
 \item{fake_taxa}{(logical, default TRUE) If TRUE, the controls are
 identified by \code{fake_pattern} and \code{external_pattern} and scored as above.

@@ -172,6 +172,73 @@ test_that("a foreign unit leaves the matrix and is counted by foreign_named", {
   expect_true(is.nan(without$foreign_named))
 })
 
+test_that("no_truth = 'aside' leaves the units without truth out of the matrix", {
+  matrix_rule <- tc_metrics_unit_vec(
+    unit_mock(),
+    taxonomic_rank = "Genus_good",
+    truth = unit_truth(),
+    rank = "Genus",
+    truth_ranks = ranks,
+    external_scoring = "matrix",
+    verbose = FALSE
+  )
+  aside <- tc_metrics_unit_vec(
+    unit_mock(),
+    taxonomic_rank = "Genus_good",
+    truth = unit_truth(),
+    rank = "Genus",
+    truth_ranks = ranks,
+    external_scoring = "matrix",
+    no_truth = "aside",
+    verbose = FALSE
+  )
+  # u_no_truth (absent from truth, named Delta) is the only unit without truth.
+  expect_equal(matrix_rule$n_no_truth, 1)
+  expect_equal(matrix_rule$no_truth_named, 1)
+  expect_equal(aside$n_no_truth, 1)
+  expect_equal(aside$no_truth_named, 1)
+  expect_equal(aside$FP, matrix_rule$FP - 1)
+  expect_equal(aside$n_real, 4)
+  expect_equal(aside$TP + aside$FP + aside$FN + aside$TN, 8)
+
+  # A foreign unit is not counted as a unit without truth.
+  truth <- rbind(
+    cbind(unit_truth(), foreign = FALSE),
+    data.frame(
+      taxon = "u_no_truth",
+      Kingdom = NA,
+      Genus = NA,
+      Genus_accepted = NA,
+      Species = NA,
+      truth_depth = NA,
+      foreign = TRUE
+    )
+  )
+  foreign <- tc_metrics_unit_vec(
+    unit_mock(),
+    taxonomic_rank = "Genus_good",
+    truth = truth,
+    rank = "Genus",
+    truth_ranks = ranks,
+    no_truth = "aside",
+    verbose = FALSE
+  )
+  expect_equal(foreign$n_no_truth, 0)
+  expect_true(is.nan(foreign$no_truth_named))
+
+  res <- tc_metrics_unit(
+    unit_mock(),
+    ranks_df = data.frame(good = c("Kingdom_good", "Genus_good", "Genus_good")),
+    truth = unit_truth(),
+    truth_ranks = ranks,
+    no_truth = "aside"
+  )
+  expect_equal(
+    res$values[res$metrics == "FP" & res$tax_level == "Genus"],
+    aside$FP
+  )
+})
+
 test_that("external controls stay aside when the database can hold them", {
   aside <- tc_metrics_unit_vec(
     unit_mock(),
