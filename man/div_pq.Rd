@@ -2,11 +2,11 @@
 % Please edit documentation in R/diff_pq.R
 \name{div_pq}
 \alias{div_pq}
-\title{Diversity indices per sample, optionally grouped by a modality}
+\title{Diversity indices per sample, optionally grouped by a factor}
 \usage{
 div_pq(
   physeq,
-  modality = NULL,
+  fact = NULL,
   indices = "shannon",
   q = NULL,
   scales = lifecycle::deprecated(),
@@ -14,16 +14,17 @@ div_pq(
   funs = list(mean = mean, sd = sd),
   significance = FALSE,
   test = c("kruskal", "wilcox"),
-  p_alpha = 0.05
+  p_alpha = 0.05,
+  modality = lifecycle::deprecated()
 )
 }
 \arguments{
 \item{physeq}{(phyloseq, required) A phyloseq object.}
 
-\item{modality}{(character or NULL, default NULL) Name of a column in
+\item{fact}{(character or NULL, default NULL) Name of a column in
 \code{sample_data(physeq)} used to split samples into groups. \code{NA} values
 are treated as a separate group. When \code{NULL}, indices are computed for
-the whole dataset without grouping.}
+the whole dataset without grouping. Formerly \code{modality}.}
 
 \item{indices}{(character, default \code{"shannon"}) One or more index names.
 \code{"shannon"} and \code{"simpson"} are computed via divent; other names are
@@ -35,17 +36,17 @@ skipped. Formerly \code{scales}.}
 
 \item{scales}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use \code{q} instead.}
 
-\item{aggregate}{(logical, default FALSE) If \code{TRUE} and \code{modality} is
+\item{aggregate}{(logical, default FALSE) If \code{TRUE} and \code{fact} is
 not \code{NULL}, summarise per-group results using \code{funs}.}
 
 \item{funs}{(named list, default \code{list(mean = mean, sd = sd)}) Summary
 functions applied when \code{aggregate = TRUE}. Passed to \code{\link[dplyr:across]{dplyr::across()}}.}
 
 \item{significance}{(logical, default FALSE) If \code{TRUE}, \code{aggregate} is
-\code{TRUE}, and \code{modality} has at least 2 levels, run a significance test
+\code{TRUE}, and \code{fact} has at least 2 levels, run a significance test
 for each index. P-values are appended as extra columns named
 \verb{\{index\}_(kruskal.p)} (or \verb{\{index\}_(wilcox.p)} when
-\code{test = "wilcox"}). When \code{modality} has more than 2 levels, Tukey
+\code{test = "wilcox"}). When \code{fact} has more than 2 levels, Tukey
 HSD pairwise comparisons are also run (via \code{\link[stats:TukeyHSD]{stats::TukeyHSD()}} on
 \code{\link[stats:aov]{stats::aov()}}) and compact letter display columns
 \verb{\{index\}_(tukey.letters)} are appended using the
@@ -60,12 +61,14 @@ HSD pairwise comparisons are also run (via \code{\link[stats:TukeyHSD]{stats::Tu
 
 \item{p_alpha}{(numeric, default 0.05) Significance threshold used for
 the compact letter display when \code{significance = TRUE} and
-\code{modality} has more than 2 levels.}
+\code{fact} has more than 2 levels.}
+
+\item{modality}{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}} Use \code{fact} instead.}
 }
 \value{
 A data frame with one row per sample. Columns correspond to the
-requested \code{indices} and/or Hill / Rényi scales. When \code{modality} is
-supplied, an additional column named after \code{modality} identifies the
+requested \code{indices} and/or Hill / Rényi scales. When \code{fact} is
+supplied, an additional column named after \code{fact} identifies the
 group (possibly \code{NA}). When \code{aggregate = TRUE} rows are collapsed to
 one per group with summary statistics. When \code{significance = TRUE},
 additional columns \verb{\{index\}_(test.p)} contain the overall p-value and,
@@ -76,15 +79,15 @@ letter display from Tukey HSD pairwise comparisons.
 Computes alpha-diversity indices (via \code{\link[divent:ent_shannon]{divent::ent_shannon()}},
 \code{\link[divent:ent_simpson]{divent::ent_simpson()}} or \code{\link[vegan:diversity]{vegan::diversity()}} for other indices) and/or
 Hill numbers (via \code{\link[MiscMetabar:divent_hill_matrix_pq]{MiscMetabar::divent_hill_matrix_pq()}}) for each sample
-in a phyloseq object. When \code{modality} is supplied the computation is done
+in a phyloseq object. When \code{fact} is supplied the computation is done
 separately for each level of that grouping variable and the level label
-is appended as an extra column. \code{NA} values in the modality column are
+is appended as an extra column. \code{NA} values in the \code{fact} column are
 kept as a distinct group so that samples with missing metadata are never
-silently dropped. When \code{modality = NULL} all samples are analysed
+silently dropped. When \code{fact = NULL} all samples are analysed
 together and no grouping column is added to the result.
 }
 \details{
-Diversity indices per sample, optionally grouped by a modality.\if{html}{\out{
+Diversity indices per sample, optionally grouped by a factor.\if{html}{\out{
 <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
 <img src="https://img.shields.io/badge/lifecycle-experimental-orange"
 alt="lifecycle-experimental"></a>
@@ -95,14 +98,14 @@ div_pq(data_fungi_mini, indices = c("shannon", "simpson"))
 
 div_pq(
   data_fungi_mini,
-  modality = "Height",
+  fact = "Height",
   indices = c("shannon", "simpson"),
   q = c(0, 1, 2)
 )
 
 div_pq(
   data_fungi_mini,
-  modality = "Height",
+  fact = "Height",
   indices = "shannon",
   aggregate = TRUE
 )
