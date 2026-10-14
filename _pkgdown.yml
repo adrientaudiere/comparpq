@@ -100,6 +100,7 @@ reference:
   - tc_congruence_metrics
   - tc_metrics_mock
   - tc_metrics_mock_vec
+  - tc_cells_unit
   - tc_metrics_unit
   - tc_metrics_unit_vec
   - count_taxo_congruence

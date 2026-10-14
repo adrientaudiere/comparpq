@@ -374,3 +374,65 @@ test_that("tc_metrics_unit refuses a ranks_df that does not match the ranks", {
     "not one of"
   )
 })
+
+test_that("tc_cells_unit returns the cells tc_metrics_unit_vec sums", {
+  ranks_df <- data.frame(
+    good = c("Kingdom_good", "Genus_good", "Genus_good"),
+    silent = c("Kingdom_good", "Genus_silent", "Genus_silent")
+  )
+  cells <- tc_cells_unit(
+    unit_mock(),
+    ranks_df = ranks_df,
+    truth = unit_truth(),
+    truth_ranks = ranks,
+    ranks = c("Genus", "Species"),
+    external_scoring = "matrix",
+    no_truth = "aside"
+  )
+  expect_setequal(
+    colnames(cells),
+    c("method_db", "tax_level", "taxon", "control", "cell")
+  )
+  expect_setequal(unique(cells$tax_level), c("Genus", "Species"))
+  expect_equal(nrow(cells), 2 * 2 * 9)
+  for (column in c("Genus_good", "Genus_silent")) {
+    for (rank in c("Genus", "Species")) {
+      metrics <- tc_metrics_unit_vec(
+        unit_mock(),
+        taxonomic_rank = column,
+        truth = unit_truth(),
+        rank = rank,
+        truth_ranks = ranks,
+        external_scoring = "matrix",
+        no_truth = "aside",
+        verbose = FALSE
+      )
+      method <- ifelse(column == "Genus_good", "good", "silent")
+      cell <- cells$cell[cells$method_db == method & cells$tax_level == rank]
+      expect_equal(sum(cell %in% "TP"), metrics$TP)
+      expect_equal(sum(cell %in% "FP"), metrics$FP)
+      expect_equal(sum(cell %in% "FN"), metrics$FN)
+      expect_equal(sum(cell %in% "TN"), metrics$TN)
+    }
+  }
+  good_genus <- cells[cells$method_db == "good" & cells$tax_level == "Genus", ]
+  expect_equal(good_genus$cell[good_genus$taxon == "u_no_truth"], NA_character_)
+  expect_equal(good_genus$cell[good_genus$taxon == "fake_2"], "FP")
+  expect_true(good_genus$control[good_genus$taxon == "fake_2"])
+  # u_tie has a truth down to Genus only: left out at Species.
+  expect_true(is.na(cells$cell[
+    cells$method_db == "good" &
+      cells$tax_level == "Species" &
+      cells$taxon == "u_tie"
+  ]))
+  expect_error(
+    tc_cells_unit(
+      unit_mock(),
+      ranks_df = ranks_df,
+      truth = unit_truth(),
+      truth_ranks = ranks,
+      ranks = "Phylum"
+    ),
+    "ranks of `truth_ranks`"
+  )
+})

@@ -140,24 +140,26 @@ tc_metrics_unit_vec <- function(
 ) {
   external_scoring <- match.arg(external_scoring)
   no_truth <- match.arg(no_truth)
-  if (!rank %in% truth_ranks) {
-    stop("`rank` (", rank, ") is not one of `truth_ranks`.")
-  }
-  if (!all(c("taxon", "truth_depth", rank) %in% colnames(truth))) {
-    stop(
-      "`truth` must have the columns taxon, truth_depth and ",
-      rank,
-      "."
-    )
-  }
-
-  units <- taxa_names(physeq)
-  values <- as.character(physeq@tax_table[, taxonomic_rank])
-  names(values) <- units
-
-  is_fake <- fake_taxa & grepl(fake_pattern, units)
-  is_ext <- fake_taxa & grepl(external_pattern, units)
-  is_real <- !is_fake & !is_ext
+  u <- unit_cells(
+    physeq,
+    taxonomic_rank = taxonomic_rank,
+    truth = truth,
+    rank = rank,
+    truth_ranks = truth_ranks,
+    accepted_suffix = accepted_suffix,
+    external_scoring = external_scoring,
+    no_truth = no_truth,
+    fake_taxa = fake_taxa,
+    fake_pattern = fake_pattern,
+    external_pattern = external_pattern
+  )
+  values <- u$values
+  is_fake <- u$is_fake
+  is_ext <- u$is_ext
+  scored_real <- u$scored_real
+  deeper_than_truth <- u$deeper_than_truth
+  is_foreign <- u$is_foreign
+  is_no_truth <- u$is_no_truth
   if (verbose) {
     message(
       sum(is_fake),
@@ -173,48 +175,11 @@ tc_metrics_unit_vec <- function(
     )
   }
 
-  rows <- match(units, truth$taxon)
-  depth <- truth$truth_depth[rows]
-  expected <- truth[[rank]][rows]
-  accepted_col <- paste0(rank, accepted_suffix)
-  accepted <- if (accepted_col %in% colnames(truth)) {
-    truth[[accepted_col]][rows]
-  } else {
-    rep(NA_character_, length(units))
-  }
-
-  # A unit foreign to the expected community has nothing to be right about:
-  # it is left out of the matrix at every rank and counted aside.
-  is_foreign <- if ("foreign" %in% colnames(truth)) {
-    is_real & !is.na(rows) & truth$foreign[rows] %in% TRUE
-  } else {
-    rep(FALSE, length(units))
-  }
-  # A unit is left out of the matrix at the ranks below its truth (a tie
-  # between strains of the same genus says nothing about the species).
-  deeper_than_truth <- is_real &
-    !is.na(depth) &
-    match(rank, truth_ranks) > match(depth, truth_ranks)
-  # A unit of the mock with no truth (no member matched closely enough) has no
-  # right answer either: kept in the matrix as an error, or left out.
-  is_no_truth <- is_real & !is_foreign & (is.na(rows) | is.na(depth))
-  scored_real <- is_real &
-    !deeper_than_truth &
-    !is_foreign &
-    !(no_truth == "aside" & is_no_truth)
-  has_truth <- scored_real & !is.na(expected)
-
-  correct <- !is.na(values) &
-    ((!is.na(expected) & values == expected) |
-      (!is.na(accepted) & values == accepted))
-
-  TP <- sum(has_truth & correct)
-  FP_real <- sum(scored_real & !is.na(values) & !correct)
-  FN <- sum(scored_real & is.na(values))
-
-  scored_ctrl <- is_fake | (is_ext & external_scoring == "matrix")
-  FP_ctrl <- sum(scored_ctrl & !is.na(values))
-  TN <- sum(scored_ctrl & is.na(values))
+  TP <- sum(u$cell %in% "TP")
+  FP_real <- sum(u$cell %in% "FP" & !u$control)
+  FN <- sum(u$cell %in% "FN")
+  FP_ctrl <- sum(u$cell %in% "FP" & u$control)
+  TN <- sum(u$cell %in% "TN")
   FP <- FP_real + FP_ctrl
 
   FDR <- FP / (FP + TP)
@@ -412,5 +377,213 @@ tc_metrics_unit <- function(
     do.call(rbind, per_rank)
   })
   do.call(rbind, res)
+}
+################################################################################
+
+################################################################################
+#' Per-unit confusion-matrix cells of several assignations
+#'
+#' @description
+#'
+#' <a href="https://adrientaudiere.github.io/MiscMetabar/articles/Rules.html#lifecycle">
+#' <img src="https://img.shields.io/badge/lifecycle-experimental-orange" alt="lifecycle-experimental"></a>
+#'
+#' The cell (TP, FP, FN or TN) each unit falls in, for every assignation
+#' column of `ranks_df` and every rank of `ranks`, under the same rules as
+#' [tc_metrics_unit_vec()], whose TP, FP, FN and TN are the sums of these
+#' cells. Use it to resample units, e.g. for bootstrap intervals on the
+#' difference between two assignations scored on the same units.
+#'
+#' @inheritParams tc_metrics_unit
+#' @param ranks (character vector, default `truth_ranks`) The ranks of
+#'   `truth_ranks` to return.
+#'
+#' @returns A data.frame with one row per unit, assignation column and rank:
+#'   `method_db` (the column name of `ranks_df`), `tax_level`, `taxon` (the
+#'   unit), `control` (TRUE for a shuffled or external control) and `cell`
+#'   ("TP", "FP", "FN" or "TN"; NA for a unit left out of the matrix at this
+#'   rank: truth shallower than the rank, foreign unit, unit without truth
+#'   under `no_truth = "aside"`, external control under
+#'   `external_scoring = "aside"`).
+#'
+#' @export
+#' @seealso [tc_metrics_unit()], [tc_metrics_unit_vec()]
+#' @author Adrien Taudière
+#' @examples
+#' truth <- data.frame(
+#'   taxon = phyloseq::taxa_names(data_fungi_mini),
+#'   Phylum = phyloseq::tax_table(data_fungi_mini)[, "Phylum"],
+#'   Class = phyloseq::tax_table(data_fungi_mini)[, "Class"],
+#'   truth_depth = "Class"
+#' )
+#' ranks_df <- data.frame(seed = c("Phylum", "Class"))
+#' cells <- tc_cells_unit(
+#'   data_fungi_mini,
+#'   ranks_df = ranks_df,
+#'   truth = truth,
+#'   truth_ranks = c("Phylum", "Class"),
+#'   fake_taxa = FALSE
+#' )
+#' table(cells$tax_level, cells$cell)
+tc_cells_unit <- function(
+  physeq,
+  ranks_df,
+  truth,
+  truth_ranks = c(
+    "Kingdom",
+    "Phylum",
+    "Class",
+    "Order",
+    "Family",
+    "Genus",
+    "Species"
+  ),
+  ranks = truth_ranks,
+  accepted_suffix = "_accepted",
+  external_scoring = c("matrix", "aside"),
+  no_truth = c("matrix", "aside"),
+  fake_taxa = TRUE,
+  fake_pattern = "^fake_",
+  external_pattern = "^external_"
+) {
+  external_scoring <- match.arg(external_scoring)
+  no_truth <- match.arg(no_truth)
+  if (nrow(ranks_df) != length(truth_ranks)) {
+    stop(
+      "`ranks_df` must have one row per rank of `truth_ranks` (",
+      nrow(ranks_df),
+      " rows against ",
+      length(truth_ranks),
+      " ranks)."
+    )
+  }
+  if (!all(ranks %in% truth_ranks)) {
+    stop("`ranks` must be ranks of `truth_ranks`.")
+  }
+
+  res <- lapply(seq_len(ncol(ranks_df)), function(nc) {
+    columns <- as.character(ranks_df[, nc])
+    per_rank <- lapply(which(truth_ranks %in% ranks), function(i) {
+      u <- unit_cells(
+        physeq,
+        taxonomic_rank = columns[i],
+        truth = truth,
+        rank = truth_ranks[i],
+        truth_ranks = truth_ranks,
+        accepted_suffix = accepted_suffix,
+        external_scoring = external_scoring,
+        no_truth = no_truth,
+        fake_taxa = fake_taxa,
+        fake_pattern = fake_pattern,
+        external_pattern = external_pattern
+      )
+      data.frame(
+        "method_db" = colnames(ranks_df)[nc],
+        "tax_level" = truth_ranks[i],
+        "taxon" = u$units,
+        "control" = u$control,
+        "cell" = u$cell
+      )
+    })
+    do.call(rbind, per_rank)
+  })
+  do.call(rbind, res)
+}
+################################################################################
+
+################################################################################
+# The cell of each unit for one assignation column: the single definition of
+# the confusion-matrix rules, shared by tc_metrics_unit_vec(), which sums the
+# cells, and tc_cells_unit(), which returns them. `cell` is "TP", "FP",
+# "FN" or "TN", NA for a unit left out of the matrix; `control` marks the
+# shuffled and external controls. The other elements are the masks the
+# metrics of tc_metrics_unit_vec() need.
+#' @noRd
+unit_cells <- function(
+  physeq,
+  taxonomic_rank,
+  truth,
+  rank,
+  truth_ranks,
+  accepted_suffix,
+  external_scoring,
+  no_truth,
+  fake_taxa,
+  fake_pattern,
+  external_pattern
+) {
+  if (!rank %in% truth_ranks) {
+    stop("`rank` (", rank, ") is not one of `truth_ranks`.")
+  }
+  if (!all(c("taxon", "truth_depth", rank) %in% colnames(truth))) {
+    stop(
+      "`truth` must have the columns taxon, truth_depth and ",
+      rank,
+      "."
+    )
+  }
+
+  units <- taxa_names(physeq)
+  values <- as.character(physeq@tax_table[, taxonomic_rank])
+  names(values) <- units
+
+  is_fake <- fake_taxa & grepl(fake_pattern, units)
+  is_ext <- fake_taxa & grepl(external_pattern, units)
+  is_real <- !is_fake & !is_ext
+  rows <- match(units, truth$taxon)
+  depth <- truth$truth_depth[rows]
+  expected <- truth[[rank]][rows]
+  accepted_col <- paste0(rank, accepted_suffix)
+  accepted <- if (accepted_col %in% colnames(truth)) {
+    truth[[accepted_col]][rows]
+  } else {
+    rep(NA_character_, length(units))
+  }
+
+  # A unit foreign to the expected community has nothing to be right about:
+  # it is left out of the matrix at every rank and counted aside.
+  is_foreign <- if ("foreign" %in% colnames(truth)) {
+    is_real & !is.na(rows) & truth$foreign[rows] %in% TRUE
+  } else {
+    rep(FALSE, length(units))
+  }
+  # A unit is left out of the matrix at the ranks below its truth (a tie
+  # between strains of the same genus says nothing about the species).
+  deeper_than_truth <- is_real &
+    !is.na(depth) &
+    match(rank, truth_ranks) > match(depth, truth_ranks)
+  # A unit of the mock with no truth (no member matched closely enough) has no
+  # right answer either: kept in the matrix as an error, or left out.
+  is_no_truth <- is_real & !is_foreign & (is.na(rows) | is.na(depth))
+  scored_real <- is_real &
+    !deeper_than_truth &
+    !is_foreign &
+    !(no_truth == "aside" & is_no_truth)
+  has_truth <- scored_real & !is.na(expected)
+
+  correct <- !is.na(values) &
+    ((!is.na(expected) & values == expected) |
+      (!is.na(accepted) & values == accepted))
+
+  scored_ctrl <- is_fake | (is_ext & external_scoring == "matrix")
+  cell <- rep(NA_character_, length(units))
+  cell[has_truth & correct] <- "TP"
+  cell[scored_real & !is.na(values) & !correct] <- "FP"
+  cell[scored_real & is.na(values)] <- "FN"
+  cell[scored_ctrl & !is.na(values)] <- "FP"
+  cell[scored_ctrl & is.na(values)] <- "TN"
+
+  list(
+    units = units,
+    values = values,
+    cell = cell,
+    control = is_fake | is_ext,
+    is_fake = is_fake,
+    is_ext = is_ext,
+    scored_real = scored_real,
+    deeper_than_truth = deeper_than_truth,
+    is_foreign = is_foreign,
+    is_no_truth = is_no_truth
+  )
 }
 ################################################################################
